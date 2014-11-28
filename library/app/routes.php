@@ -11,7 +11,29 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+// Route::get('/', function()
+// {
+// 	return View::make('hello');
+// });
+
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
+
+Route::get('/about', 'HomeController@getAbout');
+
+Route::get('/help', 'HomeController@getHelp');
+
+Route::get('/privacy', 'HomeController@getPrivacy');
+
+Route::get('/status', 'HomeController@getStatus');
+
+Route::get('/terms', 'HomeController@getTerms');
+
+Route::get('/register', 'UserController@getRegister');
+
+Route::get('/resend_password', 'UserController@getResend_Password')->before('guest');
+
+Route::get('/login', 'UserController@getLogin')->before('guest');
+
+Route::get('/logout', 'UserController@getLogout')->before('auth');
+
+Route::controller('users', 'UserController');

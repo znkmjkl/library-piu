@@ -13,11 +13,43 @@ class HomeController extends BaseController {
 	|
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
+	|
+	|
+	|	public function showWelcome()
+	|	{
+	|		return View::make('hello');
+	|	}
+	|
 	*/
 
-	public function showWelcome()
+	public function getIndex()
 	{
-		return View::make('hello');
+		return View::make('home.index');
+	}
+
+	public function getAbout()
+	{
+		return View::make('home.about');
+	}
+
+	public function getHelp()
+	{
+		return View::make('home.help');
+	}
+
+	public function getPrivacy()
+	{
+		return View::make('home.privacy');
+	}
+
+	public function getStatus()
+	{
+		return View::make('home.status');
+	}
+
+	public function getTerms()
+	{
+		return View::make('home.terms');
 	}
 
 }

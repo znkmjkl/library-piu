@@ -1,0 +1,196 @@
+diff --git a/library/app/config/app.php b/library/app/config/app.php
+index eb02f9a..3c2100f 100644
+--- a/library/app/config/app.php
++++ b/library/app/config/app.php
+@@ -13,7 +13,7 @@ return array(
+ 	|
+ 	*/
+ 
+-	'debug' => false,
++	'debug' => true,
+ 
+ 	/*
+ 	|--------------------------------------------------------------------------
+diff --git a/library/app/config/database.php b/library/app/config/database.php
+index 3498fa8..c8bf785 100644
+--- a/library/app/config/database.php
++++ b/library/app/config/database.php
+@@ -26,7 +26,7 @@ return array(
+ 	|
+ 	*/
+ 
+-	'default' => 'mysql',
++	'default' => 'sqlite',
+ 
+ 	/*
+ 	|--------------------------------------------------------------------------
+diff --git a/library/app/controllers/HomeController.php b/library/app/controllers/HomeController.php
+index ede41a7..0b3cbeb 100644
+--- a/library/app/controllers/HomeController.php
++++ b/library/app/controllers/HomeController.php
+@@ -13,11 +13,43 @@ class HomeController extends BaseController {
+ 	|
+ 	|	Route::get('/', 'HomeController@showWelcome');
+ 	|
++	|
++	|
++	|	public function showWelcome()
++	|	{
++	|		return View::make('hello');
++	|	}
++	|
+ 	*/
+ 
+-	public function showWelcome()
++	public function getIndex()
++	{
++		return View::make('home.index');
++	}
++
++	public function getAbout()
++	{
++		return View::make('home.about');
++	}
++
++	public function getHelp()
++	{
++		return View::make('home.help');
++	}
++
++	public function getPrivacy()
++	{
++		return View::make('home.privacy');
++	}
++
++	public function getStatus()
++	{
++		return View::make('home.status');
++	}
++
++	public function getTerms()
+ 	{
+-		return View::make('hello');
++		return View::make('home.terms');
+ 	}
+ 
+ }
+diff --git a/library/app/models/User.php b/library/app/models/User.php
+index af00a49..a25b1f4 100644
+--- a/library/app/models/User.php
++++ b/library/app/models/User.php
+@@ -1,14 +1,10 @@
+ <?php
+ 
+-use Illuminate\Auth\UserTrait;
+ use Illuminate\Auth\UserInterface;
+-use Illuminate\Auth\Reminders\RemindableTrait;
+ use Illuminate\Auth\Reminders\RemindableInterface;
+ 
+ class User extends Eloquent implements UserInterface, RemindableInterface {
+ 
+-	use UserTrait, RemindableTrait;
+-
+ 	/**
+ 	 * The database table used by the model.
+ 	 *
+@@ -21,6 +17,58 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
+ 	 *
+ 	 * @var array
+ 	 */
+-	protected $hidden = array('password', 'remember_token');
++	protected $hidden = array('password');
++
++	/**
++	 * Get the unique identifier for the user.
++	 *
++	 * @return mixed
++	 */
++	public function getAuthIdentifier()
++	{
++		return $this->getKey();
++	}
++
++	/**
++	 * Get the password for the user.
++	 *
++	 * @return string
++	 */
++	public function getAuthPassword()
++	{
++		return $this->password;
++	}
++
++	/**
++	 * Get the e-mail address where password reminders are sent.
++	 *
++	 * @return string
++	 */
++	public function getReminderEmail()
++	{
++		return $this->email;
++	}
++
++	public function getRememberToken()
++	{
++	    return $this->remember_token;
++	}
++
++	public function setRememberToken($value)
++	{
++	    $this->remember_token = $value;
++	}
++
++	public function getRememberTokenName()
++	{
++	    return 'remember_token';
++	}
++
++
++	public static $rules = array('firstname'=>'required|alpha|min:2',
++								 'lastname'=>'required|alpha|min:2',
++								 'email'=>'required|email|unique:users',
++								 'password'=>'required|alpha_num|between:6,12|confirmed',
++								 'password_confirmation'=>'required|alpha_num|between:6,12');
+ 
+-}
++}
+\ No newline at end of file
+diff --git a/library/app/routes.php b/library/app/routes.php
+index 3e10dcf..7f6e911 100644
+--- a/library/app/routes.php
++++ b/library/app/routes.php
+@@ -11,7 +11,29 @@
+ |
+ */
+ 
+-Route::get('/', function()
+-{
+-	return View::make('hello');
+-});
++// Route::get('/', function()
++// {
++// 	return View::make('hello');
++// });
++
++Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
++
++Route::get('/about', 'HomeController@getAbout');
++
++Route::get('/help', 'HomeController@getHelp');
++
++Route::get('/privacy', 'HomeController@getPrivacy');
++
++Route::get('/status', 'HomeController@getStatus');
++
++Route::get('/terms', 'HomeController@getTerms');
++
++Route::get('/register', 'UserController@getRegister');
++
++Route::get('/resend_password', 'UserController@getResend_Password')->before('guest');
++
++Route::get('/login', 'UserController@getLogin')->before('guest');
++
++Route::get('/logout', 'UserController@getLogout')->before('auth');
++
++Route::controller('users', 'UserController');
+\ No newline at end of file
