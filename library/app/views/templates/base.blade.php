@@ -39,5 +39,8 @@
         {{ HTML::script('js/jquery.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         {{ HTML::script('js/holder.js') }}
+        {{ HTML::script('js/vendor/angular.min.js') }}
+        {{ HTML::script('js/vendor/angular-resource.min.js') }}
+        {{ HTML::script('js/vendor/angular-route.min.js') }}
     </body>
 </html>
