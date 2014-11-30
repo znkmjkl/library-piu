@@ -1,6 +1,9 @@
 @extends('templates.layout')
 
 @section('register')
+
+    @include('home.angular')
+
     <div>
         <p><b># TODO</b></p>
         <p># Wyszukiwarka na pasku czy tutaj? Roboczo logowanie i rejestracja na stronie glownej (alt. /login i /register)</p>
