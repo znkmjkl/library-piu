@@ -32,6 +32,8 @@ Route::get('/register', 'UserController@getRegister');
 
 Route::get('/resend_password', 'UserController@getResend_Password')->before('guest');
 
+Route::post('resend_password', 'UserController@sendNewPassword');
+
 Route::get('/login', 'UserController@getLogin')->before('guest');
 
 Route::get('/logout', 'UserController@getLogout')->before('auth');
