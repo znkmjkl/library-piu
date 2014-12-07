@@ -7,9 +7,13 @@
   input.ng-valid.ng-dirty {
     border-color: #cccccc; 
   }
+  .click-reg:hover{
+  	color:#428bca;
+  	cursor:pointer;
+  }
 </style>
 
-<h3 class="form-signin-heading" ng-click="showReg()" style="text-align:center;">Kliknij by przejśc do Rejestracji</h3>
+<h3 class="form-signin-heading" ng-click="showReg()" style="text-align:center;"><span class="click-reg">Kliknij by przejśc do</span> <b>rejestracji</b></h3>
 {{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm', "ng-show" => "regVisible")) }}
 		<h1 class="form-signin-heading" style="text-align:center;">Rejstracja </h1>
 		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe</label>
@@ -24,10 +28,10 @@
 		'ng-model' => 'user.email', 'ng-keyup' => 'checkEmail()')) }}
 		
 		{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Podaj hasło', 'required' => true,
-		'ng-model' => 'user.password1', 'ng-keyup' => 'checkPass()',))}}
+		'ng-model' => 'user.password1', 'ng-keyup' => 'checkPass()', 'ng-minlength'=>'6',))}}
 		
 		{{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Potwierdź hasło', 'required' => true,
-		'ng-model' => 'user.password2', 'ng-keyup' => 'checkPass()',))}}
+		'ng-model' => 'user.password2', 'ng-keyup' => 'checkPass()', 'ng-minlength'=>'6',))}}
 		
 		<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
 		
