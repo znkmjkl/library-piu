@@ -16,7 +16,8 @@
         {{ HTML::style('css/signin.css') }}
         {{ HTML::style('css/conversations.css') }}
         {{ HTML::style('css/main.css') }}
-
+        {{ HTML::script('js/jquery.js') }}
+        {{ HTML::script('js/bootstrap.min.js') }}
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="../../assets/js/html5shiv.js"></script>
@@ -36,8 +37,8 @@
         <!-- core JavaScript -->
         <!-- Placed at the end of the document so the pages load faster -->
 
-        {{ HTML::script('js/jquery.js') }}
-        {{ HTML::script('js/bootstrap.min.js') }}
+        
+        
         {{ HTML::script('js/holder.js') }}
         {{ HTML::script('js/vendor/angular.min.js') }}
         {{ HTML::script('js/vendor/angular-resource.min.js') }}
