@@ -20,14 +20,13 @@ class UserController extends \BaseController {
 
         if ($validator->passes()) {
             $user = new User;
-            $user->username = Input::get('username');
             $user->firstname = Input::get('firstname');
             $user->lastname = Input::get('lastname');
             $user->email = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
-             Mail::send('emails.registration.welcome', array('firstname'=>Input::get('firstname')), function($message){
-                $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
-            });
+            //  Mail::send('emails.registration.welcome', array('firstname'=>Input::get('firstname')), function($message){
+            //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
+            // });
             $user->save();
             return Redirect::intended('/')->with('flash_message', 'Thanks for registering. Please confirm your account by clicking link in a confirmation email... then you can log in.');
         }
