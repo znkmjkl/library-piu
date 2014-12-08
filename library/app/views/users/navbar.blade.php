@@ -22,11 +22,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-bell"> Inbox</span>
+                  <span class="glyphicon glyphicon-bell"> Skrzynka</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Messages</a></span></li>
-                    <li><a href="/notifications"><span class="glyphicon glyphicon-bullhorn"> Notifications</span></a></li>
+                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Wiadomości</a></span></li>
+                    <li><a href="/notifications"><span class="glyphicon glyphicon-bullhorn"> Powiadomienia</span></a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -34,11 +34,11 @@
                   <span class="glyphicon glyphicon-user"> {{ Auth::user()->firstname }}</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/timeline"><span class="glyphicon glyphicon-home"> Account</a></span></li>
-                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Help</span></a></li>
+                    <li><a href="/timeline"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
                     <li><hr></li>
-                    <li><a href="/settings/account"><span class="glyphicon glyphicon-wrench"> Settings</span></a></li>
-                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> Logout</span></a></li>
+                    <li><a href="/settings/account"><span class="glyphicon glyphicon-wrench"> Ustawienia</span></a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
                   </ul>
                 </li>
               </ul>
