@@ -18,10 +18,10 @@
             
             $scope.checkName = function (){
                 
-                if(!$scope.regForm.username.$valid)
-                    $('input[name="username"]').tooltip("show");
+                if(!$scope.regForm.firstname.$valid)
+                    $('input[name="firstname"]').tooltip("show");
                 else
-                    $('input[name="username"]').tooltip("destroy");
+                    $('input[name="firstname"]').tooltip("destroy");
             }
             $scope.checkLastName = function (){
                 if(!$scope.regForm.lastname.$valid)
@@ -88,6 +88,12 @@
                     $('input[name="zipCode"]').tooltip("show");
                 else 
                     $('input[name="zipCode"]').tooltip("destroy");
+            }
+            $scope.test = function(){
+                console.log($scope.user.terms);
+            }
+            $scope.checkboxStatus = function(){
+                console.log($scope.regForm.terms.checked);
             }
         }
     </script>

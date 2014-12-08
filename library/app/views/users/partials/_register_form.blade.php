@@ -15,7 +15,7 @@
 
 <h3 class="form-signin-heading" ng-click="showReg()" style="text-align:center;"><span class="click-reg">Kliknij by przejśc do</span> <b>rejestracji</b></h3>
 {{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm', "ng-show" => "regVisible")) }}
-		<h1 class="form-signin-heading" style="text-align:center;">Rejstracja </h1>
+		<h1 class="form-signin-heading" style="text-align:center;">Rejestracja </h1>
 		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe</label>
 		{{ Form::text('firstname', null, array('class' => 'form-control', 'placeholder' => 'Podaj imię', 'required' => true,
 		'ng-model' => 'user.name',"ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
@@ -52,12 +52,13 @@
 		
 		{{ Form::text('zipCode', null, array('class' => 'form-control', 'placeholder' => 'Podaj kod pocztowy',
 		'ng-model' => 'user.zipCode',
-		'ng-blur'=>'checkZipCode()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź kod pocztowy")) }}
+		'ng-blur'=>'checkZipCode()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny kod pocztowy",
+		'ng-model' => 'user.zipCode', "ng-pattern" => "/^[0-9]{2}-[0-9]{3}$/", )) }}
 		<label>
 			*należy wypełnić wszystkie pola
 		</label>
 		<label class="checkbox">
-	{{ Form::checkbox('terms', 'Terms') }}
+		{{ Form::checkbox('terms', 'Terms' }}
 		Akceptuję {{ HTML::link("/terms", 'Regulamin') }}
 	</label>
 		{{ Form::submit('Zarejestruj', array('class' => 'btn btn-lg btn-primary btn-block','ng-disabled'=>'!regForm.$valid', "ng-model"=>"regFormSubmit",)) }}
