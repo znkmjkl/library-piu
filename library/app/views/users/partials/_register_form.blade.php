@@ -58,7 +58,7 @@
 			*należy wypełnić wszystkie pola
 		</label>
 		<label class="checkbox">
-		{{ Form::checkbox('terms', 'Terms' }}
+		{{ Form::checkbox('terms', 'Terms') }}
 		Akceptuję {{ HTML::link("/terms", 'Regulamin') }}
 	</label>
 		{{ Form::submit('Zarejestruj', array('class' => 'btn btn-lg btn-primary btn-block','ng-disabled'=>'!regForm.$valid', "ng-model"=>"regFormSubmit",)) }}

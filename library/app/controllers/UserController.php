@@ -28,11 +28,11 @@ class UserController extends \BaseController {
             //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
             // });
             $user->save();
-            return Redirect::intended('/')->with('flash_message', 'Thanks for registering. Please confirm your account by clicking link in a confirmation email... then you can log in.');
+            return Redirect::intended('/')->with('flash_message', 'Dziękujemy za rejestracje. Możesz już dokonac logowania do serwisu =).');
         }
         else
         {
-            return Redirect::intended('/')->with('flash_message', 'Username or email is in use. Try another.')->withInput();
+            return Redirect::intended('/')->with('flash_message', 'Adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
 
@@ -47,12 +47,12 @@ class UserController extends \BaseController {
 
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'))))
         {
-            return Redirect::intended('/')->with('flash_message', 'You are now logged in!');
+            return Redirect::intended('/')->with('flash_message', 'Zostałeś zalogowany!');
         }
         else
         {
            return Redirect::to('/')->withErrors($validator)
-                                   ->with('flash_message', 'Your email and password don\'t match')
+                                   ->with('flash_message', 'Wprowadzony email i hasło nie są poprawne!')
                                    ->withInput();
         }
     }
@@ -60,7 +60,7 @@ class UserController extends \BaseController {
     public function getLogout()
     {
         Auth::logout();
-        return Redirect::to('login')->with('flash_message', 'You are now logged out...');;
+        return Redirect::to('login')->with('flash_message', 'Zostałeś wylogowany...');;
     }
 
     public function getResend_Password()

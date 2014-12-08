@@ -89,12 +89,6 @@
                 else 
                     $('input[name="zipCode"]').tooltip("destroy");
             }
-            $scope.test = function(){
-                console.log($scope.user.terms);
-            }
-            $scope.checkboxStatus = function(){
-                console.log($scope.regForm.terms.checked);
-            }
         }
     </script>
 @stop
