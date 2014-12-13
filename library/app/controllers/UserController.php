@@ -4,7 +4,7 @@ class UserController extends \BaseController {
 
     public function getIndex()
     {
-        $users = DB::table('users')->get();
+        $users = DB::table('user')->get();
 
         return $users;
     }
@@ -20,8 +20,8 @@ class UserController extends \BaseController {
 
         if ($validator->passes()) {
             $user = new User;
-            $user->firstname = Input::get('firstname');
-            $user->lastname = Input::get('lastname');
+            $user->usr_name = Input::get('firstname');
+            $user->usr_surname = Input::get('lastname');
             $user->email = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
             //  Mail::send('emails.registration.welcome', array('firstname'=>Input::get('firstname')), function($message){
@@ -47,7 +47,8 @@ class UserController extends \BaseController {
 
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'))))
         {
-            return Redirect::intended('/')->with('flash_message', 'Zostałeś zalogowany!');
+            // return Redirect::intended('/')->with('flash_message', 'Zostałeś zalogowany!');
+            return View::make('home.index');
         }
         else
         {
@@ -68,23 +69,25 @@ class UserController extends \BaseController {
         return View::make('users.password_reset');
     }
 
-    public function sendNewPassword(){
+    public function sendNewPassword()
+    {
 
-        $users = DB::table('users')
-                            ->where('username', Input::get('username'))
-                            ->where('email', Input::get('email'))
-                            ->first();
+        $user = DB::table('user')->where('usr_surname', Input::get('lastname'))
+                                 ->where('email', Input::get('email'))
+                                 ->first();
 
-        if (!empty($users))
+        if (!empty($user))
         {
                 $password=str_random(8);
-                DB::table('users')
-                    ->where('email', Input::get('email'))
-                    ->update(array('password' => Hash::make($password)));
+                DB::table('user')->where('usr_email', Input::get('email'))
+                                 ->update(array('password' => Hash::make($password)));
 
-                Mail::send('emails.auth.reminder', array('password'=>$password), function($message){
-                $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Zmiana hasła w księgarni!');
-            });
+                Mail::send('emails.auth.reminder', array('usr_password'=>$password), function($message)
+                {
+                    $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))
+                            ->subject('Zmiana hasła w księgarni!');
+                });
+
             return Redirect::intended('/')->with('flash_message', 'Wysłano hasło na podanego maila!');
         }
         else
@@ -93,6 +96,5 @@ class UserController extends \BaseController {
                                    ->withInput();
         }
     }
-
 
 }

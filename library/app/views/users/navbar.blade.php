@@ -31,7 +31,7 @@
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-user"> {{ Auth::user()->firstname }}</span>
+                  <span class="glyphicon glyphicon-user"> {{ Auth::user()->usr_name }}</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="/timeline"><span class="glyphicon glyphicon-home"> Konto</a></span></li>

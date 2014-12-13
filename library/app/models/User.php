@@ -10,7 +10,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'user';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -67,7 +67,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public static $rules = array('firstname'=>'required|alpha|min:2',
 								 'lastname'=>'required|alpha|min:2',
-								 'email'=>'required|email|unique:users',
+								 'email'=>'required|email|unique:user',
 								 'password'=>'required|alpha_num|between:6,12|confirmed',
 								 'password_confirmation'=>'required|alpha_num|between:6,12');
 
