@@ -26,3 +26,6 @@
 .alert {
 	text-align: center;
 }
+form input{
+  margin-bottom: 5px;
+}

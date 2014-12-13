@@ -33,12 +33,10 @@ body {
   border-bottom-right-radius: 0;
 }
 .form-signin input[type="password"] {
-/*  margin-bottom: 10px;*/
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+/*  margin-bottom: 10px;*/  
 }
 .form-control{
-  margin-bottom:5px;
+/*  margin-bottom:5px;*/
 }
 #bottom {
 padding: 20px;

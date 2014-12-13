@@ -18,76 +18,86 @@
             
             $scope.checkName = function (){
                 
-                if(!$scope.regForm.firstname.$valid)
-                    $('input[name="firstname"]').tooltip("show");
-                else
-                    $('input[name="firstname"]').tooltip("destroy");
+                if(!$scope.regForm.firstname.$valid){
+                    console.log('tete');
+                    tooltip("firstname", "show");                  
+                }
+                else{
+                    tooltip("firstname", "");                    
+                    console.log("xxx");
+                }
             }
             $scope.checkLastName = function (){
                 if(!$scope.regForm.lastname.$valid)
-                    $('input[name="lastname"]').tooltip("show");
+                    tooltip("lastname","show");
                 else
-                    $('input[name="lastname"]').tooltip("destroy");
+                    tooltip("lastname","hide");
             }
             $scope.checkEmail = function (){
                 if(!$scope.regForm.email.$valid)
-                    $('input[name="email"]').tooltip("show");
+                    tooltip("email","show");
                 else
-                    $('input[name="email"]').tooltip("destroy");
+                    tooltip("email","hide");
             }
-
-                //$('input[name="password"]').tooltip("show");
-            $scope.checkPass = function(){                  
-                if($scope.user.password1.length < 6){
+                
+            $scope.checkPass = function(){
+                if($scope.regForm.password.$modelValue.length < 6){                    
                     $scope.regForm.password.$setValidity('tooShort',false);
                     $scope.regForm.password_confirmation.$setValidity('tooShort',false);
-                    $('input[name="password"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
+                    $('input[ng-model="user.password1"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
                     $('input[name="password_confirmation"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
-                    $('input[name="password"]').tooltip("show");
+                    $('input[ng-model="user.password1"]').tooltip("show");
                     $('input[name="password_confirmation"]').tooltip("show");
                 } else {
                     $scope.regForm.password.$setValidity('tooShort',true);
                     $scope.regForm.password_confirmation.$setValidity('tooShort',true);
-                    $('input[name="password"]').tooltip("destroy");
+                    $('input[ng-model="user.password1"]').tooltip("destroy");
                     $('input[name="password_confirmation"]').tooltip("destroy");
                 }
-                if($scope.user.password1 != $scope.user.password2){
+                if($scope.regForm.password.$modelValue != $scope.regForm.password_confirmation.$modelValue){
                     $scope.regForm.password.$setValidity('identical',false);
                     $scope.regForm.password_confirmation.$setValidity('identical',false);
-                    $('input[name="password"]').attr("title","Hasła nie są takie same!");
+                    $('input[ng-model="user.password1"]').attr("title","Hasła nie są takie same!");
                     $('input[name="password_confirmation"]').attr("title","Hasła nie są takie same!");
-                    $('input[name="password"]').tooltip("show");
+                    $('input[ng-model="user.password1"]').tooltip("show");
                     $('input[name="password_confirmation"]').tooltip("show");
                 } else {
                     $scope.regForm.password.$setValidity('identical',true);
                     $scope.regForm.password_confirmation.$setValidity('identical',true);
-                    $('input[name="password"]').tooltip("destroy");
-                    $('input[name="password_confirmation"]').tooltip("destroy");
+                    $('input[ng-model="user.password1"]').tooltip("disable");
+                    $('input[name="password_confirmation"]').tooltip("disable");
                 }   
             };
-            $scope.checkCity = function(){
-                if(!$scope.regForm.city.$valid)
-                    $('input[name="city"]').tooltip("show");
-                else 
-                    $('input[name="city"]').tooltip("destroy");
+            $scope.checkCity = function(){                
+                if(!$scope.regForm.city.$valid)                    
+                    tooltip("city","show");                
+                else                    
+                    tooltip("city","hide");
             }
             $scope.checkStreet = function(){
                 if(!$scope.regForm.street.$valid)
-                    $('input[name="street"]').tooltip("show");
+                    tooltip("street","show");                
                 else 
-                    $('input[name="street"]').tooltip("destroy");
+                    tooltip("street","hide");
             }
             $scope.checkHouseNr = function(){
                 if(!$scope.regForm.houseNr.$valid)
-                    $('input[name="houseNr"]').tooltip("show");
+                    tooltip("houseNr", "show");
                 else 
-                    $('input[name="houseNr"]').tooltip("destroy");
+                    tooltip("houseNr", "hide");
             }
             $scope.checkZipCode = function(){
                 if(!$scope.regForm.zipCode.$valid)
-                    $('input[name="zipCode"]').tooltip("show");
+                    tooltip("zipCode","show");
                 else 
-                    $('input[name="zipCode"]').tooltip("destroy");
+                    tooltip("zipCode","hide");
+            }
+            function tooltip(name,action){
+                if(action == "show"){                    
+                    $('input[name='+name+']').tooltip("show");
+                } else{                    
+                    $('input[name="'+name+'"]').tooltip("disable");                    
+                }
             }
         }
     </script>
