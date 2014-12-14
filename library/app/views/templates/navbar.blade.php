@@ -8,12 +8,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-book"> Biblioteka</span></a>
+                <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
             </div>
             <div class="center-block" style="text-align:center;">
               <form class="navbar-form" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Wyszukaj" style="margin-bottom:0px; width:250px;">
+                  <input type="text" class="form-control" placeholder="Wyszukaj książkę" style="margin-bottom:0px; width:250px;">
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"> </span></a></button>
               </form>

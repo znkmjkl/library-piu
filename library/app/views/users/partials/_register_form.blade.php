@@ -58,15 +58,18 @@
 		<label>
 			*należy wypełnić wszystkie pola
 		</label>
-		<img id="captcha" src="../app/lib/SecureImage/securimage_show.php"  class="img-thumbnail .img-rounded:2px" style="margin-right:20px; margin-bottom:5px;" alt="CAPTCHA IMAGE" />
+		{{HTML::image(Captcha::img(), 'alt text', array('style'=>'margin-bottom:5px;'))}}		
+		<input type="text" class="form-control" ng-model="user.captcha_code" name="captcha" id="captcha_code" placeholder="Wprowadź kod z obraza" required="true"/> 
+		<!-- <img id="captcha" src="../app/lib/SecureImage/securimage_show.php"  class="img-thumbnail .img-rounded:2px" style="margin-right:20px; margin-bottom:5px;" alt="CAPTCHA IMAGE" />
 		<div style="display:inline-block;vertical-align:middle;float:none;">
 			<a href="#" onclick="document.getElementById('captcha').src = '../app/lib/SecureImage/securimage_show.php?' + Math.random(); return false"> 
 			<img id="reload-image" src="../app/lib/SecureImage/images/refresh.png" alt="Odśwież Obrazek" />
 			</a> 
 		</div>																															   
-		<input type="text" class="form-control" ng-model="user.captcha_code" name="captcha_code" id="captcha_code" placeholder="Wprowadź kod znajdujący się na obrazku" required="true"/> 
+		<input type="text" class="form-control" ng-model="user.captcha_code" name="captcha_code" id="captcha_code" placeholder="Wprowadź kod znajdujący się na obrazku" required="true"/>  -->
 		<label class="checkbox">							
 			<input type="checkbox" ng-model="user.checkbox" required>			
+
 			Akceptuję {{ HTML::link("/terms", 'Regulamin') }}	
 		</label>
 		{{ Form::submit('Zarejestruj', array('class' => 'btn btn-lg btn-primary btn-block','ng-disabled'=>'!regForm.$valid', "ng-model"=>"regFormSubmit",)) }}

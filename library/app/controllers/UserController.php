@@ -18,6 +18,8 @@ class UserController extends \BaseController {
     public function postRegister()
     {
         $validator = Validator::make(Input::all(), User::$rules);
+        $rulesCaptcha =  array('captcha' => array('required', 'captcha'));
+        $validator2 = Validator::make(Input::all(), $rulesCaptcha);
 /*        $securimage = new Securimage();
         
 
@@ -25,6 +27,10 @@ class UserController extends \BaseController {
         if (!$securimage->check($captcha_code) == true)
             return Redirect::intended('/')->with('flash_message', 'Wprowadzono nieprawidłowy kod z obrazka.');
 */        
+        
+        if ($validator2->fails()){
+            return Redirect::intended('/')->with('flash_message', 'Wprowadzono nieprawidłowy kod z obrazka.');  
+        }
         if ($validator->passes()) {
             $user = new User;                        
             $user->usr_name = Input::get('firstname');
