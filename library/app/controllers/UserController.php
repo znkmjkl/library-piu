@@ -1,5 +1,5 @@
 <?php
-include_once("../app/lib/SecureImage/securimage.php");
+/*include_once("../app/lib/SecureImage/securimage.php");*/
 
 class UserController extends \BaseController {
 
@@ -18,13 +18,13 @@ class UserController extends \BaseController {
     public function postRegister()
     {
         $validator = Validator::make(Input::all(), User::$rules);
-        $securimage = new Securimage();
+/*        $securimage = new Securimage();
         
 
         $captcha_code = Input::get('captcha_code');
         if (!$securimage->check($captcha_code) == true)
             return Redirect::intended('/')->with('flash_message', 'Wprowadzono nieprawidłowy kod z obrazka.');
-        
+*/        
         if ($validator->passes()) {
             $user = new User;                        
             $user->usr_name = Input::get('firstname');
