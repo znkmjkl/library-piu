@@ -12,6 +12,13 @@
         
         function indexController($scope) {
             $scope.regVisible = false;
+            
+            $scope.captchaRefresh = function(){
+                var captchaSrc = $(".captcha_img").attr("src").split("?");
+                var captchaSrcNew = captchaSrc[0] +"?"+ captchaSrc[1]+Math.random();
+                $(".captcha_img").attr("src", captchaSrcNew);
+            }
+
             $scope.showReg = function(){
                 $scope.regVisible = !$scope.regVisible;
             }
@@ -100,6 +107,8 @@
                 }
             }
         }
+    
+
     </script>
 @stop
 

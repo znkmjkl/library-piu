@@ -17,7 +17,7 @@
 <h3 class="form-signin-heading" ng-click="showReg()" style="text-align:center;"><span class="click-reg">Kliknij by przejść do</span> <b>rejestracji</b></h3>
 {{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm', "ng-show" => "regVisible")) }}
 		<h1 class="form-signin-heading" style="text-align:center;">Rejestracja </h1>
-		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe</label>
+		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
 		{{ Form::text('firstname', null, array('class' => 'form-control', 'placeholder' => 'Podaj imię', 'required' => true,
 		'ng-model' => 'user.name',"ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
 		'ng-blur'=>'checkName()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawne imię")) }}		
@@ -58,8 +58,11 @@
 		<label>
 			*należy wypełnić wszystkie pola
 		</label>
-		{{HTML::image(Captcha::img(), 'alt text', array('style'=>'margin-bottom:5px;'))}}		
+		<div style="margin:5px;">
+		{{HTML::image(Captcha::img(), 'alt text', array("class"=>"captcha_img",'style'=>'margin-bottom:5px;'))}}		
+		<span class="glyphicon glyphicon-refresh" style="font-size:35px; top:15px; left:35px; cursor:pointer;" ng-click="captchaRefresh()"></span></div>
 		<input type="text" class="form-control" ng-model="user.captcha_code" name="captcha" id="captcha_code" placeholder="Wprowadź kod z obraza" required="true"/> 
+
 		<!-- <img id="captcha" src="../app/lib/SecureImage/securimage_show.php"  class="img-thumbnail .img-rounded:2px" style="margin-right:20px; margin-bottom:5px;" alt="CAPTCHA IMAGE" />
 		<div style="display:inline-block;vertical-align:middle;float:none;">
 			<a href="#" onclick="document.getElementById('captcha').src = '../app/lib/SecureImage/securimage_show.php?' + Math.random(); return false"> 
