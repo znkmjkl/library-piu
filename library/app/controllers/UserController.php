@@ -1,5 +1,4 @@
 <?php
-/*include_once("../app/lib/SecureImage/securimage.php");*/
 
 class UserController extends \BaseController {
 
@@ -20,16 +19,9 @@ class UserController extends \BaseController {
         $validator = Validator::make(Input::all(), User::$rules);
         $rulesCaptcha =  array('captcha' => array('required', 'captcha'));
         $validator2 = Validator::make(Input::all(), $rulesCaptcha);
-/*        $securimage = new Securimage();
-        
 
-        $captcha_code = Input::get('captcha_code');
-        if (!$securimage->check($captcha_code) == true)
-            return Redirect::intended('/')->with('flash_message', 'Wprowadzono nieprawidłowy kod z obrazka.');
-*/        
-        
         if ($validator2->fails()){
-            return Redirect::intended('/')->with('flash_message', 'Wprowadzono nieprawidłowy kod z obrazka.');  
+            return Redirect::intended('/')->with('flash_message2', 'Wprowadzono nieprawidłowy kod z obrazka.');  
         }
         if ($validator->passes()) {
             $user = new User;                        
@@ -41,11 +33,11 @@ class UserController extends \BaseController {
             //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
             // });
             $user->save();
-            return Redirect::intended('/')->with('flash_message', 'Dziękujemy za rejestracje. Możesz już dokonac logowania do serwisu =).');
+            return Redirect::intended('/')->with('flash_message1', 'Dziękujemy za rejestracje. Możesz już dokonac logowania do serwisu =).');
         }
         else
         {
-            return Redirect::intended('/')->with('flash_message', 'Adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::intended('/')->with('flash_message2', 'Adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
 
@@ -60,13 +52,13 @@ class UserController extends \BaseController {
 
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'))))
         {
-            // return Redirect::intended('/')->with('flash_message', 'Zostałeś zalogowany!');
-            return View::make('home.index');
+            return Redirect::intended('/')->with('flash_message1', 'Zostałeś zalogowany!');
+            //return View::make('home.index');
         }
         else
         {
            return Redirect::to('/')->withErrors($validator)
-                                   ->with('flash_message', 'Wprowadzony email i hasło nie są poprawne!')
+                                   ->with('flash_message2', 'Wprowadzony email i hasło nie są poprawne!')
                                    ->withInput();
         }
     }
@@ -74,7 +66,7 @@ class UserController extends \BaseController {
     public function getLogout()
     {
         Auth::logout();
-        return Redirect::to('login')->with('flash_message', 'Zostałeś wylogowany...');;
+        return Redirect::to('/')->with('flash_message4', 'Zostałeś wylogowany...');;
     }
 
     public function getResend_Password()
@@ -101,11 +93,11 @@ class UserController extends \BaseController {
                             ->subject('Zmiana hasła w księgarni!');
                 });
 
-            return Redirect::intended('/')->with('flash_message', 'Wysłano hasło na podanego maila!');
+            return Redirect::intended('/')->with('flash_message1', 'Wysłano hasło na podanego maila!');
         }
         else
         {
-           return Redirect::to('/')->with('flash_message', 'Nie ma takiego użytkownika!')
+           return Redirect::to('/')->with('flash_message2', 'Nie ma takiego użytkownika!')
                                    ->withInput();
         }
     }
