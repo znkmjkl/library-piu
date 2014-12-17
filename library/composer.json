@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"mews/captcha": "dev-master"
+		"mews/captcha": "dev-master",
+		"doctrine/dbal": "2.6.*@dev"
 	},
 	"autoload": {
 		"classmap": [

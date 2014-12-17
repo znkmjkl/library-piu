@@ -23,7 +23,7 @@ class CreateBookTable extends Migration {
       									 ->onDelete('cascade');
 			$table->integer('bok_knd_id')->references('knd_id')->on('kind')
       									 ->onDelete('cascade');
-			$table->date('edition_date');
+			$table->date('bok_edition_date');
 			$table->integer('bok_edition_number');
 			$table->timestamps();
 		});

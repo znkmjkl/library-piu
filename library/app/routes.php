@@ -39,3 +39,7 @@ Route::get('/login', 'UserController@getLogin')->before('guest');
 Route::get('/logout', 'UserController@getLogout')->before('auth');
 
 Route::controller('users', 'UserController');
+
+Route::get('/search', 'SearchController@getSearch');
+
+Route::post('/search', 'SearchController@postAdvancedSearch');
