@@ -43,3 +43,5 @@ Route::controller('users', 'UserController');
 Route::get('/search', 'SearchController@getSearch');
 
 Route::post('/search', 'SearchController@postAdvancedSearch');
+
+Route::post('/search/basic', 'SearchController@postBasicSearch');

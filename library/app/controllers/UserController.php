@@ -18,13 +18,13 @@ class UserController extends \BaseController {
     {
         $validator = Validator::make(Input::all(), User::$rules);
         $rulesCaptcha =  array('captcha' => array('required', 'captcha'));
-        $validator2 = Validator::make(Input::all(), $rulesCaptcha);
+        $validatorCaptcha = Validator::make(Input::all(), $rulesCaptcha);
 
-        if ($validator2->fails()){
-            return Redirect::intended('/')->with('flash_message2', 'Wprowadzono nieprawidłowy kod z obrazka.');  
+        if ($validatorCaptcha->fails()){
+            return Redirect::intended('/')->with('flash_message2', 'Wprowadzono nieprawidłowy kod z obrazka.');
         }
         if ($validator->passes()) {
-            $user = new User;                        
+            $user = new User;
             $user->usr_name = Input::get('firstname');
             $user->usr_surname = Input::get('lastname');
             $user->email = Input::get('email');
@@ -33,11 +33,11 @@ class UserController extends \BaseController {
             //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
             // });
             $user->save();
-            return Redirect::intended('/')->with('flash_message1', 'Dziękujemy za rejestracje. Możesz już dokonac logowania do serwisu =).');
+            return Redirect::intended('/')->with('flash_message1', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
         }
         else
         {
-            return Redirect::intended('/')->with('flash_message2', 'Adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::intended('/')->with('flash_message2', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
 
@@ -90,14 +90,14 @@ class UserController extends \BaseController {
                 Mail::send('emails.auth.reminder', array('usr_password'=>$password), function($message)
                 {
                     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))
-                            ->subject('Zmiana hasła w księgarni!');
+                            ->subject('Prośba o zmianę hasła w księgarni');
                 });
 
-            return Redirect::intended('/')->with('flash_message1', 'Wysłano hasło na podanego maila!');
+            return Redirect::intended('/')->with('flash_message1', 'Hasło zostało wysłane na podanego emaila.');
         }
         else
         {
-           return Redirect::to('/')->with('flash_message2', 'Nie ma takiego użytkownika!')
+           return Redirect::to('/')->with('flash_message2', 'Nie ma takiego użytkownika.')
                                    ->withInput();
         }
     }

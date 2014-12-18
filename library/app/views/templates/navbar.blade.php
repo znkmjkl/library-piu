@@ -11,12 +11,7 @@
                 <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
             </div>
             <div class="center-block" style="text-align:center;">
-              <form class="navbar-form" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Wyszukaj książkę" style="margin-bottom:0px; width:250px;">
-                </div>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"> </span></a></button>
-              </form>
+                @include('templates.partials._basic_search_form')
             </div>
         </div>
     </div>

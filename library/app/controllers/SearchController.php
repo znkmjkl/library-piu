@@ -2,7 +2,6 @@
 
 class SearchController extends \BaseController {
 
-
 	public function getSearch()
 	{
 		return View::make('home.search');
@@ -40,9 +39,9 @@ class SearchController extends \BaseController {
         						  ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
 								  ->get();
 
-        return $query;
+        return $query; // zwracamy tablice obiektow;
+		// var_dump($query);
 
 	}
-
 
 }
