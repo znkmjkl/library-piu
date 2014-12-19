@@ -69,12 +69,12 @@ class UserController extends \BaseController {
         return Redirect::to('/')->with('flash_message4', 'Zostałeś wylogowany...');;
     }
 
-    public function getResend_Password()
+    public function getResetPassword()
     {
         return View::make('users.password_reset');
     }
 
-    public function sendNewPassword()
+    public function postResetPassword()
     {
 
         $user = DB::table('user')->where('usr_surname', Input::get('lastname'))

@@ -30,9 +30,9 @@ Route::get('/terms', 'HomeController@getTerms');
 
 Route::get('/register', 'UserController@getRegister');
 
-Route::get('/resend_password', 'UserController@getResend_Password')->before('guest');
+Route::get('/resend_password', 'UserController@getResetPassword')->before('guest');
 
-Route::post('resend_password', 'UserController@sendNewPassword');
+Route::post('/resend_password', 'UserController@postResetPassword');
 
 Route::get('/login', 'UserController@getLogin')->before('guest');
 
@@ -45,3 +45,11 @@ Route::get('/search', 'SearchController@getSearch');
 Route::post('/search', 'SearchController@postAdvancedSearch');
 
 Route::post('/search/basic', 'SearchController@postBasicSearch');
+
+
+// For testing purposes
+Route::get('/isAvailable/{id}', 'ReservationController@isAvailable');
+Route::get('/rent', 'RentalController@getRent');
+Route::post('/rent', 'RentalController@postRent');
+// Route::post('/rent/{bid}/{uid}', 'RentalController@postRent');
+// For testing purposes
