@@ -46,10 +46,19 @@ Route::post('/search', 'SearchController@postAdvancedSearch');
 
 Route::post('/search/basic', 'SearchController@postBasicSearch');
 
+Route::get('/book/{id}', 'BookController@getShowBook');
 
-// For testing purposes
-Route::get('/isAvailable/{id}', 'ReservationController@isAvailable');
-Route::get('/rent', 'RentalController@getRent');
-Route::post('/rent', 'RentalController@postRent');
-// Route::post('/rent/{bid}/{uid}', 'RentalController@postRent');
-// For testing purposes
+Route::controller('/book', 'BookController');
+
+Route::get('/author/{id}', 'AuthorController@getShowAuthor');
+
+Route::controller('/author', 'AuthorController');
+
+Route::get('/language/{id}', 'LanguageController@getShowLanguage');
+
+Route::controller('/language', 'LanguageController');
+
+Route::get('/kind/{id}', 'KindController@getShowKind');
+
+Route::controller('/kind', 'KindController');
+
