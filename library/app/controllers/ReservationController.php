@@ -2,29 +2,43 @@
 
 class ReservationController extends \BaseController {
 
-
-	public function isAvailable($bok_id) // id or isbn?
+	public function postReserveBook($bok_id)
 	{
-        $reservation = DB::table('reservation')->where('rvn_bok_id', $bok_id)
-								  		 	   ->first();
+		if (is_null(Reservation::isAvailable($bok_id)))
+		{
+			$reservation = new Reservation;
 
-		return $reservation->rvn_status;
+			$reservation->rvn_bok_id = $bok_id;
+			$reservation->rvn_usr_id = Auth::user()->id;
+			$reservation->rvn_date = new DateTime('today');
+			$reservation->rvn_date->modify('+7 day');
+			$reservation->rvn_status = 1;
+
+			$reservation->save();
+
+	        return Redirect::back()->with('flash_message1', 'Zarezerwowałeś książkę.');
+		}
+		else
+		{
+			if (!Reservation::isAvailable($bok_id))
+			{
+				Reservation::setReserved($bok_id, Auth::user()->id);
+
+				return Redirect::back()->with('flash_message1', 'Zarezerwowałeś książkę.');
+			}
+			else
+			{
+				return Redirect::back()->with('flash_message2', 'Ksiązką została już zarezerwowana.');
+			}
+		}
 	}
 
 
-	public function setAvailable($bok_id) // id or isbn?
+	public function postCancelBookReservation($bok_id)
 	{
-		DB::table('reservation')->where('rvn_bok_id', $bok_id)
-		            	  		->update(array('rvn_status' => 1));
+		Reservation::setAvailable($bok_id, Auth::user()->id);
 
-	}
-
-
-	public function setReserved($bok_id) // id or isbn?
-	{
-		DB::table('reservation')->where('rvn_bok_id', $bok_id)
-		            	  		->update(array('rvn_status' => 0));
-
+		return Redirect::back()->with('flash_message2', 'Zrezygnowałeś z rezerwacji.');
 	}
 
 }
