@@ -17,7 +17,7 @@ class CreateRentalTable extends Migration {
 			$table->increments('rtl_id');
 			$table->integer('rtl_bok_id')->references('bok_id')->on('book')
       									 ->onDelete('cascade');
-			$table->integer('rtl_usr_id')->references('usr_id')->on('user')
+			$table->integer('rtl_usr_id')->references('id')->on('user')
       									 ->onDelete('cascade');
 			$table->date('rtl_start_date');
 			$table->date('rtl_end_date');
