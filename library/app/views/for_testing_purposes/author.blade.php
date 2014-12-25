@@ -1,3 +1,7 @@
+@extends('templates.layout')
+
+@section('support')
+
 <p>Author's books:</p>
 <hr>
 @foreach ($books_authors as $book)
@@ -8,3 +12,5 @@
     <p>Rodzaj: {{ $book->bok_knd_id }}</p>
     <hr>
 @endforeach
+
+@stop

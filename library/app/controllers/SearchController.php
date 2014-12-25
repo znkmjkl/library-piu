@@ -12,10 +12,10 @@ class SearchController extends \BaseController {
     {
         $bok_title = Input::get('bok_title');
 
-        $query = DB::table('book')->where('bok_title', 'LIKE', '%'. $bok_title . '%')
-                                  ->get();
+        $search_results = DB::table('book')->where('bok_title', 'LIKE', '%'. $bok_title . '%')
+                                           ->get();
 
-        return $query;
+        return View::make('for_testing_purposes.search_results', array('search_results' => $search_results));
     }
 
 
@@ -30,13 +30,13 @@ class SearchController extends \BaseController {
         $bok_edition_number = Input::get('bok_edition_number');
 
         $search_results = DB::table('book')->where('bok_isbn', 'LIKE', '%'. $bok_isbn . '%')
-                                  ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
-                                  ->where('bok_lng_id', 'LIKE', '%'. $bok_lng . '%') //FIX ME: klucz obcy! UNIE
-                                  ->where('bok_atr_id', 'LIKE', '%'. $bok_atr . '%') //FIX ME: klucz obcy! UNIE
-                                  ->where('bok_knd_id', 'LIKE', '%'. $bok_knd . '%') //FIX ME: klucz obcy! UNIE
-                                  ->where('bok_edition_date', 'LIKE', '%'. $bok_edition_date . '%')
-                                  ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
-                                  ->get();
+                                           ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
+                                           ->where('bok_lng_id', 'LIKE', '%'. $bok_lng . '%') //FIX ME: klucz obcy! UNIE
+                                           ->where('bok_atr_id', 'LIKE', '%'. $bok_atr . '%') //FIX ME: klucz obcy! UNIE
+                                           ->where('bok_knd_id', 'LIKE', '%'. $bok_knd . '%') //FIX ME: klucz obcy! UNIE
+                                           ->where('bok_edition_date', 'LIKE', '%'. $bok_edition_date . '%')
+                                           ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
+                                           ->get();
 
         return View::make('for_testing_purposes.search_results', array('search_results' => $search_results));
     }

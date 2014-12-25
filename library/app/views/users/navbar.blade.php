@@ -10,14 +10,7 @@
                 <a class="navbar-brand" href="/">
                 <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
             </div>
-            <div class="center-block">
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Wyszukaj książkę" style="margin-bottom:0px; width:250px;">
-                </div>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"> </span></a></button>
-              </form>
-            </div>
+            @include('templates.partials._basic_search_form')
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
