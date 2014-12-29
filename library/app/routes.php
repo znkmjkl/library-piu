@@ -46,13 +46,15 @@ Route::post('/search', 'SearchController@postAdvancedSearch');
 
 Route::post('/search/basic', 'SearchController@postBasicSearch');
 
-Route::get('/book/{id}', 'BookController@getShowBook');
+Route::get('/book/{id}', 'BookController@getShowBookWithReservation')->before('guest');
+
+Route::get('/book/{id}', array('as'=>'book', 'uses'=> (Auth::check()) ? 'BookController@getShowBookWithReservation' : 'BookController@getShowBook'));
 
 Route::post('/book/{id}/reserve', array('as' => 'reserve',
-                                        'uses' => 'ReservationController@postReserveBook'))->before('auth');;
+                                        'uses' => 'ReservationController@postReserveBook'))->before('auth');
 
 Route::post('/book/{id}/resign', array('as' => 'resign',
-                                       'uses' => 'ReservationController@postCancelBookReservation'))->before('auth');;
+                                       'uses' => 'ReservationController@postCancelBookReservation'))->before('auth');
 
 Route::controller('/book', 'BookController');
 
