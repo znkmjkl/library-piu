@@ -70,3 +70,7 @@ Route::get('/kind/{id}', 'KindController@getShowKind');
 
 Route::controller('/kind', 'KindController');
 
+Route::get('/account', 'AccountController@getAccount');
+
+Route::post('/changePass', 'AccountController@changePassword');
+

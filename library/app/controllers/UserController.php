@@ -21,7 +21,7 @@ class UserController extends \BaseController {
         $validatorCaptcha = Validator::make(Input::all(), $rulesCaptcha);
 
         if ($validatorCaptcha->fails()){
-            return Redirect::intended('/')->with('flash_message2', 'Wprowadzono nieprawidłowy kod z obrazka.');
+            return Redirect::intended('/')->with('flash_message_danger', 'Wprowadzono nieprawidłowy kod z obrazka.');
         }
         if ($validator->passes()) {
             $user = new User;
@@ -33,11 +33,11 @@ class UserController extends \BaseController {
             //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
             // });
             $user->save();
-            return Redirect::intended('/')->with('flash_message1', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
+            return Redirect::intended('/')->with('flash_message_success', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
         }
         else
         {
-            return Redirect::intended('/')->with('flash_message2', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::intended('/')->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
 
@@ -52,13 +52,13 @@ class UserController extends \BaseController {
 
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'))))
         {
-            return Redirect::intended('/')->with('flash_message1', 'Zostałeś zalogowany!');
+            return Redirect::intended('/')->with('flash_message_success', 'Zostałeś zalogowany!');
             //return View::make('home.index');
         }
         else
         {
            return Redirect::to('/')->withErrors($validator)
-                                   ->with('flash_message2', 'Wprowadzony email i hasło nie są poprawne!')
+                                   ->with('flash_message_danger', 'Wprowadzony email i hasło nie są poprawne!')
                                    ->withInput();
         }
     }
@@ -66,7 +66,7 @@ class UserController extends \BaseController {
     public function getLogout()
     {
         Auth::logout();
-        return Redirect::to('/')->with('flash_message4', 'Zostałeś wylogowany...');;
+        return Redirect::to('/')->with('flash_message_info', 'Zostałeś wylogowany...');;
     }
 
     public function getResetPassword()
@@ -93,11 +93,11 @@ class UserController extends \BaseController {
                             ->subject('Prośba o zmianę hasła w księgarni');
                 });
 
-            return Redirect::intended('/')->with('flash_message1', 'Hasło zostało wysłane na podanego emaila.');
+            return Redirect::intended('/')->with('flash_message_success', 'Hasło zostało wysłane na podanego emaila.');
         }
         else
         {
-           return Redirect::to('/')->with('flash_message2', 'Nie ma takiego użytkownika.')
+           return Redirect::to('/')->with('flash_message_danger', 'Nie ma takiego użytkownika.')
                                    ->withInput();
         }
     }

@@ -14,26 +14,26 @@
 
     <div class="container">
         <div class="container marketing about">
-            @if (Session::get('flash_message1'))
+            @if (Session::get('flash_message_success'))
 
                 <div class="alert alert-success">
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
-                    {{ Session::get('flash_message1') }}
+                    {{ Session::get('flash_message_success') }}
                 </div>
-            @elseif (Session::get('flash_message2'))
+            @elseif (Session::get('flash_message_danger'))
                 <div class="alert alert-danger">
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
-                    {{ Session::get('flash_message2') }}
+                    {{ Session::get('flash_message_danger') }}
                 </div>
-            @elseif (Session::get('flash_message3'))
+            @elseif (Session::get('flash_message_warning'))
                 <div class="alert alert-warning">
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
-                    {{ Session::get('flash_message3') }}
+                    {{ Session::get('flash_message_warning') }}
                 </div>
-            @elseif (Session::get('flash_message4'))
+            @elseif (Session::get('flash_message_info'))
                 <div class="alert alert-info">
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
-                    {{ Session::get('flash_message4') }}
+                    {{ Session::get('flash_message_info') }}
                 </div>
 
             @endif

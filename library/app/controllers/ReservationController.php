@@ -16,7 +16,7 @@ class ReservationController extends \BaseController {
 
 			$reservation->save();
 
-	        return Redirect::back()->with('flash_message1', 'Zarezerwowałeś książkę.');
+	        return Redirect::back()->with('flash_message_success', 'Zarezerwowałeś książkę.');
 		}
 		else
 		{
@@ -24,11 +24,11 @@ class ReservationController extends \BaseController {
 			{
 				Reservation::setReserved($bok_id, Auth::user()->id);
 
-				return Redirect::back()->with('flash_message1', 'Zarezerwowałeś książkę.');
+				return Redirect::back()->with('flash_message_success', 'Zarezerwowałeś książkę.');
 			}
 			else
 			{
-				return Redirect::back()->with('flash_message2', 'Ksiązką została już zarezerwowana.');
+				return Redirect::back()->with('flash_message_danger', 'Ksiązką została już zarezerwowana.');
 			}
 		}
 	}
@@ -38,7 +38,7 @@ class ReservationController extends \BaseController {
 	{
 		Reservation::setAvailable($bok_id, Auth::user()->id);
 
-		return Redirect::back()->with('flash_message2', 'Zrezygnowałeś z rezerwacji.');
+		return Redirect::back()->with('flash_message_danger', 'Zrezygnowałeś z rezerwacji.');
 	}
 
 }
