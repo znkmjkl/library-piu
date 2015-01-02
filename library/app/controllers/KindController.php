@@ -10,8 +10,12 @@ class KindController extends \BaseController {
 	 */
 	public function getShowKind($knd_id)
 	{
-        $books_kinds = DB::table('book')->where('bok_knd_id', $knd_id)
-								 		->get();
+        $books_kinds = DB::table('book')->join('author', 'atr_bok_id', '=', 'book.bok_id')
+										->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
+										->join('language', 'lng_id', '=', 'book.bok_lng_id')
+										->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+										->where('bok_knd_id', $knd_id)
+										->get();
 
 		return View::make('for_testing_purposes.kind', array('books_kinds' => $books_kinds));
 	}

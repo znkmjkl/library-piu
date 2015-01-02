@@ -4,23 +4,26 @@
 
 <p>KSIAZKA</p>
 
-<p>ISBN: {{ $book->bok_isbn }}</p>
-<p>Tytul: {{ $book->bok_title }}</p>
-<p>Autor: <a href="/author/{{ $book->bok_atr_id }} "> {{ $book->atr_name }}</a></p>
-<p>Jezyk: <a href="/language/{{ $book->bok_lng_id }} "> {{ $book->lng_name }}</a></p>
-<p>Rodzaj: <a href="/kind/{{ $book->bok_knd_id }} "> {{ $book->knd_name }}</a></p>
+<p>ISBN: {{ $book[0]->bok_isbn }}</p>
+<p>Tytul: {{ $book[0]->bok_title }}</p>
+<p>Autor:
+@foreach ($book as $author)
+    <a href="/author/{{ $author->wtr_id }} "> {{ $author->wtr_name }} {{ $author->wtr_surname }}</a><span>, </span>
+@endforeach
+<p>Jezyk: <a href="/language/{{ $book[0]->bok_lng_id }} "> {{ $book[0]->lng_name }}</a></p>
+<p>Rodzaj: <a href="/kind/{{ $book[0]->bok_knd_id }} "> {{ $book[0]->knd_name }}</a></p>
 
 @if (Auth::check())
 
-    @if (!$book->rvn_status)
+    @if (!$book[0]->rvn_status)
 
-        {{ Form::open(array('route' => array('reserve', $book->bok_id))) }}
+        {{ Form::open(array('route' => array('reserve', $book[0]->bok_id))) }}
             {{ Form::submit('Reserve') }}
         {{ Form::close() }}
 
-    @elseif ($book->rvn_status && Auth::user()->id === $book->rvn_usr_id)
+    @elseif ($book[0]->rvn_status && Auth::user()->id === $book[0]->rvn_usr_id)
 
-        {{ Form::open(array('route' => array('resign', $book->bok_id))) }}
+        {{ Form::open(array('route' => array('resign', $book[0]->bok_id))) }}
             {{ Form::submit('Resign') }}
         {{ Form::close() }}
 
@@ -36,3 +39,4 @@
 @endif
 
 @stop
+

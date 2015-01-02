@@ -58,9 +58,9 @@ Route::post('/book/{id}/resign', array('as' => 'resign',
 
 Route::controller('/book', 'BookController');
 
-Route::get('/author/{id}', 'AuthorController@getShowAuthor');
+Route::get('/author/{id}', 'WriterController@getShowWriter');
 
-Route::controller('/author', 'AuthorController');
+Route::controller('/author', 'WriterController');
 
 Route::get('/language/{id}', 'LanguageController@getShowLanguage');
 

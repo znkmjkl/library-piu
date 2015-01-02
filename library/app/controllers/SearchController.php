@@ -29,11 +29,15 @@ class SearchController extends \BaseController {
         $bok_edition_date   = Input::get('bok_edition_date');
         $bok_edition_number = Input::get('bok_edition_number');
 
-        $search_results = DB::table('book')->where('bok_isbn', 'LIKE', '%'. $bok_isbn . '%')
+        $search_results = DB::table('book')->join('author', 'atr_bok_id', '=', 'book.bok_id')
+                                           ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
+                                           ->join('language', 'lng_id', '=', 'book.bok_lng_id')
+                                           ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+                                           ->where('bok_isbn', 'LIKE', '%'. $bok_isbn . '%')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
-                                           ->where('bok_lng_id', 'LIKE', '%'. $bok_lng . '%') //FIX ME: klucz obcy! UNIE
-                                           ->where('bok_atr_id', 'LIKE', '%'. $bok_atr . '%') //FIX ME: klucz obcy! UNIE
-                                           ->where('bok_knd_id', 'LIKE', '%'. $bok_knd . '%') //FIX ME: klucz obcy! UNIE
+                                           ->where('lng_name', 'LIKE', '%'. $bok_lng . '%')
+                                           ->where('wtr_name', 'LIKE', '%'. $bok_atr . '%')
+                                           ->where('knd_name', 'LIKE', '%'. $bok_knd . '%')
                                            ->where('bok_edition_date', 'LIKE', '%'. $bok_edition_date . '%')
                                            ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
                                            ->get();
