@@ -13,6 +13,9 @@ class ReservationController extends \BaseController {
 			$reservation->rvn_date = new DateTime('today');
 			$reservation->rvn_date->modify('+7 day');
 			$reservation->rvn_status = 1;
+			$reservation->rvn_is_ready = 0;
+			$reservation->rvn_return_date = new DateTime('today');
+			$reservation->rvn_return_date->modify('+14 day');
 
 			$reservation->save();
 

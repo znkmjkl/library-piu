@@ -21,6 +21,8 @@ class CreateReservationTable extends Migration {
       									 ->onDelete('cascade');
 			$table->date('rvn_date');
 			$table->boolean('rvn_status');
+			$table->boolean('rvn_is_ready');
+			$table->date('rvn_return_date');
 			$table->timestamps();
 		});
 	}
