@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('KindTableSeeder');
 		$this->command->info('Kind table seeded!');
 
-		$this->call('AuthorTableSeeder');
-		$this->command->info('Author table seeded!');
+		$this->call('WriterTableSeeder');
+		$this->command->info('Writer table seeded!');
 
 		$this->call('LanguageTableSeeder');
 		$this->command->info('Language table seeded!');
@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('BookTableSeeder');
 		$this->command->info('Book table seeded!');
+
+		$this->call('AuthorTableSeeder');
+		$this->command->info('Author table seeded!');
 
 		$this->call('RentalTableSeeder');
 		$this->command->info('Rental table seeded!');

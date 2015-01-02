@@ -20,8 +20,8 @@ class ReservationTableSeeder extends Seeder {
         	array(
         		'rvn_bok_id' => $book_id,
         		'rvn_usr_id' => $user_id,
-        		'rvn_date' => new DateTime,
         		'rvn_status' => true,
+                'rvn_is_ready' => false
         	));
 
         $book_id = DB::table('book')
@@ -38,8 +38,8 @@ class ReservationTableSeeder extends Seeder {
         	array(
         		'rvn_bok_id' => $book_id,
         		'rvn_usr_id' => $user_id,
-        		'rvn_date' => new DateTime,
         		'rvn_status' => true,
+                'rvn_is_ready' => false
         	));
     }
 
