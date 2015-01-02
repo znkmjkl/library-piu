@@ -1,0 +1,31 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.element {
+  .center-block();
+}
+
+.no-underline {
+	text-decoration: none;
+}
+
+.col-md-4 {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.alert {
+	text-align: center;
+}
+form input{
+  margin-bottom: 5px;
+}
