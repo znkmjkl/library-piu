@@ -19,8 +19,6 @@ class CreateBookTable extends Migration {
 			$table->string('bok_title', 100);
 			$table->integer('bok_lng_id')->references('lng_id')->on('language')
       									 ->onDelete('cascade');
-			$table->integer('bok_atr_id')->references('atr_id')->on('author')
-      									 ->onDelete('cascade');
 			$table->integer('bok_knd_id')->references('knd_id')->on('kind')
       									 ->onDelete('cascade');
 			$table->date('bok_edition_date');

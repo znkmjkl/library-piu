@@ -15,9 +15,10 @@ class CreateAuthorTable extends Migration {
 		Schema::create('author', function($table)
 		{
 			$table->increments('atr_id');
-			$table->string('atr_name', 100)->nullable();;
-			$table->string('atr_surname', 100);
-			$table->date('atr_birth_date')->nullable();
+			$table->integer('atr_bok_id')->references('book_id')->on('book')
+      									 ->onDelete('cascade');
+			$table->integer('atr_wtr_id')->references('wtr_id')->on('writer')
+      									 ->onDelete('cascade');
 			$table->timestamps();
 		});
 	}
