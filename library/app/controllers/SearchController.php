@@ -12,7 +12,11 @@ class SearchController extends \BaseController {
     {
         $bok_title = Input::get('bok_title');
 
-        $search_results = DB::table('book')->where('bok_title', 'LIKE', '%'. $bok_title . '%')
+        $search_results = DB::table('book')->join('author', 'atr_bok_id', '=', 'book.bok_id')
+                                           ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
+                                           ->join('language', 'lng_id', '=', 'book.bok_lng_id')
+                                           ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+                                           ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
                                            ->get();
 
         return View::make('for_testing_purposes.search_results', array('search_results' => $search_results));
