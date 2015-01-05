@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="library">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Biblionetka - Twoja internetowa biblioteka</title>
+
+        <!-- core CSS -->
+
+		<!--PODMIENIAM CSSY NA LOKALNE-->
+			<link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/carousel.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/signin.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/conversations.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+			<link href="css/custom.css" rel="stylesheet">
+		<!-- --------------------------->
+		
+		<!--
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/carousel.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/signin.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/conversations.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/main.css">
+		-->
+		
+		<!-- TO DODAĆ!!! --
+		<link href="css/custom.css" rel="stylesheet">
+		-- !!!!!!!!!!! -->
+		
+		<!-- PODMIENIAM JS NA LOKALNE -->
+			<script src="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		<!-- --------------------------->
+		
+		<!--
+        <script src="http://localhost:8000/js/jquery.js"></script>
+
+        <script src="http://localhost:8000/js/bootstrap.min.js"></script>
+		-->
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+
+    </head>
+
+    <body>
+
+        
+    
+        <div class="container">
+    <div class="navbar-wrapper">
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+            </div>
+            <form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-left" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+    <div class="input-group">
+        <div class="form-group btn-group">
+            <input class="btn btn-default" type="submit" value="Szukaj">
+            <input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="/search">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"> </span></button>
+            </a>
+        </div>
+    </div>
+</form>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-bell"> Skrzynka</span>
+                  <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Wiadomości</a></span></li>                    
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-user"> Michał</span>
+                  <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
+                    <li><hr></li>
+                    <li><a href="/settings/account"><span class="glyphicon glyphicon-wrench"> Ustawienia</span></a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="container">
+        			
+		<!--TRZEBA JESZCZE DODAC JS SNIPPET ZEBY NA DOLE ZMIENIL ODPOWIEDNIA OPCJE MENU NA ACTIVE-->
+	
+		<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<p> <strong> UWAGA! </strong> Masz niezapłaconą karę w wysokości XXX,XXPLN. Przejdź do zakładki <a href="#kary" data-toggle="tab">Kary</a> aby zobaczyć szczegóły. </p>
+		</div>
+		
+		<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<p> <strong> UWAGA! </strong> Termin wypożyczenia książki XXX minął XX dni temu. Przejdź do zakładki <a href="#wypozyczenia" data-toggle="tab">Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		</div>
+		
+		<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<p> <strong> UWAGA! </strong> Termin wypożyczenia książki XXX mija XX-XX-XXXX. Przejdź do zakładki <a href="#wypozyczenia" data-toggle="tab">Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		</div>
+		
+		<div class="container marketing about">
+		
+			<div class="col-xs-10 col-sm-offset-1" style="margin-bottom:20px;">
+		
+				<div class="panel-group" id="accordion" style="margin-top:20px;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+									<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> &nbsp Michał Antkowicz - dane użytkownika
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="col-md-6">
+
+									<table class="user-data-table">
+									
+										<tr>
+											<td> Adres email: </td>
+											<td class="udt-val-td"> michal.antkowicz@mail.pl </td>
+										</tr>
+										
+										<tr>
+											<td> Numer telefonu: </td>
+											<td class="udt-val-td"> 123 456 678 </td>
+										</tr>
+										
+										<tr>
+											<td> PESEL: </td>
+											<td class="udt-val-td"> 90040434234 </td>
+										</tr>
+																	
+										<tr>
+											<td> Miasto zamieszkania: </td>
+											<td class="udt-val-td"> Kraków </td>
+										</tr>
+										
+										<tr>
+											<td> Ulica: </td>
+											<td class="udt-val-td"> Słoneczna </td>
+										</tr>
+										
+										<tr>
+											<td> Numer domu: </td>
+											<td class="udt-val-td"> 2A </td>
+										</tr>
+										
+										<tr>
+											<td> Kod pocztowy: </td>
+											<td class="udt-val-td"> 32-546 </td>
+										</tr>
+									
+									</table>
+								
+								</div>
+								
+								<div class="col-md-6">
+								
+									<table  class="user-data-table">
+										<tr>
+											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Numer karty:</abbr> </p> </td>
+											<td class="udt-val-td"> 67552537274 </td>
+										</tr>
+										
+										<tr>
+											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Konto aktywne:</abbr> </p> </td>
+											<td class="udt-val-td"> TAK </td>
+										</tr>
+										
+										<tr>
+											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Konto zweryfikowane:</abbr> </p> </td>
+											<td class="udt-val-td"> NIE </td>
+										</tr>
+									</table>
+								
+								</div>
+								
+								<div class="col-md-3 col-md-offset-9" style="text-align:right;">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="line-height: 100%; display: block; text-decoration: none;">
+										<button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Zmień hasło</button>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">
+							
+								<form method="POST" action="http://localhost:8000/changePass" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+								
+									<h4 style="text-align:center;"><strong>Zmiana hasła</strong></h4>
+
+									<input class="form-control" placeholder="Wprowadź aktualne hasło" required="true" name="usr_oldPass" type="password" value="">
+									<input class="form-control" placeholder="Wprowadź nowe hasło" required="true" name="password" type="password" value="">
+									<input class="form-control" placeholder="Powt&oacute;rz nowe hasło" required="true" name="password_confirmation" type="password" value="">
+									
+									<hr>
+									<input class="btn btn-lg btn-danger btn-block" type="submit" value="Zmień hasło">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+										<button type="button" class="btn btn-lg btn-primary btn-block" style="margin-top:5px;"> Anuluj </button>	
+									</a>
+								</form>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-xs-10 col-sm-offset-1" style="margin-bottom:20px;">			
+				<hr>
+			</div>
+			
+			<div class="col-md-2" style="margin-top:20px;">
+				<ul class="nav nav-pills  nav-stacked">
+					<li role="presentation" class="active"><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
+					<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
+					<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
+				</ul>
+			</div>
+				
+			<div class="col-md-10">	
+				
+				<div id="myTabContent" class="tab-content">
+					
+					<div class="tab-pane fade in active" id="wypozyczenia" style="margin-top:20px;">
+					
+						<div class="bs-example" data-example-id="table-within-panel">
+							<div class="panel panel-info">
+							
+								<div class="panel-heading">Twoje wypożyczenia</div>
+								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
+									<p><strong>Niczego jeszcze nie wypożyczyłeś!</strong> Skorzystaj z szybkiego wyszukiwania u góry strony lub przejdź do <a>Wyszukiwania Zaawansowanego</a> </p>
+								</div>
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>ISBN</th>
+											<th>Do oddania pozostało</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+											<td>654-22-5367-321-1</td>
+											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+											<td>WYPOŻYCZONA</td>
+										</tr>
+										
+										<tr style="color:red;">
+											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
+											<td>978-83-7181-510-2</td>
+											<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN PRZEKROCZONY </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+											<td>WYPOŻYCZONA</td>
+										</tr>
+										
+										<tr>
+											<td><a><abbr title='"O dwóch takich co ukradli księżyc" - zobacz stronę książki'> O dwóch takich...</a></td>
+											<td>978-83-7181-510-2</td>
+											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> --- </abbr> &nbsp&nbsp </td>
+											<td>ODDANA</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+													
+					</div>
+					
+					<div class="tab-pane fade" id="rezerwacje" style="margin-top:20px;">
+					
+						<div class="bs-example" data-example-id="table-within-panel">
+							<div class="panel panel-info">
+							
+								<div class="panel-heading">Twoje rezerwacje</div>
+								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
+									<p><strong>Niczego jeszcze nie zarezerwowałeś!</strong> </p>
+								</div>
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>ISBN</th>
+											<th><abbr title="Oczekiwany czas, po którym książka powinna wrócić do biblioteki. Nie uwzględnia prolongat!"> Do wypożyczenia pozostało </abbr></th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+											<td>654-22-5367-321-1</td>
+											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 4 DNI </abbr> &nbsp&nbsp </td>
+											<td>Oczekująca</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+													
+					</div>
+					
+					<div class="tab-pane fade" id="kary" style="margin-top:20px;">	
+					
+						<div class="bs-example" data-example-id="table-within-panel">
+							<div class="panel panel-default">
+							
+								<div class="panel-heading">Twoje kary</div>
+								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
+									<p><strong style="color:green;">Nie masz żadnych kar!</strong> Gratulacje! </p>
+								</div>
+						
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>Data</th>
+											<th>Wysokość</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr  style="color:red;">
+											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" | pożyczono: 20-12-2014r. | termin zwrotu: 04-01-2015r.'> Nieterminowy zwrot</a></td>
+											<td>04-01-2015r.</td>
+											<td>0,20 PLN</td>
+											<td>NIE ZAPŁACONO</td>
+										</tr>
+										
+										<tr>
+											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" | pożyczono: 20-12-2014r. | termin zwrotu: 04-01-2015r.'> Nieterminowy zwrot</a></td>
+											<td>12-11-2014r.</td>
+											<td>3,50 PLN</td>
+											<td>ZAPŁACONO</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+								
+						
+					</div>
+
+				</div>
+
+			</div>
+								
+		</div>
+		
+	</div>
+	
+	
+	
+		
+    <div class="container">
+	<footer id="bottom">
+		<p class="text-center"><a href="/about">O bibliotece</a> &middot; <a href="/help">Pomoc</a> &middot; <a href="/privacy">Polityka prywatności</a> &middot; <a href="/terms">Regulamin</a> &middot &copy; 2014 Biblioteka </p>
+	</footer>
+</div>
+
+    </body>
+
+        <!-- core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        
+        
+        <script src="http://localhost:8000/js/holder.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-resource.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-route.min.js"></script>
+
+    </body>
+</html>

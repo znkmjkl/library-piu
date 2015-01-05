@@ -10,22 +10,6 @@ ul.nav a:hover
     opacity: 1;
 }
 
-.navbar
-{
-	border: none;
-	background-color: #d7e3f4;
-	margin:0px;
-	.border-radius(0) !important;
-	-webkit-border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
-	border-radius: 0 !important;
-}
-
-.navbar-toggle
-{
-	background-color: #FFFFFF;
-}
-
 .navbar .divider-vertical 
 {
 	height: 30px;
