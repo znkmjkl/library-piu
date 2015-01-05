@@ -4,7 +4,18 @@ class AccountController extends \BaseController {
 
     public function getAccount()
     {
-        return View::make('home.account');
+
+      $address = DB::table('address')->where('adr_id', Auth::user()->usr_adr_id)->get();
+      $rvns = DB::table('reservation')->where('rvn_usr_id', Auth::user()->id)
+                    ->join('book', 'bok_id', '=', 'reservation.rvn_bok_id')
+                    ->get();
+
+      $rtls = DB::table('rental')->where('rtl_usr_id', Auth::user()->id)
+                    ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')
+                    ->join('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
+                    ->get();
+      return View::make('home.account', array('address' => $address, 'rvns' => $rvns, 'rtls' => $rtls));
+
     }
 
     public function changePassword(){
@@ -24,4 +35,13 @@ class AccountController extends \BaseController {
       }
 
     }
+
+    public function prolongate($rtl_id, $book_name){
+      Rental::extendEndDate($rtl_id);
+      
+      return Redirect::back()->with('flash_message_success', 'Prolongowałeś książkę o 30 dni.'.$book_name
+        );
+    }
 }
+
+

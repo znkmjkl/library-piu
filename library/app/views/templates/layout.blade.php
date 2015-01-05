@@ -14,6 +14,15 @@
 
     <div class="container">
         <div class="container marketing about">
+        @if (Auth::check())
+            @if(!Auth::user()->usr_verified)
+                <div class="alert alert-warning">
+                    
+                    Twoje dane nie zostały zweryfikowane! Przy 
+                    pierwszym wypożyczeniu będzie wymagany dokument potwierdzający Twoje dane.
+                </div>
+            @endif
+        @endif
             @if (Session::get('flash_message_success'))
 
                 <div class="alert alert-success">

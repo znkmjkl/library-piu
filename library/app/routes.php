@@ -18,6 +18,7 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
 
+/* Basic pages */
 Route::get('/about', 'HomeController@getAbout');
 
 Route::get('/help', 'HomeController@getHelp');
@@ -28,6 +29,7 @@ Route::get('/status', 'HomeController@getStatus');
 
 Route::get('/terms', 'HomeController@getTerms');
 
+/* User basic operations */
 Route::get('/register', 'UserController@getRegister');
 
 Route::get('/resend_password', 'UserController@getResetPassword')->before('guest');
@@ -40,12 +42,14 @@ Route::get('/logout', 'UserController@getLogout')->before('auth');
 
 Route::controller('users', 'UserController');
 
+/* Book search */
 Route::get('/search', 'SearchController@getSearch');
 
 Route::post('/search', 'SearchController@postAdvancedSearch');
 
 Route::post('/search/basic', 'SearchController@postBasicSearch');
 
+/* Book */
 Route::get('/book/{id}', 'BookController@getShowBookWithReservation')->before('guest');
 
 Route::get('/book/{id}', array('as'=>'book', 'uses'=> (Auth::check()) ? 'BookController@getShowBookWithReservation' : 'BookController@getShowBook'));
@@ -70,7 +74,10 @@ Route::get('/kind/{id}', 'KindController@getShowKind');
 
 Route::controller('/kind', 'KindController');
 
+/* Account */
 Route::get('/account', 'AccountController@getAccount');
 
 Route::post('/changePass', 'AccountController@changePassword');
 
+Route::post('/account/{id}/{book_name}/prolongate', array('as' => 'prolongate',
+									 'uses' => 'AccountController@prolongate'))->before('auth');
