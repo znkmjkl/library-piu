@@ -62,60 +62,63 @@
 
         
     
-        <div class="container">
-    <div class="navbar-wrapper">
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
-            </div>
-            <form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-left" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
-    <div class="input-group">
-        <div class="form-group btn-group">
-            <input class="btn btn-default" type="submit" value="Szukaj">
-            <input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
-        </div>
-        <div class="btn-group" role="group" aria-label="...">
-            <a href="/search">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"> </span></button>
-            </a>
-        </div>
-    </div>
-</form>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-bell"> Skrzynka</span>
-                  <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Wiadomości</a></span></li>                    
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-user"> Michał</span>
-                  <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
-                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
-                    <li><hr></li>
-                    <li><a href="/settings/account"><span class="glyphicon glyphicon-wrench"> Ustawienia</span></a></li>
-                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
+	<div class="container">
+		<div class="navbar-wrapper">
+			<div class="navbar navbar-inverse navbar-static-top">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+					<span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"> Michał</span>
+							<b class="caret"></b></a>
+								
+								<ul class="dropdown-menu">
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> O bibliotece</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Pomoc</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Polityka prywatności</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Regulamin</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+								</ul>
+						</li>
+					</ul>
+				
+					<form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-right" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+						<div class="input-group">
+							<div class="form-group btn-group">
+								<input class="btn btn-default" type="submit" value="Szukaj">
+								<input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+							</div>
+							
+								<a href="/search">
+									<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog">zaawansowane </span></button>
+								</a>
+							
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
     <div class="container">
         			
 		<!--TRZEBA JESZCZE DODAC JS SNIPPET ZEBY NA DOLE ZMIENIL ODPOWIEDNIA OPCJE MENU NA ACTIVE-->
@@ -137,7 +140,7 @@
 		
 		<div class="container marketing about">
 		
-			<div class="col-xs-10 col-sm-offset-1" style="margin-bottom:20px;">
+			<div style="margin-bottom:20px; margin-left:2%; width:96%;">
 		
 				<div class="panel-group" id="accordion" style="margin-top:20px;">
 					<div class="panel panel-default">
@@ -200,15 +203,10 @@
 											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Numer karty:</abbr> </p> </td>
 											<td class="udt-val-td"> 67552537274 </td>
 										</tr>
-										
+																				
 										<tr>
-											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Konto aktywne:</abbr> </p> </td>
-											<td class="udt-val-td"> TAK </td>
-										</tr>
-										
-										<tr>
-											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Konto zweryfikowane:</abbr> </p> </td>
-											<td class="udt-val-td"> NIE </td>
+											<td> <p> <abbr title="Weryfikacja konta odbywa się poprzez okazanie dokumentu tożsamości przy pierwszej wizycie w naszej bibliotece.">Konto zweryfikowane:</abbr> </p> </td>
+											<td class="udt-val-td"> <span class="label label-danger">NIE ZWERYFIKOWANE</span> <!-- <span class="label label-success">ZWERYFIKOWANE</span> --> </td>
 										</tr>
 									</table>
 								
@@ -253,8 +251,8 @@
 			<div class="col-md-2" style="margin-top:20px;">
 				<ul class="nav nav-pills  nav-stacked">
 					<li role="presentation" class="active"><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
+					<li role="presentation" ><a href="#historia" data-toggle="tab"> Historia wypożyczeń </a></li>
 					<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
-					<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
 				</ul>
 			</div>
 				
@@ -270,37 +268,68 @@
 								<div class="panel-heading">Twoje wypożyczenia</div>
 								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
 									<p><strong>Niczego jeszcze nie wypożyczyłeś!</strong> Skorzystaj z szybkiego wyszukiwania u góry strony lub przejdź do <a>Wyszukiwania Zaawansowanego</a> </p>
+									<span class="label label-warning">Kara zapłacona</span> <span class="label label-danger">Kara nie zapłacona</span>
 								</div>
 
 								<table class="table">
 									<thead>
 										<tr>
 											<th>Tytuł</th>
-											<th>ISBN</th>
-											<th>Do oddania pozostało</th>
+											<th>Data wypożyczenia</th>
+											<th>Pozostało</th>
 											<th>Status</th>
 										</tr>
 									</thead>
 									<tbody>									
 										<tr>
 											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-											<td>654-22-5367-321-1</td>
+											<td>12-12-2014r.</td>
 											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
 											<td>WYPOŻYCZONA</td>
 										</tr>
 										
 										<tr style="color:red;">
 											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
-											<td>978-83-7181-510-2</td>
-											<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN PRZEKROCZONY </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+											<td>12-12-2014r.</td>
+											<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN MINĄŁ </abbr> &nbsp&nbsp <span class="label label-danger">1,20PLN</span> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
 											<td>WYPOŻYCZONA</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+													
+					</div>
+					
+					<div class="tab-pane fade" id="historia" style="margin-top:20px;">
+					
+						<div class="bs-example" data-example-id="table-within-panel">
+							<div class="panel panel-info">
+							
+								<div class="panel-heading">Archiwalne wypożyczenia</div>
+								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
+									<span class="label label-warning">Kara zapłacona</span> <span class="label label-danger">Kara nie zapłacona</span>
+								</div>
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>Data wypożyczenia</th>
+											<th>Data zwrotu</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+											<td>12-12-2014r.</td>
+											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp </td>
 										</tr>
 										
 										<tr>
-											<td><a><abbr title='"O dwóch takich co ukradli księżyc" - zobacz stronę książki'> O dwóch takich...</a></td>
-											<td>978-83-7181-510-2</td>
-											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> --- </abbr> &nbsp&nbsp </td>
-											<td>ODDANA</td>
+											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
+											<td>12-12-2014r.</td>
+											<td>30-12-2014r. &nbsp&nbsp <span class="label label-warning">1,20PLN</span> &nbsp&nbsp </td>
 										</tr>
 									</tbody>
 								</table>
@@ -323,65 +352,23 @@
 									<thead>
 										<tr>
 											<th>Tytuł</th>
-											<th>ISBN</th>
-											<th><abbr title="Oczekiwany czas, po którym książka powinna wrócić do biblioteki. Nie uwzględnia prolongat!"> Do wypożyczenia pozostało </abbr></th>
+											<th>Data</th>
 											<th>Status</th>
+											<th> </th>
 										</tr>
 									</thead>
 									<tbody>									
 										<tr>
 											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-											<td>654-22-5367-321-1</td>
-											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 4 DNI </abbr> &nbsp&nbsp </td>
+											<td>12-12-2014r.</td>
 											<td>Oczekująca</td>
+											<td> <button type="button" class="btn btn-default">Anuluj </span></button> </td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 													
-					</div>
-					
-					<div class="tab-pane fade" id="kary" style="margin-top:20px;">	
-					
-						<div class="bs-example" data-example-id="table-within-panel">
-							<div class="panel panel-default">
-							
-								<div class="panel-heading">Twoje kary</div>
-								<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
-									<p><strong style="color:green;">Nie masz żadnych kar!</strong> Gratulacje! </p>
-								</div>
-						
-								<table class="table">
-									<thead>
-										<tr>
-											<th>Tytuł</th>
-											<th>Data</th>
-											<th>Wysokość</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>									
-										<tr  style="color:red;">
-											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" | pożyczono: 20-12-2014r. | termin zwrotu: 04-01-2015r.'> Nieterminowy zwrot</a></td>
-											<td>04-01-2015r.</td>
-											<td>0,20 PLN</td>
-											<td>NIE ZAPŁACONO</td>
-										</tr>
-										
-										<tr>
-											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" | pożyczono: 20-12-2014r. | termin zwrotu: 04-01-2015r.'> Nieterminowy zwrot</a></td>
-											<td>12-11-2014r.</td>
-											<td>3,50 PLN</td>
-											<td>ZAPŁACONO</td>
-										</tr>
-										
-									</tbody>
-								</table>
-							</div>
-						</div>
-								
-						
 					</div>
 
 				</div>
