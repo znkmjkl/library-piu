@@ -7,14 +7,22 @@ class AccountController extends \BaseController {
 
       $address = DB::table('address')->where('adr_id', Auth::user()->usr_adr_id)->get();
       $rvns = DB::table('reservation')->where('rvn_usr_id', Auth::user()->id)
-                    ->join('book', 'bok_id', '=', 'reservation.rvn_bok_id')
+                    ->where('rvn_status','1')
+                    ->join('book', 'bok_id', '=', 'reservation.rvn_bok_id')                  
                     ->get();
 
       $rtls = DB::table('rental')->where('rtl_usr_id', Auth::user()->id)
+                    ->where('rtl_is_returned','0')
                     ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')
                     ->join('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
                     ->get();
-      return View::make('home.account', array('address' => $address, 'rvns' => $rvns, 'rtls' => $rtls));
+      $rtlsOld = DB::table('rental')->where('rtl_usr_id', Auth::user()->id)
+                    ->where('rtl_is_returned','1')
+                    ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')
+                    ->join('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
+                    ->get();
+
+      return View::make('home.account', array('address' => $address, 'rvns' => $rvns, 'rtls' => $rtls, 'rtlsOld' => $rtlsOld));
 
     }
 
