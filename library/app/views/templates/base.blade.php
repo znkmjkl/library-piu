@@ -16,6 +16,7 @@
         {{ HTML::style('css/signin.css') }}
         {{ HTML::style('css/conversations.css') }}
         {{ HTML::style('css/main.css') }}
+		{{ HTML::style('css/custom.css') }}
         {{ HTML::script('js/jquery.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

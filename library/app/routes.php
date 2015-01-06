@@ -23,7 +23,7 @@ Route::get('/about', 'HomeController@getAbout');
 
 Route::get('/help', 'HomeController@getHelp');
 
-Route::get('/privacy', 'HomeController@getPrivacy');
+Route::get('/subsidiaries', 'HomeController@getSubsidiaries');
 
 Route::get('/status', 'HomeController@getStatus');
 

@@ -332,7 +332,7 @@
 											</td>
 											<td> 
 												{{ Form::open(array('route' => array('resign', $rvn->bok_id))) }}
-	    										{{ Form::submit('Anuluj rezerwacje', array('class' => 'btn btn-sm btn-danger','style'=>"padding:2px 5px;")) }}
+	    										{{ Form::submit('Anuluj rezerwacje', array('class' => 'btn btn-danger','style'=>"padding:2px 5px; font-size:0.9em")) }}
 	    										{{ Form::close() }}
 											</td>
 										</tr>

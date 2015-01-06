@@ -1,0 +1,61 @@
+
+p, div {
+    font-family: "Calibri", sans;
+}
+
+ul.nav a:hover
+{
+    opacity: 1;
+}
+
+.navbar .divider-vertical 
+{
+	height: 30px;
+	margin: 10px 35px;
+	border-right: 1px solid #ffffff;
+	border-left: 1px solid #f2f2f2;
+}
+
+a:hover
+{
+	text-decoration: none !important;
+	cursor: pointer;
+}
+
+.jumbotron
+{
+	background-color:white !important;
+}
+
+.carousel-inner > .item >  img
+{
+	width: 100%; /* use this, or not */
+	margin: 0 auto;
+}
+
+.carousel-caption
+{
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.user-data-table
+{
+	text-align:right;
+	width:400px;
+	margin: 20px auto;
+	font-weight: bold;
+}
+
+.user-data-table td
+{
+	height:30px;
+	line-height:30px;
+}
+
+.udt-val-td
+{
+	width:50%;
+	text-align:left;
+	text-indent:30px;
+	font-weight: normal;
+}
