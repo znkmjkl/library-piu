@@ -26,12 +26,20 @@ a:hover
 
 .jumbotron
 {
-	background-color:white !important;
+	background-color: transparent !important;
+}
+
+.carousel
+{
+	margin-top: 0px !important;
+	background-color: white;
+	height:auto;
 }
 
 .carousel-inner > .item >  img
 {
 	width: 100%; /* use this, or not */
+	height: auto;
 	margin: 0 auto;
 }
 
