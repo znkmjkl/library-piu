@@ -74,6 +74,18 @@ Route::get('/kind/{id}', 'KindController@getShowKind');
 
 Route::controller('/kind', 'KindController');
 
+Route::get('/rented/{id}/returnbook', 'RentalController@returnBook');
+
+Route::get('/addbook','BookController@getAddBookView');
+
+Route::post('/addbook','BookController@postBook');
+
+Route::get('/removebook/{id}','BookController@removeBook');
+
+Route::get('/editbook/{id}','BookController@getEditBookView');
+
+Route::post('/editbook/{id}', 'BookController@editBook');
+
 /* Account */
 Route::get('/account', 'AccountController@getAccount');
 
@@ -81,3 +93,26 @@ Route::post('/changePass', 'AccountController@changePassword');
 
 Route::post('/account/{id}/{book_name}/prolongate', array('as' => 'prolongate',
 									 'uses' => 'AccountController@prolongate'))->before('auth');
+/* Fine */
+Route::get('/rented/{id}/addfine','FineController@showFine');
+
+Route::post('/addfine/{id}','FineController@addFine');
+
+Route::get('/removefine/{id}','FineController@deleteFine');
+
+/* Author */
+Route::get('/addauthor','WriterController@getAddWriterView');
+
+Route::post('/addauthor','WriterController@postWriter');
+
+Route::get('/editauthor/{id}','WriterController@getEditWriterView');
+
+Route::post('/editauthor/{id}', 'WriterController@postEditWriter');
+
+/* Rented */
+Route::get('/rentedList/{page}/{isbn}', 'RentalController@getRentedBooks');
+
+Route::post('/searchRented', 'RentalController@getRestPage');
+
+Route::get('/rented/{id}/addfine','FineController@showFine');
+
