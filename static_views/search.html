@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="library">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Biblionetka - Twoja internetowa biblioteka</title>
+
+        <!-- core CSS -->
+
+		<!--PODMIENIAM CSSY NA LOKALNE-->
+			<link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/carousel.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/signin.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/conversations.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+			<link href="css/custom.css" rel="stylesheet">
+		<!-- --------------------------->
+		
+		<!--
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/carousel.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/signin.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/conversations.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/main.css">
+		-->
+		
+		<!-- TO DODAĆ!!! --
+		<link href="css/custom.css" rel="stylesheet">
+		-- !!!!!!!!!!! -->
+		
+		<!-- PODMIENIAM JS NA LOKALNE -->
+			<script src="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		<!-- --------------------------->
+		
+		<!--
+        <script src="http://localhost:8000/js/jquery.js"></script>
+
+        <script src="http://localhost:8000/js/bootstrap.min.js"></script>
+		-->
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+
+    </head>
+
+    <body>
+
+        
+    
+	<div class="container">
+		<div class="navbar-wrapper">
+			<div class="navbar navbar-inverse navbar-static-top">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+					<span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"> Michał</span>
+							<b class="caret"></b></a>
+								
+								<ul class="dropdown-menu">
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> O bibliotece</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Pomoc</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Polityka prywatności</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Regulamin</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+								</ul>
+						</li>
+					</ul>
+				
+					<form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-right" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+						<div class="input-group">
+							<div class="form-group btn-group">
+								<input class="btn btn-default" type="submit" value="Szukaj">
+								<input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+							</div>
+							
+								<a href="/search">
+									<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog">zaawansowane </span></button>
+								</a>
+							
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
+    <div class="container">
+        					
+		<div class="container marketing about">
+		
+			<div style="margin-bottom:20px; margin-left:2%; width:96%;">
+		
+				<div class="panel-group" id="accordion" style="margin-top:20px;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+									<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> &nbsp Pokaż filtry
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse">
+							dupa
+						</div>
+					
+					</div>
+				</div>
+			</div>
+									
+			<div class="col-md-12">	
+				
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>Data wypożyczenia</th>
+											<th>Pozostało</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>									
+										<tr>
+											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+											<td>12-12-2014r.</td>
+											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+											<td>WYPOŻYCZONA</td>
+										</tr>
+										
+										<tr style="color:red;">
+											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
+											<td>12-12-2014r.</td>
+											<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN MINĄŁ </abbr> &nbsp&nbsp <span class="label label-danger">1,20PLN</span> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+											<td>WYPOŻYCZONA</td>
+										</tr>
+									</tbody>
+								</table>
+			</div>
+								
+		</div>
+		
+	</div>
+	
+	
+	
+		
+    <div class="container">
+	<footer id="bottom">
+		<p class="text-center"><a href="/about">O bibliotece</a> &middot; <a href="/help">Pomoc</a> &middot; <a href="/privacy">Polityka prywatności</a> &middot; <a href="/terms">Regulamin</a> &middot &copy; 2014 Biblioteka </p>
+	</footer>
+</div>
+
+    </body>
+
+        <!-- core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        
+        
+        <script src="http://localhost:8000/js/holder.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-resource.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-route.min.js"></script>
+
+    </body>
+</html>

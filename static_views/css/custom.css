@@ -38,8 +38,6 @@ a:hover
 
 .carousel-inner > .item >  img
 {
-	width: 100%; /* use this, or not */
-	height: auto;
 	margin: 0 auto;
 }
 

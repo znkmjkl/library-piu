@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="library">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Biblionetka - Twoja internetowa biblioteka</title>
+
+        <!-- core CSS -->
+
+		<!--PODMIENIAM CSSY NA LOKALNE-->
+			<link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/carousel.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/signin.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/conversations.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+			<link href="css/custom.css" rel="stylesheet">
+		<!-- --------------------------->
+		
+		<!--
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/carousel.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/signin.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/conversations.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/main.css">
+		-->
+		
+		<!-- TO DODAĆ!!! --
+		<link href="css/custom.css" rel="stylesheet">
+		-- !!!!!!!!!!! -->
+		
+		<!-- PODMIENIAM JS NA LOKALNE -->
+			<script src="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		<!-- --------------------------->
+		
+		<!--
+        <script src="http://localhost:8000/js/jquery.js"></script>
+
+        <script src="http://localhost:8000/js/bootstrap.min.js"></script>
+		-->
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+
+    </head>
+
+    <body>
+
+        
+    
+		<div class="container">
+			<div class="navbar-wrapper">
+				<div class="navbar navbar-inverse navbar-static-top">
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">
+						<span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+					</div>
+					
+					<div class="navbar-collapse collapse">
+						
+						<ul class="nav navbar-nav navbar-right">
+						
+							<li> <a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-off"> </span> Zaloguj </a> </li>
+							<li> <a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-pencil"> </span> Zarejestruj </a> </li>
+						
+						</ul>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+			
+		<div class="container">
+								
+			<div class="container marketing about">
+			
+				<div class="row">
+					<div class="col-xs-9 col-sm-offset-1">
+					
+						<h1> <span class="glyphicon glyphicon-map-marker" "aria-hidden="true"></span> Lokalizacja i kontakt </h1>
+
+					</div>	
+				</div>
+
+				<div class="row">
+				
+					<div class="col-md-5 col-md-offset-2" >	
+					
+						<p> <br> <span class="glyphicon glyphicon-ok-sign" "aria-hidden="true"></span> Poniżej znajduje się mapa z zaznaczoną lokalizacją Biblionetki. <br> &nbsp&nbsp&nbsp&nbsp&nbsp Odwiedź nas lub skontaktuj się telefonicznie bądź mailowo. <br> </p>
+						
+						<p> <br> <span class="glyphicon glyphicon-exclamation-sign" "aria-hidden="true"></span> Odbiór zarezerwowanych książek tylko osobiście w siedzibie Biblionetki. <br><br> </p>
+											
+					</div>	
+
+					<div class="col-md-5">
+						
+						<blockquote>
+							<address>
+								<strong>BIBLIONETKA FILIA NR 1</strong><br>
+								Ulica Profesora Stanisława Łojasiewicza 11<br>
+								32-239 Kraków, Polska<br><br>
+								<abbr title="Telefon">Tel:</abbr> (123) 456-7890<br>
+								<abbr title="Adres mailowy">&nbsp@:</abbr> &nbspkontakt@biblionetka.pl
+							</address>
+						</blockquote>
+												
+					</div>
+					
+					<div class="col-md-12">
+					
+						<iframe id="google-map" height="450" frameborder="0" style="width: 100%; border:0" src="https://www.google.com/maps/embed/v1/place?q=50.029493%2C%2019.906069&key=AIzaSyB6d7s8zarenD63I_8hsBOrhlDk2S_G1Y4&zoom=17"></iframe>												
+					
+					</div>
+					
+					<br><br>
+					
+				</div>
+												
+			</div>
+			
+		</div>
+		
+			
+		<div class="container">
+			<footer id="bottom">
+				<p class="text-center"><a href="/about">O bibliotece</a> &middot; <a href="/help">Pomoc</a> &middot; <a href="/privacy">Polityka prywatności</a> &middot; <a href="/terms">Regulamin</a> &middot &copy; 2014 Biblioteka </p>
+			</footer>
+		</div>
+
+        <!-- core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->       
+        
+        <script src="http://localhost:8000/js/holder.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-resource.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-route.min.js"></script>
+
+    </body>
+</html>
