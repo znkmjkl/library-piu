@@ -10,7 +10,14 @@
                 <a class="navbar-brand" href="/">
                 <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
             </div>
+
             @include('templates.partials._basic_search_form')
+            <div class="navbar-collapse collapse">                        
+                <ul class="nav navbar-nav navbar-right">                        
+                    <li> <a class="navbar-brand" href="/login"> <span class="glyphicon glyphicon-off"> </span> Zaloguj </a> </li>
+                    <li> <a class="navbar-brand" href="/register"> <span class="glyphicon glyphicon-pencil"> </span> Zarejestruj </a> </li>                        
+                </ul>                        
+            </div>
         </div>
     </div>
 </div>
