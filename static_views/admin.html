@@ -97,6 +97,10 @@
 									<li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
 								</ul>
 						</li>
+						
+						<li class="divider-vertical"></li>
+						
+						<li> <button type="submit" class="btn btn-primary navbar-btn">Zarządzaj</button> </li>
 					</ul>
 				
 					<form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-right" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
@@ -119,112 +123,136 @@
 	</div>
 		
     <div class="container">
-        					
+        			
+		<!--TRZEBA JESZCZE DODAC JS SNIPPET ZEBY NA DOLE ZMIENIL ODPOWIEDNIA OPCJE MENU NA ACTIVE-->
+			
 		<div class="container marketing about">
 		
 			<div style="margin-bottom:20px; margin-top:20px; margin-left:2%; width:96%;">
-		
+			
 				<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> &nbsp Informacje o książce
-							</h4>
-						</div>
-						<div class="panel-body">
-							
-							<div class="col-md-5">
-							
-								<center>
-									<img src="img/cover1.jpg" alt="Tytuł książki - okładka" class="cover-big" style="margin: 0 auto;" />
-								</center>
-							
-							</div>
-							
-							<div class="col-md-7">
-							
-								<table class="table" style="margin-top:20px;">
-									<tbody>									
-										<tr>
-											<td> <strong> Tytuł: </strong> </td>
-											<td> O psie który jeździł koleją </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Autor: </strong> </td>
-											<td> Jan Kowalski </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> ISBN: </strong> </td>
-											<td> 978-3-16-148410-0 </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Data wydania: </strong> </td>
-											<td> 2013r. </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Numer wydania: </strong> </td>
-											<td> 1 </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Gatunek: </strong> </td>
-											<td> Horror </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Język: </strong> </td>
-											<td> Polski </td>
-										</tr>
-										
-										<tr>
-											<td> <strong> Dostępność: </strong> </td>
-											<td> 
-												<span class="label label-success">TAK</span>
-												<span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span>
-												<span class="label label-danger">NIE</span>
-												<!-- ofc tylko jedno naraz :) -->
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							
-							</div>
-							
-						</div>
-					
-				</div>
-				
-			</div>
-									
-			<div class="col-md-6 col-md-offset-3">				
-				
-				<!--REZERWACJA-->
-				<!-- JEŚLI DANA OPCJA JEST NIEAKTYWNA TO KLASA BUTTONA ZMIENIA SIE NA hidden a accordiona znika -->
-				<input class="btn btn-lg btn-success btn-block btn-bookbook" type="submit" value="Zarezerwuj">
-				
-				<div id="accordionRent" class="hidden">
-					
-					<a data-toggle="collapse" data-parent="#accordionRent" href="#zarezerwuj" style="line-height: 100%; display: block; text-decoration: none;">
-						<input class="btn btn-lg btn-default btn-block btn-bookbook" type="submit" value="Zarezerwuj">
-					</a>
-					
-					<div id="zarezerwuj" class="panel-collapse collapse">
-						<p style="text-align:center;">	
-							<br>
-							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Książka jest już zarezerwowana
-							<br><br>
-						</p>
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> &nbsp Panel administratora
+						</h4>
 					</div>
+					<div class="panel-body">
 					
-				</div>
-				
-				<br><br>
-				
-			</div>
+						<!-- PANEL BODY -->
+						<div class="col-md-2" style="margin-top:20px;">
+							<ul class="nav nav-pills  nav-stacked">
+								<li role="presentation" class="active"><a href="#ksiazki" data-toggle="tab"> Książki </a></li>								
+								<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
+								<li role="presentation" ><a href="#uzytkownicy" data-toggle="tab"> Użytkownicy </a></li>
+							</ul>
+						</div>
+							
+						<div class="col-md-10">	
+							
+							<div id="myTabContent" class="tab-content">
 								
+								<div class="tab-pane fade in active" id="ksiazki" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Edycja książek</div>
+											
+											<div class="panel-group" id="accordion" style="width:50%; margin:0 auto; margin-top:20px;">
+												<div class="panel panel-success">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj książkę
+															</a>
+														</h4>
+													</div>
+													<div id="collapseOne" class="panel-collapse collapse in">
+														<div class="panel-body">
+														
+															
+														
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Tytuł</th>
+														<th>Data wypożyczenia</th>
+														<th>Pozostało</th>
+														<th>Status</th>
+													</tr>
+												</thead>
+												<tbody>									
+													<tr>
+														<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+														<td>12-12-2014r.</td>
+														<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+														<td>WYPOŻYCZONA</td>
+													</tr>
+													
+													<tr style="color:red;">
+														<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
+														<td>12-12-2014r.</td>
+														<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN MINĄŁ </abbr> &nbsp&nbsp <span class="label label-danger">1,20PLN</span> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
+														<td>WYPOŻYCZONA</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+																
+								</div>
+								
+								<div class="tab-pane fade" id="historia" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Archiwalne wypożyczenia</div>
+											<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
+												<span class="label label-warning">Kara zapłacona</span> <span class="label label-danger">Kara nie zapłacona</span>
+											</div>
+
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Tytuł</th>
+														<th>Data wypożyczenia</th>
+														<th>Data zwrotu</th>
+													</tr>
+												</thead>
+												<tbody>									
+													<tr>
+														<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+														<td>12-12-2014r.</td>
+														<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp </td>
+													</tr>
+													
+													<tr>
+														<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
+														<td>12-12-2014r.</td>
+														<td>30-12-2014r. &nbsp&nbsp <span class="label label-warning">1,20PLN</span> &nbsp&nbsp </td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+																
+								</div>
+								
+							</div>
+
+						</div>
+						<!-- END OF PANEL BODY-->
+					</div>
+				</div>
+						
+			</div>
+										
 		</div>
 		
 	</div>
