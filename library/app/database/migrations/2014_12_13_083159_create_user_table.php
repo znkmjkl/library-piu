@@ -21,7 +21,7 @@ class CreateUserTable extends Migration {
       									 ->onDelete('cascade')->nullable();
 			$table->string('usr_phone', 12)->nullable();
 			$table->string('usr_number', 12)->nullable();
-			$table->string('usr_pesel', 9)->nullable();
+			$table->string('usr_pesel', 11)->nullable();
 			$table->boolean('usr_active')->nullable();
 			$table->boolean('usr_verified')->nullable();
 			$table->string('email', 256)->unique();

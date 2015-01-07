@@ -4,9 +4,11 @@ class UserController extends \BaseController {
 
     public function getIndex()
     {
-        $users = DB::table('user')->get();
+        $users = DB::table('user')
+                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
+                                ->get();
 
-        return $users;
+        return View::make('for_testing_purposes.manage_users', array('users' => $users));
     }
 
     public function getRegister()
@@ -101,5 +103,155 @@ class UserController extends \BaseController {
                                    ->withInput();
         }
     }
+
+    public function blockUser($id=null)
+    {
+        DB::table('user')->where('id', $id)->update(array('usr_active' => 0));
+
+        return Redirect::to('/users')->with('flash_message_success', 'Użytkownik został zablokowany.');
+    }
+
+    public function activateUser($id=null)
+    {
+        DB::table('user')->where('id', $id)->update(array('usr_active' => 1));
+
+        return Redirect::to('/users')->with('flash_message_success', 'Użytkownik został aktywowany.');
+    }
+
+    public function getAddUser() {
+        return View::make('for_testing_purposes.add_user');
+    }
+
+
+    public function postAddUser() {
+        $validator = Validator::make(Input::all(), User::$rules);
+
+        if ($validator->passes()) {
+            $address = new Address;
+            $address->adr_street = Input::get('street');
+            $address->adr_city = Input::get('city');
+            $address->adr_postal_code = Input::get('zipCode');
+            $address->adr_house_number = Input::get('houseNr');
+            $address->save();
+            $address_id = $address->id;
+
+            $user = new User;
+            $user->usr_name = Input::get('firstname');
+            $user->usr_surname = Input::get('lastname');
+            $user->usr_adr_id = $address_id;
+            $user->usr_phone = Input::get('phone');
+            $user->usr_number = Input::get('user_number');
+            $user->usr_pesel = Input::get('pesel');
+            $user->usr_active = true;
+            $user->usr_verified = true;
+            $user->email = Input::get('email');
+            $user->password = Hash::make(Input::get('password'));
+            $user->save();
+            return Redirect::intended('/users')->with('flash_message_success', 'Użytkownik został dodany.');
+        }
+        else
+        {
+            return Redirect::intended('/adduser')->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+        }
+    }
+
+
+    public function getEditUser($id) {
+        $user = DB::table('user')->where('id', $id)->get();
+        $address =  DB::table('address')->where('adr_id', $user[0]->usr_adr_id)->get();
+
+        return View::make('for_testing_purposes.edit_user', array('user' => $user, 'address' => $address));
+    }
+
+
+    public function postEditUser($id) {
+        $validator = Validator::make(Input::all(), User::$editRules);
+
+        $adr_id = DB::table('user')->where('id', $id)->first()->usr_adr_id;
+
+        if(empty(Input::get('password'))) {
+            DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
+                                                                 'adr_city' => Input::get('city'),
+                                                                 'adr_postal_code' => Input::get('zipCode'),
+                                                                 'adr_house_number' => Input::get('houseNr')));
+
+            DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
+                                                                 'usr_surname' => Input::get('lastname'),
+                                                                 'usr_phone' => Input::get('phone'),
+                                                                 'usr_number' => Input::get('user_number'),
+                                                                 'usr_pesel' => Input::get('pesel'),
+                                                                 'usr_active' => Input::get('active'),
+                                                                 ));
+
+            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+        }
+
+        if ($validator->passes()) {
+            DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
+                                                                 'adr_city' => Input::get('city'),
+                                                                 'adr_postal_code' => Input::get('zipCode'),
+                                                                 'adr_house_number' => Input::get('houseNr')));
+
+            DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
+                                                                 'usr_surname' => Input::get('lastname'),
+                                                                 'usr_phone' => Input::get('phone'),
+                                                                 'usr_number' => Input::get('user_number'),
+                                                                 'usr_pesel' => Input::get('pesel'),
+                                                                 'usr_active' => Input::get('active'),
+                                                                 'password' => Hash::make(Input::get('password'))
+                                                                 ));
+
+            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+        }
+        else
+        {
+            return Redirect::intended('/user/edit/'.$id)->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+        }
+    }
+
+
+    public function getVerifyUser($id) {
+        $user = DB::table('user')->where('id', $id)->get();
+        $address =  DB::table('address')->where('adr_id', $user[0]->usr_adr_id)->get();
+
+        return View::make('for_testing_purposes.verify_user', array('user' => $user, 'address' => $address));
+    }
+
+
+    public function postVerifyUser($id) {
+        $validator = Validator::make(Input::all(), User::$verifyRules);
+
+        $adr_id = DB::table('user')->where('id', $id)->first()->usr_adr_id;
+
+        if ($validator->passes()) {
+            DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
+                                                                 'adr_city' => Input::get('city'),
+                                                                 'adr_postal_code' => Input::get('zipCode'),
+                                                                 'adr_house_number' => Input::get('houseNr')));
+
+            DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
+                                                                 'usr_surname' => Input::get('lastname'),
+                                                                 'usr_phone' => Input::get('phone'),
+                                                                 'usr_number' => Input::get('user_number'),
+                                                                 'usr_pesel' => Input::get('pesel'),
+                                                                 'usr_active' => Input::get('active'),
+                                                                 'usr_verified' => Input::get('verified'),
+                                                                 ));
+
+            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+        }
+        else
+        {
+            return Redirect::intended('/user/verify/'.$id)->with('flash_message_danger', 'Podaj poprawny numer użytkownika.')->withInput();
+        }
+    }
+
+    public function getShowUser($id) {
+        $user = DB::table('user')->where('id', $id)
+                                 ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+                                 ->get();
+
+        return View::make('for_testing_purposes.user', array('user' => $user));                            
+    }    
 
 }

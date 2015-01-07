@@ -40,7 +40,25 @@ Route::get('/login', 'UserController@getLogin')->before('guest');
 
 Route::get('/logout', 'UserController@getLogout')->before('auth');
 
-Route::controller('users', 'UserController');
+Route::get('/user/block/{id}','UserController@blockUser');
+
+Route::get('/user/activate/{id}','UserController@activateUser');
+
+Route::get('/adduser','UserController@getAddUser');
+
+Route::post('/adduser','UserController@postAddUser');
+
+Route::get('/user/verify/{id}','UserController@getVerifyUser');
+
+Route::post('/user/verify/{id}','UserController@postVerifyUser');
+
+Route::get('/user/edit/{id}','UserController@getEditUser');
+
+Route::post('/user/edit/{id}','UserController@postEditUser');
+
+Route::get('/user/{id}','UserController@getShowUser');
+
+Route::controller('/users', 'UserController');
 
 /* Book search */
 Route::get('/search', 'SearchController@getSearch');
