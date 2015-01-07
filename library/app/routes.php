@@ -134,3 +134,12 @@ Route::post('/searchRented', 'RentalController@getRestPage');
 
 Route::get('/rented/{id}/addfine','FineController@showFine');
 
+/* Reservation */
+
+Route::get('/reservations/','ReservationController@getIndex');
+
+Route::get('/reservation/cancel/{id}','ReservationController@cancelReservation');
+
+Route::get('/reservation/makeready/{id}','ReservationController@makeReadyReservation');
+
+Route::get('/reservation/rentbook/{id}','ReservationController@rentBook');
