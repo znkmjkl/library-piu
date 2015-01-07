@@ -24,7 +24,7 @@
                 <td><a href="/book/{{ $result->bok_id }}"><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'>{{ $result->bok_title }}</a></td>
                 <td><a href="/author/{{ $result->wtr_id }} "> {{ $result->wtr_name }} {{ $result->wtr_surname }}</a></td>
                 <td>{{ $result->bok_isbn }}</td>
-                <td>{{ $result->bok_edition_date }} / {{ $result->bok_edition_number }}</td>
+                <td>{{ date('Y', strtotime($result->bok_edition_date)) }} / {{ $result->bok_edition_number }}</td>
                 <td><a href="/kind/{{ $result->bok_knd_id }} "> {{ $result->knd_name }}</a></td>
                 <td><a href="/language/{{ $result->bok_lng_id }} "> {{ $result->lng_name }}</a></td>
                 <td> <span class="label label-danger">NIE</span> </td>
