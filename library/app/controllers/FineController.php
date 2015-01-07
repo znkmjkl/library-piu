@@ -28,31 +28,40 @@ class FineController extends \BaseController {
 	}
 
 	public function addFine($rental_id)
-	{               
-		$fine_amount = Input::get('fine_amount');
+	{ 
 
+	    $validator = Validator::make(Input::all(), Fine::$rules);
+    	if ($validator->passes()) 
+    	{              
+				$fine_amount = Input::get('fine_amount');
 
-		 $bookRented = DB::table('fine')
-		 					->where('fne_rtl_id','=',$rental_id)
-		 					->count();
+			 	$bookRented = DB::table('fine')
+			 					->where('fne_rtl_id','=',$rental_id)
+			 					->count();
 
-		 if($bookRented == 1){
+		 		if($bookRented == 1){
 
-		 	DB::table('fine')
-          	   ->where('fne_rtl_id','=',$rental_id)
-           	   ->update(array('fne_amount' => $fine_amount));
-		 }else{
+		 			DB::table('fine')
+          	   			->where('fne_rtl_id','=',$rental_id)
+           	   			->update(array('fne_amount' => $fine_amount));
+		 		}
+		 		else
+		 		{
 
-		 $fine = new Fine;
-		 $fine->fne_rtl_id = $rental_id;
-		 $fine->fne_amount = $fine_amount;
-		 $fine->fne_status = true;
-		 $fine->save();
+		 			$fine = new Fine;
+		 			$fine->fne_rtl_id = $rental_id;
+		 			$fine->fne_amount = $fine_amount;
+		 			$fine->fne_status = true;
+		 			$fine->save();
+		   		}
 
-		 }
+        	return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Dodano kare');
+    	}
+    	else
+    	{
+        	return Redirect::intended('/rentedList/1/all')->with('flash_message_danger', 'Należy podać dane liczbowe')->withInput();
 
-        return Redirect::to('/rentedList/1/all');
-
+    	}
 	}
 	public function deleteFine($rental_id)
 	{           
@@ -61,7 +70,7 @@ class FineController extends \BaseController {
 		->where('fne_rtl_id','=',$rental_id)
 		->delete();
 
-        return Redirect::to('/rentedList/1/all');
+        return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Usunięto kare');
 
     }
 }

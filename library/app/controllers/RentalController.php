@@ -38,12 +38,8 @@ class RentalController extends \BaseController {
                 if($bok_isbn == ""){
                     $bok_isbn = "all";
                 }
-                return Redirect::to('/rentedList/1/'.$bok_isbn);
+                return Redirect::intended('/rentedList/1/'.$bok_isbn)->with('flash_message_success', 'Wyszukane pozycje');
     }
-
-/*    public function addFine($rental_id){
-
-    }*/
 
     public function returnBook($rental_id){
 
@@ -64,7 +60,7 @@ class RentalController extends \BaseController {
                     ->where('rvn_status', '=', 1)
                     ->update(array('rvn_is_ready' => 1, 'rvn_date' => new DateTime));
 
-        return Redirect::to('/rentedList/1/all');
+        return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Książka została oddana');
     }
 
 }

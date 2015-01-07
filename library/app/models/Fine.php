@@ -9,4 +9,6 @@ class Fine extends Eloquent {
      */
     protected $table = 'fine';
 
+    public static $rules = array('fine_amount'=>'required|numeric|min:1');
+
 }

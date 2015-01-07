@@ -9,7 +9,7 @@
     <p>{{ Form::select('writer[]', $writers, $authors ,array('class' => 'form-control','multiple' => true ))}}</p>
     <p>{{ Form::select('language', $languages, $book[0]->bok_lng_id ,array('class' => 'form-control') )}}</p>
     <p>{{ Form::select('kind', $kinds, $book[0]->bok_knd_id ,array('class' => 'form-control') )}}</p>
-    {{ Form::text('date', $book[0]->bok_edition_date, array('class' => 'form-control', 'placeholder' => 'Data edycji')) }}
+    {{ Form::text('date', substr($book[0]->bok_edition_date,0,10), array('class' => 'form-control', 'placeholder' => 'Data edycji')) }}
     {{ Form::text('edition', $book[0]->bok_edition_number, array('class' => 'form-control', 'placeholder' => 'Numer edycji')) }}
     <p>{{ Form::submit('Zapisz', array('class' => 'btn btn-default')) }}
     	<a button href="/addauthor" type="button" class="btn btn-default">Dodaj nowego autora</a></p>

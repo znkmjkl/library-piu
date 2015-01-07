@@ -29,13 +29,20 @@ public function getAddWriterView()
   public function postWriter()
   {
 
-     $writer = new Writer;
-     $writer->wtr_name = Input::get('author_name');
-     $writer->wtr_surname = Input::get('author_surname');
-     $writer->wtr_birth_date = Input::get('birth_date');
-     $writer->save();
+    $validator = Validator::make(Input::all(), Writer::$rules);
+    if ($validator->passes()) {
+      $writer = new Writer;
+      $writer->wtr_name = Input::get('author_name');
+      $writer->wtr_surname = Input::get('author_surname');
+      $writer->wtr_birth_date = Input::get('birth_date').' 00:00:00';
+      $writer->save();
 
-        return Redirect::to('/addbook');
+      return Redirect::intended('/')->with('flash_message_success', 'Autor został dodany pomyślnie');;
+      }
+    else{
+      return Redirect::intended('/editauthor/'.$writer_id)->with('flash_message_danger', 'Złe dane')->withInput();
+
+    }
 
   }
 
@@ -43,19 +50,29 @@ public function getAddWriterView()
   {
 
     $writer = DB::table('writer')->where('wtr_id',$writer_id)->get();
-
-    return View::make('for_testing_purposes.edit_author',array('writer' => $writer));
-
+    if(count($writer) > 0){
+      return View::make('for_testing_purposes.edit_author',array('writer' => $writer));
+    }
+    else{
+      return Redirect::intended('/')->with('flash_message_danger', 'Nie ma takiego autora!!!');
+     }
   }
 
   public function postEditWriter($writer_id)
   {
 
-    $writer = DB::table('writer')->where('wtr_id',$writer_id)->update(array('wtr_name' => Input::get('author_name'),
+    $validator = Validator::make(Input::all(), Writer::$rules);
+    if ($validator->passes()) {
+      $writer = DB::table('writer')->where('wtr_id',$writer_id)->update(array('wtr_name' => Input::get('author_name'),
                                                                  'wtr_surname' => Input::get('author_surname'),
-                                                                 'wtr_birth_date' => Input::get('birth_date')));
+                                                                 'wtr_birth_date' => Input::get('birth_date').' 00:00:00' ));
 
-        return Redirect::to('/');
+      return Redirect::intended('/')->with('flash_message_success', 'Autor został dodany pomyślnie');
+    }
+    else
+    {
+      return Redirect::intended('/editauthor/'.$writer_id)->with('flash_message_danger', 'Złe dane')->withInput();
+    }
 
   }
 

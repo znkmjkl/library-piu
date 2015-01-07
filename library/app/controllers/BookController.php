@@ -128,32 +128,39 @@ class BookController extends \BaseController {
 
     public function postBook(){
 
-                $book = new Book;
+               $validator = Validator::make(Input::all(), Book::$rules);
+               if ($validator->passes()) 
+               {    
+                    $book = new Book;
                     $book->bok_isbn = Input::get('bok_isbn');
                     $book->bok_title = Input::get('bok_title');
                     $book->bok_lng_id = Input::get('language');
                     $book->bok_knd_id = Input::get('kind');
-                    $book->bok_edition_date = new DateTime('2014-01-01'); //TODO cza jakos sformatować
+                    $book->bok_edition_date = Input::get('date').' 00:00:00'; //TODO cza jakos sformatować
                     $book->bok_edition_number = Input::get('edition');
                     $book->save();
                     $bookId = $book->id;
 
-                $writers = array();
+                    $writers = array();
 
-                $writers = Input::get('writer');
-                $bok_id = $bookId;
+                    $writers = Input::get('writer');
+                    $bok_id = $bookId;
 
-                foreach ($writers as $writer)
+                    foreach ($writers as $writer)
+                    {
+                        $author = new Author;
+                        $author->atr_bok_id = $bok_id;
+                        $author->atr_wtr_id = $writer;
+                        $author->save();
+                    }
+
+                    return Redirect::intended('/book/'.$bok_id)->with('flash_message_success', 'Dodano książke');
+                }
+                else
                 {
-                    $author = new Author;
-                    $author->atr_bok_id = $bok_id;
-                    $author->atr_wtr_id = $writer;
-                    $author->save();
+                    return Redirect::intended('/addbook')->with('flash_message_danger', 'Błędne dane książki');
 
                 }
-
-        return Redirect::to('/book/'.$bok_id);
-
 
     }
 
@@ -212,30 +219,37 @@ class BookController extends \BaseController {
     }
 
     public function editBook($bok_id){
+        $validator = Validator::make(Input::all(), Book::$rules);
+        if ($validator->passes()) 
+        {    
       
-        DB::table('book')->where('bok_id',$bok_id)->update(array('bok_isbn' => Input::get('bok_isbn'),
-                                                                 'bok_title' => Input::get('bok_title'),
-                                                                 'bok_lng_id' => Input::get('language'),
-                                                                 'bok_knd_id' => Input::get('kind'),
-                                                                 'bok_edition_date' => new DateTime('2014-01-01'),
-                                                                 'bok_edition_number' => Input::get('edition') ));
+            DB::table('book')->where('bok_id',$bok_id)->update(array('bok_isbn' => Input::get('bok_isbn'),
+                                                                    'bok_title' => Input::get('bok_title'),
+                                                                     'bok_lng_id' => Input::get('language'),
+                                                                     'bok_knd_id' => Input::get('kind'),
+                                                                     'bok_edition_date' =>Input::get('date').' 00:00:00',
+                                                                     'bok_edition_number' => Input::get('edition') ));
 
 
-        DB::table('author')->where('atr_bok_id',$bok_id)->delete();
+            DB::table('author')->where('atr_bok_id',$bok_id)->delete();
 
-        $writers = Input::get('writer');
+            $writers = Input::get('writer');
 
-                foreach ($writers as $writer)
-                {
-                    $author = new Author;
-                    $author->atr_bok_id = $bok_id;
-                    $author->atr_wtr_id = $writer;
-                    $author->save();
+                    foreach ($writers as $writer)
+                    {
+                        $author = new Author;
+                        $author->atr_bok_id = $bok_id;
+                        $author->atr_wtr_id = $writer;
+                        $author->save();
 
                 }
 
-        return Redirect::to('/book/'.$bok_id);
-
+          return Redirect::intended('/book/'.$bok_id)->with('flash_message_success', 'Edytowano książke');;
+        }
+        else
+        {
+           return Redirect::intended('/editbook/'.$bok_id)->with('flash_message_danger', 'Błędne dane książki');
+        }
     }
 
     public function removeBook($bok_id){
