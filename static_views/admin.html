@@ -142,8 +142,8 @@
 						<div class="col-md-2" style="margin-top:20px;">
 							<ul class="nav nav-pills  nav-stacked">
 								<li role="presentation" class="active"><a href="#ksiazki" data-toggle="tab"> Książki </a></li>								
-								<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
 								<li role="presentation" ><a href="#uzytkownicy" data-toggle="tab"> Użytkownicy </a></li>
+								<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
 							</ul>
 						</div>
 							
@@ -158,6 +158,7 @@
 										
 											<div class="panel-heading">Edycja książek</div>
 											
+											<!-- panel dodawania ksiazki-->
 											<div class="panel-group" id="accordion" style="width:50%; margin:0 auto; margin-top:20px;">
 												<div class="panel panel-success">
 													<div class="panel-heading">
@@ -167,39 +168,191 @@
 															</a>
 														</h4>
 													</div>
-													<div id="collapseOne" class="panel-collapse collapse in">
+													<div id="collapseOne" class="panel-collapse collapse">
 														<div class="panel-body">
 														
-															
+															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
+															<form method="POST" action="http://localhost:8000/search" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="iq5LB326l7LTFUbBOOSw6cOihyq2PsiNwGG6x6Jv">
+																
+																<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
+																<p class="help-block">&nbspOkładka książki.</p>
+																
+																<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
+																<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
+																<input class="form-control" placeholder="Język" name="bok_lng" type="text">
+																<input class="form-control" placeholder="Autor" name="bok_atr" type="text">
+																<input class="form-control" placeholder="Rodzaj" name="bok_knd" type="text">
+																<input class="form-control" placeholder="Data wydania" name="bok_edition_date" type="text">
+																<input class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">
+																<hr>
+																<input class="btn btn-lg btn-success btn-block" type="submit" value="DODAJ">
+															</form>
+
 														
 														</div>
 													</div>
 												</div>
 											</div>
 											
-											<table class="table">
+											<br><br>
+											
+											
+											<table class="table booklist-table">
 												<thead>
 													<tr>
 														<th>Tytuł</th>
-														<th>Data wypożyczenia</th>
-														<th>Pozostało</th>
-														<th>Status</th>
+														<th>Autor</th>
+														<th>ISBN</th>
+														<th></th>
+														<th></th>
+														<th></th>
 													</tr>
 												</thead>
-												<tbody>									
+												<tbody>
+													<!--UWAGA TO JEST...-->
 													<tr>
 														<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-														<td>12-12-2014r.</td>
-														<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
-														<td>WYPOŻYCZONA</td>
+														<td>Jan Kowalski</td>
+														<td>978-3-16-148410-0</td>
+														<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#more_TUTAJNRISBN"> SZCZEGÓŁY </a> </td>
+														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#edit_TUTAJNRISBN"> EDYTUJ </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
 													</tr>
 													
-													<tr style="color:red;">
-														<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
-														<td>12-12-2014r.</td>
-														<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN MINĄŁ </abbr> &nbsp&nbsp <span class="label label-danger">1,20PLN</span> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
-														<td>WYPOŻYCZONA</td>
+													<tr>
+														<td colspan="6" style="border-top:0 solid;">
+															<div id="accordion_TUTAJNRISBN">
+																<div class="row">
+																<div id="more_TUTAJNRISBN" class="panel-collapse collapse">
+																
+																	<div class="col-lg-2">
+																	
+																		<center>
+																			<img src="img/cover1.jpg" alt="Tytuł książki - okładka" class="cover-big" style="width:90px; margin:0 auto;" />
+																		</center>
+																	</div>
+																	
+																	<div class="col-lg-5">
+																	
+																		<table class="table" style="margin:0px;">
+																			<tbody>									
+																				<tr>
+																					<td> <strong> Tytuł: </strong> </td>
+																					<td> O psie który jeździł koleją </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Autor: </strong> </td>
+																					<td> Jan Kowalski </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> ISBN: </strong> </td>
+																					<td> 978-3-16-148410-0 </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Data wydania: </strong> </td>
+																					<td> 2013r. </td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	
+																	</div>
+																	
+																	<div class="col-lg-5">
+																	
+																		<table class="table">
+																			<tbody>									
+																				<tr>
+																					<td> <strong> Numer wydania: </strong> </td>
+																					<td> 1 </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Gatunek: </strong> </td>
+																					<td> Horror </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Język: </strong> </td>
+																					<td> Polski </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Dostępność: </strong> </td>
+																					<td> 
+																						<span class="label label-success">TAK</span>
+																						<span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span>
+																						<span class="label label-danger">NIE</span>
+																						<!-- ofc tylko jedno naraz :) -->
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	
+																	</div>
+																	
+																</div>
+																</div>
+																
+																<div class="row">
+																<div id="edit_TUTAJNRISBN" class="panel-collapse collapse">
+																	
+																	<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																		<div class="panel-heading">
+																			<h4 class="panel-title">
+																				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Edytuj dane książki
+																			</h4>
+																		</div>
+																		<div class="panel-body">
+														
+																			<!-- UWAGA TU SKOPIOWALEM FORMA Z GÓRY - na pewno trzeba go troche zmodyfikowac -->
+																			<form method="POST" action="http://localhost:8000/search" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="iq5LB326l7LTFUbBOOSw6cOihyq2PsiNwGG6x6Jv">
+																				
+																				<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
+																				<p class="help-block">&nbspOkładka książki.</p>
+																				
+																				<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
+																				<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
+																				<input class="form-control" placeholder="Język" name="bok_lng" type="text">
+																				<input class="form-control" placeholder="Autor" name="bok_atr" type="text">
+																				<input class="form-control" placeholder="Rodzaj" name="bok_knd" type="text">
+																				<input class="form-control" placeholder="Data wydania" name="bok_edition_date" type="text">
+																				<input class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">
+																																					
+																				<div class="radio">
+																					<label class="label label-success">
+																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> TAK
+																					</label>
+																				</div>
+																				
+																				<div class="radio">
+																					<label class="label label-danger">
+																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option2"> NIE
+																					</label>
+																				</div>
+																					
+																				<div class="radio">
+																					<label class="label label-warning">
+																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option3"> NIE
+																					</label>
+																				</div>	
+
+																				<p class="help-block">&nbspDostępność książki.</p>																				
+																				
+																				<hr>
+																				<input class="btn btn-lg btn-info btn-block" type="submit" value="ZMIEŃ">
+																			</form>
+																		</div>
+																	</div>
+																	
+																</div>
+																</div>
+															</div>
+														</td>
 													</tr>
+													<!-- ...CALOSC-->
 												</tbody>
 											</table>
 										</div>
@@ -207,48 +360,229 @@
 																
 								</div>
 								
-								<div class="tab-pane fade" id="historia" style="margin-top:20px;">
+								<div class="tab-pane fade" id="uzytkownicy" style="margin-top:20px;">
 								
 									<div class="bs-example" data-example-id="table-within-panel">
 										<div class="panel panel-info">
 										
-											<div class="panel-heading">Archiwalne wypożyczenia</div>
-											<div class="panel-body"> <!--klasa hidden jesli ilosc wypozyczen != 0-->
-												<span class="label label-warning">Kara zapłacona</span> <span class="label label-danger">Kara nie zapłacona</span>
+											<div class="panel-heading">Edycja użytkowników</div>
+											
+											<!-- panel dodawania uzytkownikow-->
+											<div class="panel-group" id="userAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+												<div class="panel panel-success">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#userAccordion" href="#userCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj użytkownika
+															</a>
+														</h4>
+													</div>
+													<div id="userCollapseOne" class="panel-collapse collapse">
+														<div class="panel-body">
+														
+															tutaj formularz z rejestracji - na chwile obecna nie wiem jak on wyglada do konca
+														
+														</div>
+													</div>
+												</div>
 											</div>
+											
+											<br><br>
 
-											<table class="table">
+											<table class="table booklist-table">
 												<thead>
 													<tr>
-														<th>Tytuł</th>
-														<th>Data wypożyczenia</th>
-														<th>Data zwrotu</th>
+														<th>Imię</th>
+														<th>Nazwisko</th>
+														<th>PESEL</th>
+														<th></th>
+														<th></th>
+														<th></th>
 													</tr>
 												</thead>
-												<tbody>									
+												<tbody>
+													<!--UWAGA TO JEST...-->
 													<tr>
-														<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-														<td>12-12-2014r.</td>
-														<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp </td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#more_TUTAJPESEL"> SZCZEGÓŁY </a> </td>
+														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#edit_TUTAJPESEL"> EDYTUJ </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
 													</tr>
 													
 													<tr>
-														<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
-														<td>12-12-2014r.</td>
-														<td>30-12-2014r. &nbsp&nbsp <span class="label label-warning">1,20PLN</span> &nbsp&nbsp </td>
+														<td colspan="6" style="border-top:0 solid;">
+															<div id="accordion_TUTAJPESEL">
+																<div class="row">
+																<div id="more_TUTAJPESEL" class="panel-collapse collapse">
+																																	
+																	<div class="col-lg-4">
+																	
+																		<table class="table" style="margin:0px;">
+																			<tbody>									
+																				<tr>
+																					<td> <strong> Imię: </strong> </td>
+																					<td> Marcin </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Nazwisko: </strong> </td>
+																					<td> Pająk </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> PESEL: </strong> </td>
+																					<td> 91060327645 </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Adres email: </strong> </td>
+																					<td> m.pajak@gmail.com </td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	
+																	</div>
+																	
+																	<div class="col-lg-4">
+																	
+																		<table class="table">
+																			<tbody>									
+																				<tr>
+																					<td> <strong> Miasto: </strong> </td>
+																					<td> Kraków </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Ulica: </strong> </td>
+																					<td> Śliczna </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Numer domu: </strong> </td>
+																					<td> 12A </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Kod pocztowy: </strong> </td>
+																					<td> 
+																						32-324
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	
+																	</div>
+																	
+																	<div class="col-lg-4">
+																	
+																		<table class="table">
+																			<tbody>									
+																				<tr>
+																					<td> <strong> Numer karty: </strong> </td>
+																					<td> 67552537274 </td>
+																				</tr>
+																				
+																				<tr>
+																					<td> <strong> Konto zweryfikowane: </strong> </td>
+																					<td> <span class="label label-danger">NIE ZWERYFIKOWANE</span> </td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	
+																	</div>
+																	
+																</div>
+																</div>
+																
+																<div class="row">
+																<div id="edit_TUTAJPESEL" class="panel-collapse collapse">
+																	
+																	<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																		<div class="panel-heading">
+																			<h4 class="panel-title">
+																				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Edytuj dane użytkownika
+																			</h4>
+																		</div>
+																		<div class="panel-body">
+														
+																			tutaj ten sam form co wyżej
+																			
+																		</div>
+																	</div>
+																	
+																</div>
+																</div>
+															</div>
+														</td>
 													</tr>
+													<!-- ...CALOSC-->
 												</tbody>
 											</table>
+											
+										</div>
+									</div>
+																
+								</div>
+								
+								<div class="tab-pane fade" id="kary" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Edycja kar</div>
+											
+											<!-- panel dodawania uzytkownikow-->
+											<div class="panel-group" id="feeAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+												<div class="panel panel-success">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#feeAccordion" href="#feeCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj karę
+															</a>
+														</h4>
+													</div>
+													<div id="feeCollapseOne" class="panel-collapse collapse">
+														<div class="panel-body">
+														
+															tutaj formularz dodawania kar - nie mam zielonego pojecia jak powinien wygladac - ale chyba powinien zawierac PESEL, ISBN oraz Datę
+														
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<br><br>
+
+											<table class="table booklist-table">
+												<thead>
+													<tr>
+														<th>PESEL</th>
+														<th>ISBN</th>
+														<th>Data</th>
+														<th>Kwota</th>
+														<th></th>
+														<th></th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<!-- tu dane -->
+												</tbody>
+											</table>
+											
 										</div>
 									</div>
 																
 								</div>
 								
 							</div>
-
+							
 						</div>
 						<!-- END OF PANEL BODY-->
 					</div>
+				
 				</div>
 						
 			</div>
