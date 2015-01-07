@@ -43,8 +43,14 @@ Zablokuj</a>
 <a href="{{ URL::to('user/activate/' . $user[0]->id) }}" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i>
 Aktywuj</a>
 @endif
+@if($user[0]->usr_verified=="0")
 <a href="{{ URL::to('user/verify/' . $user[0]->id) }}" class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
 Zweryfikuj</a>
+@endif
+@if($user[0]->usr_verified=="1")
+<a href="{{ URL::to('user/verify/' . $user[0]->id) }}" class="btn btn-success disabled"><i class="glyphicon glyphicon-check"></i>
+Zweryfikuj</a>
+@endif
 <a href="/users" class="btn btn-default"><i class="glyphicon glyphicon-check"></i>
 Powrót</a>
 </p>

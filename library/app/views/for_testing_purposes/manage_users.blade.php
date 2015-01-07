@@ -46,6 +46,10 @@ Aktywuj</a>
 <a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
 Zweryfikuj</a>
 @endif
+@if($user->usr_verified=="1")
+<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-success disabled"><i class="glyphicon glyphicon-check"></i>
+Zweryfikuj</a>
+@endif
 </td>
 </tr>
 @endforeach
