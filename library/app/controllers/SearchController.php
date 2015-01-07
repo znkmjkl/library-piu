@@ -4,7 +4,7 @@ class SearchController extends \BaseController {
 
     public function getSearch()
     {
-        return View::make('home.search');
+        return View::make('search.search');
     }
 
 
@@ -46,7 +46,7 @@ class SearchController extends \BaseController {
                                            ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
                                            ->get();
 
-        return View::make('for_testing_purposes.search_results', array('search_results' => $search_results));
+        return View::make('search.search_results', array('search_results' => $search_results));
     }
 
 }
