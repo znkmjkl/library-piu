@@ -21,7 +21,8 @@ class RentalTableSeeder extends Seeder {
         		'rtl_bok_id' => $book_id,
         		'rtl_usr_id' => $user_id,
         		'rtl_start_date' => new DateTime,
-        		'rtl_end_date' => new DateTime('+30 days')
+        		'rtl_end_date' => new DateTime('+30 days'),
+                'rtl_is_returned' => false
         	));
 
         $book_id = DB::table('book')
@@ -39,7 +40,8 @@ class RentalTableSeeder extends Seeder {
         		'rtl_bok_id' => $book_id,
         		'rtl_usr_id' => $user_id,
         		'rtl_start_date' => new DateTime('-50 days'),
-        		'rtl_end_date' => new DateTime('-20 days')
+        		'rtl_end_date' => new DateTime('-20 days'),
+                'rtl_is_returned' => false
         	));
     }
 

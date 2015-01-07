@@ -47,15 +47,24 @@ class RentalController extends \BaseController {
 
     public function returnBook($rental_id){
 
-         DB::table('rental')
+        DB::table('rental')
          ->where('rtl_id','=', $rental_id)
          ->update(array('rtl_is_returned' => 1));
 
-         DB::table('fine')
+        DB::table('fine')
          ->where('fne_rtl_id','=', $rental_id)
          ->update(array('fne_status' => 0));
 
-    return Redirect::to('/rentedList/1/all');
+        $bok_id = DB::table('rental')
+                    ->where('rtl_id', '=', $rental_id)
+                    ->first()->rtl_bok_id;
+
+        DB::table('reservation')
+                    ->where('rvn_bok_id', '=', $bok_id)
+                    ->where('rvn_status', '=', 1)
+                    ->update(array('rvn_is_ready' => 1, 'rvn_date' => new DateTime));
+
+        return Redirect::to('/rentedList/1/all');
     }
 
 }

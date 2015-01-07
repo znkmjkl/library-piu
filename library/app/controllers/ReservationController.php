@@ -40,4 +40,60 @@ class ReservationController extends \BaseController {
 		return Redirect::back()->with('flash_message_danger', 'Zrezygnowałeś z rezerwacji.');
 	}
 
+	public function getIndex() {
+		$reservations = DB::table('reservation')
+                                ->where('rvn_status', true)
+                                ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
+                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+                                ->get();
+
+        return View::make('for_testing_purposes.manage_reservations', array('reservations' => $reservations));
+	}
+
+	public function cancelReservation($rvn_id) {
+		DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_status' => false));
+
+        return Redirect::to('/reservations')->with('flash_message_success', 'Rezerwacja została anulowana.');
+	}
+
+	public function rentBook($rvn_id) {
+		$reservation = DB::table('reservation')
+								->where('rvn_id', $rvn_id)
+								->where('rvn_is_ready', true)
+								->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
+                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+								->first();
+
+		$rental = new Rental;
+		$rental->rtl_bok_id = $reservation->rvn_bok_id;
+		$rental->rtl_usr_id = $reservation->rvn_usr_id;
+		$rental->rtl_start_date = new DateTime;
+		$rental->rtl_end_date = new DateTime('+30 days');
+		$rental->rtl_is_returned = false;
+		$rental->save();
+
+		DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_status' => false));
+
+        return Redirect::to('/reservations')->with('flash_message_success', 'Książka została wypożyczona.');
+	}
+
+	public function makeReadyReservation($rvn_id) {
+		$reservation = DB::table('reservation')
+								->where('rvn_id', $rvn_id)
+								->where('rvn_status', true)
+								->first();
+
+		$rent = DB::table('rental')
+								->where('rtl_bok_id', $reservation->rvn_bok_id)
+								->where('rtl_is_returned', false)
+								->get();
+
+		if(empty($rent)) {
+			DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_is_ready' => true));
+
+        	return Redirect::to('/reservations')->with('flash_message_success', 'Status rezerwacji został zmieniony na gotowa do odbioru.');
+        } else {
+        	return Redirect::to('/reservations')->with('flash_message_danger', 'Książka nie została oddana.');
+        }
+	}
 }
