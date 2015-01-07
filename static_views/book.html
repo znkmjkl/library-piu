@@ -122,100 +122,128 @@
         					
 		<div class="container marketing about">
 		
-			<div style="margin-bottom:20px; margin-left:2%; width:96%;">
+			<div style="margin-bottom:20px; margin-top:20px; margin-left:2%; width:96%;">
 		
-				<div class="panel-group" id="accordion" style="margin-top:20px;">
-					<div class="panel panel-default">
+				<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-									<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> &nbsp Filtry
-								</a>
+								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> &nbsp Informacje o książce
 							</h4>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse in">
+						<div class="panel-body">
 							
-							<form method="POST" action="http://localhost:8000/search" accept-charset="UTF-8"><input name="_token" type="hidden" value="IJCduGkZUbtdWzmAFl5zRufUJK9YMkLCWxK0jTX3">
-								<div class="col-xs-8" style="margin-top:10px;">
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Tytuł" name="bok_title" type="text">                   </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Autor" name="bok_atr" type="text">                     </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="ISBN" name="bok_isbn" type="text">                     </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Data wydania" name="bok_edition_date" type="text">     </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Gatunek" name="bok_knd" type="text">                    </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Język" name="bok_lng" type="text">                     </div>
-									<div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">  </div>
-								</div>
-								
-								<div class="col-xs-4" style="margin-top:10px;">
+							<div class="col-md-5">
+							
+								<center>
+									<img src="img/cover1.jpg" alt="Tytuł książki - okładka" class="cover-big" style="margin: 0 auto;" />
+								</center>
+							
+							</div>
+							
+							<div class="col-md-7">
+							
+								<table class="table" style="margin-top:20px;">
+									<tbody>									
+										<tr>
+											<td> <strong> Tytuł: </strong> </td>
+											<td> O psie który jeździł koleją </td>
+										</tr>
 										
-									<input style="margin-top:45px;" class="btn btn-md btn-primary btn-block" type="submit" value="Szukaj">
-								
-								</div>
-
-							</form>
-
+										<tr>
+											<td> <strong> Autor: </strong> </td>
+											<td> Jan Kowalski </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> ISBN: </strong> </td>
+											<td> 978-3-16-148410-0 </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> Data wydania: </strong> </td>
+											<td> 2013r. </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> Numer wydania: </strong> </td>
+											<td> 1 </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> Gatunek: </strong> </td>
+											<td> Horror </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> Język: </strong> </td>
+											<td> Polski </td>
+										</tr>
+										
+										<tr>
+											<td> <strong> Dostępność: </strong> </td>
+											<td> 
+												<span class="label label-success">TAK</span>
+												<span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span>
+												<span class="label label-danger">NIE</span>
+												<!-- ofc tylko jedno naraz :) -->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							
+							</div>
 							
 						</div>
 					
-					</div>
 				</div>
+				
 			</div>
 									
-			<div class="col-md-12">	
+			<div class="col-md-6 col-md-offset-3">	
 				
-				<!-- UWAGA! tu na dobra sprawe moznaby pododawac tez linki do autora/dat wydania etc tak zeby przenosilo od razu do strony wyszukiwania
-				            z ksiazkami spelniajacymi to kryterium (np ktorych autorem jest jan kowalski) -->
+				<!--WYPOZYCZENIE-->
+				<!-- JEŚLI DANA OPCJA JEST NIEAKTYWNA TO KLASA BUTTONA ZMIENIA SIE NA hidden a accordiona znika -->
+				<input class="btn btn-lg btn-success btn-block" type="submit" value="Wypożycz">
 				
-				<table class="table booklist-table">
-					<thead>
-						<tr>
-						
-							<th> </th>
-							<th>Tytuł</th>
-							<th>Autor</th>
-							<th>ISBN</th>
-							<th>Data i nr wydania</th>
-							<th>Gatunek</th>
-							<th>Język</th>
-							<th>Dostępność</th>
-							
-						</tr>
-					</thead>
-					<tbody>									
-						<tr>
-							<td><a href="stronaksiazki.html"><img src="img/cover1.jpg" alt="Tytuł 1 - okładka" class="thumbnail" /></a></td>
-							<td><a href="stronaksiazki.html"><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-							<td>Jan Kowalski</td>
-							<td>978-3-16-148410-0</td>
-							<td>2013r. / 1 </td>
-							<td>Horror</td>
-							<td>Polski</td>
-							<td> <span class="label label-danger">NIE</span> </td>
-						</tr>
-						
-						<tr>
-							<td><a href="stronaksiazki.html"><img src="img/cover2.jpg" alt="Tytuł 2 - okładka" class="thumbnail" /></a></td>
-							<td><a href="stronaksiazki.html"><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-							<td>Jan Kowalski</td>
-							<td>978-3-16-148410-0</td>
-							<td>2013r. / 1 </td>
-							<td>Horror</td>
-							<td>Polski</td>
-							<td> <span class="label label-success">TAK</span> </td>
-						</tr>
-						
-						<tr>
-							<td><a href="stronaksiazki.html"><img src="img/cover3.jpg" alt="Tytuł 3 - okładka" class="thumbnail" /></a></td>
-							<td><a href="stronaksiazki.html"><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-							<td>Jan Kowalski</td>
-							<td>978-3-16-148410-0</td>
-							<td>2013r. / 1 </td>
-							<td>Horror</td>
-							<td>Polski</td>
-							<td> <span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span> </td>
-						</tr>
-					</tbody>
-				</table>
+				<div id="accordionRent" class="hidden">
+					
+					<a data-toggle="collapse" data-parent="#accordionRent" href="#wypozycz" style="line-height: 100%; display: block; text-decoration: none;">
+						<input class="btn btn-lg btn-default btn-block btn-bookbook" type="submit" value="Wypożycz">
+					</a>
+					
+					<div id="wypozycz" class="panel-collapse collapse">
+						<p style="text-align:center;">	
+							<br>
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Książka jest już wypożyczona
+							<br><br>
+						</p>
+					</div>
+					
+				</div>
+				
+				
+				<!--REZERWACJA-->
+				<!-- JEŚLI DANA OPCJA JEST NIEAKTYWNA TO KLASA BUTTONA ZMIENIA SIE NA hidden a accordiona znika -->
+				<input class="btn btn-lg btn-warning btn-block btn-bookbook" type="submit" value="Zarezerwuj">
+				
+				<div id="accordionRent" class="hidden">
+					
+					<a data-toggle="collapse" data-parent="#accordionRent" href="#zarezerwuj" style="line-height: 100%; display: block; text-decoration: none;">
+						<input class="btn btn-lg btn-default btn-block btn-bookbook" type="submit" value="Zarezerwuj">
+					</a>
+					
+					<div id="zarezerwuj" class="panel-collapse collapse">
+						<p style="text-align:center;">	
+							<br>
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Książka jest już zarezerwowana
+							<br><br>
+						</p>
+					</div>
+					
+				</div>
+				
+				<br><br>
+				
 			</div>
 								
 		</div>

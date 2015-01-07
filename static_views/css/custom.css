@@ -67,3 +67,19 @@ a:hover
 	text-indent:30px;
 	font-weight: normal;
 }
+
+.booklist-table tbody tr td
+{
+	vertical-align: middle;
+}
+
+.booklist-table tbody tr td .thumbnail
+{
+	width:45px;
+	margin: 0 auto;
+}
+
+.btn-bookbook
+{
+	margin-top:5px;
+}
