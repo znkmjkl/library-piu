@@ -250,7 +250,7 @@ class UserTableSeeder extends Seeder {
         		'usr_surname' => 'Wojtak',
         		'usr_adr_id' => $address_id, 
         		'usr_phone' => '342923843',
-        		// 'usr_number' => '',
+        		'usr_number' => '100000001',
         		'usr_pesel' => '39849374983',
         		'usr_active' => true,
         		'usr_verified' => false,

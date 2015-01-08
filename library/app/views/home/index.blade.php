@@ -14,7 +14,7 @@
                     
                     <p>
                         Jest to najwygodniejszy sposób wypożyczania książek. Załóż konto, wyszukaj pozycję w naszej bazie, a następnie odbierz ją
-                        w jednej z naszych filii. Masz pewność, że zastaniesz swoją książkę oraz dostęp do listy tych wypożyczonych. Wszystko w zasięgu
+                        w bibliotece. Masz pewność, że zastaniesz swoją książkę oraz dostęp do listy tych wypożyczonych. Wszystko w zasięgu
                         ręki!
                         <br>
                         <br>

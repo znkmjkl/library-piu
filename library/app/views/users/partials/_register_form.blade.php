@@ -14,8 +14,8 @@
   
 </style>
 <div ng-controller="registerController">
-<h3 class="form-signin-heading" ng-click="showReg()" style="text-align:center;"><span class="click-reg">Kliknij by przejść do</span> <b>rejestracji</b></h3>
-{{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm', "ng-show" => "regVisible")) }}
+
+{{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm')) }}
 		<h1 class="form-signin-heading" style="text-align:center;">Rejestracja </h1>
 		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
 		{{ Form::text('firstname', null, array('class' => 'form-control', 'placeholder' => 'Podaj imię', 'required' => true,
@@ -81,7 +81,7 @@
   <script>
         
         function registerController($scope) {
-            $scope.regVisible = false;
+        
             
             $scope.captchaRefresh = function(){
                 var captchaSrc = $(".captcha_img").attr("src").split("?");
@@ -89,9 +89,6 @@
                 $(".captcha_img").attr("src", captchaSrcNew);
             }
 
-            $scope.showReg = function(){
-                $scope.regVisible = !$scope.regVisible;
-            }
             
             $scope.checkName = function (){
                 
