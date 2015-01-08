@@ -15,7 +15,7 @@ class AdminController extends \BaseController {
                                 ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
                                 ->get();
 
-        return View::make('admin.administration', array('users' => $users, 'reservations' => $reservations));
+        return View::make('admin.admin', array('users' => $users, 'reservations' => $reservations));
     }
 
 }
