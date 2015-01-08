@@ -17,7 +17,7 @@ class LanguageController extends \BaseController {
                                             ->where('bok_lng_id', $lng_id)
                                             ->get();
 
-		return View::make('for_testing_purposes.language', array('books_languages' => $books_languages));
+		return View::make('search.search_table', array('search_results' => $books_languages));
 	}
 
 }

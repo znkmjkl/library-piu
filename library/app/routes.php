@@ -42,7 +42,7 @@ Route::get('/about', 'HomeController@getAbout');
 
 Route::get('/help', 'HomeController@getHelp');
 
-Route::get('/subsidiaries', 'HomeController@getSubsidiaries');
+Route::get('/contact', 'HomeController@getContact');
 
 Route::get('/status', 'HomeController@getStatus');
 
@@ -106,7 +106,7 @@ Route::get('/editbook/{id}','BookController@getEditBookView');
 Route::post('/editbook/{id}', 'BookController@editBook');
 
 /* Account */
-Route::get('/account', 'AccountController@getAccount');
+Route::get('/account', 'AccountController@getAccount')->before('auth');
 
 Route::post('/changePass', 'AccountController@changePassword');
 

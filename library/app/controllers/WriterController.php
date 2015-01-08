@@ -10,21 +10,25 @@ class WriterController extends \BaseController {
      */
     public function getShowWriter($wtr_id)
     {
-        $books_authors = DB::table('book')->join('author', 'atr_bok_id', '=', 'book.bok_id')
-                                          ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
-                                          ->join('language', 'lng_id', '=', 'book.bok_lng_id')
-                                          ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-                                          ->where('atr_id', $wtr_id)
-                                          ->get();
+        $books_authors = DB::table('writer')//->join('book', 'bok_id', '=', 'author.atr_bok_id')
+        //                                     //->join('author', 'atr_bok_id', '=', 'book.bok_id')
 
-        return View::make('for_testing_purposes.author', array('books_authors' => $books_authors));
+        //                                     // ->join('language', 'lng_id', '=', 'book.bok_lng_id')
+        //                                     // ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+        //                                     ->where('wtr_id', $wtr_id)
+                                            ->get();
+        dd($books_authors);
+        // return View::make('search.search_table', array('search_results' => $books_authors));
     }
-public function getAddWriterView()
+
+
+  public function getAddWriterView()
   {
 
     return View::make('for_testing_purposes.add_author');
 
   }
+
 
   public function postWriter()
   {
@@ -46,7 +50,8 @@ public function getAddWriterView()
 
   }
 
-   public function getEditWriterView($writer_id)
+
+  public function getEditWriterView($writer_id)
   {
 
     $writer = DB::table('writer')->where('wtr_id',$writer_id)->get();

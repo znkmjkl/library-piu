@@ -7,25 +7,8 @@
 	font-weight: bold;
 }
 </style>
- <h4>Dane użytkownika</h4>
- imię: {{ Auth::user()->usr_name }}<br/>
- nazwisko: {{ Auth::user()->usr_surname }}<br/>
- telefon: {{ Auth::user()->usr_phone }}<br/>
- numer: {{ Auth::user()->usr_number }}<br/>
- pesel: {{ Auth::user()->usr_pesel }}<br/>
-
- Miasto {{$address[0]->adr_city}}<br/>
- Ulica {{$address[0]->adr_street}}<br/>
- Numer domu {{$address[0]->adr_house_number}}<br/>
- Kod pocztowy {{$address[0]->adr_postal_code}}<br/>
 
 
- @if( Auth::user()->usr_verified )
- 	<span class="label label-success">Dane zweryfikowane</span>
- @else
- 	<span class="label label-warning">Dane niezweryfikowane</span>
- @endif
- <br/>
  <h4>Rezerwacje</h4>
  @if(count($rvns)==0)
  	brak rezerwacji
@@ -92,32 +75,69 @@
 										
 										<tr>
 											<td> Numer telefonu: </td>
-											<td class="udt-val-td"> {{ Auth::user()->usr_phone }} </td>
+											<td class="udt-val-td"> 
+											@if(!empty(Auth::user()->usr_phone))
+												{{ Auth::user()->usr_phone }}
+											@else
+												brak danych
+											@endif
+											</td>
 										</tr>
 										
 										<tr>
 											<td> PESEL: </td>
-											<td class="udt-val-td"> {{ Auth::user()->usr_pesel }} </td>
+											<td class="udt-val-td">
+											@if(!empty(Auth::user()->usr_pesel))
+												{{ Auth::user()->usr_pesel }}
+											@else
+												brak danych
+											@endif
+											</td>
 										</tr>
 																	
 										<tr>
 											<td> Miasto zamieszkania: </td>
-											<td class="udt-val-td"> {{$address[0]->adr_city}} </td>
+											<td class="udt-val-td"> 
+											@if(!empty($address[0]->adr_city))
+												{{$address[0]->adr_city}}
+											@else
+												brak danych
+											@endif
+											</td>
 										</tr>
 										
 										<tr>
 											<td> Ulica: </td>
-											<td class="udt-val-td"> {{$address[0]->adr_street}} </td>
+											<td class="udt-val-td">
+											@if(!empty($address[0]->adr_street))
+												{{$address[0]->adr_street}} 
+											@else
+												brak danych
+											@endif
+											
+											</td>
 										</tr>
 										
 										<tr>
 											<td> Numer domu: </td>
-											<td class="udt-val-td"> {{$address[0]->adr_house_number}} </td>
+											<td class="udt-val-td"> 
+											@if(!empty($address[0]->adr_house_number))
+												{{$address[0]->adr_house_number}}
+											@else
+												brak danych
+											@endif
+											</td>
 										</tr>
 										
 										<tr>
 											<td> Kod pocztowy: </td>
-											<td class="udt-val-td"> {{$address[0]->adr_postal_code}} </td>
+											<td class="udt-val-td">
+											@if(!empty($address[0]->adr_postal_code))
+												{{$address[0]->adr_postal_code}}
+											@else
+												brak danych
+											@endif 
+											</td>
 										</tr>
 									
 									</table>
