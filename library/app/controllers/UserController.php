@@ -23,23 +23,45 @@ class UserController extends \BaseController {
         $validatorCaptcha = Validator::make(Input::all(), $rulesCaptcha);
 
         if ($validatorCaptcha->fails()){
-            return Redirect::intended('/')->with('flash_message_danger', 'Wprowadzono nieprawidłowy kod z obrazka.');
+            return Redirect::back()->with('flash_message_danger', 'Wprowadzono nieprawidłowy kod z obrazka.')->withInput(Input::except('password','captcha'));
         }
         if ($validator->passes()) {
+            $userNumber = DB::table('user')->orderBy('id', 'desc')->first();
+
             $user = new User;
             $user->usr_name = Input::get('firstname');
             $user->usr_surname = Input::get('lastname');
             $user->email = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
+            $user->usr_number = $userNumber->usr_number + 1;
+            $user->usr_active = 0;
+            $user->usr_verified = 0;
+
+            $address = new Address;
+            
+            if(!empty(Input::get('city')))
+                $address->adr_city = Input::get('city');
+            if(!empty(Input::get('street')))
+                $address->adr_street = Input::get('street');
+            if(!empty(Input::get('houseNr')))
+                $address->adr_house_number = Input::get('houseNr');
+            if(!empty(Input::get('zipCode')))
+                $address->adr_postal_code = Input::get('zipCode');
+            $address->save();
+            
+            $addressID = DB::table('address')->orderBy('adr_id', 'desc')->first();
+            $user->usr_adr_id = $addressID->adr_id;
+
+            $user->save();
             //  Mail::send('emails.registration.welcome', array('firstname'=>Input::get('firstname')), function($message){
             //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
             // });
-            $user->save();
-            return Redirect::intended('/')->with('flash_message_success', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
+
+            return Redirect::back()->with('flash_message_success', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
         }
         else
         {
-            return Redirect::intended('/')->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::back()->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput(Input::except('password','captcha'));
         }
     }
 
@@ -59,7 +81,7 @@ class UserController extends \BaseController {
         }
         else
         {
-           return Redirect::to('/')->withErrors($validator)
+           return Redirect::back()->withErrors($validator)
                                    ->with('flash_message_danger', 'Wprowadzony email i hasło nie są poprawne!')
                                    ->withInput();
         }

@@ -37,9 +37,9 @@ class HomeController extends BaseController {
 		return View::make('home.help');
 	}
 
-	public function getSubsidiaries()
+	public function getContact()
 	{
-		return View::make('home.subsidiaries');
+		return View::make('home.contact');
 	}
 
 	public function getStatus()
