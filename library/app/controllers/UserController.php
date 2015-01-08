@@ -23,7 +23,7 @@ class UserController extends \BaseController {
         $validatorCaptcha = Validator::make(Input::all(), $rulesCaptcha);
 
         if ($validatorCaptcha->fails()){
-            return Redirect::back()->with('flash_message_danger', 'Wprowadzono nieprawidłowy kod z obrazka.');
+            return Redirect::back()->with('flash_message_danger', 'Wprowadzono nieprawidłowy kod z obrazka.')->withInput(Input::except('password','captcha'));
         }
         if ($validator->passes()) {
             $userNumber = DB::table('user')->orderBy('id', 'desc')->first();
@@ -61,7 +61,7 @@ class UserController extends \BaseController {
         }
         else
         {
-            return Redirect::back()->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::back()->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput(Input::except('password','captcha'));
         }
     }
 

@@ -18,16 +18,16 @@
 {{ Form::open(array('url' => 'users/register', 'class' => 'form-signin', 'name'=>'regForm')) }}
 		<h1 class="form-signin-heading" style="text-align:center;">Rejestracja </h1>
 		<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
-		{{ Form::text('firstname', null, array('class' => 'form-control', 'placeholder' => 'Podaj imię', 'required' => true,
-		'ng-model' => 'user.name',"ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
+		{{ Form::text('firstname', "abc", array('class' => 'form-control', 'placeholder' => 'Podaj imię', 'required' => true,
+		'ng-model' => 'firstname',"ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
 		'ng-blur'=>'checkName()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawne imię")) }}		
 		
 		{{ Form::text('lastname', null, array('class' => 'form-control', 'placeholder' => 'Podaj nazwisko', 'required' => true,
-		'ng-model' => 'user.lastname', "ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
+		'ng-model' => 'lastname', "ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{1,20}$/",
 		'ng-blur'=>'checkLastName()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawne nazwisko")) }}
 		
 		{{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Podaj adres email', 'required' => true,
-		'ng-model' => 'user.email','ng-blur'=>'checkEmail()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny adres email")) }}
+		'ng-model' => 'email','ng-blur'=>'checkEmail()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny adres email")) }}
 		
 		{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Podaj hasło', 'required' => true,
 		'ng-model' => 'user.password1', 'ng-blur' => 'checkPass()',
@@ -40,21 +40,20 @@
 		<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
 		
 		{{ Form::text('city', null, array('class' => 'form-control', 'placeholder' => 'Podaj miasto',
-		'ng-model' => 'user.city', "ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{0,30}$/",
+		'ng-model' => 'city', "ng-pattern"=>"/^[A-Za-z'\-żźćńółęąśŻŹĆĄŚĘŁÓŃ]{0,30}$/",
 		'ng-blur'=>'checkCity()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawne miasto")) }}
 		
 		{{ Form::text('street', null, array('class' => 'form-control', 'placeholder' => 'Podaj ulice',
-		'ng-model' => 'user.street', 
+		'ng-model' => 'street', 
 		'ng-blur'=>'checkStreet()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawną ulice")) }}
 		
 		{{ Form::text('houseNr', null, array('class' => 'form-control', 'placeholder' => 'Podaj numer budynku',
-		'ng-model' => 'user.houseNr',
+		'ng-model' => 'houseNr',
 		'ng-blur'=>'checkHouseNr()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź numer domu")) }}
 		
 		{{ Form::text('zipCode', null, array('class' => 'form-control', 'placeholder' => 'Podaj kod pocztowy',
-		'ng-model' => 'user.zipCode',
 		'ng-blur'=>'checkZipCode()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny kod pocztowy",
-		'ng-model' => 'user.zipCode', "ng-pattern" => "/^[0-9]{2}-[0-9]{3}$/", )) }}
+		'ng-model' => 'zipCode', "ng-pattern" => "/^[0-9]{2}-[0-9]{3}$/", )) }}
 		<label>
 			*należy wypełnić wszystkie pola
 		</label>
@@ -82,6 +81,13 @@
         
         function registerController($scope) {
         
+            $scope.firstname =<?php echo json_encode(Input::old("firstname")); ?>;
+            $scope.lastname =<?php echo json_encode(Input::old("lastname")); ?>;
+            $scope.email =<?php echo json_encode(Input::old("email")); ?>;
+            $scope.city =<?php echo json_encode(Input::old("city")); ?>;
+            $scope.street =<?php echo json_encode(Input::old("street")); ?>;
+            $scope.houseNr =<?php echo json_encode(Input::old("houseNr")); ?>;
+            $scope.zipCode =<?php echo json_encode(Input::old("zipCode")); ?>;
             
             $scope.captchaRefresh = function(){
                 var captchaSrc = $(".captcha_img").attr("src").split("?");
