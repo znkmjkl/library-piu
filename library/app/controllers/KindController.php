@@ -17,7 +17,7 @@ class KindController extends \BaseController {
 										->where('bok_knd_id', $knd_id)
 										->get();
 
-		return View::make('for_testing_purposes.kind', array('books_kinds' => $books_kinds));
+		return View::make('search.search_table', array('search_results' => $books_kinds));
 	}
 
 }
