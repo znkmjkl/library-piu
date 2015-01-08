@@ -143,6 +143,7 @@
 							<ul class="nav nav-pills  nav-stacked">
 								<li role="presentation" class="active"><a href="#ksiazki" data-toggle="tab"> Książki </a></li>								
 								<li role="presentation" ><a href="#uzytkownicy" data-toggle="tab"> Użytkownicy </a></li>
+								<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
 								<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
 							</ul>
 						</div>
@@ -159,36 +160,65 @@
 											<div class="panel-heading">Edycja książek</div>
 											
 											<!-- panel dodawania ksiazki-->
-											<div class="panel-group" id="accordion" style="width:50%; margin:0 auto; margin-top:20px;">
+											<div class="panel-group" id="addBookAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 												<div class="panel panel-success">
 													<div class="panel-heading">
 														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj książkę
+															<a data-toggle="collapse" data-parent="#addBookAccordion" href="#addBookCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp Dodaj książkę
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
 															</a>
 														</h4>
 													</div>
-													<div id="collapseOne" class="panel-collapse collapse">
+													<div id="addBookCollapseOne" class="panel-collapse collapse">
 														<div class="panel-body">
 														
-															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
-															<form method="POST" action="http://localhost:8000/search" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="iq5LB326l7LTFUbBOOSw6cOihyq2PsiNwGG6x6Jv">
+															<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
 																
 																<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
 																<p class="help-block">&nbspOkładka książki.</p>
-																
+																															
 																<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
 																<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
-																<input class="form-control" placeholder="Język" name="bok_lng" type="text">
-																<input class="form-control" placeholder="Autor" name="bok_atr" type="text">
-																<input class="form-control" placeholder="Rodzaj" name="bok_knd" type="text">
-																<input class="form-control" placeholder="Data wydania" name="bok_edition_date" type="text">
-																<input class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">
+																<p><select class="form-control" multiple="1" name="writer[]"></select></p>
+																<p><select class="form-control" name="language"></select></p>
+																<p><select class="form-control" name="kind"></select></p>
+																<input class="form-control" placeholder="Data wydania" name="date" type="text">
+																<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
+
 																<hr>
-																<input class="btn btn-lg btn-success btn-block" type="submit" value="DODAJ">
+																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj książkę">
 															</form>
 
 														
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<!-- panel dodawania autora-->
+											<div class="panel-group" id="addAuthorAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+												<div class="panel panel-success">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#addAuthorAccordion" href="#addAuthorCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp Dodaj autora
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
+															</a>
+														</h4>
+													</div>
+													<div id="addAuthorCollapseOne" class="panel-collapse collapse">
+														<div class="panel-body">
+														
+															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
+															<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																<input class="form-control" placeholder="Imię" name="author_name" type="text">
+																<input class="form-control" placeholder="Nazwisko" name="author_surname" type="text">
+																<input class="form-control" placeholder="Data urodziń" name="birth_date" type="text">
+																<hr>
+																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj Autora">
+															</form>
+
 														</div>
 													</div>
 												</div>
@@ -308,41 +338,21 @@
 																		<div class="panel-body">
 														
 																			<!-- UWAGA TU SKOPIOWALEM FORMA Z GÓRY - na pewno trzeba go troche zmodyfikowac -->
-																			<form method="POST" action="http://localhost:8000/search" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="iq5LB326l7LTFUbBOOSw6cOihyq2PsiNwGG6x6Jv">
-																				
+																			<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																
 																				<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
 																				<p class="help-block">&nbspOkładka książki.</p>
-																				
+																																			
 																				<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
 																				<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
-																				<input class="form-control" placeholder="Język" name="bok_lng" type="text">
-																				<input class="form-control" placeholder="Autor" name="bok_atr" type="text">
-																				<input class="form-control" placeholder="Rodzaj" name="bok_knd" type="text">
-																				<input class="form-control" placeholder="Data wydania" name="bok_edition_date" type="text">
-																				<input class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">
-																																					
-																				<div class="radio">
-																					<label class="label label-success">
-																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> TAK
-																					</label>
-																				</div>
-																				
-																				<div class="radio">
-																					<label class="label label-danger">
-																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option2"> NIE
-																					</label>
-																				</div>
-																					
-																				<div class="radio">
-																					<label class="label label-warning">
-																						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option3"> NIE
-																					</label>
-																				</div>	
+																				<p><select class="form-control" multiple="1" name="writer[]"></select></p>
+																				<p><select class="form-control" name="language"></select></p>
+																				<p><select class="form-control" name="kind"></select></p>
+																				<input class="form-control" placeholder="Data wydania" name="date" type="text">
+																				<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
 
-																				<p class="help-block">&nbspDostępność książki.</p>																				
-																				
 																				<hr>
-																				<input class="btn btn-lg btn-info btn-block" type="submit" value="ZMIEŃ">
+																				<input class="btn btn-lg btn-info btn-block" type="submit" value="Zmień dane">
 																			</form>
 																		</div>
 																	</div>
@@ -368,19 +378,55 @@
 											<div class="panel-heading">Edycja użytkowników</div>
 											
 											<!-- panel dodawania uzytkownikow-->
-											<div class="panel-group" id="userAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+											<div class="panel-group" id="addUserAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 												<div class="panel panel-success">
 													<div class="panel-heading">
 														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#userAccordion" href="#userCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj użytkownika
+															<a data-toggle="collapse" data-parent="#addUserAccordion" href="#addUserCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp Dodaj użytkownika
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
 															</a>
 														</h4>
 													</div>
-													<div id="userCollapseOne" class="panel-collapse collapse">
+													<div id="addUserCollapseOne" class="panel-collapse collapse">
 														<div class="panel-body">
 														
-															tutaj formularz z rejestracji - na chwile obecna nie wiem jak on wyglada do konca
+															<form method="POST" action="http://localhost:8000/adduser" accept-charset="UTF-8" class="form-signin" name="regForm" ng-show="regVisible"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+															
+																<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
+																<input class="form-control" placeholder="Podaj imię" required="1" ng-model="user.name" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne imię" name="firstname" type="text">		
+
+																<input class="form-control" placeholder="Podaj nazwisko" required="1" ng-model="user.lastname" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkLastName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne nazwisko" name="lastname" type="text">
+
+																<input class="form-control" placeholder="Podaj adres email" required="1" ng-model="user.email" ng-blur="checkEmail()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny adres email" name="email" type="email">
+
+																<input class="form-control" placeholder="Podaj hasło" required="1" ng-model="user.password1" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password" type="password" value="">
+
+																<input class="form-control" placeholder="Potwierdź hasło" required="1" ng-model="user.password2" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password_confirmation" type="password" value="">
+
+																<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
+
+																<input class="form-control" placeholder="Podaj miasto" ng-model="user.city" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{0,30}$/" ng-blur="checkCity()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne miasto" name="city" type="text">
+
+																<input class="form-control" placeholder="Podaj ulice" ng-model="user.street" ng-blur="checkStreet()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawną ulice" name="street" type="text">
+
+																<input class="form-control" placeholder="Podaj numer budynku" ng-model="user.houseNr" ng-blur="checkHouseNr()" data-toggle="tooltip" data-placement="right" title="Wprowadź numer domu" name="houseNr" type="text">
+
+																<input class="form-control" placeholder="Podaj kod pocztowy" ng-model="user.zipCode" ng-blur="checkZipCode()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny kod pocztowy" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" name="zipCode" type="text">
+
+																<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Dane Dodatkowe</label>
+
+																<input class="form-control" placeholder="Podaj numer telefonu" ng-model="user.phone" ng-pattern="/^[+]{0,1}[0-9]{0,11}$/" ng-blur="checkPhoneNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer telefonu" name="phone" type="text">
+
+																<input class="form-control" placeholder="Podaj numer użytkownika" ng-model="user.user_number" ng-pattern="/^.{12}$/" ng-blur="checkUserNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer użytkownika" name="user_number" type="text">
+
+																<input class="form-control" placeholder="Podaj pesel" ng-model="user.pesel" ng-pattern="/^[0-9]{11}$/" ng-blur="checkPesel()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny pesel" name="pesel" type="text">
+
+																<label>
+																*należy wypełnić wszystkie pola
+																</label>
+																<input class="btn btn-lg btn-success btn-block" ng-disabled="!regForm.$valid" ng-model="regFormSubmit" type="submit" value="Dodaj użytkownika">
+															</form>
 														
 														</div>
 													</div>
@@ -394,7 +440,9 @@
 													<tr>
 														<th>Imię</th>
 														<th>Nazwisko</th>
+														<th>Email</th>
 														<th>PESEL</th>
+														<th>Status konta</th>
 														<th></th>
 														<th></th>
 														<th></th>
@@ -405,7 +453,9 @@
 													<tr>
 														<td>Marcin</td>
 														<td>Pająk</td>
+														<td>m.pajak@gmail.com</td>
 														<td>91060327645</td>
+														<td><span class="label label-danger">NIE ZWERYFIKOWANE</span></td>
 														<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#more_TUTAJPESEL"> SZCZEGÓŁY </a> </td>
 														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#edit_TUTAJPESEL"> EDYTUJ </a> </td>
 														<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
@@ -485,7 +535,7 @@
 																				</tr>
 																				
 																				<tr>
-																					<td> <strong> Konto zweryfikowane: </strong> </td>
+																					<td> <strong> Status konta: </strong> </td>
 																					<td> <span class="label label-danger">NIE ZWERYFIKOWANE</span> </td>
 																				</tr>
 																			</tbody>
@@ -507,7 +557,42 @@
 																		</div>
 																		<div class="panel-body">
 														
-																			tutaj ten sam form co wyżej
+																			<form method="POST" action="http://localhost:8000/adduser" accept-charset="UTF-8" class="form-signin" name="regForm" ng-show="regVisible"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+															
+																				<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
+																				<input class="form-control" placeholder="Podaj imię" required="1" ng-model="user.name" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne imię" name="firstname" type="text">		
+
+																				<input class="form-control" placeholder="Podaj nazwisko" required="1" ng-model="user.lastname" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkLastName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne nazwisko" name="lastname" type="text">
+
+																				<input class="form-control" placeholder="Podaj adres email" required="1" ng-model="user.email" ng-blur="checkEmail()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny adres email" name="email" type="email">
+
+																				<input class="form-control" placeholder="Podaj hasło" required="1" ng-model="user.password1" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password" type="password" value="">
+
+																				<input class="form-control" placeholder="Potwierdź hasło" required="1" ng-model="user.password2" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password_confirmation" type="password" value="">
+
+																				<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
+
+																				<input class="form-control" placeholder="Podaj miasto" ng-model="user.city" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{0,30}$/" ng-blur="checkCity()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne miasto" name="city" type="text">
+
+																				<input class="form-control" placeholder="Podaj ulice" ng-model="user.street" ng-blur="checkStreet()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawną ulice" name="street" type="text">
+
+																				<input class="form-control" placeholder="Podaj numer budynku" ng-model="user.houseNr" ng-blur="checkHouseNr()" data-toggle="tooltip" data-placement="right" title="Wprowadź numer domu" name="houseNr" type="text">
+
+																				<input class="form-control" placeholder="Podaj kod pocztowy" ng-model="user.zipCode" ng-blur="checkZipCode()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny kod pocztowy" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" name="zipCode" type="text">
+
+																				<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Dane Dodatkowe</label>
+
+																				<input class="form-control" placeholder="Podaj numer telefonu" ng-model="user.phone" ng-pattern="/^[+]{0,1}[0-9]{0,11}$/" ng-blur="checkPhoneNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer telefonu" name="phone" type="text">
+
+																				<input class="form-control" placeholder="Podaj numer użytkownika" ng-model="user.user_number" ng-pattern="/^.{12}$/" ng-blur="checkUserNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer użytkownika" name="user_number" type="text">
+
+																				<input class="form-control" placeholder="Podaj pesel" ng-model="user.pesel" ng-pattern="/^[0-9]{11}$/" ng-blur="checkPesel()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny pesel" name="pesel" type="text">
+
+																				<label>
+																				*należy wypełnić wszystkie pola
+																				</label>
+																				<input class="btn btn-lg btn-info btn-block" ng-disabled="!regForm.$valid" ng-model="regFormSubmit" type="submit" value="Zmień dane">
+																			</form>
 																			
 																		</div>
 																	</div>
@@ -517,6 +602,68 @@
 															</div>
 														</td>
 													</tr>
+													<!-- ...CALOSC-->
+												</tbody>
+											</table>
+											
+										</div>
+									</div>
+																
+								</div>
+								
+								<div class="tab-pane fade" id="rezerwacje" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Edycja rezerwacji</div>
+											
+											<br>
+											
+											<table class="table booklist-table">
+												<thead>
+													<tr>
+														<th>ISBN</th>
+														<th>Imię</th>
+														<th>Nazwisko</th>
+														<th>PESEL</th>
+														<th>Data</th>
+														<th>Status</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<!--UWAGA TO JEST...-->
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-success">WYPOŻYCZENIE</span></td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-warning">OCZEKUJE</span></td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-default">ARCHIWALNE</span></td>
+														<td> <a class="btn btn-sm btn-default btn-block"> ANULUJ </a> </td>
+													</tr>
+													
 													<!-- ...CALOSC-->
 												</tbody>
 											</table>
