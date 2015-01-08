@@ -18,6 +18,25 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
 
+/* Admin */
+Route::get('/admin', 'AdminController@getAdmin')->before('auth|admin');
+
+Route::get('/user/block/{id}','UserController@blockUser')->before('auth|admin');
+
+Route::get('/user/activate/{id}','UserController@activateUser')->before('auth|admin');
+
+// Route::get('/adduser','UserController@getAddUser')->before('auth|admin');
+
+Route::post('/adduser','UserController@postAddUser')->before('auth|admin');
+
+Route::get('/user/edit/{id}','UserController@getEditUser')->before('auth|admin');
+
+Route::post('/user/edit/{id}','UserController@postEditUser')->before('auth|admin');
+
+Route::get('/user/verify/{id}','UserController@verifyUser')->before('auth|admin');
+
+// Route::get('/user/{id}','UserController@getShowUser')->before('auth|admin');
+
 /* Basic pages */
 Route::get('/about', 'HomeController@getAbout');
 
@@ -39,24 +58,6 @@ Route::post('/resend_password', 'UserController@postResetPassword');
 Route::get('/login', 'UserController@getLogin')->before('guest');
 
 Route::get('/logout', 'UserController@getLogout')->before('auth');
-
-Route::get('/user/block/{id}','UserController@blockUser');
-
-Route::get('/user/activate/{id}','UserController@activateUser');
-
-Route::get('/adduser','UserController@getAddUser');
-
-Route::post('/adduser','UserController@postAddUser');
-
-Route::get('/user/verify/{id}','UserController@getVerifyUser');
-
-Route::post('/user/verify/{id}','UserController@postVerifyUser');
-
-Route::get('/user/edit/{id}','UserController@getEditUser');
-
-Route::post('/user/edit/{id}','UserController@postEditUser');
-
-Route::get('/user/{id}','UserController@getShowUser');
 
 Route::controller('/users', 'UserController');
 

@@ -108,25 +108,27 @@ class UserController extends \BaseController {
     {
         DB::table('user')->where('id', $id)->update(array('usr_active' => 0));
 
-        return Redirect::to('/users')->with('flash_message_success', 'Użytkownik został zablokowany.');
+        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został zablokowany.');
     }
 
     public function activateUser($id=null)
     {
         DB::table('user')->where('id', $id)->update(array('usr_active' => 1));
 
-        return Redirect::to('/users')->with('flash_message_success', 'Użytkownik został aktywowany.');
+        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został aktywowany.');
     }
 
-    public function getAddUser() {
-        return View::make('for_testing_purposes.add_user');
-    }
+    // public function getAddUser() {
+    //     return View::make('for_testing_purposes.add_user');
+    // }
 
 
     public function postAddUser() {
         $validator = Validator::make(Input::all(), User::$rules);
 
         if ($validator->passes()) {
+            $userNumber = DB::table('user')->orderBy('id', 'desc')->first();
+
             $address = new Address;
             $address->adr_street = Input::get('street');
             $address->adr_city = Input::get('city');
@@ -146,8 +148,9 @@ class UserController extends \BaseController {
             $user->usr_verified = true;
             $user->email = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
+            $user->usr_number = $userNumber->usr_number + 1;
             $user->save();
-            return Redirect::intended('/users')->with('flash_message_success', 'Użytkownik został dodany.');
+            return Redirect::intended('/admin')->with('flash_message_success', 'Użytkownik został dodany.');
         }
         else
         {
@@ -181,9 +184,10 @@ class UserController extends \BaseController {
                                                                  'usr_number' => Input::get('user_number'),
                                                                  'usr_pesel' => Input::get('pesel'),
                                                                  'usr_active' => Input::get('active'),
+                                                                 'usr_verified' => Input::get('verified')
                                                                  ));
 
-            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+            return Redirect::intended('/admin')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
         }
 
         if ($validator->passes()) {
@@ -198,10 +202,11 @@ class UserController extends \BaseController {
                                                                  'usr_number' => Input::get('user_number'),
                                                                  'usr_pesel' => Input::get('pesel'),
                                                                  'usr_active' => Input::get('active'),
-                                                                 'password' => Hash::make(Input::get('password'))
+                                                                 'password' => Hash::make(Input::get('password')),
+                                                                 'usr_verified' => Input::get('verified')
                                                                  ));
 
-            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+            return Redirect::intended('/admin')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
         }
         else
         {
@@ -210,48 +215,19 @@ class UserController extends \BaseController {
     }
 
 
-    public function getVerifyUser($id) {
-        $user = DB::table('user')->where('id', $id)->get();
-        $address =  DB::table('address')->where('adr_id', $user[0]->usr_adr_id)->get();
+    public function verifyUser($id) {
+        DB::table('user')->where('id', $id)->update(array('usr_verified' => 1));
 
-        return View::make('for_testing_purposes.verify_user', array('user' => $user, 'address' => $address));
+        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został zweryfikowany.');
     }
 
 
-    public function postVerifyUser($id) {
-        $validator = Validator::make(Input::all(), User::$verifyRules);
+    // public function getShowUser($id) {
+    //     $user = DB::table('user')->where('id', $id)
+    //                              ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+    //                              ->get();
 
-        $adr_id = DB::table('user')->where('id', $id)->first()->usr_adr_id;
-
-        if ($validator->passes()) {
-            DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
-                                                                 'adr_city' => Input::get('city'),
-                                                                 'adr_postal_code' => Input::get('zipCode'),
-                                                                 'adr_house_number' => Input::get('houseNr')));
-
-            DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
-                                                                 'usr_surname' => Input::get('lastname'),
-                                                                 'usr_phone' => Input::get('phone'),
-                                                                 'usr_number' => Input::get('user_number'),
-                                                                 'usr_pesel' => Input::get('pesel'),
-                                                                 'usr_active' => Input::get('active'),
-                                                                 'usr_verified' => Input::get('verified'),
-                                                                 ));
-
-            return Redirect::intended('/users')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
-        }
-        else
-        {
-            return Redirect::intended('/user/verify/'.$id)->with('flash_message_danger', 'Podaj poprawny numer użytkownika.')->withInput();
-        }
-    }
-
-    public function getShowUser($id) {
-        $user = DB::table('user')->where('id', $id)
-                                 ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
-                                 ->get();
-
-        return View::make('for_testing_purposes.user', array('user' => $user));                            
-    }    
+    //     return View::make('for_testing_purposes.user', array('user' => $user));                            
+    // }    
 
 }

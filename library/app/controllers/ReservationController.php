@@ -53,7 +53,7 @@ class ReservationController extends \BaseController {
 	public function cancelReservation($rvn_id) {
 		DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_status' => false));
 
-        return Redirect::to('/reservations')->with('flash_message_success', 'Rezerwacja została anulowana.');
+        return Redirect::to('/admin')->with('flash_message_success', 'Rezerwacja została anulowana.');
 	}
 
 	public function rentBook($rvn_id) {
@@ -74,7 +74,7 @@ class ReservationController extends \BaseController {
 
 		DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_status' => false));
 
-        return Redirect::to('/reservations')->with('flash_message_success', 'Książka została wypożyczona.');
+        return Redirect::to('/admin')->with('flash_message_success', 'Książka została wypożyczona.');
 	}
 
 	public function makeReadyReservation($rvn_id) {
@@ -89,11 +89,11 @@ class ReservationController extends \BaseController {
 								->get();
 
 		if(empty($rent)) {
-			DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_is_ready' => true));
+			DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_is_ready' => true, 'rvn_date' => new DateTime));
 
-        	return Redirect::to('/reservations')->with('flash_message_success', 'Status rezerwacji został zmieniony na gotowa do odbioru.');
+        	return Redirect::to('/admin')->with('flash_message_success', 'Status rezerwacji został zmieniony na gotowa do odbioru.');
         } else {
-        	return Redirect::to('/reservations')->with('flash_message_danger', 'Książka nie została oddana.');
+        	return Redirect::to('/admin')->with('flash_message_danger', 'Książka nie została oddana.');
         }
 	}
 }

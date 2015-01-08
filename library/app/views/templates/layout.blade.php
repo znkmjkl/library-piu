@@ -4,7 +4,11 @@
 
     @if (Auth::check())
 
-        @include('users.navbar')
+        @if (Auth::user()->isAdmin()) 
+            @include('admin.navbar')
+        @else
+            @include('users.navbar')
+        @endif
 
     @else
 
@@ -52,7 +56,11 @@
 
             @if (Auth::check())
 
-                @yield('content')
+                @if (Auth::user()->isAdmin()) 
+                    @yield('admin_content')
+                @else
+                    @yield('content')
+                @endif
 
             @else
 

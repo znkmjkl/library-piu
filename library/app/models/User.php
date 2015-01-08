@@ -65,6 +65,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 
+	public function isAdmin()
+    {
+		$librarian = DB::table('librarian')
+							->where('lbn_usr_id', $this->id)
+							->first();
+
+		return !is_null($librarian);
+    }
+
 	public static $rules = array('firstname'=>'required|alpha|min:2',
 								 'lastname'=>'required|alpha|min:2',
 								 'email'=>'required|email|unique:user',
