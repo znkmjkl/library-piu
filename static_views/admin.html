@@ -142,9 +142,10 @@
 						<div class="col-md-2" style="margin-top:20px;">
 							<ul class="nav nav-pills  nav-stacked">
 								<li role="presentation" class="active"><a href="#ksiazki" data-toggle="tab"> Książki </a></li>								
+								<li role="presentation" ><a href="#autorzy" data-toggle="tab"> Autorzy </a></li>								
 								<li role="presentation" ><a href="#uzytkownicy" data-toggle="tab"> Użytkownicy </a></li>
+								<li role="presentation" ><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
 								<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
-								<li role="presentation" ><a href="#kary" data-toggle="tab"> Kary </a></li>
 							</ul>
 						</div>
 							
@@ -196,36 +197,7 @@
 												</div>
 											</div>
 											
-											<!-- panel dodawania autora-->
-											<div class="panel-group" id="addAuthorAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
-												<div class="panel panel-success">
-													<div class="panel-heading">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#addAuthorAccordion" href="#addAuthorCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-																<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp Dodaj autora
-																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
-															</a>
-														</h4>
-													</div>
-													<div id="addAuthorCollapseOne" class="panel-collapse collapse">
-														<div class="panel-body">
-														
-															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
-															<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
-																<input class="form-control" placeholder="Imię" name="author_name" type="text">
-																<input class="form-control" placeholder="Nazwisko" name="author_surname" type="text">
-																<input class="form-control" placeholder="Data urodziń" name="birth_date" type="text">
-																<hr>
-																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj Autora">
-															</form>
-
-														</div>
-													</div>
-												</div>
-											</div>
-											
-											<br><br>
-											
+											<br><br>									
 											
 											<table class="table booklist-table">
 												<thead>
@@ -358,6 +330,104 @@
 																	</div>
 																	
 																</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<!-- ...CALOSC-->
+												</tbody>
+											</table>
+										</div>
+									</div>
+																
+								</div>
+								
+								<div class="tab-pane fade" id="autorzy" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Edycja autorów</div>
+											
+											<!-- panel dodawania autora-->
+											<div class="panel-group" id="addAuthorAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+												<div class="panel panel-success">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#addAuthorAccordion" href="#addAuthorCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+																<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp Dodaj autora
+																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
+															</a>
+														</h4>
+													</div>
+													<div id="addAuthorCollapseOne" class="panel-collapse collapse">
+														<div class="panel-body">
+														
+															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
+															<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																<input class="form-control" placeholder="Imię" name="author_name" type="text">
+																<input class="form-control" placeholder="Nazwisko" name="author_surname" type="text">
+																<input class="form-control" placeholder="Data urodzin" name="birth_date" type="text">
+																<hr>
+																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj Autora">
+															</form>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<br><br>
+											
+											
+											<table class="table booklist-table">
+												<thead>
+													<tr>
+														<th>Imię</th>
+														<th>Nazwisko</th>
+														<th>Data urodzin</th>
+														<th></th>
+														<th></th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<!--UWAGA TO JEST...-->
+													<tr>
+														<td>Jan</td>
+														<td>Kowalski</td>
+														<td>05-01-1976</td>
+														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_authorID" href="#edit_authorID"> EDYTUJ </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
+													</tr>
+													
+													<tr>
+														<td colspan="6" style="border-top:0 solid;">
+															<div id="accordion_authorID">
+																
+																<div class="row">
+																	<div id="edit_authorID" class="panel-collapse collapse">
+																		
+																		<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																			<div class="panel-heading">
+																				<h4 class="panel-title">
+																					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Edytuj dane autora
+																				</h4>
+																			</div>
+																			<div class="panel-body">
+															
+																				<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																					<input class="form-control" placeholder="Imię" name="author_name" type="text">
+																					<input class="form-control" placeholder="Nazwisko" name="author_surname" type="text">
+																					<input class="form-control" placeholder="Data urodzin" name="birth_date" type="text">
+																					<hr>
+																					<input class="btn btn-lg btn-info btn-block" type="submit" value="Zmień dane">
+																				</form>
+																				
+																			</div>
+																		</div>
+																		
+																	</div>
 																</div>
 															</div>
 														</td>
@@ -611,6 +681,219 @@
 																
 								</div>
 								
+								<div class="tab-pane fade" id="wypozyczenia" style="margin-top:20px;">
+								
+									<div class="bs-example" data-example-id="table-within-panel">
+										<div class="panel panel-info">
+										
+											<div class="panel-heading">Edycja wypożyczeń</div>
+											
+											<br>
+											
+											<table class="table booklist-table">
+												<thead>
+													<tr>
+														<th>ISBN</th>
+														<th>Imię</th>
+														<th>Nazwisko</th>
+														<th>PESEL</th>
+														<th>Data</th>
+														<th>Status</th>
+														<th>Kara</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<!--UWAGA TO JEST...-->
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-danger">PRZEKROCZONO</span></td>
+														<td> <a class="btn btn-sm btn-danger btn-block" data-toggle="collapse" data-parent="#accordion_feeID1" href="#edit_feeID1"> 1,20 PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+													
+														<td colspan="8" style="border-top:0 solid;">
+															<div id="accordion_feeID1">
+																
+																<div class="row">
+																	<div id="edit_feeID1" class="panel-collapse collapse">
+																		
+																		<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																			<div class="panel-heading">
+																				<h4 class="panel-title">
+																					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Szczegóły kary
+																				</h4>
+																			</div>
+																			<div class="panel-body">
+															
+																				<!-- UWAGA TO FORM Z AUTORA - WYMAGA ZMIANY -->
+																				<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																					<input class="form-control" placeholder="Wartość" name="fee_vle" type="text">
+																					<hr>
+																					<input class="btn btn-lg btn-danger btn-block" type="submit" value="Ustal karę">
+																					<input class="btn btn-lg btn-success btn-block" type="submit" value="Anuluj karę">
+																				</form>
+																				
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</td>
+													
+													</tr>
+													
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-warning">WYPOŻYCZONO</span></td>
+														<td> <a class="btn btn-sm btn-default btn-block"  data-toggle="collapse" data-parent="#accordion_feeID2" href="#edit_feeID2"> 0,00 PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+													
+														<td colspan="8" style="border-top:0 solid;">
+															<div id="accordion_feeID2">
+																
+																<div class="row">
+																	<div id="edit_feeID2" class="panel-collapse collapse">
+																		
+																		<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																			<div class="panel-heading">
+																				<h4 class="panel-title">
+																					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Szczegóły kary
+																				</h4>
+																			</div>
+																			<div class="panel-body">
+															
+																				<!-- UWAGA TO FORM Z AUTORA - WYMAGA ZMIANY -->
+																				<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																					<input class="form-control" placeholder="Wartość" name="fee_vle" type="text">
+																					<hr>
+																					<input class="btn btn-lg btn-danger btn-block" type="submit" value="Ustal karę">
+																					<input class="btn btn-lg btn-success btn-block" type="submit" value="Anuluj karę">
+																				</form>
+																				
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</td>
+													
+													</tr>
+													
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-success">ODDANO</span></td>
+														<td> <a class="btn btn-sm btn-default btn-block"  data-toggle="collapse" data-parent="#accordion_feeID3" href="#edit_feeID3"> 0,00 PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> </a> </td>
+														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+													
+														<td colspan="8" style="border-top:0 solid;">
+															<div id="accordion_feeID3">
+																
+																<div class="row">
+																	<div id="edit_feeID3" class="panel-collapse collapse">
+																		
+																		<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																			<div class="panel-heading">
+																				<h4 class="panel-title">
+																					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Szczegóły kary
+																				</h4>
+																			</div>
+																			<div class="panel-body">
+															
+																				<!-- UWAGA TO FORM Z AUTORA - WYMAGA ZMIANY -->
+																				<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																					<input class="form-control" placeholder="Wartość" name="fee_vle" type="text">
+																					<hr>
+																					<input class="btn btn-lg btn-danger btn-block" type="submit" value="Ustal karę">
+																					<input class="btn btn-lg btn-success btn-block" type="submit" value="Anuluj karę">
+																				</form>
+																				
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</td>
+													
+													</tr>
+													
+													<tr>
+														<td>978-3-16-148410-0</td>
+														<td>Marcin</td>
+														<td>Pająk</td>
+														<td>91060327645</td>
+														<td>12-12-2014r.</td>
+														<td><span class="label label-default">ANULOWANO</span></td>
+														<td> <a class="btn btn-sm btn-default btn-block"  data-toggle="collapse" data-parent="#accordion_feeID4" href="#edit_feeID4"> 0,00 PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> </a> </td>
+														<td> <a class="btn btn-sm btn-default btn-block"> ANULUJ </a> </td>
+													</tr>
+													
+													<tr>
+													
+														<td colspan="8" style="border-top:0 solid;">
+															<div id="accordion_feeID4">
+																
+																<div class="row">
+																	<div id="edit_feeID4" class="panel-collapse collapse">
+																		
+																		<div class="panel panel-info" style="width:90%; margin:0 auto;">
+																			<div class="panel-heading">
+																				<h4 class="panel-title">
+																					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Szczegóły kary
+																				</h4>
+																			</div>
+																			<div class="panel-body">
+															
+																				<!-- UWAGA TO FORM Z AUTORA - WYMAGA ZMIANY -->
+																				<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+																					<input class="form-control" placeholder="Wartość" name="fee_vle" type="text">
+																					<hr>
+																					<input class="btn btn-lg btn-danger btn-block" type="submit" value="Ustal karę">
+																					<input class="btn btn-lg btn-success btn-block" type="submit" value="Anuluj karę">
+																				</form>
+																				
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</td>
+													
+													</tr>
+													
+													<!-- ...CALOSC-->
+												</tbody>
+											</table>
+											
+										</div>
+									</div>
+																
+								</div>
+								
 								<div class="tab-pane fade" id="rezerwacje" style="margin-top:20px;">
 								
 									<div class="bs-example" data-example-id="table-within-panel">
@@ -640,16 +923,6 @@
 														<td>Pająk</td>
 														<td>91060327645</td>
 														<td>12-12-2014r.</td>
-														<td><span class="label label-success">WYPOŻYCZENIE</span></td>
-														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
-													</tr>
-													
-													<tr>
-														<td>978-3-16-148410-0</td>
-														<td>Marcin</td>
-														<td>Pająk</td>
-														<td>91060327645</td>
-														<td>12-12-2014r.</td>
 														<td><span class="label label-warning">OCZEKUJE</span></td>
 														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
 													</tr>
@@ -672,58 +945,7 @@
 									</div>
 																
 								</div>
-								
-								<div class="tab-pane fade" id="kary" style="margin-top:20px;">
-								
-									<div class="bs-example" data-example-id="table-within-panel">
-										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja kar</div>
-											
-											<!-- panel dodawania uzytkownikow-->
-											<div class="panel-group" id="feeAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
-												<div class="panel panel-success">
-													<div class="panel-heading">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#feeAccordion" href="#feeCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> &nbsp Dodaj karę
-															</a>
-														</h4>
-													</div>
-													<div id="feeCollapseOne" class="panel-collapse collapse">
-														<div class="panel-body">
-														
-															tutaj formularz dodawania kar - nie mam zielonego pojecia jak powinien wygladac - ale chyba powinien zawierac PESEL, ISBN oraz Datę
-														
-														</div>
-													</div>
-												</div>
-											</div>
-											
-											<br><br>
-
-											<table class="table booklist-table">
-												<thead>
-													<tr>
-														<th>PESEL</th>
-														<th>ISBN</th>
-														<th>Data</th>
-														<th>Kwota</th>
-														<th></th>
-														<th></th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<!-- tu dane -->
-												</tbody>
-											</table>
-											
-										</div>
-									</div>
 																
-								</div>
-								
 							</div>
 							
 						</div>
