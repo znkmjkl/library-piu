@@ -1,4 +1,6 @@
-
+/*h1, h2, h3, h4, h5, h6 {
+    font-family: "Istok Web", sans;
+}*/
 p, div {
     font-family: "Calibri", sans;
 }
@@ -10,10 +12,10 @@ ul.nav a:hover
 
 .navbar .divider-vertical 
 {
-	height: 30px;
-	margin: 10px 35px;
-	border-right: 1px solid #ffffff;
-	border-left: 1px solid #f2f2f2;
+	height: 25px;
+	margin: 12px 35px;
+	border-right: 1px solid #555555;
+	border-left: 0px solid #a2a2a2;
 }
 
 a:hover
@@ -36,8 +38,6 @@ a:hover
 
 .carousel-inner > .item >  img
 {
-	width: 100%; /* use this, or not */
-	height: auto;
 	margin: 0 auto;
 }
 
@@ -66,4 +66,20 @@ a:hover
 	text-align:left;
 	text-indent:30px;
 	font-weight: normal;
+}
+
+.booklist-table tbody tr td
+{
+	vertical-align: middle;
+}
+
+.booklist-table tbody tr td .thumbnail
+{
+	width:45px;
+	margin: 0 auto;
+}
+
+.btn-bookbook
+{
+	margin-top:5px;
 }
