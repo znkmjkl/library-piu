@@ -23,6 +23,19 @@ class KindTableSeeder extends Seeder {
         Kind::create(array('knd_name' => 'poradniki'));
 
         Kind::create(array('knd_name' => 'rozrywka'));
+
+        Kind::create(array('knd_name' => 'Literatura faktu'));
+
+        Kind::create(array('knd_name' => 'Literatura obyczajowa'));
+
+        Kind::create(array('knd_name' => 'Thriller'));
+
+        Kind::create(array('knd_name' => 'Horror i literatura grozy'));
+
+        Kind::create(array('knd_name' => 'Kryminał'));
+
+        Kind::create(array('knd_name' => 'Sensacja'));
+        
     }
 
 }

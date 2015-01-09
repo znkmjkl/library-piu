@@ -89,6 +89,118 @@ class WriterTableSeeder extends Seeder {
         		'wtr_surname' => 'Mann',
                 'wtr_birth_date' => new DateTime('1948-01-25')
         	));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Marek',
+                'wtr_surname' => 'Wałkuski',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Alexander',
+                'wtr_surname' => 'Eben',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Ptolemy',
+                'wtr_surname' => 'Tompkins',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Karol',
+                'wtr_surname' => 'Lewandowski',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Elke',
+                'wtr_surname' => 'Ahlswede',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Diane',
+                'wtr_surname' => 'Chamberlain',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Izabella',
+                'wtr_surname' => 'Fręczyk',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Aleksander',
+                'wtr_surname' => 'Janowski',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Douglas',
+                'wtr_surname' => 'Preston',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Lincoln',
+                'wtr_surname' => 'Child',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Horward P.',
+                'wtr_surname' => 'Lovercraft',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Ian',
+                'wtr_surname' => 'Rankin',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Brian',
+                'wtr_surname' => 'Lumley',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Russel',
+                'wtr_surname' => 'Hill',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Scott',
+                'wtr_surname' => 'Turow',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
+
+        Writer::create(
+            array(
+                'wtr_name' => 'Daniel',
+                'wtr_surname' => 'Silva',
+                'wtr_birth_date' => new DateTime('1990-01-01')
+            ));
     }
 
 }

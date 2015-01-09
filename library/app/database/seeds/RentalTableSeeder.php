@@ -43,6 +43,82 @@ class RentalTableSeeder extends Seeder {
         		'rtl_end_date' => new DateTime('-20 days'),
                 'rtl_is_returned' => false
         	));
+
+        $book_id = DB::table('book')
+                                ->select('bok_id')
+                                ->where('bok_isbn', '9788326463025')
+                                ->first()->bok_id;
+
+        $user_id = DB::table('user')
+                                ->select('id')
+                                ->where('email', 'witek.j@op.pl')
+                                ->first()->id;
+
+        Rental::create(
+            array(
+                'rtl_bok_id' => $book_id,
+                'rtl_usr_id' => $user_id,
+                'rtl_start_date' => new DateTime('-10 days'),
+                'rtl_end_date' => new DateTime('+20 days'),
+                'rtl_is_returned' => false
+            ));
+
+        $book_id = DB::table('book')
+                                ->select('bok_id')
+                                ->where('bok_isbn', '9788326463025')
+                                ->first()->bok_id;
+
+        $user_id = DB::table('user')
+                                ->select('id')
+                                ->where('email', 'witek.j@op.pl')
+                                ->first()->id;
+
+        Rental::create(
+            array(
+                'rtl_bok_id' => $book_id,
+                'rtl_usr_id' => $user_id,
+                'rtl_start_date' => new DateTime('-100 days'),
+                'rtl_end_date' => new DateTime('-70 days'),
+                'rtl_is_returned' => true
+            ));
+
+        $book_id = DB::table('book')
+                                ->select('bok_id')
+                                ->where('bok_isbn', '9788312358892')
+                                ->first()->bok_id;
+
+        $user_id = DB::table('user')
+                                ->select('id')
+                                ->where('email', 'witek.j@op.pl')
+                                ->first()->id;
+
+        Rental::create(
+            array(
+                'rtl_bok_id' => $book_id,
+                'rtl_usr_id' => $user_id,
+                'rtl_start_date' => new DateTime('-15 days'),
+                'rtl_end_date' => new DateTime('+15 days'),
+                'rtl_is_returned' => false
+            ));
+
+        $book_id = DB::table('book')
+                                ->select('bok_id')
+                                ->where('bok_isbn', '9788369286018')
+                                ->first()->bok_id;
+
+        $user_id = DB::table('user')
+                                ->select('id')
+                                ->where('email', 'witek.j@op.pl')
+                                ->first()->id;
+
+        Rental::create(
+            array(
+                'rtl_bok_id' => $book_id,
+                'rtl_usr_id' => $user_id,
+                'rtl_start_date' => new DateTime('-20 days'),
+                'rtl_end_date' => new DateTime('+10 days'),
+                'rtl_is_returned' => false
+            ));
     }
 
 }

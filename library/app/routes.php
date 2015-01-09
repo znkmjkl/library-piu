@@ -37,6 +37,14 @@ Route::get('/user/verify/{id}','UserController@verifyUser')->before('auth|admin'
 
 // Route::get('/user/{id}','UserController@getShowUser')->before('auth|admin');
 
+// Route::get('/reservations/','ReservationController@getIndex')->before('auth|admin');
+
+Route::get('/reservation/cancel/{id}','ReservationController@cancelReservation')->before('auth|admin');
+
+Route::get('/reservation/makeready/{id}','ReservationController@makeReadyReservation')->before('auth|admin');
+
+Route::get('/reservation/rentbook/{id}','ReservationController@rentBook')->before('auth|admin');
+
 /* Basic pages */
 Route::get('/about', 'HomeController@getAbout');
 
@@ -134,13 +142,3 @@ Route::get('/rentedList/{page}/{isbn}', 'RentalController@getRentedBooks');
 Route::post('/searchRented', 'RentalController@getRestPage');
 
 Route::get('/rented/{id}/addfine','FineController@showFine');
-
-/* Reservation */
-
-Route::get('/reservations/','ReservationController@getIndex');
-
-Route::get('/reservation/cancel/{id}','ReservationController@cancelReservation');
-
-Route::get('/reservation/makeready/{id}','ReservationController@makeReadyReservation');
-
-Route::get('/reservation/rentbook/{id}','ReservationController@rentBook');
