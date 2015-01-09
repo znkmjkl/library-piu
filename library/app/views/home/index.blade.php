@@ -82,9 +82,7 @@
                 </div>
     
        
-        {{-- @include('users.partials._login_form') --}}
-        <br>
-        {{-- @include('users.partials._register_form') --}}
+        
     
    
 @stop
