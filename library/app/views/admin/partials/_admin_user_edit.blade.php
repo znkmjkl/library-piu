@@ -56,25 +56,25 @@
 														@endif
 														</td>
 														<td>
-															<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#more_{{$user->id}}">Szczegóły</a> </td>					
+															<td> <a class="btn  btn-primary " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#more_{{$user->id}}">Szczegóły</a> </td>					
 														</td>
 														<td> 
 															@if($user->usr_active=="1")
-															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn btn-sm btn-danger">
+															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-danger">
 															Zablokuj</a>
 															@endif
 															@if($user->usr_active=="0")
-															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn btn-sm btn-success">
+															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn  btn-success">
 															Aktywuj</a>
 															@endif
 														</td>
 														<td>
-														<a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> </td>
+														<a class="btn  btn-info " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> </td>
 														<td>@if($user->usr_verified=="0")
-															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success">Zweryfikuj</a>
+															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn  btn-success">Zweryfikuj</a>
 															@endif
 															@if($user->usr_verified=="1")
-															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success disabled">Zweryfikuj</a>
+															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn  btn-success disabled">Zweryfikuj</a>
 															@endif
 														</td>
 													</tr>

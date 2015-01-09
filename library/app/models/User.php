@@ -81,7 +81,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 								 'password_confirmation'=>'required|alpha_num|between:6,12');
 
 	public static $editRules = array('firstname'=>'required|alpha|min:2',
-								 'lastname'=>'required|alpha|min:2');
+								 'lastname'=>'required|alpha|min:2',
+								 'user_number'=>'required|alpha|unique:user');
 
 	public static $change_pass_rules = array('password'=>'required|alpha_num|between:6,12|confirmed',
 								 'password_confirmation'=>'required|alpha_num|between:6,12');

@@ -60,10 +60,6 @@
         'ng-model' => 'user.phone', "ng-pattern"=>"/^[+]{0,1}[0-9]{0,11}$/",
         'ng-blur'=>'checkPhoneNumber()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny numer telefonu")) }}
 
-        {{ Form::text('user_number', null, array('class' => 'form-control', 'placeholder' => 'Podaj numer użytkownika',
-        'ng-model' => 'user.user_number', "ng-pattern"=>"/^.{12}$/",
-        'ng-blur'=>'checkUserNumber()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny numer użytkownika")) }}
-
         {{ Form::text('pesel', null, array('class' => 'form-control', 'placeholder' => 'Podaj pesel',
         'ng-model' => 'user.pesel', "ng-pattern"=>"/^[0-9]{11}$/",
         'ng-blur'=>'checkPesel()',"data-toggle"=>"tooltip", "data-placement"=>"right", "title"=>"Wprowadź poprawny pesel")) }}
@@ -163,12 +159,6 @@
                 else 
                     tooltip("phone","hide");
             }
-            $scope.checkUserNumber = function(){
-                if(!$scope.regForm.user_number.$valid)
-                    tooltip("user_number","show");
-                else 
-                    tooltip("user_number","hide");
-            }
             $scope.checkPesel = function(){
                 if(!$scope.regForm.pesel.$valid)
                     tooltip("pesel","show");
@@ -184,5 +174,4 @@
             }
         }
     
-
     </script>

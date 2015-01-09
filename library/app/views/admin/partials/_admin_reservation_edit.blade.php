@@ -31,15 +31,15 @@
 														<span class="label label-danger">W przygotowaniu</span>
 														@endif
 														</td>
-														<td><a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-danger"><i class="glyphicon glyphicon-ban-circle"></i> Anuluj</a>
+														<td><a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-danger"> Anuluj</a>
 														</td>
 														<td>
 														@if($reservation->rvn_is_ready=="0")
-														<a href="{{ URL::to('/reservation/makeready/' . $reservation->rvn_id) }}" class="btn btn-success"><i class="glyphicon glyphicon-check"></i>
+														<a href="{{ URL::to('/reservation/makeready/' . $reservation->rvn_id) }}" class="btn btn-success">
 														Gotowa</a>
 														@endif
 														@if($reservation->rvn_is_ready=="1")
-														<a href="{{ URL::to('/reservation/rentbook/' . $reservation->rvn_id) }}" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>
+														<a href="{{ URL::to('/reservation/rentbook/' . $reservation->rvn_id) }}" class="btn btn-success">
 														Wypożycz</a>
 														@endif
 														</td>
