@@ -17,7 +17,7 @@ class BookController extends \BaseController {
                                  ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
                                  ->get();
 
-        return View::make('for_testing_purposes.book', array('book' => $book));
+        return View::make('book.book', array('book' => $book));
     }
 
 
@@ -50,7 +50,7 @@ class BookController extends \BaseController {
                                  ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                  ->get();
 
-		return View::make('for_testing_purposes.book', array('book' => $book));
+		return View::make('book.book', array('book' => $book));
 	}
 
         /**
@@ -129,8 +129,8 @@ class BookController extends \BaseController {
     public function postBook(){
 
                $validator = Validator::make(Input::all(), Book::$rules);
-               if ($validator->passes()) 
-               {    
+               if ($validator->passes())
+               {
                     $book = new Book;
                     $book->bok_isbn = Input::get('bok_isbn');
                     $book->bok_title = Input::get('bok_title');
@@ -213,16 +213,16 @@ class BookController extends \BaseController {
                                                                  'kinds' => $kinds,
                                                                  'book' => $book,
                                                                  'authors' => $authors));
-    
+
 
 
     }
 
     public function editBook($bok_id){
         $validator = Validator::make(Input::all(), Book::$rules);
-        if ($validator->passes()) 
-        {    
-      
+        if ($validator->passes())
+        {
+
             DB::table('book')->where('bok_id',$bok_id)->update(array('bok_isbn' => Input::get('bok_isbn'),
                                                                     'bok_title' => Input::get('bok_title'),
                                                                      'bok_lng_id' => Input::get('language'),
@@ -273,7 +273,7 @@ class BookController extends \BaseController {
 
             DB::table('reservation')->where('rvn_bok_id',$bok_id)->update(array('rvn_status' => 0,
                                                                                'rvn_is_ready' => 0));
-       
+
         }
         else
         {

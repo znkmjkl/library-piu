@@ -20,7 +20,8 @@
                         <div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Numer wydania" name="bok_edition_number" type="text">  </div>
                     </div>
                     <div class="col-xs-4" style="margin-top:10px;">
-                        <input style="margin-top:45px;" class="btn btn-md btn-primary btn-block" type="submit" value="Szukaj">
+                        <input style="margin-top:0px;" class="btn btn-md btn-danger btn-block" type="submit" value="Wyczyść filtry">
+                        <input style="margin-top:10px;" class="btn btn-md btn-primary btn-block" type="submit" value="Szukaj">
                     </div>
                 </form>
             </div>

@@ -19,7 +19,7 @@ class SearchController extends \BaseController {
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
                                            ->get();
 
-        return View::make('for_testing_purposes.search_results', array('search_results' => $search_results));
+        return View::make('search.search_results', array('search_results' => $search_results));
     }
 
 

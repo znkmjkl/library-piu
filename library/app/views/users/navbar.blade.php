@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+                <span class="glyphicon glyphicon-book"> </span> Biblionetka</a>
             </div>
             @include('templates.partials._basic_search_form')
             <div class="navbar-collapse collapse">
@@ -18,7 +18,7 @@
                   <span class="glyphicon glyphicon-bell"> Skrzynka</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Wiadomości</a></span></li>                    
+                    <li><a href="/inbox"><span class="glyphicon glyphicon-envelope"> Wiadomości</a></span></li>
                   </ul>
                 </li>
                 <li class="dropdown">
