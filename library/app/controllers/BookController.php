@@ -136,7 +136,7 @@ class BookController extends \BaseController {
                     $book->bok_title = Input::get('bok_title');
                     $book->bok_lng_id = Input::get('language');
                     $book->bok_knd_id = Input::get('kind');
-                    $book->bok_edition_date = Input::get('date').' 00:00:00'; //TODO cza jakos sformatować
+                    $book->bok_edition_date = Input::get('date').'-01-01 00:00:00'; //TODO cza jakos sformatować
                     $book->bok_edition_number = Input::get('edition');
                     $book->save();
                     $bookId = $book->id;
@@ -154,11 +154,11 @@ class BookController extends \BaseController {
                         $author->save();
                     }
 
-                    return Redirect::intended('/book/'.$bok_id)->with('flash_message_success', 'Dodano książke');
+                    return Redirect::intended('/admin')->with('flash_message_success', 'Dodano książke');
                 }
                 else
                 {
-                    return Redirect::intended('/addbook')->with('flash_message_danger', 'Błędne dane książki');
+                    return Redirect::intended('/admin')->with('flash_message_danger', 'Błędne dane książki');
 
                 }
 
@@ -244,11 +244,11 @@ class BookController extends \BaseController {
 
                 }
 
-          return Redirect::intended('/book/'.$bok_id)->with('flash_message_success', 'Edytowano książke');;
+          return Redirect::intended('/admin')->with('flash_message_success', 'Edytowano książke');;
         }
         else
         {
-           return Redirect::intended('/editbook/'.$bok_id)->with('flash_message_danger', 'Błędne dane książki');
+           return Redirect::intended('/admin')->with('flash_message_danger', 'Błędne dane książki');
         }
     }
 
@@ -257,28 +257,23 @@ class BookController extends \BaseController {
         if(DB::table('rental')->where('rtl_bok_id',$bok_id)->where('rtl_is_returned',0)->count() == 0)
         {
 
-            $writers = DB::table('author')->where('atr_bok_id', $bok_id)->lists('atr_wtr_id');
             $author = DB::table('author')->where('atr_bok_id', $bok_id)->delete();
 
-            foreach ($writers as $writer){
-
-                if(DB::table('author')->where('atr_wtr_id', $writer)->count() == 0)
-                {
-                 DB::table('writer')->where('wtr_id', $writer)->delete;
-                }
-
-             }
 
             DB::table('book')->where('bok_id', $bok_id)->update(array('is_deleted' => 1));
 
             DB::table('reservation')->where('rvn_bok_id',$bok_id)->update(array('rvn_status' => 0,
                                                                                'rvn_is_ready' => 0));
-       
+            return Redirect::intended('/admin')->with('flash_message_success', 'Usunięto książke');
+
         }
         else
         {
-            return Redirect::to('/');
+            return Redirect::intended('/admin')->with('flash_message_danger', 'Nie można usunąć książki wypożyczonej');
         }
-    }
+    
 
+         
+
+}
 }

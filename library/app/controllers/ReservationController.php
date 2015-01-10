@@ -40,15 +40,15 @@ class ReservationController extends \BaseController {
 		return Redirect::back()->with('flash_message_danger', 'Zrezygnowałeś z rezerwacji.');
 	}
 
-	// public function getIndex() {
-	// 	$reservations = DB::table('reservation')
- //                                ->where('rvn_status', true)
- //                                ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
- //                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
- //                                ->get();
+	public function getIndex() {
+		$reservations = DB::table('reservation')
+                                ->where('rvn_status', true)
+                                ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
+                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+                                ->get();
 
- //        return View::make('for_testing_purposes.manage_reservations', array('reservations' => $reservations));
-	// }
+        return View::make('for_testing_purposes.manage_reservations', array('reservations' => $reservations));
+	}
 
 	public function cancelReservation($rvn_id) {
 		DB::table('reservation')->where('rvn_id', $rvn_id)->update(array('rvn_status' => false));

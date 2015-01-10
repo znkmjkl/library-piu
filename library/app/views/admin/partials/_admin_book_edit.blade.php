@@ -12,22 +12,7 @@
 													<div id="addBookCollapseOne" class="panel-collapse collapse">
 														<div class="panel-body">
 														
-															<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
-																
-																<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
-																<p class="help-block">&nbspOkładka książki.</p>
-																															
-																<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
-																<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
-																<p><select class="form-control" multiple="1" name="writer[]"></select></p>
-																<p><select class="form-control" name="language"></select></p>
-																<p><select class="form-control" name="kind"></select></p>
-																<input class="form-control" placeholder="Data wydania" name="date" type="text">
-																<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
-
-																<hr>
-																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj książkę">
-															</form>
+												@include('admin.partials._add_book_form')
 
 														
 														</div>
@@ -35,33 +20,7 @@
 												</div>
 											</div>
 											
-											<!-- panel dodawania autora-->
-											<div class="panel-group" id="addAuthorAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
-												<div class="panel panel-success">
-													<div class="panel-heading">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#addAuthorAccordion" href="#addAuthorCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-																<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp Dodaj autora
-																<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
-															</a>
-														</h4>
-													</div>
-													<div id="addAuthorCollapseOne" class="panel-collapse collapse">
-														<div class="panel-body">
-														
-															<!-- UWAGA TU SKOPIOWALEM FORMA Z SEARCH - na pewno trzeba go troche zmodyfikowac -->
-															<form method="POST" action="http://localhost:8000/addauthor" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
-																<input class="form-control" placeholder="Imię" name="author_name" type="text">
-																<input class="form-control" placeholder="Nazwisko" name="author_surname" type="text">
-																<input class="form-control" placeholder="Data urodziń" name="birth_date" type="text">
-																<hr>
-																<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj Autora">
-															</form>
 
-														</div>
-													</div>
-												</div>
-											</div>
 											
 											<br><br>
 											
@@ -77,22 +36,34 @@
 														<th></th>
 													</tr>
 												</thead>
+												@foreach($books as $book)
 												<tbody>
 													<!--UWAGA TO JEST...-->
-													<tr>
-														<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-														<td>Jan Kowalski</td>
-														<td>978-3-16-148410-0</td>
-														<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#more_TUTAJNRISBN"> SZCZEGÓŁY </a> </td>
-														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#edit_TUTAJNRISBN"> EDYTUJ </a> </td>
-														<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
+													
+
+										 			<tr>
+														<td><a><abbr> {{substr($book->bok_title,0,20) }}
+															@if(strlen($book->bok_title) > 20)...@endif  </a></td>
+														<td>
+
+															
+															@foreach($autors as $autor)
+																@if( $autor->atr_bok_id == $book->bok_id)
+																	<p>{{$writersList[$autor->atr_wtr_id]}}</p>
+																@endif
+															@endforeach													
+														</td>
+														<td>{{$book->bok_isbn}}</td>
+														<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_{{$book->bok_isbn}}" href="#more_{{$book->bok_isbn}}"> SZCZEGÓŁY </a> </td>
+														<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_{{$book->bok_isbn}}" href="#edit_{{$book->bok_isbn}}"> EDYTUJ </a> </td>
+														<td><a href="{{ URL::to('removebook/' . $book->bok_id ) }}" class="btn btn-sm btn-danger btn-block">Usuń</a> </td>
 													</tr>
 													
 													<tr>
 														<td colspan="6" style="border-top:0 solid;">
-															<div id="accordion_TUTAJNRISBN">
+															<div id="accordion_{{$book->bok_isbn}}">
 																<div class="row">
-																<div id="more_TUTAJNRISBN" class="panel-collapse collapse">
+																<div id="more_{{$book->bok_isbn}}" class="panel-collapse collapse">
 																
 																	<div class="col-lg-2">
 																	
@@ -107,22 +78,28 @@
 																			<tbody>									
 																				<tr>
 																					<td> <strong> Tytuł: </strong> </td>
-																					<td> O psie który jeździł koleją </td>
+																					<td> {{$book->bok_title}} </td>
 																				</tr>
 																				
 																				<tr>
 																					<td> <strong> Autor: </strong> </td>
-																					<td> Jan Kowalski </td>
+																						<td> 
+																							@foreach($autors as $autor)
+																								@if( $autor->atr_bok_id == $book->bok_id)
+																									<p>{{$writersList[$autor->atr_wtr_id]}}</p>
+																								@endif
+																							@endforeach
+																						</td>
 																				</tr>
 																				
 																				<tr>
 																					<td> <strong> ISBN: </strong> </td>
-																					<td> 978-3-16-148410-0 </td>
+																					<td> {{$book->bok_isbn}} </td>
 																				</tr>
 																				
 																				<tr>
 																					<td> <strong> Data wydania: </strong> </td>
-																					<td> 2013r. </td>
+																					<td> {{substr($book->bok_edition_date,0,4)."r." }} </td>
 																				</tr>
 																			</tbody>
 																		</table>
@@ -135,27 +112,21 @@
 																			<tbody>									
 																				<tr>
 																					<td> <strong> Numer wydania: </strong> </td>
-																					<td> 1 </td>
+																					<td> {{$book->bok_edition_number}} </td>
 																				</tr>
 																				
 																				<tr>
 																					<td> <strong> Gatunek: </strong> </td>
-																					<td> Horror </td>
+																					<td> {{$kinds[$book->bok_knd_id - 1]}} </td>
 																				</tr>
 																				
 																				<tr>
 																					<td> <strong> Język: </strong> </td>
-																					<td> Polski </td>
+																					<td> {{$languages[$book->bok_lng_id - 1]}} </td>
 																				</tr>
 																				
 																				<tr>
-																					<td> <strong> Dostępność: </strong> </td>
-																					<td> 
-																						<span class="label label-success">TAK</span>
-																						<span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span>
-																						<span class="label label-danger">NIE</span>
-																						<!-- ofc tylko jedno naraz :) -->
-																					</td>
+								
 																				</tr>
 																			</tbody>
 																		</table>
@@ -166,7 +137,7 @@
 																</div>
 																
 																<div class="row">
-																<div id="edit_TUTAJNRISBN" class="panel-collapse collapse">
+																<div id="edit_{{$book->bok_isbn}}" class="panel-collapse collapse">
 																	
 																	<div class="panel panel-info" style="width:90%; margin:0 auto;">
 																		<div class="panel-heading">
@@ -175,33 +146,18 @@
 																			</h4>
 																		</div>
 																		<div class="panel-body">
-														
-																			<!-- UWAGA TU SKOPIOWALEM FORMA Z GÓRY - na pewno trzeba go troche zmodyfikowac -->
-																			<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
-																
-																				<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
-																				<p class="help-block">&nbspOkładka książki.</p>
-																																			
-																				<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
-																				<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
-																				<p><select class="form-control" multiple="1" name="writer[]"></select></p>
-																				<p><select class="form-control" name="language"></select></p>
-																				<p><select class="form-control" name="kind"></select></p>
-																				<input class="form-control" placeholder="Data wydania" name="date" type="text">
-																				<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
+																			@include('admin.partials._edit_book_form')
 
-																				<hr>
-																				<input class="btn btn-lg btn-info btn-block" type="submit" value="Zmień dane">
-																			</form>
-																		</div>
 																	</div>
 																	
 																</div>
 																</div>
 															</div>
 														</td>
-													</tr>
+													</tr> 
 													<!-- ...CALOSC-->
 												</tbody>
+											@endforeach													
+
 											</table>					
 								
