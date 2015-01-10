@@ -7,7 +7,7 @@
 														<th>Numer karty</th>
 														<th>Data</th>
 														<th>Status</th>
-														<th></th>
+														<th>Zmiana statusu</th>
 														<th></th>
 													</tr>
 												</thead>
@@ -18,7 +18,7 @@
 														<td>{{ $reservation->usr_name}}</td>
 														<td>{{ $reservation->usr_surname }}</td>
 														<td>{{ $reservation->usr_number }}</td>
-														<td>{{ $reservation->rvn_date }}</td>
+														<td>{{ date("d-m-Y", strtotime($reservation->rvn_date)) }}</td>
 														<td>
 															@if($reservation->rvn_is_ready=="1")
 															<span class="label label-success">DO ODBIORU</span>
@@ -26,7 +26,7 @@
 															<span class="label label-warning">OCZEKUJE</span>
 															@endif
 														</td>
-														<td> 
+														<td style="text-align:center;"> 
 															@if($reservation->rvn_is_ready=="1")
 																<a href="{{ URL::to('/reservation/rentbook/' . $reservation->rvn_id) }}" class="btn btn-sm btn-success">
 																	Wypożycz
@@ -38,7 +38,7 @@
 															@endif
 														</td>
 														<td>
-															<a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-danger"> 
+															<a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-sm btn-danger"> 
 																Anuluj
 															</a>
 														</td>

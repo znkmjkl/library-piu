@@ -6,48 +6,7 @@
 	background-color: #FF4A4A;
 	font-weight: bold;
 }
-</style>
-
-
- <h4>Rezerwacje</h4>
- @if(count($rvns)==0)
- 	brak rezerwacji
- @endif
- 
- <br/>
- <h4>Wypożyczenia</h4>
- @if(count($rtls)==0)
- 	brak wypożyczeń
- @endif
- @foreach ($rtls as $rtl)
- 	{{date("d-m-y",strtotime($rtl->rtl_start_date))}}<br/>
- 	{{date("d-m-y",strtotime($rtl->rtl_end_date))}}<br/>
- 	{{$rtl->bok_title}}<br/>
- 	{{$rtl->fne_amount}}<br/>
- 	opóżnienie: 
-
- 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)
- 		przetrzymano!
- 	@else
- 		jest ok!
- 	@endif
- 	
- 	<br/>
- 	<br/>
- 	{{ Form::open(array('route' => array('prolongate', $rtl->rtl_id, $rtl->bok_title))) }}
-            {{ Form::submit('Prolongate', array()) }}
-    {{ Form::close() }}
-
- 	<br/><br/>
-
-
- <br/><br/>
- @endforeach
-
-<br/><br/>
-
-
-<br/>		
+</style>	
 
 	
 
@@ -195,9 +154,7 @@
 				</div>
 			</div>
 			
-			<div class="col-xs-10 col-sm-offset-1" style="margin-bottom:20px;">			
-				<hr>
-			</div>
+
 			
 			<div class="col-md-2" style="margin-top:20px;">
 				<ul class="nav nav-pills  nav-stacked">
@@ -248,27 +205,26 @@
  													Termin minął {{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}temu
  												@else
  													{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}
- 													@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a") < 90)
- 													{{ Form::open(array('route' => array('prolongate', $rtl->rtl_id, $rtl->bok_title), "style" => "display:inline-block;")) }}
-           												{{ Form::submit('Prolonguj', array("style"=>"display:inline-block")) }}
-    												{{ Form::close() }}
+ 													@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a") < 90 && !$rtl->rvn_status)
+ 														{{ Form::open(array('route' => array('prolongate', $rtl->rtl_id, $rtl->bok_title), "style" => "display:inline-block;")) }}
+	           												{{ Form::submit('Prolonguj', array("style"=>"display:inline-block")) }}
+    													{{ Form::close() }}    													
     												@else
     												<span class="label label-danger">Nie możesz już prolongować</span>
     												@endif
  												@endif
 											 <!-- <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a>  -->
 											 </td>
-											<td>{{$rtl->fne_amount}} zł</td> 
+											<td>
+											@if(!empty($rtl->fne_amount))
+											{{$rtl->fne_amount}} 
+											@else
+											0
+											@endif	
+											zł
+											</td> 
 										</tr>
-										@endforeach
-										<tr style="color:red;">
-											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
-											<td>12-12-2014r.</td>
-											<td></td>
-											<td style="color:red;"><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> TERMIN MINĄŁ </abbr> &nbsp&nbsp <span class="label label-danger">1,20PLN</span> &nbsp&nbsp <a> <abbr title="Poproś o prolongatę"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </abbr> </a> </td>
-											<!-- <td>WYPOŻYCZONA</td> -->
-											<td></td>
-										</tr>
+										@endforeach										
 									</tbody>
 								</table>
 								@endif
@@ -304,12 +260,7 @@
 											<td>12-12-2014r.</td>
 											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp </td>
 										</tr>
-										@endforeach
-										<tr>
-											<td><a><abbr title='"Przepisy babci Grażynki na każdy dzień" - zobacz stronę książki'> Przepisy babci...</a></td>
-											<td>12-12-2014r.</td>
-											<td>30-12-2014r. &nbsp&nbsp <span class="label label-warning">1,20PLN</span> &nbsp&nbsp </td>
-										</tr>
+										@endforeach										
 									</tbody>
 								</table>
 								@endif
@@ -367,7 +318,7 @@
 
 				</div>
 			<br/>
-			//sprawdzanie w wypozyczonych czy oddane czy nie - 2 array old i activ
+			
 			</div>
 			
 @stop

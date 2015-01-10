@@ -51,7 +51,7 @@ App::error(function(Exception $exception, $code)
 	//Log::error($exception);
 	if($code == '401')
 		return View::make('errors.403');
-	else
+	else if($code == '404')
 		return View::make('errors.404');
 });
 
