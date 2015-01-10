@@ -22,7 +22,7 @@
                     <li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
                     <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
                     <li><hr></li>
-                    <li><a href="/admin"><span class="glyphicon glyphicon-wrench"> Administracja</span></a></li>
+                    <li><a href="/admin/books"><span class="glyphicon glyphicon-wrench"> Administracja</span></a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
                   </ul>
                 </li>

@@ -119,11 +119,11 @@ class BookController extends \BaseController {
                         $author->atr_wtr_id = $writer;
                         $author->save();
                     }
-                    return Redirect::intended('/admin')->with('flash_message_success', 'Dodano książke');
+                    return Redirect::back()->with('flash_message_success', 'Dodano książke');
                 }
                 else
                 {
-                    return Redirect::intended('/admin')->with('flash_message_danger', 'Błędne dane książki');
+                    return Redirect::back()->with('flash_message_danger', 'Błędne dane książki');
                 }
     }
     public function getEditBookView($bok_id){
@@ -183,11 +183,11 @@ class BookController extends \BaseController {
                         $author->atr_wtr_id = $writer;
                         $author->save();
                 }
-          return Redirect::intended('/admin')->with('flash_message_success', 'Edytowano książke');;
+          return Redirect::back()->with('flash_message_success', 'Edytowano książke');;
         }
         else
         {
-           return Redirect::intended('/admin')->with('flash_message_danger', 'Błędne dane książki');
+           return Redirect::back()->with('flash_message_danger', 'Błędne dane książki');
         }
     }
     public function removeBook($bok_id){
@@ -197,11 +197,11 @@ class BookController extends \BaseController {
             DB::table('book')->where('bok_id', $bok_id)->update(array('is_deleted' => 1));
             DB::table('reservation')->where('rvn_bok_id',$bok_id)->update(array('rvn_status' => 0,
                                                                                'rvn_is_ready' => 0));
-            return Redirect::intended('/admin')->with('flash_message_success', 'Usunięto książke');
+            return Redirect::back()->with('flash_message_success', 'Usunięto książke');
         }
         else
         {
-            return Redirect::intended('/admin')->with('flash_message_danger', 'Nie można usunąć książki wypożyczonej');
+            return Redirect::back()->with('flash_message_danger', 'Nie można usunąć książki wypożyczonej');
         }
 
 

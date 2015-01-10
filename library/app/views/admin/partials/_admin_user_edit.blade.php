@@ -1,4 +1,5 @@
 <!-- panel dodawania uzytkownikow-->
+
 											<div class="panel-group" id="addUserAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 												<div class="panel panel-success">
 													<div class="panel-heading">
@@ -21,6 +22,17 @@
 											
 											<br><br>
 
+{{ Form::open(array('url' => 'admin/search/user', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+    <div class="input-group" style="width:20%">
+        
+            
+            {{ Form::text('searchInput', null, array('class' => 'form-control', 'style' => 'margin-bottom:0px; width:250px;', 'placeholder' => 'Podaj numer karty lub pesel', 'required' => true)) }}
+            <span class="input-group-btn">
+            {{ Form::submit('Szukaj', array('class' => 'btn btn-default')) }}
+            </span>	
+        
+    </div>
+{{ Form::close() }}
 											<table class="table booklist-table">
 												<thead>
 													<tr>

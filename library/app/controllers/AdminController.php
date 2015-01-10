@@ -2,7 +2,7 @@
 
 class AdminController extends \BaseController {
 
-	public function getAdmin()
+	public function getAdmin($pageContent)
     {
        $bookAuthors = DB::table('author')
                            ->join('book', 'book.bok_id', '=', 'author.atr_bok_id')
@@ -83,9 +83,39 @@ class AdminController extends \BaseController {
                                                'writers' => $writers,
                                                'writersList' => $writersList,
                                                'autors' => $autors,
-                                               'authorsArray' => $authorsArray,
-                                               'users' => $users, 
-                                               'reservations' => $reservations));
+                                               'authorsArray' => $authorsArray,                                             
+                                               'reservations' => $reservations,
+                                               'pageContent' => $pageContent));
+    }
+
+    public function getUserReservations(){
+      
+      $user = DB::table('user')
+                                ->where('usr_pesel', Input::get('searchInput'))
+                                ->orWhere('usr_number', Input::get('searchInput'))                                
+                                ->get();
+      $userID = $user[0]->id;
+      $reservations = DB::table('reservation')
+                                ->where('rvn_usr_id',$userID)
+                                ->where('rvn_status', true)
+                                ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
+                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+                                ->get();
+      $pageContent = 'reservations';
+      return View::make('admin.admin', array('reservations' => $reservations, 'pageContent' => $pageContent));
+    }
+
+    public function getUser(){
+      
+      $users = DB::table('user')
+                                ->where('usr_pesel', Input::get('searchInput'))
+                                ->orWhere('usr_number', Input::get('searchInput'))
+                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
+                                ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')                                
+                                ->get();
+      
+      $pageContent = 'users';
+      return View::make('admin.admin', array('users' => $users, 'pageContent' => $pageContent));
     }
 
 }

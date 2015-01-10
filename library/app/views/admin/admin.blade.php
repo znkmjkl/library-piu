@@ -13,17 +13,45 @@
 					<div class="panel-body">
 					
 						<!-- PANEL BODY -->
-						<div class="col-md-2" style="margin-top:20px;">
-							<ul class="nav nav-pills  nav-stacked">
-								<li role="presentation" class="active"><a href="#ksiazki" data-toggle="tab"> Książki </a></li>	
-								<li role="presentation" ><a href="#autorzy" data-toggle="tab"> Autorzy </a></li>								
- 								<li role="presentation" ><a href="#uzytkownicy" data-toggle="tab"> Użytkownicy </a></li>
-								<li role="presentation" ><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
-								<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
+						<div class="col-xs-12" style="margin-top:20px;">
+							<ul class="nav nav-pills">	
+								@if($pageContent=="books")							
+									<li role="presentation" class="active"><a href="/admin/books"> Książki </a></li>								
+								@else
+									<li role="presentation" ><a href="/admin/books"> Książki </a></li>								
+								@endif
+								
+								@if($pageContent=="authors")							
+									<li role="presentation" class="active"><a href="/admin/authors"> Autorzy </a></li>								
+								@else
+									<li role="presentation" ><a href="/admin/authors"> Autorzy </a></li>								
+								@endif
+								
+								@if($pageContent=="users")							
+									<li role="presentation" class="active"><a href="/admin/users"> Użytkownicy </a></li>
+								@else
+									<li role="presentation" ><a href="/admin/users"> Użytkownicy </a></li>
+								@endif
+								
+								@if($pageContent=="rentals")							
+									<li role="presentation" class="active"><a href="/admin/rentals"> Wypożyczenia </a></li>
+								@else
+									<li role="presentation" ><a href="/admin/rentals"> Wypożyczenia </a></li>
+								@endif
+								
+								@if($pageContent=="reservations")							
+									<li role="presentation" class="active" ><a href="/admin/reservations"> Rezerwacje </a></li>
+								@else
+									<li role="presentation" ><a href="/admin/reservations"> Rezerwacje </a></li>					
+								@endif
+								
+								
+								
+								
 							</ul>
 						</div>
 							
-						<div class="col-md-10">	
+						<div class="col-xs-12">	
 							
 							<div id="myTabContent" class="tab-content">
 								
@@ -34,74 +62,27 @@
 										
 											<div class="panel-heading">Edycja książek</div>
 											
-											@include('admin.partials._admin_book_edit')
+											@if($pageContent == 'books')
+												@include('admin.partials._admin_book_edit')
+											@elseif($pageContent == 'authors')
+												@include('admin.partials._admin_authors_edit')
+											@elseif($pageContent == 'users')
+												@include('admin.partials._admin_user_edit')
+											@elseif($pageContent == 'rentals')
+												@include('admin.partials._admin_renting_edit')
+											@elseif($pageContent == 'reservations')
+												@include('admin.partials._admin_reservation_edit')
+											@endif
 										</div>
 									</div>
 											
 								</div>
-
-								<div class="tab-pane fade" id="autorzy" style="margin-top:20px;">
-								
-									<div class="bs-example" data-example-id="table-within-panel">
-										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja autorów</div>
-											
-											@include('admin.partials._admin_authors_edit')
-											
-										</div>
-									</div>
-																
-								</div>
-								
-								<div class="tab-pane fade" id="uzytkownicy" style="margin-top:20px;">
-								
-									<div class="bs-example" data-example-id="table-within-panel">
-										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja użytkowników</div>
-											
-											@include('admin.partials._admin_user_edit')
-										</div>
-									</div>
-											
-								</div>
-								
-<div class="tab-pane fade" id="wypozyczenia" style="margin-top:20px;">
-								
-									<div class="bs-example" data-example-id="table-within-panel">
-										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja wypożyczeń</div>
-											
-											<br>
-											
-											@include('admin.partials._admin_renting_edit')
-											
-										</div>
-									</div>
-																
-								</div>
-								
-																<div class="tab-pane fade" id="rezerwacje" style="margin-top:20px;">
-								
-									<div class="bs-example" data-example-id="table-within-panel">
-										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja rezerwacji</div>
-											
-											<br>										
-											@include('admin.partials._admin_reservation_edit')
-										</div>
-									</div>
-																
-								</div>
-							
-						</div>
+							</div>
 						<!-- END OF PANEL BODY-->
-					</div>
+						</div>
 				
-				</div>
+					</div>
 						
+				</div>
 			</div>
 @stop
