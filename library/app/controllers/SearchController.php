@@ -17,6 +17,7 @@ class SearchController extends \BaseController {
                                            ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                            ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
+                                           ->groupBy('bok_title')
                                            ->get();
 
         return View::make('search.search_results', array('search_results' => $search_results));
@@ -44,6 +45,7 @@ class SearchController extends \BaseController {
                                            ->where('knd_name', 'LIKE', '%'. $bok_knd . '%')
                                            ->where('bok_edition_date', 'LIKE', '%'. $bok_edition_date . '%')
                                            ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
+                                           ->groupBy('bok_title')
                                            ->get();
 
         return View::make('search.search_results', array('search_results' => $search_results));

@@ -41,6 +41,8 @@ Route::get('/user/verify/{id}','UserController@verifyUser')->before('auth|admin'
 
 Route::get('/reservation/cancel/{id}','ReservationController@cancelReservation')->before('auth|admin');
 
+Route::get('/test','ReservationController@test');
+
 Route::get('/reservation/makeready/{id}','ReservationController@makeReadyReservation')->before('auth|admin');
 
 Route::get('/reservation/rentbook/{id}','ReservationController@rentBook')->before('auth|admin');

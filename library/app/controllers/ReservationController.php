@@ -2,6 +2,14 @@
 
 class ReservationController extends \BaseController {
 
+	public function test()
+	{
+		$zme = Reservation::isAvailable(5);
+
+		return $zme;
+	}
+
+
 	public function postReserveBook($bok_id)
 	{
 		if (is_null(Reservation::isAvailable($bok_id)))
@@ -21,13 +29,20 @@ class ReservationController extends \BaseController {
 		{
 			if (!Reservation::isAvailable($bok_id))
 			{
-				Reservation::setReserved($bok_id, Auth::user()->id);
+				if (Reservation::checkReservationNumber(Auth::user()->id) > 5)
+				{
+					return Redirect::back()->with('flash_message_danger', 'Zarezerwowałeś już maksymalną liczbę książek!');
+				}
+				else
+				{
+					Reservation::setReserved($bok_id, Auth::user()->id);
 
-				return Redirect::back()->with('flash_message_success', 'Zarezerwowałeś książkę.');
+					return Redirect::back()->with('flash_message_success', 'Zarezerwowałeś książkę.');
+				}
 			}
 			else
 			{
-				return Redirect::back()->with('flash_message_danger', 'Ksiązką została już zarezerwowana.');
+				return Redirect::back()->with('flash_message_danger', 'Ksiązka została już zarezerwowana.');
 			}
 		}
 	}

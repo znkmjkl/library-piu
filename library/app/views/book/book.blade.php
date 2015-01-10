@@ -31,7 +31,7 @@
                                 <tr>
                                     <td> <strong> Autor: </strong> </td>
                                     <td> @foreach ($book as $author)
-                                            <a href="/author/{{ $author->wtr_id }} "> {{ $author->wtr_name }} {{ $author->wtr_surname }}</a><span> </span>
+                                            <a href="/author/{{ $author->wtr_id }} "> {{ $author->wtr_name }} {{ $author->wtr_surname }}</a><span>, </span>
                                          @endforeach
                                     </td>
                                 </tr>

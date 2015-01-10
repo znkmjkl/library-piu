@@ -35,4 +35,12 @@ class Reservation extends Eloquent {
 
     }
 
+
+    protected static function checkReservationNumber($rvn_usr_id)
+    {
+        DB::table('reservation')->where('rvn_usr_id', $rvn_usr_id)
+                                ->where('rvn_status', 1)
+                                ->count();
+    }
+
 }
