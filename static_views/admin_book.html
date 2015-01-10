@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="library">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Biblionetka - Twoja internetowa biblioteka</title>
+
+        <!-- core CSS -->
+
+		<!--PODMIENIAM CSSY NA LOKALNE-->
+			<link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/carousel.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/signin.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/conversations.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+			<link href="css/custom.css" rel="stylesheet">
+		<!-- --------------------------->
+		
+		<!--
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/carousel.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/signin.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/conversations.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/main.css">
+		-->
+		
+		<!-- TO DODAĆ!!! --
+		<link href="css/custom.css" rel="stylesheet">
+		-- !!!!!!!!!!! -->
+		
+		<!-- PODMIENIAM JS NA LOKALNE -->
+			<script src="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		<!-- --------------------------->
+		
+		<!--
+        <script src="http://localhost:8000/js/jquery.js"></script>
+
+        <script src="http://localhost:8000/js/bootstrap.min.js"></script>
+		-->
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+
+    </head>
+
+    <body>
+
+        
+    
+	<div class="container">
+		<div class="navbar-wrapper">
+			<div class="navbar navbar-inverse navbar-static-top">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+					<span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"> Michał</span>
+							<b class="caret"></b></a>
+								
+								<ul class="dropdown-menu">
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> O bibliotece</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Pomoc</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Polityka prywatności</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Regulamin</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+								</ul>
+						</li>
+						
+						<li class="divider-vertical"></li>
+						
+						<li> <button type="submit" class="btn btn-primary navbar-btn">Zarządzaj</button> </li>
+					</ul>
+				
+					<form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-right" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+						<div class="input-group">
+							<div class="form-group btn-group">
+								<input class="btn btn-default" type="submit" value="Szukaj">
+								<input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+							</div>
+							
+								<a href="/search">
+									<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog">zaawansowane </span></button>
+								</a>
+							
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
+    <div class="container">
+        			
+		<!--TRZEBA JESZCZE DODAC JS SNIPPET ZEBY NA DOLE ZMIENIL ODPOWIEDNIA OPCJE MENU NA ACTIVE-->
+			
+		<div class="container marketing about">
+		
+			<div style="margin-bottom:20px; margin-top:20px; margin-left:2%; width:96%;">
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> &nbsp Panel administratora
+						</h4>
+					</div>
+					<div class="panel-body">
+					
+						<!-- PANEL BODY -->
+						<div class="col-xs-12" style="margin-top:20px;">
+							<ul class="nav nav-pills">
+								<li role="presentation" class="active"><a href="admin_book.html"> Książki </a></li>								
+								<li role="presentation" ><a href="admin_authors.html"> Autorzy </a></li>								
+								<li role="presentation" ><a href="admin_users.html"> Użytkownicy </a></li>
+								<li role="presentation" ><a href="admin_rentals.html"> Wypożyczenia </a></li>
+								<li role="presentation" ><a href="admin_reservations.html"> Rezerwacje </a></li>
+							</ul>
+						</div>
+							
+						<div class="col-xs-12" style="margin-top:20px;">	
+							
+							<div class="panel panel-info">
+							
+								<div class="panel-heading">Edycja książek</div>
+								
+								<!-- panel dodawania ksiazki-->
+								<div class="panel-group" id="addBookAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+									<div class="panel panel-success">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#addBookAccordion" href="#addBookCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+													<span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp Dodaj książkę
+													<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
+												</a>
+											</h4>
+										</div>
+										<div id="addBookCollapseOne" class="panel-collapse collapse">
+											<div class="panel-body">
+											
+												<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+													
+													<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
+													<p class="help-block">&nbspOkładka książki.</p>
+																												
+													<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
+													<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
+													<p><select class="form-control" multiple="1" name="writer[]"></select></p>
+													<p><select class="form-control" name="language"></select></p>
+													<p><select class="form-control" name="kind"></select></p>
+													<input class="form-control" placeholder="Data wydania" name="date" type="text">
+													<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
+
+													<hr>
+													<input class="btn btn-lg btn-success btn-block" type="submit" value="Dodaj książkę">
+												</form>
+
+											
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<br><br>									
+								
+								<table class="table booklist-table">
+									<thead>
+										<tr>
+											<th>Tytuł</th>
+											<th>Autor</th>
+											<th>ISBN</th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--UWAGA TO JEST...-->
+										<tr>
+											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
+											<td>Jan Kowalski</td>
+											<td>978-3-16-148410-0</td>
+											<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#more_TUTAJNRISBN"> SZCZEGÓŁY </a> </td>
+											<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJNRISBN" href="#edit_TUTAJNRISBN"> EDYTUJ </a> </td>
+											<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
+										</tr>
+										
+										<tr>
+											<td colspan="6" style="border-top:0 solid;">
+												<div id="accordion_TUTAJNRISBN">
+													<div class="row">
+													<div id="more_TUTAJNRISBN" class="panel-collapse collapse">
+													
+														<div class="col-lg-2">
+														
+															<center>
+																<img src="img/cover1.jpg" alt="Tytuł książki - okładka" class="cover-big" style="width:90px; margin:0 auto;" />
+															</center>
+														</div>
+														
+														<div class="col-lg-5">
+														
+															<table class="table" style="margin:0px;">
+																<tbody>									
+																	<tr>
+																		<td> <strong> Tytuł: </strong> </td>
+																		<td> O psie który jeździł koleją </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Autor: </strong> </td>
+																		<td> Jan Kowalski </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> ISBN: </strong> </td>
+																		<td> 978-3-16-148410-0 </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Data wydania: </strong> </td>
+																		<td> 2013r. </td>
+																	</tr>
+																</tbody>
+															</table>
+														
+														</div>
+														
+														<div class="col-lg-5">
+														
+															<table class="table">
+																<tbody>									
+																	<tr>
+																		<td> <strong> Numer wydania: </strong> </td>
+																		<td> 1 </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Gatunek: </strong> </td>
+																		<td> Horror </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Język: </strong> </td>
+																		<td> Polski </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Dostępność: </strong> </td>
+																		<td> 
+																			<span class="label label-success">TAK</span>
+																			<span class="label label-warning"> <abbr title="Książka nie jest dostępna ale możesz ją zarezerwować">NIE</abbr></span>
+																			<span class="label label-danger">NIE</span>
+																			<!-- ofc tylko jedno naraz :) -->
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														
+														</div>
+														
+													</div>
+													</div>
+													
+													<div class="row">
+													<div id="edit_TUTAJNRISBN" class="panel-collapse collapse">
+														
+														<div class="panel panel-info" style="width:90%; margin:0 auto;">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																	<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Edytuj dane książki
+																</h4>
+															</div>
+															<div class="panel-body">
+											
+																<!-- UWAGA TU SKOPIOWALEM FORMA Z GÓRY - na pewno trzeba go troche zmodyfikowac -->
+																<form method="POST" action="http://localhost:8000/addbook" accept-charset="UTF-8" class="form-signin"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+													
+																	<input class="form-control" placeholder="Okładka" name="bok_cover_thumbnail" type="file">
+																	<p class="help-block">&nbspOkładka książki.</p>
+																																
+																	<input class="form-control" placeholder="ISBN" name="bok_isbn" type="text">
+																	<input class="form-control" placeholder="Tytuł" name="bok_title" type="text">
+																	<p><select class="form-control" multiple="1" name="writer[]"></select></p>
+																	<p><select class="form-control" name="language"></select></p>
+																	<p><select class="form-control" name="kind"></select></p>
+																	<input class="form-control" placeholder="Data wydania" name="date" type="text">
+																	<input class="form-control" placeholder="Numer wydania" name="edition" type="text">
+
+																	<hr>
+																	<input class="btn btn-lg btn-info btn-block" type="submit" value="Zmień dane">
+																</form>
+															</div>
+														</div>
+														
+													</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<!-- ...CALOSC-->
+									</tbody>
+								</table>
+							</div>
+							
+						</div>
+						<!-- END OF PANEL BODY-->
+					</div>
+				
+				</div>
+						
+			</div>
+										
+		</div>
+		
+	</div>
+	
+	
+	
+		
+    <div class="container">
+	<footer id="bottom">
+		<p class="text-center"><a href="/about">O bibliotece</a> &middot; <a href="/help">Pomoc</a> &middot; <a href="/privacy">Polityka prywatności</a> &middot; <a href="/terms">Regulamin</a> &middot &copy; 2014 Biblioteka </p>
+	</footer>
+</div>
+
+    </body>
+
+        <!-- core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        
+        
+        <script src="http://localhost:8000/js/holder.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-resource.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-route.min.js"></script>
+
+    </body>
+</html>

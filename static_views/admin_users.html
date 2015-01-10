@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="library">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+        <title>Biblionetka - Twoja internetowa biblioteka</title>
+
+        <!-- core CSS -->
+
+		<!--PODMIENIAM CSSY NA LOKALNE-->
+			<link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/carousel.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/signin.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/conversations.css">
+			<link media="all" type="text/css" rel="stylesheet" href="css/main.css">
+			<link href="css/custom.css" rel="stylesheet">
+		<!-- --------------------------->
+		
+		<!--
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/carousel.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/signin.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/conversations.css">
+
+        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/main.css">
+		-->
+		
+		<!-- TO DODAĆ!!! --
+		<link href="css/custom.css" rel="stylesheet">
+		-- !!!!!!!!!!! -->
+		
+		<!-- PODMIENIAM JS NA LOKALNE -->
+			<script src="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		<!-- --------------------------->
+		
+		<!--
+        <script src="http://localhost:8000/js/jquery.js"></script>
+
+        <script src="http://localhost:8000/js/bootstrap.min.js"></script>
+		-->
+		
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="../../assets/js/html5shiv.js"></script>
+        <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom styles for this template -->
+
+    </head>
+
+    <body>
+
+        
+    
+	<div class="container">
+		<div class="navbar-wrapper">
+			<div class="navbar navbar-inverse navbar-static-top">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+					<span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"> Michał</span>
+							<b class="caret"></b></a>
+								
+								<ul class="dropdown-menu">
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> O bibliotece</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Pomoc</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Polityka prywatności</a></span></li>
+									<li><a href="/account"><span class="glyphicon glyphicon-home"> Regulamin</a></span></li>
+									
+									<li><hr></li>
+									
+									<li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+								</ul>
+						</li>
+						
+						<li class="divider-vertical"></li>
+						
+						<li> <button type="submit" class="btn btn-primary navbar-btn">Zarządzaj</button> </li>
+					</ul>
+				
+					<form method="POST" action="http://localhost:8000/search/basic" accept-charset="UTF-8" class="navbar-form navbar-right" role="search"><input name="_token" type="hidden" value="C8cQ3PwStL5eG769Ck7QZlyJJ3OfJezA6PZxUjIH">
+						<div class="input-group">
+							<div class="form-group btn-group">
+								<input class="btn btn-default" type="submit" value="Szukaj">
+								<input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+							</div>
+							
+								<a href="/search">
+									<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog">zaawansowane </span></button>
+								</a>
+							
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
+    <div class="container">
+        			
+		<!--TRZEBA JESZCZE DODAC JS SNIPPET ZEBY NA DOLE ZMIENIL ODPOWIEDNIA OPCJE MENU NA ACTIVE-->
+			
+		<div class="container marketing about">
+		
+			<div style="margin-bottom:20px; margin-top:20px; margin-left:2%; width:96%;">
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> &nbsp Panel administratora
+						</h4>
+					</div>
+					<div class="panel-body">
+					
+						<!-- PANEL BODY -->
+						<div class="col-xs-12" style="margin-top:20px;">
+							<ul class="nav nav-pills">
+								<li role="presentation" ><a href="admin_book.html"> Książki </a></li>								
+								<li role="presentation" ><a href="admin_authors.html"> Autorzy </a></li>								
+								<li role="presentation" class="active"><a href="admin_users.html"> Użytkownicy </a></li>
+								<li role="presentation" ><a href="admin_rentals.html"> Wypożyczenia </a></li>
+								<li role="presentation" ><a href="admin_reservations.html"> Rezerwacje </a></li>
+							</ul>
+						</div>
+							
+						<div class="col-xs-12" style="margin-top:20px;">	
+							
+							<div class="panel panel-info">
+							
+								<div class="panel-heading">Edycja użytkowników</div>
+								
+								<!-- panel dodawania uzytkownikow-->
+								<div class="panel-group" id="addUserAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
+									<div class="panel panel-success">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#addUserAccordion" href="#addUserCollapseOne" style="line-height: 100%; display: block; text-decoration: none;">
+													<span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp Dodaj użytkownika
+													<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="float:right;"></span>
+												</a>
+											</h4>
+										</div>
+										<div id="addUserCollapseOne" class="panel-collapse collapse">
+											<div class="panel-body">
+											
+												<form method="POST" action="http://localhost:8000/adduser" accept-charset="UTF-8" class="form-signin" name="regForm" ng-show="regVisible"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+												
+													<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
+													<input class="form-control" placeholder="Podaj imię" required="1" ng-model="user.name" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne imię" name="firstname" type="text">		
+
+													<input class="form-control" placeholder="Podaj nazwisko" required="1" ng-model="user.lastname" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkLastName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne nazwisko" name="lastname" type="text">
+
+													<input class="form-control" placeholder="Podaj adres email" required="1" ng-model="user.email" ng-blur="checkEmail()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny adres email" name="email" type="email">
+
+													<input class="form-control" placeholder="Podaj hasło" required="1" ng-model="user.password1" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password" type="password" value="">
+
+													<input class="form-control" placeholder="Potwierdź hasło" required="1" ng-model="user.password2" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password_confirmation" type="password" value="">
+
+													<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
+
+													<input class="form-control" placeholder="Podaj miasto" ng-model="user.city" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{0,30}$/" ng-blur="checkCity()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne miasto" name="city" type="text">
+
+													<input class="form-control" placeholder="Podaj ulice" ng-model="user.street" ng-blur="checkStreet()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawną ulice" name="street" type="text">
+
+													<input class="form-control" placeholder="Podaj numer budynku" ng-model="user.houseNr" ng-blur="checkHouseNr()" data-toggle="tooltip" data-placement="right" title="Wprowadź numer domu" name="houseNr" type="text">
+
+													<input class="form-control" placeholder="Podaj kod pocztowy" ng-model="user.zipCode" ng-blur="checkZipCode()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny kod pocztowy" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" name="zipCode" type="text">
+
+													<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Dane Dodatkowe</label>
+
+													<input class="form-control" placeholder="Podaj numer telefonu" ng-model="user.phone" ng-pattern="/^[+]{0,1}[0-9]{0,11}$/" ng-blur="checkPhoneNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer telefonu" name="phone" type="text">
+
+													<input class="form-control" placeholder="Podaj numer użytkownika" ng-model="user.user_number" ng-pattern="/^.{12}$/" ng-blur="checkUserNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer użytkownika" name="user_number" type="text">
+
+													<input class="form-control" placeholder="Podaj pesel" ng-model="user.pesel" ng-pattern="/^[0-9]{11}$/" ng-blur="checkPesel()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny pesel" name="pesel" type="text">
+
+													<label>
+													*należy wypełnić wszystkie pola
+													</label>
+													<input class="btn btn-lg btn-success btn-block" ng-disabled="!regForm.$valid" ng-model="regFormSubmit" type="submit" value="Dodaj użytkownika">
+												</form>
+											
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<br><br>
+
+								<table class="table booklist-table">
+									<thead>
+										<tr>
+											<th>Imię</th>
+											<th>Nazwisko</th>
+											<th>Email</th>
+											<th>PESEL</th>
+											<th>Status konta</th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--UWAGA TO JEST...-->
+										<tr>
+											<td>Marcin</td>
+											<td>Pająk</td>
+											<td>m.pajak@gmail.com</td>
+											<td>91060327645</td>
+											<td><span class="label label-danger">NIE ZWERYFIKOWANE</span></td>
+											<td> <a class="btn btn-sm btn-primary btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#more_TUTAJPESEL"> SZCZEGÓŁY </a> </td>
+											<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_TUTAJPESEL" href="#edit_TUTAJPESEL"> EDYTUJ </a> </td>
+											<td> <a class="btn btn-sm btn-danger btn-block"> USUŃ </a> </td>
+										</tr>
+										
+										<tr>
+											<td colspan="6" style="border-top:0 solid;">
+												<div id="accordion_TUTAJPESEL">
+													<div class="row">
+													<div id="more_TUTAJPESEL" class="panel-collapse collapse">
+																														
+														<div class="col-lg-4">
+														
+															<table class="table" style="margin:0px;">
+																<tbody>									
+																	<tr>
+																		<td> <strong> Imię: </strong> </td>
+																		<td> Marcin </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Nazwisko: </strong> </td>
+																		<td> Pająk </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> PESEL: </strong> </td>
+																		<td> 91060327645 </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Adres email: </strong> </td>
+																		<td> m.pajak@gmail.com </td>
+																	</tr>
+																</tbody>
+															</table>
+														
+														</div>
+														
+														<div class="col-lg-4">
+														
+															<table class="table">
+																<tbody>									
+																	<tr>
+																		<td> <strong> Miasto: </strong> </td>
+																		<td> Kraków </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Ulica: </strong> </td>
+																		<td> Śliczna </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Numer domu: </strong> </td>
+																		<td> 12A </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Kod pocztowy: </strong> </td>
+																		<td> 
+																			32-324
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														
+														</div>
+														
+														<div class="col-lg-4">
+														
+															<table class="table">
+																<tbody>									
+																	<tr>
+																		<td> <strong> Numer karty: </strong> </td>
+																		<td> 67552537274 </td>
+																	</tr>
+																	
+																	<tr>
+																		<td> <strong> Status konta: </strong> </td>
+																		<td> <span class="label label-danger">NIE ZWERYFIKOWANE</span> </td>
+																	</tr>
+																</tbody>
+															</table>
+														
+														</div>
+														
+													</div>
+													</div>
+													
+													<div class="row">
+													<div id="edit_TUTAJPESEL" class="panel-collapse collapse">
+														
+														<div class="panel panel-info" style="width:90%; margin:0 auto;">
+															<div class="panel-heading">
+																<h4 class="panel-title">
+																	<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp Edytuj dane użytkownika
+																</h4>
+															</div>
+															<div class="panel-body">
+											
+																<form method="POST" action="http://localhost:8000/adduser" accept-charset="UTF-8" class="form-signin" name="regForm" ng-show="regVisible"><input name="_token" type="hidden" value="Sxt2TIIpAPehauPtiTRZZTRRP9t5lw3KJFmGJHEJ">
+												
+																	<label style="text-align:center; font-size:1.2em; text-decoration:underline;">Dane osobowe*</label>
+																	<input class="form-control" placeholder="Podaj imię" required="1" ng-model="user.name" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne imię" name="firstname" type="text">		
+
+																	<input class="form-control" placeholder="Podaj nazwisko" required="1" ng-model="user.lastname" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{1,20}$/" ng-blur="checkLastName()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne nazwisko" name="lastname" type="text">
+
+																	<input class="form-control" placeholder="Podaj adres email" required="1" ng-model="user.email" ng-blur="checkEmail()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny adres email" name="email" type="email">
+
+																	<input class="form-control" placeholder="Podaj hasło" required="1" ng-model="user.password1" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password" type="password" value="">
+
+																	<input class="form-control" placeholder="Potwierdź hasło" required="1" ng-model="user.password2" ng-blur="checkPass()" data-toggle="tooltip" data-placement="right" title="Wprowadź takie same hasła!" name="password_confirmation" type="password" value="">
+
+																	<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Adres</label>
+
+																	<input class="form-control" placeholder="Podaj miasto" ng-model="user.city" ng-pattern="/^[A-Za-z&#039;\-żźćń&oacute;łęąśŻŹĆĄŚĘŁ&Oacute;Ń]{0,30}$/" ng-blur="checkCity()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawne miasto" name="city" type="text">
+
+																	<input class="form-control" placeholder="Podaj ulice" ng-model="user.street" ng-blur="checkStreet()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawną ulice" name="street" type="text">
+
+																	<input class="form-control" placeholder="Podaj numer budynku" ng-model="user.houseNr" ng-blur="checkHouseNr()" data-toggle="tooltip" data-placement="right" title="Wprowadź numer domu" name="houseNr" type="text">
+
+																	<input class="form-control" placeholder="Podaj kod pocztowy" ng-model="user.zipCode" ng-blur="checkZipCode()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny kod pocztowy" ng-pattern="/^[0-9]{2}-[0-9]{3}$/" name="zipCode" type="text">
+
+																	<label style="text-align:center; font-size:1.2em;text-decoration:underline;">Dane Dodatkowe</label>
+
+																	<input class="form-control" placeholder="Podaj numer telefonu" ng-model="user.phone" ng-pattern="/^[+]{0,1}[0-9]{0,11}$/" ng-blur="checkPhoneNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer telefonu" name="phone" type="text">
+
+																	<input class="form-control" placeholder="Podaj numer użytkownika" ng-model="user.user_number" ng-pattern="/^.{12}$/" ng-blur="checkUserNumber()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny numer użytkownika" name="user_number" type="text">
+
+																	<input class="form-control" placeholder="Podaj pesel" ng-model="user.pesel" ng-pattern="/^[0-9]{11}$/" ng-blur="checkPesel()" data-toggle="tooltip" data-placement="right" title="Wprowadź poprawny pesel" name="pesel" type="text">
+
+																	<label>
+																	*należy wypełnić wszystkie pola
+																	</label>
+																	<input class="btn btn-lg btn-info btn-block" ng-disabled="!regForm.$valid" ng-model="regFormSubmit" type="submit" value="Zmień dane">
+																</form>
+																
+															</div>
+														</div>
+														
+													</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<!-- ...CALOSC-->
+									</tbody>
+								</table>
+								
+							</div>
+							
+						</div>
+						<!-- END OF PANEL BODY-->
+					</div>
+				
+				</div>
+						
+			</div>
+										
+		</div>
+		
+	</div>
+	
+	
+	
+		
+    <div class="container">
+	<footer id="bottom">
+		<p class="text-center"><a href="/about">O bibliotece</a> &middot; <a href="/help">Pomoc</a> &middot; <a href="/privacy">Polityka prywatności</a> &middot; <a href="/terms">Regulamin</a> &middot &copy; 2014 Biblioteka </p>
+	</footer>
+</div>
+
+    </body>
+
+        <!-- core JavaScript -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        
+        
+        <script src="http://localhost:8000/js/holder.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-resource.min.js"></script>
+
+        <script src="http://localhost:8000/js/vendor/angular-route.min.js"></script>
+
+    </body>
+</html>
