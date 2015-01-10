@@ -90,49 +90,8 @@
 										
 											<div class="panel-heading">Edycja rezerwacji</div>
 											
-											<br>
-											
-											<table class="table booklist-table">
-												<thead>
-													<tr>
-														<th>ISBN</th>
-														<th>Imię</th>
-														<th>Nazwisko</th>
-														<th>PESEL</th>
-														<th>Data</th>
-														<th>Status</th>
-														<th></th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<!--UWAGA TO JEST...-->
-													<tr>
-														<td>978-3-16-148410-0</td>
-														<td>Marcin</td>
-														<td>Pająk</td>
-														<td>91060327645</td>
-														<td>12-12-2014r.</td>
-														<td><span class="label label-success">DO ODBIORU</span></td>
-														<td> <a class="btn btn-sm btn-success btn-block"> WYPOŻYCZ </a> </td>
-														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
-													</tr>
-													
-													<tr>
-														<td>978-3-16-148410-0</td>
-														<td>Marcin</td>
-														<td>Pająk</td>
-														<td>91060327645</td>
-														<td>12-12-2014r.</td>
-														<td><span class="label label-warning">OCZEKUJE</span></td>
-														<td> <a class="btn btn-sm btn-warning btn-block"> DO ODBIORU </a> </td>
-														<td> <a class="btn btn-sm btn-danger btn-block"> ANULUJ </a> </td>
-													</tr>
-													
-													<!-- ...CALOSC-->
-												</tbody>
-											</table>
-											
+											<br>										
+											@include('admin.partials._admin_reservation_edit')
 										</div>
 									</div>
 																

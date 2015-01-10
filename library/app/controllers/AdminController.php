@@ -4,13 +4,7 @@ class AdminController extends \BaseController {
 
 	public function getAdmin()
     {
-        $users = DB::table('user')
-                              ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
-                              ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
-                              ->get();
-
-
-        $bookAuthors = DB::table('author')
+       $bookAuthors = DB::table('author')
                            ->join('book', 'book.bok_id', '=', 'author.atr_bok_id')
                            ->where('book.is_deleted', 0)
                              ->orWhere('book.is_deleted', null)
@@ -71,6 +65,15 @@ class AdminController extends \BaseController {
 
 
 
+        $users = DB::table('user')
+                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
+                                ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+                                ->get();
+        $reservations = DB::table('reservation')
+                                ->where('rvn_status', true)
+                                ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
+                                ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+                                ->get();
 
         return View::make('admin.admin', array('users' => $users,
                                                'rentedBooks' => $rentedBooks,
@@ -80,7 +83,9 @@ class AdminController extends \BaseController {
                                                'writers' => $writers,
                                                'writersList' => $writersList,
                                                'autors' => $autors,
-                                               'authorsArray' => $authorsArray));
+                                               'authorsArray' => $authorsArray,
+                                               'users' => $users, 
+                                               'reservations' => $reservations));
     }
 
 }
