@@ -15,10 +15,10 @@ class CreateAddressTable extends Migration {
 		Schema::create('address', function($table)
 		{
 			$table->increments('adr_id');
-			$table->string('adr_city', 100)->nullable();
-			$table->string('adr_street', 100)->nullable();
-			$table->string('adr_house_number', 10)->nullable();
-			$table->string('adr_postal_code', 10)->nullable();
+			$table->string('adr_city', 100);
+			$table->string('adr_street', 100);
+			$table->string('adr_house_number', 10);
+			$table->string('adr_postal_code', 10);
 			$table->timestamps();
 		});
 	}
