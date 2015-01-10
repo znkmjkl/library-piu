@@ -53,9 +53,10 @@ class UserController extends \BaseController {
             $user->usr_adr_id = $addressID->adr_id;
 
             $user->save();
-            //  Mail::send('emails.registration.welcome', array('firstname'=>Input::get('firstname')), function($message){
-            //     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
-            // });
+
+              Mail::send('emails.registration.welcome', array('firstname' => Input::get('firstname') , 'id'=>$user->usr_number), function($message){
+              $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Witamy w naszej księgarni!');
+                 });
 
             return Redirect::back()->with('flash_message_success', 'Dziękujemy za rejestrację. Link aktywacyjny został wysłany na podany adres emailowy.');
         }
@@ -101,7 +102,7 @@ class UserController extends \BaseController {
     public function postResetPassword()
     {
 
-        $user = DB::table('user')->where('usr_surname', Input::get('lastname'))
+        $user = DB::table('user')->where('usr_surname', Input::get('surname'))
                                  ->where('email', Input::get('email'))
                                  ->first();
 
@@ -247,12 +248,19 @@ class UserController extends \BaseController {
     }
 
 
-    // public function getShowUser($id) {
-    //     $user = DB::table('user')->where('id', $id)
-    //                              ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
-    //                              ->get();
+    public function confirmUser($usr_number){
 
-    //     return View::make('for_testing_purposes.user', array('user' => $user));                            
-    // }    
+        $user = DB::table('user')->where('usr_number',$usr_number)
+                         ->where('usr_active',0)->count();
+        if($user == 1)
+        {
+            DB::table('user')->where('usr_number',$usr_number)->update(array('usr_active' => 1 ));
+            return Redirect::intended('/')->with('flash_message_success', 'Konto zostało aktywowane, zaloguj się.');            
+        }
+        else
+        {
+            return Redirect::intended('/')->with('flash_message_danger', 'Nie ma takiego linka !.')->withInput();            
+        }
+    }
 
 }

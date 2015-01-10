@@ -10,7 +10,7 @@
 			Witaj,
 
 			Zresetowano hasło w ksiegarni aimsi. Oto twoje nowe hasło: 
-			 <?php echo $password ?>
+			 {{$usr_password}}}
 		</div>
 	</body>
 </html>
