@@ -2,7 +2,7 @@
 
 class AdminController extends \BaseController {
 
-	public function getAdmin()
+	public function getAdmin($pageContent)
     {
        $bookAuthors = DB::table('author')
                            ->join('book', 'book.bok_id', '=', 'author.atr_bok_id')
@@ -85,7 +85,8 @@ class AdminController extends \BaseController {
                                                'autors' => $autors,
                                                'authorsArray' => $authorsArray,
                                                'users' => $users, 
-                                               'reservations' => $reservations));
+                                               'reservations' => $reservations,
+                                               'pageContent' => $pageContent));
     }
 
 }

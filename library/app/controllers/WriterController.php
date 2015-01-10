@@ -41,10 +41,10 @@ class WriterController extends \BaseController {
       $writer->wtr_birth_date = Input::get('birth_date').' 00:00:00';
       $writer->save();
 
-      return Redirect::intended('/admin')->with('flash_message_success', 'Autor został dodany pomyślnie');;
+      return Redirect::back()->with('flash_message_success', 'Autor został dodany pomyślnie');;
       }
     else{
-      return Redirect::intended('/admin')->with('flash_message_danger', 'Złe dane')->withInput();
+      return Redirect::back()->with('flash_message_danger', 'Złe dane')->withInput();
 
     }
 
@@ -59,7 +59,7 @@ class WriterController extends \BaseController {
       return View::make('for_testing_purposes.edit_author',array('writer' => $writer));
     }
     else{
-      return Redirect::intended('/admin')->with('flash_message_danger', 'Nie ma takiego autora!!!');
+      return Redirect::back()->with('flash_message_danger', 'Nie ma takiego autora!!!');
      }
   }
 
@@ -72,11 +72,11 @@ class WriterController extends \BaseController {
                                                                  'wtr_surname' => Input::get('author_surname'),
                                                                  'wtr_birth_date' => Input::get('birth_date').' 00:00:00' ));
 
-      return Redirect::intended('/admin')->with('flash_message_success', 'Autor został dodany pomyślnie');
+      return Redirect::back()->with('flash_message_success', 'Autor został dodany pomyślnie');
     }
     else
     {
-      return Redirect::intended('/admin')->with('flash_message_danger', 'Złe dane')->withInput();
+      return Redirect::back()->with('flash_message_danger', 'Złe dane')->withInput();
     }
 
   }
@@ -84,7 +84,7 @@ class WriterController extends \BaseController {
   public function removeWritter($writer_id){
 
                 $writer = DB::table('writer')->where('wtr_id', $writer_id)->delete();
-                      return Redirect::intended('/admin')->with('flash_message_success', 'Autor został usuniety');
+                      return Redirect::back()->with('flash_message_success', 'Autor został usuniety');
 
 
   }

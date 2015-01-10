@@ -131,14 +131,14 @@ class UserController extends \BaseController {
     {
         DB::table('user')->where('id', $id)->update(array('usr_active' => 0));
 
-        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został zablokowany.');
+        return Redirect::back()->with('flash_message_success', 'Użytkownik został zablokowany.');
     }
 
     public function activateUser($id=null)
     {
         DB::table('user')->where('id', $id)->update(array('usr_active' => 1));
 
-        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został aktywowany.');
+        return Redirect::back()->with('flash_message_success', 'Użytkownik został aktywowany.');
     }
 
     // public function getAddUser() {
@@ -172,11 +172,11 @@ class UserController extends \BaseController {
             $user->password = Hash::make(Input::get('password'));
             $user->usr_number = $userNumber->usr_number + 1;
             $user->save();
-            return Redirect::intended('/admin')->with('flash_message_success', 'Użytkownik został dodany.');
+            return Redirect::back()->with('flash_message_success', 'Użytkownik został dodany.');
         }
         else
         {
-            return Redirect::intended('/adduser')->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
+            return Redirect::back()->with('flash_message_danger', 'Podany adres email jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
 

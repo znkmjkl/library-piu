@@ -18,11 +18,6 @@ class AccountController extends \BaseController {
                       })
                     ->get();
 
-/*->join('contacts', function($join)
-        {
-            $join->on('users.id', '=', 'contacts.user_id')
-                 ->where('contacts.user_id', '>', 5);
-        })*/
       $rtlsOld = DB::table('rental')->where('rtl_usr_id', Auth::user()->id)
                     ->where('rtl_is_returned','1')
                     ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')

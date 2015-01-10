@@ -19,7 +19,7 @@
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
 
 /* Admin */
-Route::get('/admin', 'AdminController@getAdmin')->before('auth|admin');
+Route::get('/admin/{pageContent}', 'AdminController@getAdmin')->before('auth|admin');
 
 Route::get('/user/block/{id}','UserController@blockUser')->before('auth|admin');
 
