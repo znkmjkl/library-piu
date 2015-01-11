@@ -10,15 +10,14 @@ class WriterController extends \BaseController {
      */
     public function getShowWriter($wtr_id)
     {
-        $books_authors = DB::table('writer')//->join('book', 'bok_id', '=', 'author.atr_bok_id')
-        //                                     //->join('author', 'atr_bok_id', '=', 'book.bok_id')
+        $books_authors = DB::table('book')->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
+                                          ->join('author', 'atr_bok_id', '=', 'book.bok_id')
+                                          ->join('language', 'lng_id', '=', 'book.bok_lng_id')
+                                          ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+                                          ->where('author.atr_wtr_id', $wtr_id)
+                                          ->get();
 
-        //                                     // ->join('language', 'lng_id', '=', 'book.bok_lng_id')
-        //                                     // ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-        //                                     ->where('wtr_id', $wtr_id)
-                                            ->get();
-        dd($books_authors);
-        // return View::make('search.search_table', array('search_results' => $books_authors));
+        return View::make('search.search_table', array('search_results' => $books_authors));
     }
 
 
