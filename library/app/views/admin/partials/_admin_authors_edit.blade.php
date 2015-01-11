@@ -1,3 +1,4 @@
+<div class="panel-heading">Administracja autorami</div>
 <div class="panel-group" id="addAuthorAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 	<div class="panel panel-success">
 		<div class="panel-heading">

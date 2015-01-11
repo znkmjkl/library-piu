@@ -1,3 +1,4 @@
+<div class="panel-heading">Administracja wypożyczeniami</div>
 {{ Form::open(array('url' => 'admin/search/renting', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
     <div class="input-group" style="width:20%">         
         {{ Form::text('searchInput', null, array('class' => 'form-control', 'style' => 'margin-bottom:0px; width:250px;', 'placeholder' => 'Podaj numer ISBN', 'required' => true)) }}

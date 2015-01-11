@@ -1,3 +1,4 @@
+<div class="panel-heading">Administracja książkami</div>
 <div class="panel-group" id="addBookAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 	<div class="panel panel-success">
 		<div class="panel-heading">

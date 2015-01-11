@@ -1,4 +1,6 @@
 <!-- panel dodawania uzytkownikow-->
+<div class="panel-heading">Administracja użytkownikami</div>
+
 
 											<div class="panel-group" id="addUserAccordion" style="width:50%; margin:0 auto; margin-top:20px;">
 												<div class="panel panel-success">

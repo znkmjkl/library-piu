@@ -69,8 +69,7 @@
 								
 									<div class="bs-example" data-example-id="table-within-panel">
 										<div class="panel panel-info">
-										
-											<div class="panel-heading">Edycja książek</div>
+																					
 											
 											@if($pageContent == 'books')
 												@include('admin.partials._admin_book_edit')
