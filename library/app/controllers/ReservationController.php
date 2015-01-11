@@ -25,7 +25,11 @@ class ReservationController extends \BaseController {
 
 				if ($max_rent > 5)
 				{
-					return Redirect::back()->with('flash_message_danger', 'Na twoim koncie masz już maksymalną liczbę książek!');
+					return Redirect::back()->with('flash_message_danger', 'Na twoim koncie posiadasz już maksymalną liczbę książek!');
+				}
+				elseif (!Rental::isBookReturned(Auth::user()->id, $bok_id))
+				{
+					return Redirect::back()->with('flash_message_danger', 'Nie możesz zarezerwować wypożyczonej książki!');
 				}
 				else
 				{

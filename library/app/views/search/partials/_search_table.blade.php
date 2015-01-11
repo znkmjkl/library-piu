@@ -11,7 +11,7 @@
                 <th>Data i nr wydania</th>
                 <th>Gatunek</th>
                 <th>Język</th>
-<!--                 <th>Dostępność</th> -->
+                <th>Rezerwacja</th>
 
             </tr>
         </thead>
@@ -25,15 +25,11 @@
                 <td>{{ date('Y', strtotime($result->bok_edition_date)) }} / {{ $result->bok_edition_number }}</td>
                 <td><a href="/kind/{{ $result->bok_knd_id }} "> {{ $result->knd_name }}</a></td>
                 <td><a href="/language/{{ $result->bok_lng_id }} "> {{ $result->lng_name }}</a></td>
-<!--                 @if (Auth::check())
-                    @if (!$result->is_deleted)
-                    <td> <span class="label label-success">TAK</span> </td>
-                    @else
-                    <td> <span class="label label-danger">NIE</span> </td>
-                    @endif
+                @if (!$result->rvn_status)
+                <td> <span class="label label-success">TAK</span> </td>
                 @else
-                <td> <a href="/login"><span class="label label-default">Zaloguj się</span></a> </td>
-                @endif -->
+                <td> <span class="label label-danger">NIE</span> </td>
+                @endif
             </tr>
             @endforeach
         </tbody>

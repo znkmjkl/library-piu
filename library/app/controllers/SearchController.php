@@ -21,6 +21,7 @@ class SearchController extends \BaseController {
                                            ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                            ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                            ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+                                           ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
                                            ->groupBy('bok_title')
                                            ->get();
@@ -56,6 +57,7 @@ class SearchController extends \BaseController {
                                            ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                            ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                            ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
+                                           ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                            ->where('bok_isbn', 'LIKE', '%'. $bok_isbn . '%')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
                                            ->where('lng_name', 'LIKE', '%'. $bok_lng . '%')

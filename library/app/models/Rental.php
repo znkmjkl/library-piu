@@ -31,4 +31,16 @@ class Rental extends Eloquent {
                                   ->count();
     }
 
+    protected static function isBookReturned($rtl_usr_id, $rtl_bok_id)
+    {
+        $rental_status = DB::table('rental')->where('rtl_usr_id', $rtl_usr_id)
+                                            ->where('rtl_bok_id', $rtl_bok_id)
+                                            ->first();
+
+        if (is_null($rental_status))
+          return 1;
+
+        return $rental_status->rtl_is_returned;
+    }
+
 }
