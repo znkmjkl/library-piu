@@ -1,7 +1,17 @@
 @extends('templates.layout')
 
 @section('admin_content')
-
+			<style>
+				.nav-tabs > li.active > a,.nav-tabs > li.active > a:hover{
+					font-weight: bold;
+					border-width: 2px;
+					/*background-color:rgb(190, 190, 190);*/
+				}
+				.nav-tabs.nav-justified > li > a{
+					border-width: 2px;
+					margin:0px;
+				}
+			</style>
 			<div style="margin-bottom:20px; margin-top:20px; margin-left:2%; width:96%;">
 			
 				<div class="panel panel-default">
@@ -14,7 +24,7 @@
 					
 						<!-- PANEL BODY -->
 						<div class="col-xs-12" style="margin-top:20px;">
-							<ul class="nav nav-pills">	
+							<ul class="nav nav-tabs nav-justified">	
 								@if($pageContent=="books")							
 									<li role="presentation" class="active"><a href="/admin/books"> Książki </a></li>								
 								@else

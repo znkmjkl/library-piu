@@ -7,9 +7,20 @@
 	font-weight: bold;
 }
 </style>	
-
 	
-
+	@foreach($rtls as $rtl)
+	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
+	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki {{$rtl->bok_title}} minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+	</div>
+	@elseif(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")>0 && date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")<10)
+	<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki {{$rtl->bok_title}} mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+	</div>
+	@endif
+	@endforeach
 	<div style="margin-bottom:20px; margin-left:2%; width:96%;">
 		
 				<div class="panel-group" id="accordion" style="margin-top:20px;">
@@ -164,11 +175,11 @@
 				</ul>
 			</div>
 				
-			<div class="col-md-10">	
+			<div class="col-md-10" id="bottom">	
 				
 				<div id="myTabContent" class="tab-content">
 					
-					<div class="tab-pane fade in active" id="wypozyczenia" style="margin-top:20px;">
+					<div class="tab-pane fade in active" id="wypozyczenia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -233,7 +244,7 @@
 													
 					</div>
 					
-					<div class="tab-pane fade" id="historia" style="margin-top:20px;">
+					<div class="tab-pane fade" id="historia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -269,7 +280,7 @@
 													
 					</div>
 					
-					<div class="tab-pane fade" id="rezerwacje" style="margin-top:20px;">
+					<div class="tab-pane fade" id="rezerwacje">
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
