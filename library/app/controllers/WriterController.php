@@ -16,6 +16,7 @@ class WriterController extends \BaseController {
                                           ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
                                           ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                           ->where('author.atr_wtr_id', $wtr_id)
+                                          ->groupBy('bok_title')
                                           ->get();
 
         return View::make('search.search_table', array('search_results' => $books_authors));

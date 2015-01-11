@@ -16,6 +16,7 @@ class KindController extends \BaseController {
 										->join('kind', 'knd_id', '=', 'book.bok_knd_id')
 										->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
 										->where('bok_knd_id', $knd_id)
+										->groupBy('bok_title')
 										->get();
 
 		return View::make('search.search_table', array('search_results' => $books_kinds));
