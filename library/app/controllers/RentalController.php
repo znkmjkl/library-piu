@@ -38,7 +38,7 @@ class RentalController extends \BaseController {
                 if($bok_isbn == ""){
                     $bok_isbn = "all";
                 }
-                return Redirect::intended('/rentedList/1/'.$bok_isbn)->with('flash_message_success', 'Wyszukane pozycje');
+                return Redirect::back()->with('flash_message_success', 'Wyszukane pozycje');
     }
 
     public function returnBook($rental_id){

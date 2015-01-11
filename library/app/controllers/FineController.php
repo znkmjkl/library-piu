@@ -55,11 +55,11 @@ class FineController extends \BaseController {
 		 			$fine->save();
 		   		}
 
-        	return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Dodano kare');
+        	return Redirect::back()->with('flash_message_success', 'Dodano kare');
     	}
     	else
     	{
-        	return Redirect::intended('/rentedList/1/all')->with('flash_message_danger', 'Należy podać dane liczbowe')->withInput();
+        	return Redirect::back()->with('flash_message_danger', 'Należy podać dane liczbowe')->withInput();
 
     	}
 	}
@@ -70,7 +70,7 @@ class FineController extends \BaseController {
 		->where('fne_rtl_id','=',$rental_id)
 		->delete();
 
-        return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Usunięto kare');
+        return Redirect::back()->with('flash_message_success', 'Usunięto kare');
 
     }
 }
