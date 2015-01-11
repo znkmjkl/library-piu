@@ -48,13 +48,15 @@ class AdminController extends \BaseController {
 
         $languages = DB::table('language')->lists('lng_name');
 
-        $writers = DB::table('writer')->paginate(15);
+        $writers = DB::table('writer')->get();
         $writersList = array();
 
         foreach ($writers as $writer)
         {
             $writersList[$writer->wtr_id] = $writer->wtr_name.' '.$writer->wtr_surname;
         }
+        $writers = DB::table('writer')->paginate(15);
+
 
         $books = DB::table('book')
                             ->where('book.is_deleted', 0)
