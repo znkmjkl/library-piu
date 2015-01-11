@@ -2,14 +2,6 @@
 
 class ReservationController extends \BaseController {
 
-	public function test()
-	{
-		$zme = Reservation::isAvailable(5);
-
-		return $zme;
-	}
-
-
 	public function postReserveBook($bok_id)
 	{
 		if (is_null(Reservation::isAvailable($bok_id)))
@@ -29,9 +21,11 @@ class ReservationController extends \BaseController {
 		{
 			if (!Reservation::isAvailable($bok_id))
 			{
-				if (Reservation::checkReservationNumber(Auth::user()->id) > 5)
+				$max_rent = Reservation::checkReservationNumber(Auth::user()->id) + Rental::checkRentalNumber(Auth::user()->id);
+
+				if ($max_rent > 5)
 				{
-					return Redirect::back()->with('flash_message_danger', 'Zarezerwowałeś już maksymalną liczbę książek!');
+					return Redirect::back()->with('flash_message_danger', 'Na twoim koncie masz już maksymalną liczbę książek!');
 				}
 				else
 				{
@@ -46,7 +40,6 @@ class ReservationController extends \BaseController {
 			}
 		}
 	}
-
 
 	public function postCancelBookReservation($bok_id)
 	{
@@ -70,6 +63,7 @@ class ReservationController extends \BaseController {
 
         return Redirect::back()->with('flash_message_success', 'Rezerwacja została anulowana.');
 	}
+
 
 	public function rentBook($rvn_id) {
 		$reservation = DB::table('reservation')
@@ -111,4 +105,5 @@ class ReservationController extends \BaseController {
         	return Redirect::back()->with('flash_message_danger', 'Książka nie została oddana.');
         }
 	}
+
 }
