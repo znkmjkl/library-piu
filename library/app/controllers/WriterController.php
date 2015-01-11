@@ -83,10 +83,16 @@ class WriterController extends \BaseController {
 
   public function removeWritter($writer_id){
 
-                $writer = DB::table('writer')->where('wtr_id', $writer_id)->delete();
+
+                if(DB::table('author')->where('atr_wtr_id', $writer_id)->count() == 0){
+                  $writer = DB::table('writer')->where('wtr_id', $writer_id)->delete();
+
                       return Redirect::back()->with('flash_message_success', 'Autor został usuniety');
+                }
+                else {
+                    return Redirect::back()->with('flash_message_danger', 'Nie można usunąć autora gdy jest przypisany do książki')->withInput();
 
-
+                  }
   }
 
 }

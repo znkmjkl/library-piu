@@ -144,6 +144,8 @@ Route::get('/editauthor/{id}','WriterController@getEditWriterView');
 
 Route::post('/editauthor/{id}', 'WriterController@postEditWriter');
 
+Route::get('/removeauthor/{id}', 'WriterController@removeWritter');
+
 /* Rented */
 Route::get('/rentedList/{page}/{isbn}', 'RentalController@getRentedBooks');
 
