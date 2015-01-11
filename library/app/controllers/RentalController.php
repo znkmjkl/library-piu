@@ -61,7 +61,7 @@ class RentalController extends \BaseController {
                     ->where('rvn_status', '=', 1)
                     ->update(array('rvn_is_ready' => 1, 'rvn_date' => date_create()));
 
-        return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Książka została oddana');
+        return Redirect::back()->with('flash_message_success', 'Książka została oddana');
     }
 
 }

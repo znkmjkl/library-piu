@@ -5,9 +5,9 @@
     <p>{{ Form::select('writer[]', $writersList, $authorsArray[$book->bok_id] ,array('class' => 'form-control','multiple' => true ))}}</p>
     <p>{{ Form::select('language', $languages, $book->bok_lng_id ,array('class' => 'form-control') )}}</p>
     <p>{{ Form::select('kind', $kinds, $book->bok_knd_id ,array('class' => 'form-control') )}}</p>
-    {{ Form::text('date', substr($book->bok_edition_date,0,4), array('class' => 'form-control', 'placeholder' => 'Data edycji')) }}
+    {{ Form::text('date', substr($book->bok_edition_date,0,4), array('class' => 'form-control', 'placeholder' => 'Rok wydania (np.2014)')) }}
     {{ Form::text('edition', $book->bok_edition_number, array('class' => 'form-control', 'placeholder' => 'Numer edycji')) }}
-    <p>{{ Form::submit('Dodaj książke', array('class' => 'btn btn-default')) }}
+    <p>{{ Form::submit('Zakończ Edycję', array('class' => 'btn btn-default')) }}
 
 {{ Form::close() }}
 

@@ -72,7 +72,7 @@ class WriterController extends \BaseController {
                                                                  'wtr_surname' => Input::get('author_surname'),
                                                                  'wtr_birth_date' => Input::get('birth_date').' 00:00:00' ));
 
-      return Redirect::back()->with('flash_message_success', 'Autor został dodany pomyślnie');
+      return Redirect::back()->with('flash_message_success', 'Autor został edytowany pomyślnie');
     }
     else
     {

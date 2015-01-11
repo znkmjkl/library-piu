@@ -5,7 +5,7 @@
      <p>{{ Form::select('writer[]', $writersList, null ,array('class' => 'form-control','multiple' => true ))}}</p>
     <p>{{ Form::select('language', $languages,null,array('class' => 'form-control') )}}</p>
     <p>{{ Form::select('kind', $kinds, null ,array('class' => 'form-control') )}}</p>
-    {{ Form::text('date', null, array('class' => 'form-control', 'placeholder' => 'Data edycji')) }}
+    {{ Form::text('date', null, array('class' => 'form-control', 'placeholder' => 'Rok wydania (np.2014)')) }}
     {{ Form::text('edition', null, array('class' => 'form-control', 'placeholder' => 'Numer edycji')) }}
     <p>{{ Form::submit('Dodaj książke', array('class' => 'btn btn-default')) }}
 
