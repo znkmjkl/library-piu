@@ -19,9 +19,9 @@
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
-                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
+                    <li><a href="/help"><span class="glyphicon glyphicon-question-sign"> Pomoc</span></a></li>
                     <li><hr></li>
-                    <li><a href="/settings/account"><span class="glyphicon glyphicon-wrench"> Ustawienia</span></a></li>
+                    <li><a href="/contact"><span class="glyphicon glyphicon-globe"> Kontakt</span></a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
                   </ul>
                 </li>

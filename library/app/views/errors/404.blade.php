@@ -4,7 +4,8 @@
     
     <div class="col-md-5">
          <br><br>
-        <img src="img/logo_error.png" alt="Biblionetka - błąd strony" style="float:right; margin:30px;">
+         {{ HTML::image('img/logo_error.png', 'Bibliotentka - błąd strony', array('style'=>'float:right;, margin:30px;')) }}
+
     </div>
     <div class="col-md-7">
         <br><br><br><br>

@@ -28,7 +28,7 @@
 							<br>
 						
 							<dt>W jaki sposób trafi do mnie zarezerwowany egzemplarz książki?</dt>
-							<dd>Po zarezerwowaniu książki masz 48 godzin na odebranie jej w jednej z naszych filii (ich lista dostępna jest <a>TU</a>). Po tym czasie rezerwacja przepada. </dd>
+							<dd>Po zmianie statusu rezerwacji na <b>do odebrania</b> masz 48 godzin na odebranie książki w naszej bibliotece (adres dostępny <a href="/contact">TU</a>). Po tym czasie rezerwacja przepada. </dd>
 						</dl>			
 					</div>						
 			</div>
