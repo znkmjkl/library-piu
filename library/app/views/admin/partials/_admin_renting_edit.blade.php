@@ -29,7 +29,7 @@
 				<td>{{$rentedBook->usr_pesel}}</td>
 				<td>{{substr($rentedBook->rtl_start_date,0,10)}}</td>
 				<td>{{substr($rentedBook->rtl_end_date,0,10)}}</td>
-				<td> <a href="{{ URL::to('/rented/. $rentedBook->rtl_id. /returnbook'  ) }}" class="btn btn-success"> ZWRÓĆ </a> </td>
+				<td> <a href="/rented/{{$rentedBook->rtl_id}}/returnbook" class="btn btn-success"> ZWRÓĆ </a> </td>
 				@if(!$rentedBook->rtl_is_returned)<td><span class="label label-warning">WYPOŻYCZONO</span></td> 
 				@elseif(new DateTime('today') > $rentedBook->rtl_end_date)<td><span class="label label-danger">PRZEKROCZONO</span></td>
 				@else<td><span class="label label-success">ODDANO</span></td>@endif

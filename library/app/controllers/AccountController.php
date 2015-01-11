@@ -21,7 +21,7 @@ class AccountController extends \BaseController {
       $rtlsOld = DB::table('rental')->where('rtl_usr_id', Auth::user()->id)
                     ->where('rtl_is_returned','1')
                     ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')
-                    ->join('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
+                    ->leftjoin('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
                     ->get();
 
 

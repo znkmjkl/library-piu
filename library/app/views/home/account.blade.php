@@ -267,9 +267,9 @@
 									<tbody>	
 										@foreach ($rtlsOld as $rtlOld)								
 										<tr>
-											<td><a><abbr title='"O psie który jeździł koleją" - zobacz stronę książki'> O psie który jeździł...</a></td>
-											<td>12-12-2014r.</td>
-											<td><abbr title=" &middot Wypożyczono: 20-12-2014r. &#10; &middot Termin zwrotu: 14-01-2015r."> 10 DNI </abbr> &nbsp&nbsp </td>
+											<td><a href="/book/{{ $rtlOld->bok_id }} "><abbr title='{{$rtlOld->bok_title}} - zobacz stronę książki'> {{$rtlOld->bok_title}}</a></td>
+											<td>{{date("d-m-y",strtotime($rtlOld->rtl_start_date))}}</td>
+											<td>{{date("d-m-y",strtotime($rtlOld->rtl_end_date))}}</td>											
 										</tr>
 										@endforeach										
 									</tbody>

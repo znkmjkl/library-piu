@@ -45,20 +45,21 @@ class RentalController extends \BaseController {
 
         DB::table('rental')
          ->where('rtl_id','=', $rental_id)
-         ->update(array('rtl_is_returned' => 1));
+         ->update(array('rtl_is_returned' => 1, 'rtl_end_date' => date_create()));
 
         DB::table('fine')
          ->where('fne_rtl_id','=', $rental_id)
          ->update(array('fne_status' => 0));
 
-        $bok_id = DB::table('rental')
+        $bok = DB::table('rental')
                     ->where('rtl_id', '=', $rental_id)
-                    ->first()->rtl_bok_id;
+                    ->get();
+        $bok_id = $bok[0]->rtl_bok_id;
 
         DB::table('reservation')
                     ->where('rvn_bok_id', '=', $bok_id)
                     ->where('rvn_status', '=', 1)
-                    ->update(array('rvn_is_ready' => 1, 'rvn_date' => new DateTime));
+                    ->update(array('rvn_is_ready' => 1, 'rvn_date' => date_create()));
 
         return Redirect::intended('/rentedList/1/all')->with('flash_message_success', 'Książka została oddana');
     }
