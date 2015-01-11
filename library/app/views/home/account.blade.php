@@ -23,10 +23,22 @@
 	@endforeach
 	<!-- <hr style="border-top: 3px solid #eeeeee;"> -->
 	@foreach($rvns as $rvn )
-	@if(date_diff(date_create(),date_create($rvn->rvn_date))->format("%R%a")<=0 && date_diff(date_create(),date_create($rvn->rvn_date))->format("%R%a")>-3 && $rvn->rvn_is_ready)
+	@if(date_diff(date_create(),date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("2 days")))->format("%a") >= 0 
+		&& date_diff(date_create(),date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("2 days")))->format("%a") < 3 
+		&& $rvn->rvn_is_ready)
+	{{date_diff(date_create(),date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("2 days")))->format("%R%a")}}
 	<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<p> <strong> UWAGA! </strong> Możesz już odebrać książkę <i>{{$rvn->bok_title}}</i>. Jeżeli tego nie zrobisz w ciągu <u><b>{{date_diff(date_create(),date_create($rvn->rvn_date))->format("%a dni")}}</b></u> rezerwacja zostanie anulowana. </p>
+		<p> <strong> UWAGA! </strong> Możesz już odebrać książkę <i>{{$rvn->bok_title}}</i>. 
+		Jeżeli tego nie zrobisz w ciągu <u><b>
+		{{date_diff(date_create(),date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("3 days")))
+		->format("%a dni")}}</b></u> rezerwacja zostanie anulowana. </p>
+		
+		{{--
+			{{date_create()->format("Y-m-d")}}<br/>
+			{{date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("2 days"))->format("Y-m-d")}}
+		--}}
+
 	</div>
 	@endif
 	@endforeach
