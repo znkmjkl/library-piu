@@ -25,6 +25,8 @@ Route::post('/admin/search/reservations', 'AdminController@getUserReservations')
 
 Route::post('/admin/search/user', 'AdminController@getUser')->before('auth|admin');
 
+Route::post('/admin/search/renting', 'AdminController@getRentedBooks')->before('auth|admin');
+
 Route::get('/user/block/{id}','UserController@blockUser')->before('auth|admin');
 
 Route::get('/user/activate/{id}','UserController@activateUser')->before('auth|admin');

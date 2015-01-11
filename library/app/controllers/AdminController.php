@@ -11,7 +11,7 @@ class AdminController extends \BaseController {
                   //         ->join('writer', 'author.atr_wtr_id', '=', 'writer.wtr_id')
                             ->get();   
 
-                 $rentedBooks = DB::table('rental')
+        $rentedBooks = DB::table('rental')
                         ->join('book', 'rtl_bok_id','=', 'book.bok_id')
                         ->join('user','rtl_usr_id','=','user.id')
                         ->leftjoin('fine','rtl_id','=','fine.fne_rtl_id')   
@@ -39,8 +39,8 @@ class AdminController extends \BaseController {
 
             } 
         }
-        $authorsArray[$id] = $tempArray;
 
+        $authorsArray[$id] = $tempArray;
 
         $autors = DB::table('author')->get();                             
  
@@ -48,7 +48,7 @@ class AdminController extends \BaseController {
 
         $languages = DB::table('language')->lists('lng_name');
 
-        $writers = DB::table('writer')->get();
+        $writers = DB::table('writer')->paginate(15);
         $writersList = array();
 
         foreach ($writers as $writer)
@@ -56,7 +56,7 @@ class AdminController extends \BaseController {
             $writersList[$writer->wtr_id] = $writer->wtr_name.' '.$writer->wtr_surname;
         }
 
-                $books = DB::table('book')
+        $books = DB::table('book')
                             ->where('book.is_deleted', 0)
                             ->orWhere('book.is_deleted', null)
                             ->join('kind', 'book.bok_knd_id', '=', 'kind.knd_id')
@@ -116,6 +116,21 @@ class AdminController extends \BaseController {
       
       $pageContent = 'users';
       return View::make('admin.admin', array('users' => $users, 'pageContent' => $pageContent));
+    }
+
+        public function getRentedBooks(){
+      
+       $rentedBooks = DB::table('rental')
+                        ->join('book', 'rtl_bok_id','=', 'book.bok_id')
+                        ->join('user','rtl_usr_id','=','user.id')
+                        ->leftjoin('fine','rtl_id','=','fine.fne_rtl_id')   
+                        ->where('rental.rtl_is_returned',0)
+                        ->where('book.bok_isbn',Input::get('searchInput'))
+                        ->orderBy('rtl_end_date', 'asc')
+                        ->paginate(15);
+      
+      $pageContent = 'rentals';
+      return View::make('admin.admin', array('rentedBooks' => $rentedBooks, 'pageContent' => $pageContent));
     }
 
 }

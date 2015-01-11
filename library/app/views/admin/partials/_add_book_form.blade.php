@@ -1,8 +1,6 @@
-
-
 	{{ Form::open(array('url' => 'addbook', 'class' => 'form-signin')) }}
     {{ Form::text('bok_isbn', null, array('class' => 'form-control', 'placeholder' => 'ISBN')) }}
-    {{FORM::file('plik', null, array('class' => 'form-control', 'placeholder' => 'Okładka')) }}
+    {{Form::text('image', null, array('class' => 'form-control', 'placeholder' => 'Okładka')) }}
     {{ Form::text('bok_title', null, array('class' => 'form-control', 'placeholder' => 'Tytuł')) }}
      <p>{{ Form::select('writer[]', $writersList, null ,array('class' => 'form-control','multiple' => true ))}}</p>
     <p>{{ Form::select('language', $languages,null,array('class' => 'form-control') )}}</p>

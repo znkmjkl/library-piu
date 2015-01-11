@@ -14,7 +14,7 @@ class Book extends Eloquent {
 								 'writer'=>'required|array',
 								 'language'=>'required|integer',
 								 'kind'=>'required|integer',
-								 'date'=>'required|date_format:"Y-m-d"',
+								 'date'=>'required|date_format:"Y"',
 								 'edition'=>'required|integer'	 
 								 );
 }

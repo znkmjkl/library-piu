@@ -101,10 +101,11 @@ class BookController extends \BaseController {
                if ($validator->passes())
                {
                     $book = new Book;
+                    $book->bok_image_link = Input::get('image');
                     $book->bok_isbn = Input::get('bok_isbn');
                     $book->bok_title = Input::get('bok_title');
-                    $book->bok_lng_id = Input::get('language');
-                    $book->bok_knd_id = Input::get('kind');
+                    $book->bok_lng_id = Input::get('language')+1;
+                    $book->bok_knd_id = Input::get('kind')+1;
                     $book->bok_edition_date = Input::get('date').'-01-01 00:00:00'; //TODO cza jakos sformatować
                     $book->bok_edition_number = Input::get('edition');
                     $book->save();
