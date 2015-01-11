@@ -75,9 +75,18 @@ class UserController extends \BaseController {
     {
         $validator = Validator::make(Input::all(), User::$rules);
 
+       //$user
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'))))
         {
-            return Redirect::intended('/')->with('flash_message_success', 'Zostałeś zalogowany!');
+
+            $user = DB::table('user')->where('email', Input::get('email'))->get();
+
+            if($user[0]->usr_active){                
+                return Redirect::intended('/')->with('flash_message_success', 'Zostałeś zalogowany!');
+            } else {
+                Auth::logout();
+                return Redirect::back()->with('flash_message_danger', 'Twoje konto nie jest aktywne sprawdź skrzynke mailową lub skontaktuj się z administracją!');
+            }
             //return View::make('home.index');
         }
         else
@@ -210,9 +219,9 @@ class UserController extends \BaseController {
                                                                      'usr_verified' => Input::get('verified')
                                                                      ));
 
-                return Redirect::intended('/admin')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+                return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
             } else {
-                return Redirect::intended('/admin')->with('flash_message_danger', 'Podany numer użytkownika jest już zajęty! Proszę wprowadzić inny.')->withInput();
+                return Redirect::back()->with('flash_message_danger', 'Podany numer użytkownika jest już zajęty! Proszę wprowadzić inny.')->withInput();
             }
         }
 
@@ -232,10 +241,11 @@ class UserController extends \BaseController {
                                                                  'usr_verified' => Input::get('verified')
                                                                  ));
 
-            return Redirect::intended('/admin')->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+            return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
         }
         else
         {
+            //???!@
             return Redirect::intended('/user/edit/'.$id)->with('flash_message_danger', 'Podany numer użytkownika jest już zajęty! Proszę wprowadzić inny.')->withInput();
         }
     }
@@ -244,7 +254,7 @@ class UserController extends \BaseController {
     public function verifyUser($id) {
         DB::table('user')->where('id', $id)->update(array('usr_verified' => 1));
 
-        return Redirect::to('/admin')->with('flash_message_success', 'Użytkownik został zweryfikowany.');
+        return Redirect::back()->with('flash_message_success', 'Użytkownik został zweryfikowany.');
     }
 
 
@@ -255,12 +265,12 @@ class UserController extends \BaseController {
         if($user == 1)
         {
             DB::table('user')->where('usr_number',$usr_number)->update(array('usr_active' => 1 ));
-            return Redirect::intended('/')->with('flash_message_success', 'Konto zostało aktywowane, zaloguj się.');            
+            return Redirect::intended('/')->with('flash_message_success', 'Konto zostało aktywowane, możesz się zalogować.');            
         }
         else
         {
             return Redirect::intended('/')->with('flash_message_danger', 'Nie ma takiego linka !.')->withInput();            
-        }
+        }   
     }
 
 }

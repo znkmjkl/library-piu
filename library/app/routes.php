@@ -64,6 +64,7 @@ Route::get('/status', 'HomeController@getStatus');
 
 Route::get('/terms', 'HomeController@getTerms');
 
+Route::get('/confirm/{usr_number}', 'UserController@confirmUser');
 /* User basic operations */
 Route::get('/register', 'UserController@getRegister');
 
