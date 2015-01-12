@@ -9,7 +9,7 @@
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
-                <form method="POST" action="/search" accept-charset="UTF-8"><input name="_token" type="hidden" value="IJCduGkZUbtdWzmAFl5zRufUJK9YMkLCWxK0jTX3">
+                {{ Form::open(array('url' => '/search')) }}
                     <div class="col-xs-8" style="margin-top:10px;">
                         <div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Tytuł" name="bok_title" type="text">                 </div>
                         <div class="col-xs-3" style="padding:5px; padding-top:0px;"><input style="" class="form-control" placeholder="Imię autora" name="bok_atr_name" type="text">        </div>
@@ -38,7 +38,7 @@
                         <input style="margin-top:0px;" class="btn btn-md btn-danger btn-block" type="button" value="Wyczyść filtry">
                         <input style="margin-top:10px;" class="btn btn-md btn-primary btn-block" type="submit" value="Szukaj">
                     </div>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

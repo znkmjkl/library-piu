@@ -13,8 +13,9 @@ class BookController extends \BaseController {
                                  ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                  ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                  ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-                                 ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
+                                 ->leftJoin('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                  ->get();
+
         return View::make('book.book', array('book' => $book));
     }
     /**
@@ -35,16 +36,19 @@ class BookController extends \BaseController {
             $reservation->rvn_is_ready = 0;
             $reservation->save();
         }
+        
         $book = DB::table('book')->where('bok_id', $bok_id)
                                  ->join('author', 'atr_bok_id', '=', 'book.bok_id')
                                  ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                  ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                  ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-                                 ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
+                                 ->leftJoin('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                  ->get();
+
         return View::make('book.book', array('book' => $book));
     }
-        /**
+    
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -79,6 +83,7 @@ class BookController extends \BaseController {
                                                                  'languages' => $languages,
                                                                  'kinds' => $kinds));
     }
+
     public function getReservedBooks($boke_page)
     {
         $books = DB::table('book')
@@ -88,6 +93,7 @@ class BookController extends \BaseController {
                         ->get();
         return View::make('for_testing_purposes.booklist', array('books' => $books));
     }
+
     public function getRentedBooks($boke_page)
     {
         $books = DB::table('book')
@@ -97,6 +103,7 @@ class BookController extends \BaseController {
                         ->get();
         return View::make('for_testing_purposes.booklist', array('books' => $books));
     }
+
     public function postBook(){
                $validator = Validator::make(Input::all(), Book::$rules);
                if ($validator->passes())
@@ -128,6 +135,7 @@ class BookController extends \BaseController {
                     return Redirect::back()->with('flash_message_danger', 'Błędne dane książki');
                 }
     }
+
     public function getEditBookView($bok_id){
          $writersDB = DB::table('writer')
                             ->orderBy('atr_surname','desc')
@@ -165,6 +173,7 @@ class BookController extends \BaseController {
                                                                  'authors' => $authors));
 
     }
+
     public function editBook($bok_id){
         $validator = Validator::make(Input::all(), Book::$rules);
         if ($validator->passes())
@@ -192,6 +201,7 @@ class BookController extends \BaseController {
            return Redirect::back()->with('flash_message_danger', 'Błędne dane książki');
         }
     }
+    
     public function removeBook($bok_id){
         if(DB::table('rental')->where('rtl_bok_id',$bok_id)->where('rtl_is_returned',0)->count() == 0)
         {

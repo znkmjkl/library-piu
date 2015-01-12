@@ -34,4 +34,5 @@
             @endforeach
         </tbody>
     </table>
+    <?php echo $search_results->links(); ?>
 </div>

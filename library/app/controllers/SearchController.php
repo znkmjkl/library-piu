@@ -21,10 +21,10 @@ class SearchController extends \BaseController {
                                            ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                            ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                            ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-                                           ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
+                                           ->leftJoin('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
-                                           ->groupBy('bok_title')
-                                           ->get();
+                                           ->groupBy('bok_isbn')
+                                           ->paginate(25);
 
         $languages = Language::orderBy('lng_name')->lists('lng_name');
 
@@ -57,7 +57,7 @@ class SearchController extends \BaseController {
                                            ->join('writer', 'wtr_id', '=', 'author.atr_wtr_id')
                                            ->join('language', 'lng_id', '=', 'book.bok_lng_id')
                                            ->join('kind', 'knd_id', '=', 'book.bok_knd_id')
-                                           ->join('reservation', 'rvn_bok_id', '=', 'book.bok_id')
+                                           ->leftJoin('reservation', 'rvn_bok_id', '=', 'book.bok_id')
                                            ->where('bok_isbn', 'LIKE', '%'. $bok_isbn . '%')
                                            ->where('bok_title', 'LIKE', '%'. $bok_title . '%')
                                            ->where('lng_name', 'LIKE', '%'. $bok_lng . '%')
@@ -66,8 +66,8 @@ class SearchController extends \BaseController {
                                            ->where('knd_name', 'LIKE', '%'. $bok_knd . '%')
                                            ->where('bok_edition_date', 'LIKE', '%'. $bok_edition_date . '%')
                                            ->where('bok_edition_number', 'LIKE', '%'. $bok_edition_number . '%')
-                                           ->groupBy('bok_title')
-                                           ->get();
+                                           ->groupBy('bok_isbn')
+                                           ->paginate(25);
 
         $languages = Language::orderBy('lng_name')->lists('lng_name');
 
