@@ -1,13 +1,19 @@
 {{ Form::open(array('url' => 'search/basic', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
-    <div class="input-group">
-        <div class="form-group btn-group">
-            {{ Form::submit('Szukaj', array('class' => 'btn btn-default')) }}
-            {{ Form::text('bok_title', null, array('class' => 'form-control', 'style' => 'margin-bottom:0px; width:250px;', 'placeholder' => 'Tytuł książki', 'required' => true)) }}
-        </div>
-        <div class="btn-group" role="group" aria-label="...">
-            <a href="/search">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"> </span></button>
-            </a>
-        </div>
-    </div>
+    <div class="input-group" style="width:100px;">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Szukaj</button>
+        </span>
+        <input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
+        <span class="input-group-btn">        
+            <button class="btn btn-default advancedSearch" type="button" style="padding-bottom:5px;"><span class="glyphicon glyphicon-cog"> </span></button>
+        </span>
+    </div>    
 {{ Form::close() }}
+
+
+<script>
+
+$(".advancedSearch").click(function(){
+    location.href="/search";
+});
+</script>
