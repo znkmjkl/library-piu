@@ -203,50 +203,39 @@ class UserController extends \BaseController {
 
         $adr_id = DB::table('user')->where('id', $id)->first()->usr_adr_id;
 
-        if(empty(Input::get('password'))) {
-            if ($validator->passes()) {
-                DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
-                                                                     'adr_city' => Input::get('city'),
-                                                                     'adr_postal_code' => Input::get('zipCode'),
-                                                                     'adr_house_number' => Input::get('houseNr')));
-
-                DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
-                                                                     'usr_surname' => Input::get('lastname'),
-                                                                     'usr_phone' => Input::get('phone'),
-                                                                     'usr_number' => Input::get('user_number'),
-                                                                     'usr_pesel' => Input::get('pesel'),
-                                                                     'usr_active' => Input::get('active'),
-                                                                     'usr_verified' => Input::get('verified')
-                                                                     ));
-
-                return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
-            } else {
-                return Redirect::back()->with('flash_message_danger', 'Podany numer użytkownika jest już zajęty! Proszę wprowadzić inny.')->withInput();
-            }
-        }
-
         if ($validator->passes()) {
-            DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
-                                                                 'adr_city' => Input::get('city'),
-                                                                 'adr_postal_code' => Input::get('zipCode'),
-                                                                 'adr_house_number' => Input::get('houseNr')));
+            if(empty(Input::get('password'))) {
+                    DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
+                                                                         'adr_city' => Input::get('city'),
+                                                                         'adr_postal_code' => Input::get('zipCode'),
+                                                                         'adr_house_number' => Input::get('houseNr')));
 
-            DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
-                                                                 'usr_surname' => Input::get('lastname'),
-                                                                 'usr_phone' => Input::get('phone'),
-                                                                 'usr_number' => Input::get('user_number'),
-                                                                 'usr_pesel' => Input::get('pesel'),
-                                                                 'usr_active' => Input::get('active'),
-                                                                 'password' => Hash::make(Input::get('password')),
-                                                                 'usr_verified' => Input::get('verified')
-                                                                 ));
+                    DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
+                                                                         'usr_surname' => Input::get('lastname'),
+                                                                         'usr_phone' => Input::get('phone'),
+                                                                         'usr_pesel' => Input::get('pesel'),
+                                                                         'usr_active' => Input::get('active'),
+                                                                         'usr_verified' => Input::get('verified')
+                                                                         ));
 
-            return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
-        }
-        else
-        {
-            //???!@
-            return Redirect::intended('/user/edit/'.$id)->with('flash_message_danger', 'Podany numer użytkownika jest już zajęty! Proszę wprowadzić inny.')->withInput();
+                    return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+            } else {
+                    DB::table('address')->where('adr_id',$adr_id)->update(array('adr_street' => Input::get('street'),
+                                                                         'adr_city' => Input::get('city'),
+                                                                         'adr_postal_code' => Input::get('zipCode'),
+                                                                         'adr_house_number' => Input::get('houseNr')));
+
+                    DB::table('user')->where('id',$id)->update(array('usr_name' => Input::get('firstname'),
+                                                                         'usr_surname' => Input::get('lastname'),
+                                                                         'usr_phone' => Input::get('phone'),
+                                                                         'usr_pesel' => Input::get('pesel'),
+                                                                         'usr_active' => Input::get('active'),
+                                                                         'password' => Hash::make(Input::get('password')),
+                                                                         'usr_verified' => Input::get('verified')
+                                                                         ));
+
+                    return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
+            }
         }
     }
 

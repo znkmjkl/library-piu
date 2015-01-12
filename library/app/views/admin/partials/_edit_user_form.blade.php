@@ -37,8 +37,6 @@
 
         {{ Form::text('phone', $user->usr_phone, array('class' => 'form-control', 'placeholder' => 'Podaj numer telefonu')) }}
 
-        {{ Form::text('user_number', $user->usr_number, array('class' => 'form-control', 'placeholder' => 'Podaj numer użytkownika')) }}
-
         {{ Form::text('pesel', $user->usr_pesel, array('class' => 'form-control', 'placeholder' => 'Podaj pesel')) }}
 
         {{ Form::select('active', array('0' => 'Nieaktywny', '1' => 'Aktywny'), $user->usr_active, array('class' => 'form-control'))}}
