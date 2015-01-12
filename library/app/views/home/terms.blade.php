@@ -48,12 +48,9 @@
 
 						<ol>
 						<li> Czytelnik może wypożyczać książki wyłącznie na swoje nazwisko. </li>
-						<li> Jednorazowo można wypożyczać 3 książki :    
-							<ul>
-							<li>lektury na okres 2 tygodni               </li>
-							<li>pozostałe książki na okres 1 miesiąca    </li>
-							</ul>
-							W uzasadnionych przypadkach bibliotekarz może ograniczyć lub zwiększyć liczbę wypożyczonych książek z podaniem terminu ich zwrotu.  </li>                                                                                                      </li>
+						<li> Jednorazowo można wypożyczać 5 książek na okres 1 miesiąca i prolongować je <b>maksymalnie 2 razy</b>.    
+							
+							W uzasadnionych przypadkach bibliotekarz może ograniczyć lub zwiększyć liczbę wypożyczonych książek z podaniem terminu ich zwrotu.  </li>                                                                                             </li>
 						<li> Jeżeli czytelnik nie przeczytał książki, a wypożyczalnia nie ma na nią nowych zamówień można przynieść książkę i prosić o sprolongowanie terminu zwrotu.                                                                             </li>
 						<li> Czytelnik może zarezerwować potrzebną mu pozycję.                                                                                                                                                                                    </li>
 						<li> Korzystający z biblioteki zobowiązani są do dbałości o wypożyczone książki.                                                                                                                                                          </li>

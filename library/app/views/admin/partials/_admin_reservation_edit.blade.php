@@ -63,3 +63,5 @@
 													@endforeach
 												</tbody>
 											</table>
+											
+											<?php echo $reservations->links(); ?>

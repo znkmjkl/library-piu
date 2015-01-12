@@ -156,4 +156,4 @@
 													<!-- ...CALOSC-->
 												</tbody>
 											</table>					
-							
+							<?php echo $users->links(); ?>
