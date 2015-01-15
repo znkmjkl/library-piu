@@ -21,6 +21,7 @@
 <table class="table booklist-table">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>Imię</th>
 			<th>Nazwisko</th>
 			<th>Data urodzin</th>
@@ -30,8 +31,10 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php $i = 1; ?>
 		@foreach($writers as $writer)
 			<tr>
+				<td style="font-weight:bold;">{{$i++}}</td>
 				<td>{{$writer->wtr_name}}</td>
 				<td>{{$writer->wtr_surname}}</td>
 				<td>{{$writer->wtr_name}}</td>
