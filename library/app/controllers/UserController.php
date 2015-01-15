@@ -138,7 +138,7 @@ class UserController extends \BaseController {
 
     public function blockUser($id=null)
     {
-        DB::table('user')->where('id', $id)->update(array('usr_active' => 0));
+        DB::table('user')->where('id', $id)->update(array('usr_is_blocked' => true));
 
         return Redirect::back()->with('flash_message_success', 'Użytkownik został zablokowany.');
     }
@@ -177,6 +177,7 @@ class UserController extends \BaseController {
             $user->usr_pesel = Input::get('pesel');
             $user->usr_active = true;
             $user->usr_verified = true;
+            $user->usr_is_blocked = false;
             $user->email = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
             $user->usr_number = $userNumber->usr_number + 1;
@@ -215,7 +216,8 @@ class UserController extends \BaseController {
                                                                          'usr_phone' => Input::get('phone'),
                                                                          'usr_pesel' => Input::get('pesel'),
                                                                          'usr_active' => Input::get('active'),
-                                                                         'usr_verified' => Input::get('verified')
+                                                                         'usr_verified' => Input::get('verified'),
+                                                                         'usr_is_blocked' => Input::get('blocked')
                                                                          ));
 
                     return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
@@ -231,7 +233,8 @@ class UserController extends \BaseController {
                                                                          'usr_pesel' => Input::get('pesel'),
                                                                          'usr_active' => Input::get('active'),
                                                                          'password' => Hash::make(Input::get('password')),
-                                                                         'usr_verified' => Input::get('verified')
+                                                                         'usr_verified' => Input::get('verified'),
+                                                                         'usr_is_blocked' => Input::get('blocked')
                                                                          ));
 
                     return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');

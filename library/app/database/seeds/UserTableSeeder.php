@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => true,
         		'email' => 'admin@admin.com',
         		'password' => Hash::make('admin12345'),
-        		//'remember_token' => ''
+                'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -49,7 +49,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'witek.j@op.pl',
         		'password' => Hash::make('witoslaw123'),
-        		//'remember_token' => ''
+                'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -72,7 +72,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'justusvelKrawczyk@op.pl',
         		'password' => Hash::make('123happy654'),
-        		//'remember_token' => ''
+                'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -95,7 +95,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'sterek.witek@gmail.com',
         		'password' => Hash::make('sternaburte0987'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -118,7 +118,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'dratewka@gmail.com',
         		'password' => Hash::make('nanabla123456'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -141,7 +141,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'sowa.klaudia@inteira.pl',
         		'password' => Hash::make('takiehaslo98'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -164,7 +164,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'konieczna.weronika@gmail.com',
         		'password' => Hash::make('endonareda05'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -187,7 +187,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'landaczenda58@op.pl',
         		'password' => Hash::make('landaczek382'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -210,7 +210,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'lisicki1111@o2.pl',
         		'password' => Hash::make('lisicki322@'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -233,7 +233,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'kowalek33@tlen.pl',
         		'password' => Hash::make('kowal21kk'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
 
         $address_id = DB::table('address')
@@ -256,7 +256,7 @@ class UserTableSeeder extends Seeder {
         		'usr_verified' => false,
         		'email' => 'wojtak_edward@gmail.com',
         		'password' => Hash::make('wojtak12323'),
-        		//'remember_token' => ''
+        		'usr_is_blocked' => false
         	));
     }
 

@@ -46,6 +46,7 @@
 														<th></th>
 														<th></th>
 														<th></th>
+														<th></th>
 													</tr>
 												</thead>
 												<tbody>
@@ -68,22 +69,39 @@
 														@if($user->usr_verified=="0")
 														<span class="label label-danger">Niezweryfikowany</span>
 														@endif
+														@if($user->usr_is_blocked=="1")
+														<span class="label label-danger">Zablokowany</span>
+														@endif
+														@if($user->usr_is_blocked=="0")
+														<span class="label label-success">Odblokowany</span>
+														@endif
 														</td>
 														<td>
 															<td> <a class="btn  btn-primary " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#more_{{$user->id}}">Szczegóły</a> </td>					
 														</td>
+														<td>
+															<a class="btn  btn-info " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> 
+														</td>
 														<td> 
-															@if($user->usr_active=="1")
+															@if($user->usr_is_blocked=="1")
+															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-danger disabled">
+															Zablokuj</a>
+															@endif
+															@if($user->usr_is_blocked=="0")
 															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-danger">
 															Zablokuj</a>
+															@endif
+														</td>
+														<td> 
+															@if($user->usr_active=="1")
+															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn  btn-success disabled">
+															Aktywuj</a>
 															@endif
 															@if($user->usr_active=="0")
 															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn  btn-success">
 															Aktywuj</a>
 															@endif
 														</td>
-														<td>
-														<a class="btn  btn-info " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> </td>
 														<td>@if($user->usr_verified=="0")
 															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn  btn-success">Zweryfikuj</a>
 															@endif

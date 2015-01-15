@@ -39,6 +39,8 @@
 
         {{ Form::text('pesel', $user->usr_pesel, array('class' => 'form-control', 'placeholder' => 'Podaj pesel')) }}
 
+        {{ Form::select('blocked', array('0' => 'Odblokowany', '1' => 'Zablokowany'), $user->usr_is_blocked, array('class' => 'form-control'))}}
+
         {{ Form::select('active', array('0' => 'Nieaktywny', '1' => 'Aktywny'), $user->usr_active, array('class' => 'form-control'))}}
 
         {{ Form::select('verified', array('0' => 'Niezweryfikowany', '1' => 'Zweryfikowany'), $user->usr_verified, array('class' => 'form-control'))}}
