@@ -85,6 +85,10 @@ Route::post('/search', 'SearchController@postAdvancedSearch');
 
 Route::post('/search/basic', 'SearchController@postBasicSearch');
 
+Route::get('/search/results', 'SearchController@getAdvancedSearch');
+
+Route::get('/search/basic/results', 'SearchController@getAdvancedSearch');
+
 /* Book */
 Route::get('/book/{id}', 'BookController@getShowBookWithReservation')->before('guest');
 

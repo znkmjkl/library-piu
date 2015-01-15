@@ -1,3 +1,9 @@
+@extends('templates.layout')
+
+@section('support')
+
+@include('search.partials._search_form')
+
 
 <div class="col-md-12">
     <table class="table booklist-table">
@@ -34,4 +40,8 @@
             @endforeach
         </tbody>
     </table>
+    <?php echo $search_results->links(); ?>
 </div>
+
+
+@stop
