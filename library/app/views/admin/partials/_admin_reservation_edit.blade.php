@@ -15,19 +15,22 @@
 											<table class="table booklist-table">
 												<thead>
 													<tr>
+														<th>#</th>
 														<th>ISBN</th>
 														<th>Imię</th>
 														<th>Nazwisko</th>
 														<th>Numer karty</th>
 														<th>Data</th>
 														<th>Status</th>
-														<th>Zmiana statusu</th>
+														<th style="text-align:center;">Zmiana statusu</th>
 														<th></th>
 													</tr>
 												</thead>
 												<tbody>
+													<?php $i = 1; ?>
 													@foreach($reservations as $reservation)
 													<tr>
+														<td style="font-weight:bold;">{{$i++}}</td>
 														<td>{{ $reservation->bok_isbn }}</td>
 														<td>{{ $reservation->usr_name}}</td>
 														<td>{{ $reservation->usr_surname }}</td>

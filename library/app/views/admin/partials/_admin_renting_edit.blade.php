@@ -11,6 +11,7 @@
  <table class="table booklist-table">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>ISBN</th>
 			<th>Nazwisko</th>
 			<th>PESEL</th>
@@ -22,9 +23,11 @@
 			<th></th>
 		</tr>
 	</thead>
+	<?php $i = 1; ?>
 	@foreach($rentedBooks as $rentedBook)
 	<tbody>
 			<tr>
+				<td style="font-weight:bold;">{{$i++}}</td>
 				<td>{{$rentedBook->bok_isbn}}</td>
 				<td>{{$rentedBook->usr_surname}}</td>		
 				<td>{{$rentedBook->usr_pesel}}</td>

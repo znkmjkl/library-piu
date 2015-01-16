@@ -22,6 +22,7 @@
 <table class="table booklist-table">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>Tytuł</th>
 			<th>Autor</th>
 			<th>ISBN</th>
@@ -30,9 +31,11 @@
 			<th></th>
 		</tr>
 	</thead>
+	<?php $i = 1; ?>
 	@foreach($books as $book)
 	<tbody>
 		<tr>
+			<td style="font-weight:bold;">{{$i++}}</td>
 			<td><a><abbr> {{substr($book->bok_title,0,20) }} @if(strlen($book->bok_title) > 20)...@endif </abbr> </a></td>
 			<td>
 				@foreach($autors as $autor)

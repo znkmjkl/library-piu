@@ -1,6 +1,10 @@
 @extends('templates.layout')
 
-@section('register')
+@if (!Auth::check())
+    @section('register')
+@else
+    @section('support')
+@endif
     <div class="row" style="width:95%; margin: 0 auto;">
                     <div class="col-md-5" >
                         <img src="img/logo_big.png" alt="Biblionetka logo" > 
@@ -21,8 +25,14 @@
                     </p>
                     
                     <p style="float:right;">
+                        @if (!Auth::check())
                         <a class="btn btn-primary btn-lg" href="/login" role="button">Zaloguj się</a>
                         <a class="btn btn-warning btn-lg" href="/register" role="button">Utwórz konto</a>
+                        @else
+                            <a class="btn btn-primary btn-lg" href="/search/results" role="button">
+                                Katalog biblioteki  <span class="glyphicon glyphicon-folder-open"></span>  
+                            </a>
+                        @endif
                         <br>
                         <br>
                         <br>
@@ -86,12 +96,3 @@
     
    
 @stop
-
-<!-- @section('register')
-	<div>
-		@include('users.partials._login_form')
-	</div>
-	<div>
-		@include('users.partials._register_form')
-	</div>
-@stop -->

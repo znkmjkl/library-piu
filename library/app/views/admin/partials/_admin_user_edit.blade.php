@@ -38,6 +38,7 @@
 											<table class="table booklist-table">
 												<thead>
 													<tr>
+														<th>#</th>
 														<th>Imię</th>
 														<th>Nazwisko</th>
 														<th>PESEL</th>
@@ -51,9 +52,11 @@
 												</thead>
 												<tbody>
 													<!--UWAGA TO JEST...-->
+													<?php $i = 1; ?>
 													@foreach($users as $user)
 													
 													<tr>
+														<td style="font-weight:bold;">{{ $i++}}</td>
 														<td>{{ $user->usr_name }}</td>
 														<td>{{ $user->usr_surname }}</td>
 														<td>{{ $user->usr_pesel }}</td>

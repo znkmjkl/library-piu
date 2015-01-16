@@ -81,8 +81,11 @@ class UserController extends \BaseController {
 
             $user = DB::table('user')->where('email', Input::get('email'))->get();
 
-            if($user[0]->usr_active){                
+            if($user[0]->usr_active && !$user[0]->usr_is_blocked){                
                 return Redirect::intended('/')->with('flash_message_success', 'Zostałeś zalogowany!');
+            } else if($user[0]->usr_is_blocked){              
+                Auth::logout();
+                return Redirect::back()->with('flash_message_danger', 'Twoje konto jest zablokowane w sprawie wyjaśnień skontaktuj się z administracją!');
             } else {
                 Auth::logout();
                 return Redirect::back()->with('flash_message_danger', 'Twoje konto nie jest aktywne sprawdź skrzynke mailową lub skontaktuj się z administracją!');
