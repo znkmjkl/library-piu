@@ -7,7 +7,7 @@
 	font-weight: bold;
 }
 </style>	
-
+<div ng-controller="AccountController">
 	@foreach($rtls as $rtl)
 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
@@ -168,13 +168,13 @@
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
 							
-								{{ Form::open(array('url' => 'changePass', 'class' => 'form-signin')) }}
-    							{{ Form::password('usr_oldPass', array('class' => 'form-control', 'placeholder' => 'Wprowadź aktualne hasło', "required" => "true")) }}
-    							{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Wprowadź nowe hasło', "required" => "true")) }}
-    							{{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Powtórz nowe hasło', "required" => "true")) }}
+								{{ Form::open(array('url' => 'changePass', 'class' => 'form-signin', 'name' => 'passForm')) }}
+    							{{ Form::password('usr_oldPass', array('class' => 'form-control', 'ng-model' => 'oldPass', 'placeholder' => 'Wprowadź aktualne hasło', "required" => "true")) }}
+    							{{ Form::password('password', array('class' => 'form-control', 'ng-model' => 'newPass1', 'ng-blur' => 'checkPass()', "data-placement"=>"right", 'placeholder' => 'Wprowadź nowe hasło', "required" => "true")) }}
+    							{{ Form::password('password_confirmation', array('class' => 'form-control', 'ng-model' => 'newPass2', 'ng-blur' => 'checkPass()', "data-placement"=>"right", 'placeholder' => 'Powtórz nowe hasło', "required" => "true")) }}
 		    
     							<hr>
-    							{{ Form::submit('Zmień hasło', array('class' => 'btn btn-lg btn-danger btn-block')) }}
+    							{{ Form::submit('Zmień hasło', array('class' => 'btn btn-lg btn-danger btn-block', 'ng-disabled' => '!passForm.$valid' )) }}
     							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
 									<button type="button" class="btn btn-lg btn-primary btn-block" style="margin-top:5px;"> Anuluj </button>	
 								</a>
@@ -352,5 +352,46 @@
 			<br/>
 			
 			</div>
-			
+
+<div>			
+<script>
+
+function AccountController($scope){
+
+
+	$scope.checkPass = function(){
+		if($scope.newPass1.length < 6){
+			$('input[name="password_confirmation"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
+			$('input[name="password"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
+			tooltip("password","show");
+			tooltip("password_confirmation","show");
+			$scope.passForm.password.$setValidity('length',false);
+		} else {
+			$scope.passForm.password.$setValidity('length',true);
+			$('input[name="password"').tooltip("destroy");
+            $('input[name="password_confirmation"').tooltip("destroy");
+
+		}
+		if($scope.newPass1 != $scope.newPass2){
+			$('input[name="password_confirmation"]').attr("title","Hasła powinny być takie same!");
+			$('input[name="password"]').attr("title","Hasła powinny być takie same!");
+			tooltip("password","show");
+			tooltip("password_confirmation","show");
+			$scope.passForm.password.$setValidity('identical',false);
+		} else {
+			$scope.passForm.password.$setValidity('identical',true);
+			$('input[name="password"').tooltip("destroy");
+            $('input[name="password_confirmation"').tooltip("destroy");
+		}
+	}
+	function tooltip(name,action){
+    if(action == "show"){                    
+           	$('input[name='+name+']').tooltip("show");
+        } else{                    
+            $('input[name="'+name+'"]').tooltip("disable");                    
+        }
+    }	
+}
+</script>
 @stop
+

@@ -39,7 +39,7 @@
 				@else<td><span class="label label-success">ODDANO</span></td>@endif
 				@if($rentedBook->fne_amount > 0) <td> <a class="btn btn-sm btn-danger btn-block" data-toggle="collapse" data-parent="#accordion_{{$rentedBook->rtl_id}}" href="#addFine_{{$rentedBook->rtl_id}}"> {{$rentedBook->fne_amount}} PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span></a> </td>
 				@else <td> <a class="btn btn-sm btn-default btn-block"  data-toggle="collapse" data-parent="#accordion_{{$rentedBook->rtl_id}}" href="#addFine_{{$rentedBook->rtl_id}}"> 0 PLN <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> </a> </td> @endif			
-				@if($rentedBook->fne_amount > 0)<td><a href="{{ URL::to('removefine/' . $rentedBook->rtl_id ) }}" class="btn btn-sm btn-danger btn-block" onclick="if(!confirm('Na pewno chcesz anulować kare?')){return false;}; "> ANULUJ </a> </td>@endif
+				@if($rentedBook->fne_amount > 0)<td><a href="{{ URL::to('removefine/' . $rentedBook->rtl_id ) }}" class="btn btn-sm btn-danger btn-block" onclick="if(!confirm('Na pewno chcesz anulować kare?')){return false;}; "> ANULUJ KARE</a> </td>@endif
 			</tr>
 			<tr>
 				<td colspan="8" style="border-top:0 solid;">
