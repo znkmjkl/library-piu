@@ -72,7 +72,7 @@
 		<label class="checkbox">							
 			<input type="checkbox" ng-model="user.checkbox" required>			
 
-			Akceptuję {{ HTML::link("/terms", 'Regulamin') }}	
+			Akceptuję {{ HTML::link("/terms", 'Regulamin', array( 'target'=>"_blank")) }}	
 		</label>
 		{{ Form::submit('Zarejestruj', array('class' => 'btn btn-lg btn-primary btn-block','ng-disabled'=>'!regForm.$valid', "ng-model"=>"regFormSubmit",)) }}
  {{ Form::close() }}

@@ -9,7 +9,8 @@
                 </button>
                 <a class="navbar-brand" href="/">
                 {{ HTML::image('img/logo_small.png', 'biblionetka logo', array("style" => "height:20px")) }}
-                 Biblionetka</a>
+                 Biblionetka
+                 </a>
             </div>
             @include('templates.partials._basic_search_form')
             <div class="navbar-collapse collapse">
