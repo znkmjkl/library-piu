@@ -31,7 +31,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php $i = 1; ?>
+		<?php $i = 1 + (Paginator::getCurrentPage()-1)*15; ?>
 		@foreach($writers as $writer)
 			<tr>
 				<td style="font-weight:bold;">{{$i++}}</td>

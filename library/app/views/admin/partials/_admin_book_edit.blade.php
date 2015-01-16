@@ -31,7 +31,8 @@
 			<th></th>
 		</tr>
 	</thead>
-	<?php $i = 1; ?>
+	
+	<?php $i = 1 + (Paginator::getCurrentPage()-1)*15; ?>
 	@foreach($books as $book)
 	<tbody>
 		<tr>
