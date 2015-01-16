@@ -12,12 +12,12 @@
 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
 	@elseif(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")>0 && date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")<10)
 	<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
 	@endif
 	@endforeach
@@ -42,6 +42,7 @@
 	</div>
 	@endif
 	@endforeach
+	@if($pageContent == 'main')
 	<div style="margin-bottom:20px; margin-left:2%; width:96%;">
 		
 				<div class="panel-group" id="accordion" style="margin-top:20px;">
@@ -185,21 +186,35 @@
 					</div>
 				</div>
 			</div>
-			
+			@endif
 
-			
+			@if($pageContent != 'main')
 			<div class="col-md-2" style="margin-top:20px;">
 				<ul class="nav nav-pills  nav-stacked">
-					<li role="presentation" class="active"><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
-					<li role="presentation" ><a href="#historia" data-toggle="tab"> Historia wypożyczeń </a></li>
-					<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
+					@if($pageContent == 'current_rentals')
+					<li role="presentation" class="active"><a href="/account/current_rentals" data-toggle="tab"> Wypożyczenia </a></li>
+					@else 
+					<li role="presentation" class=""><a href="/account/current_rentals" > Wypożyczenia </a></li>
+					@endif
+
+					@if($pageContent == 'old_rentals')
+					<li role="presentation" class="active"><a href="/account/old_rentals" data-toggle="tab"> Historia wypożyczeń </a></li>
+					@else
+					<li role="presentation" ><a href="/account/old_rentals" > Historia wypożyczeń </a></li>
+					@endif
+
+					@if($pageContent == 'reservations')
+					<li role="presentation" class="active"><a href="/account/reservations" data-toggle="tab"> Rezerwacje </a></li>
+					@else
+					<li role="presentation" ><a href="/account/reservations" > Rezerwacje </a></li>
+					@endif
 				</ul>
 			</div>
 				
 			<div class="col-md-10" id="bottom">	
 				
 				<div id="myTabContent" class="tab-content">
-					
+					@if($pageContent == "current_rentals")	
 					<div class="tab-pane fade in active" id="wypozyczenia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
@@ -264,8 +279,9 @@
 						</div>
 													
 					</div>
-					
-					<div class="tab-pane fade" id="historia" >
+					@endif
+					@if($pageContent == "old_rentals")
+					<div class="tab-pane fade in active" id="historia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -297,11 +313,11 @@
 								</table>
 								@endif
 							</div>
-						</div>
-													
+						</div>													
 					</div>
-					
-					<div class="tab-pane fade" id="rezerwacje">
+					@endif
+					@if($pageContent == "reservations")					
+					<div class="tab-pane fade in active" id="rezerwacje">
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -347,11 +363,13 @@
 						</div>
 													
 					</div>
+					@endif
 
 				</div>
 			<br/>
 			
 			</div>
+			@endif
 
 <div>			
 <script>

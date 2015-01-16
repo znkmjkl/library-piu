@@ -6,9 +6,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </button>                
                 <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-book"> </span> Biblioteka</a>
+                {{ HTML::image('img/logo_small.png', 'biblionetka logo', array("style" => "height:20px")) }}
+                 Biblionetka
+                </a>
             </div>
             @include('templates.partials._basic_search_form')
             <div class="navbar-collapse collapse">
@@ -19,11 +21,12 @@
                   <span class="glyphicon glyphicon-user"> {{ Auth::user()->usr_name }}</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/account"><span class="glyphicon glyphicon-home"> Konto</a></span></li>
-                    <li><a href="/help"><span class="glyphicon glyphicon-book"> Pomoc</span></a></li>
+                    <li><a href="/account/main"><span class="glyphicon glyphicon-home"> </span> Konto</a></li>
+                    <li><a href="/account/current_rentals"><span class="glyphicon glyphicon-book"> </span> Twoje książki</a></li>
+                    <li><a href="/help"><span class="glyphicon glyphicon-question-sign"> </span> Pomoc</a></li>
                     <li><hr></li>
-                    <li><a href="/admin/books"><span class="glyphicon glyphicon-wrench"> Administracja</span></a></li>
-                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> Wyloguj</span></a></li>
+                    <li><a href="/admin/books"><span class="glyphicon glyphicon-wrench"> </span> Administracja</a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> </span> Wyloguj</a></li>
                   </ul>
                 </li>
               </ul>

@@ -2,7 +2,7 @@
 
 class AccountController extends \BaseController {
 
-    public function getAccount()
+    public function getAccount($pageContent)
     {
 
       $address = DB::table('address')->where('adr_id', Auth::user()->usr_adr_id)->get();
@@ -22,7 +22,7 @@ class AccountController extends \BaseController {
                     ->where('rtl_is_returned','1')
                     ->join('book', 'bok_id', '=', 'rental.rtl_bok_id')
                     ->leftjoin('fine', 'fne_rtl_id', '=', 'rental.rtl_id')
-                    ->get();
+                    ->paginate(10);
 
 
       $rvns = DB::table('reservation')->where('rvn_usr_id', Auth::user()->id)
@@ -31,11 +31,12 @@ class AccountController extends \BaseController {
                     ->get();
 
 
+
       //$rtlBlocked = DB::table('rental')->select('')
       $allRvnsRlts = count($rvns) + count($rtls);
 
       return View::make('home.account', array('address' => $address, 'rvns' => $rvns, 'rtls' => $rtls, 
-        'rtlsOld' => $rtlsOld, 'allRvnsRlts' => $allRvnsRlts));
+        'rtlsOld' => $rtlsOld, 'allRvnsRlts' => $allRvnsRlts, 'pageContent' => $pageContent));
 
     }
 
