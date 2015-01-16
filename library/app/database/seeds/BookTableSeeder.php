@@ -266,7 +266,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura faktu')
+                                ->where('knd_name', 'literatura faktu')
                                 ->first()->knd_id;
 
         Book::create(
@@ -287,7 +287,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura faktu')
+                                ->where('knd_name', 'literatura faktu')
                                 ->first()->knd_id;
 
         Book::create(
@@ -308,7 +308,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura faktu')
+                                ->where('knd_name', 'literatura faktu')
                                 ->first()->knd_id;
 
         Book::create(
@@ -329,7 +329,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura faktu')
+                                ->where('knd_name', 'literatura faktu')
                                 ->first()->knd_id;
 
         Book::create(
@@ -350,7 +350,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura obyczajowa')
+                                ->where('knd_name', 'literatura obyczajowa')
                                 ->first()->knd_id;
 
         Book::create(
@@ -371,7 +371,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura obyczajowa')
+                                ->where('knd_name', 'literatura obyczajowa')
                                 ->first()->knd_id;
 
         Book::create(
@@ -392,7 +392,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura obyczajowa')
+                                ->where('knd_name', 'literatura obyczajowa')
                                 ->first()->knd_id;
 
         Book::create(
@@ -413,7 +413,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Literatura obyczajowa')
+                                ->where('knd_name', 'literatura obyczajowa')
                                 ->first()->knd_id;
 
         Book::create(
@@ -434,7 +434,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Thriller')
+                                ->where('knd_name', 'thriller')
                                 ->first()->knd_id;
 
         Book::create(
@@ -455,7 +455,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Horror i literatura grozy')
+                                ->where('knd_name', 'horror i literatura grozy')
                                 ->first()->knd_id;
 
         Book::create(
@@ -476,7 +476,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Thriller')
+                                ->where('knd_name', 'thriller')
                                 ->first()->knd_id;
 
         Book::create(
@@ -497,7 +497,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Horror i literatura grozy')
+                                ->where('knd_name', 'horror i literatura grozy')
                                 ->first()->knd_id;
 
         Book::create(
@@ -518,7 +518,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Kryminał')
+                                ->where('knd_name', 'kryminał')
                                 ->first()->knd_id;
 
         Book::create(
@@ -539,7 +539,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Sensacja')
+                                ->where('knd_name', 'sensacja')
                                 ->first()->knd_id;
 
         Book::create(
@@ -560,7 +560,7 @@ class BookTableSeeder extends Seeder {
 
         $kind_id = DB::table('kind')
                                 ->select('knd_id')
-                                ->where('knd_name', 'Sensacja')
+                                ->where('knd_name', 'sensacja')
                                 ->first()->knd_id;
 
         Book::create(

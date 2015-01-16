@@ -52,7 +52,7 @@
 															@endif
 														</td>
 														<td>
-															<a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-sm btn-danger"> 
+															<a href="{{ URL::to('/reservation/cancel/' . $reservation->rvn_id)}}" class="btn btn-sm btn-danger" onclick="if(!confirm('Na pewno chcesz anulować rezerwacje?')){return false;};"> 
 																Anuluj
 															</a>
 														</td>
