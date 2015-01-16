@@ -37,7 +37,7 @@
 				<td style="font-weight:bold;">{{$i++}}</td>
 				<td>{{$writer->wtr_name}}</td>
 				<td>{{$writer->wtr_surname}}</td>
-				<td>{{$writer->wtr_name}}</td>
+				<td>{{date_create($writer->wtr_birth_date)->format("d-m-Y")}}</td>
 				<td> <a class="btn btn-sm btn-info btn-block" data-toggle="collapse" data-parent="#accordion_{{$writer->wtr_id}}" href="#edit_{{$writer->wtr_id}}"> EDYTUJ </a> </td>
 				<td> <a href="{{ URL::to('removeauthor/' . $writer->wtr_id ) }}" class="btn btn-sm btn-danger btn-block" onclick="if(!confirm('Na pewno chcesz usunąć autora?')){return false;}; "> USUŃ </a> </td>
 			</tr>
