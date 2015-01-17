@@ -372,6 +372,8 @@
 			@endif
 
 <div>			
+</div>
+
 <script>
 
 function AccountController($scope){
