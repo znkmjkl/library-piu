@@ -52,7 +52,7 @@
 												</thead>
 												<tbody>
 													<!--UWAGA TO JEST...-->
-													<?php $i = 1 + (Paginator::getCurrentPage()-1)*15; ?>
+													<?php $i = 1 + (Paginator::getCurrentPage()-1)*10; ?>
 													@foreach($users as $user)
 													
 													<tr>
