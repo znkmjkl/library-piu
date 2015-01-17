@@ -90,8 +90,9 @@ class AdminController extends \BaseController {
 
         } else if ($pageContent == "users"){
             $users = DB::table('user')
-                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
                                 ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+                                ->leftjoin('librarian', 'librarian.lbn_usr_id', '=', 'user.id')
+                                ->whereNull('librarian.lbn_usr_id')
                                 ->orderBy('usr_surname', 'asc')
                                 ->paginate(10);
 
@@ -132,8 +133,9 @@ class AdminController extends \BaseController {
       $users = DB::table('user')
                                 ->where('usr_pesel', Input::get('searchInput'))
                                 ->orWhere('usr_number', Input::get('searchInput'))
-                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
-                                ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')                                
+                                ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+                                ->leftjoin('librarian', 'librarian.lbn_usr_id', '=', 'user.id')
+                                ->whereNull('librarian.lbn_usr_id')                                
                                 ->get();
       
       $pageContent = 'users';

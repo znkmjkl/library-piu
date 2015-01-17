@@ -5,7 +5,8 @@ class UserController extends \BaseController {
     public function getIndex()
     {
         $users = DB::table('user')
-                                ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
+                                ->leftjoin('librarian', 'librarian.lbn_usr_id', '=', 'user.id')
+                                ->whereNull('librarian.lbn_usr_id')
                                 ->get();
 
         return View::make('for_testing_purposes.manage_users', array('users' => $users));
@@ -187,7 +188,7 @@ class UserController extends \BaseController {
             $user->usr_number = $userNumber->usr_number + 1;
             $user->save();
             if(Input::get('user_role') == "1"){
-                $admin = new librarian;
+                $admin = new Librarian;
                 $admin->lbn_usr_id = $user->id;
                 $admin->save();
                 return Redirect::back()->with('flash_message_success', 'Nowy administrator został dodany!');    
