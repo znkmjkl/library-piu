@@ -21,9 +21,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
 /* Admin */
 Route::get('/admin/{pageContent}', 'AdminController@getAdmin')->before('auth|admin');
 
-Route::post('/admin/search/reservations', 'AdminController@getUserReservations')->before('auth|admin');
+Route::post('/admin/reservations', 'AdminController@getUserReservations')->before('auth|admin');
 
-Route::post('/admin/search/user', 'AdminController@getUser')->before('auth|admin');
+Route::post('/admin/users', 'AdminController@getUser')->before('auth|admin');
 
 Route::post('/admin/search/renting', 'AdminController@getRentedBooks')->before('auth|admin');
 

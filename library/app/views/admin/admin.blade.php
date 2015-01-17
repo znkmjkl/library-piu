@@ -37,7 +37,7 @@
 									<li role="presentation" ><a href="/admin/authors"> Autorzy </a></li>								
 								@endif
 								
-								@if($pageContent=="users")							
+								@if($pageContent=="users" || $pageContent=="user")							
 									<li role="presentation" class="active"><a href="/admin/users" data-toggle="tab"> Użytkownicy </a></li>
 								@else
 									<li role="presentation" ><a href="/admin/users"> Użytkownicy </a></li>
@@ -75,7 +75,7 @@
 												@include('admin.partials._admin_book_edit')
 											@elseif($pageContent == 'authors')
 												@include('admin.partials._admin_authors_edit')
-											@elseif($pageContent == 'users')
+											@elseif($pageContent == 'users' || $pageContent=="user")
 												@include('admin.partials._admin_user_edit')
 											@elseif($pageContent == 'rentals')
 												@include('admin.partials._admin_renting_edit')

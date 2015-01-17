@@ -1,5 +1,5 @@
 <div class="panel-heading">Administracja rezerwacjami</div>
-{{ Form::open(array('url' => 'admin/search/reservations', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+{{ Form::open(array('url' => 'admin/reservations', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
     <div class="input-group" style="width:20%">
         
             
@@ -67,4 +67,7 @@
 												</tbody>
 											</table>
 											
-											<?php echo $reservations->links(); ?>
+											<?php 
+											if(method_exists($reservations, 'links'))
+												echo $reservations->links(); 
+											?>

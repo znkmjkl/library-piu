@@ -134,7 +134,7 @@ class AdminController extends \BaseController {
                                 ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')                                
                                 ->get();
       
-      $pageContent = 'users';
+      $pageContent = 'user';
       return View::make('admin.admin', array('users' => $users, 'pageContent' => $pageContent));
     }
 

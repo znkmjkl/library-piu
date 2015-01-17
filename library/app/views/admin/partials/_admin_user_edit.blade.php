@@ -24,7 +24,7 @@
 											
 											<br><br>
 
-{{ Form::open(array('url' => 'admin/search/user', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+{{ Form::open(array('url' => 'admin/users', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
     <div class="input-group" style="width:20%">
         
             
@@ -176,5 +176,9 @@
 													@endforeach
 													<!-- ...CALOSC-->
 												</tbody>
-											</table>					
-							<?php echo $users->links(); ?>
+											</table>	
+
+							<?php 
+							if(method_exists($users, 'links'))
+								echo $users->links(); 
+							?>
