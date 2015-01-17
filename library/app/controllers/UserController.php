@@ -186,7 +186,13 @@ class UserController extends \BaseController {
             $user->password = Hash::make(Input::get('password'));
             $user->usr_number = $userNumber->usr_number + 1;
             $user->save();
-            return Redirect::back()->with('flash_message_success', 'Użytkownik został dodany.');
+            if(Input::get('user_role') == "1"){
+                $admin = new librarian;
+                $admin->lbn_usr_id = $user->id;
+                $admin->save();
+                return Redirect::back()->with('flash_message_success', 'Nowy administrator został dodany!');    
+            }
+            return Redirect::back()->with('flash_message_success', 'Nowy użytkownik został dodany.');
         }
         else
         {
