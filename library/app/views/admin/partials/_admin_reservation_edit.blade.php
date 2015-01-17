@@ -37,14 +37,14 @@
 														<td>{{ $reservation->usr_number }}</td>
 														<td>{{ date("d-m-Y", strtotime($reservation->rvn_date)) }}</td>
 														<td>
-															@if($reservation->rvn_is_ready=="1")
+															@if($reservation->rvn_is_ready==true)
 															<span class="label label-success">DO ODBIORU</span>
 															@else
 															<span class="label label-warning">OCZEKUJE</span>
 															@endif
 														</td>
 														<td style="text-align:center;"> 
-															@if($reservation->rvn_is_ready=="1")
+															@if($reservation->rvn_is_ready==true)
 																<a href="{{ URL::to('/reservation/rentbook/' . $reservation->rvn_id) }}" class="btn btn-sm btn-success">
 																	Wypożycz
 																</a> 
