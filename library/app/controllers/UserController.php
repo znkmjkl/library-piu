@@ -242,6 +242,8 @@ class UserController extends \BaseController {
 
                     return Redirect::back()->with('flash_message_success', 'Dane użytkownika zostały zmienione.');
             }
+        } else {
+            return Redirect::back()->with('flash_message_danger', 'Niepoprawne dane.');
         }
     }
 
