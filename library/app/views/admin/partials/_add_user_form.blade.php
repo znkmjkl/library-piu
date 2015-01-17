@@ -67,6 +67,11 @@
 		<label>
 			*należy wypełnić wszystkie pola
 		</label>
+        <label style="text-align:center; font-size:text-decoration:underline;">Ranga użytkownika</label>
+        <select class="form-control">
+            <option>Zwykły user</option>
+            <option>Admin</option>
+        </select>
 		{{ Form::submit('Dodaj użytkownika', array('class' => 'btn btn-lg btn-primary btn-block','ng-disabled'=>'!regForm.$valid', "ng-model"=>"regFormSubmit",)) }}
  {{ Form::close() }}
  </div>

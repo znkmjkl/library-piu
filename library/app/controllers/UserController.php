@@ -121,16 +121,17 @@ class UserController extends \BaseController {
         if (!empty($user))
         {
                 $password=str_random(8);
-                DB::table('user')->where('usr_email', Input::get('email'))
+                
+                DB::table('user')->where('email', Input::get('email'))
                                  ->update(array('password' => Hash::make($password)));
 
                 Mail::send('emails.auth.reminder', array('usr_password'=>$password), function($message)
                 {
                     $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))
-                            ->subject('Prośba o zmianę hasła w księgarni');
+                            ->subject('Prośba o zmianę hasła w biliotece');
                 });
 
-            return Redirect::intended('/')->with('flash_message_success', 'Hasło zostało wysłane na podanego emaila.');
+            return Redirect::intended('/')->with('flash_message_success', 'Hasło zostało wysłane na podany adres email.');
         }
         else
         {

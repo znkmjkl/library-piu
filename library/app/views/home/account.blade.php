@@ -7,17 +7,17 @@
 	font-weight: bold;
 }
 </style>	
-
+<div ng-controller="AccountController">
 	@foreach($rtls as $rtl)
 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
 	@elseif(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")>0 && date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")<10)
 	<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do zakładki <a href="#bottom" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
+		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
 	@endif
 	@endforeach
@@ -42,6 +42,7 @@
 	</div>
 	@endif
 	@endforeach
+	@if($pageContent == 'main')
 	<div style="margin-bottom:20px; margin-left:2%; width:96%;">
 		
 				<div class="panel-group" id="accordion" style="margin-top:20px;">
@@ -168,13 +169,13 @@
 						<div id="collapseTwo" class="panel-collapse collapse">
 							<div class="panel-body">
 							
-								{{ Form::open(array('url' => 'changePass', 'class' => 'form-signin')) }}
-    							{{ Form::password('usr_oldPass', array('class' => 'form-control', 'placeholder' => 'Wprowadź aktualne hasło', "required" => "true")) }}
-    							{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Wprowadź nowe hasło', "required" => "true")) }}
-    							{{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Powtórz nowe hasło', "required" => "true")) }}
+								{{ Form::open(array('url' => 'changePass', 'class' => 'form-signin', 'name' => 'passForm')) }}
+    							{{ Form::password('usr_oldPass', array('class' => 'form-control', 'ng-model' => 'oldPass', 'placeholder' => 'Wprowadź aktualne hasło', "required" => "true")) }}
+    							{{ Form::password('password', array('class' => 'form-control', 'ng-model' => 'newPass1', 'ng-blur' => 'checkPass()', "data-placement"=>"right", 'placeholder' => 'Wprowadź nowe hasło', "required" => "true")) }}
+    							{{ Form::password('password_confirmation', array('class' => 'form-control', 'ng-model' => 'newPass2', 'ng-blur' => 'checkPass()', "data-placement"=>"right", 'placeholder' => 'Powtórz nowe hasło', "required" => "true")) }}
 		    
     							<hr>
-    							{{ Form::submit('Zmień hasło', array('class' => 'btn btn-lg btn-danger btn-block')) }}
+    							{{ Form::submit('Zmień hasło', array('class' => 'btn btn-lg btn-danger btn-block', 'ng-disabled' => '!passForm.$valid' )) }}
     							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
 									<button type="button" class="btn btn-lg btn-primary btn-block" style="margin-top:5px;"> Anuluj </button>	
 								</a>
@@ -185,21 +186,35 @@
 					</div>
 				</div>
 			</div>
-			
+			@endif
 
-			
+			@if($pageContent != 'main')
 			<div class="col-md-2" style="margin-top:20px;">
 				<ul class="nav nav-pills  nav-stacked">
-					<li role="presentation" class="active"><a href="#wypozyczenia" data-toggle="tab"> Wypożyczenia </a></li>
-					<li role="presentation" ><a href="#historia" data-toggle="tab"> Historia wypożyczeń </a></li>
-					<li role="presentation" ><a href="#rezerwacje" data-toggle="tab"> Rezerwacje </a></li>
+					@if($pageContent == 'current_rentals')
+					<li role="presentation" class="active"><a href="/account/current_rentals" data-toggle="tab"> Wypożyczenia </a></li>
+					@else 
+					<li role="presentation" class=""><a href="/account/current_rentals" > Wypożyczenia </a></li>
+					@endif
+
+					@if($pageContent == 'old_rentals')
+					<li role="presentation" class="active"><a href="/account/old_rentals" data-toggle="tab"> Historia wypożyczeń </a></li>
+					@else
+					<li role="presentation" ><a href="/account/old_rentals" > Historia wypożyczeń </a></li>
+					@endif
+
+					@if($pageContent == 'reservations')
+					<li role="presentation" class="active"><a href="/account/reservations" data-toggle="tab"> Rezerwacje </a></li>
+					@else
+					<li role="presentation" ><a href="/account/reservations" > Rezerwacje </a></li>
+					@endif
 				</ul>
 			</div>
 				
 			<div class="col-md-10" id="bottom">	
 				
 				<div id="myTabContent" class="tab-content">
-					
+					@if($pageContent == "current_rentals")	
 					<div class="tab-pane fade in active" id="wypozyczenia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
@@ -264,8 +279,9 @@
 						</div>
 													
 					</div>
-					
-					<div class="tab-pane fade" id="historia" >
+					@endif
+					@if($pageContent == "old_rentals")
+					<div class="tab-pane fade in active" id="historia" >
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -297,11 +313,11 @@
 								</table>
 								@endif
 							</div>
-						</div>
-													
+						</div>													
 					</div>
-					
-					<div class="tab-pane fade" id="rezerwacje">
+					@endif
+					@if($pageContent == "reservations")					
+					<div class="tab-pane fade in active" id="rezerwacje">
 					
 						<div class="bs-example" data-example-id="table-within-panel">
 							<div class="panel panel-info">
@@ -347,10 +363,53 @@
 						</div>
 													
 					</div>
+					@endif
 
 				</div>
 			<br/>
 			
 			</div>
-			
+			@endif
+
+<div>			
+<script>
+
+function AccountController($scope){
+
+
+	$scope.checkPass = function(){
+		if($scope.newPass1.length < 6){
+			$('input[name="password_confirmation"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
+			$('input[name="password"]').attr("title","Hasło powinno mieć co najmniej 6 znaków!");
+			tooltip("password","show");
+			tooltip("password_confirmation","show");
+			$scope.passForm.password.$setValidity('length',false);
+		} else {
+			$scope.passForm.password.$setValidity('length',true);
+			$('input[name="password"').tooltip("destroy");
+            $('input[name="password_confirmation"').tooltip("destroy");
+
+		}
+		if($scope.newPass1 != $scope.newPass2){
+			$('input[name="password_confirmation"]').attr("title","Hasła powinny być takie same!");
+			$('input[name="password"]').attr("title","Hasła powinny być takie same!");
+			tooltip("password","show");
+			tooltip("password_confirmation","show");
+			$scope.passForm.password.$setValidity('identical',false);
+		} else {
+			$scope.passForm.password.$setValidity('identical',true);
+			$('input[name="password"').tooltip("destroy");
+            $('input[name="password_confirmation"').tooltip("destroy");
+		}
+	}
+	function tooltip(name,action){
+    if(action == "show"){                    
+           	$('input[name='+name+']').tooltip("show");
+        } else{                    
+            $('input[name="'+name+'"]').tooltip("disable");                    
+        }
+    }	
+}
+</script>
 @stop
+

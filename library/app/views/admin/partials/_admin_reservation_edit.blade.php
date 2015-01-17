@@ -27,7 +27,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<?php $i = 1; ?>
+													<?php $i = 1 + (Paginator::getCurrentPage()-1)*15; ?>
 													@foreach($reservations as $reservation)
 													<tr>
 														<td style="font-weight:bold;">{{$i++}}</td>

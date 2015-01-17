@@ -13,7 +13,7 @@
                     <p>
                         <br>
                         <br>
-                        <strong>Witaj na stronie Biblionetki - Twojej biblioteki internetowej.</strong>
+                        <strong style="font-size:1.4em">Witaj na stronie Biblionetki - Twojej biblioteki internetowej.</strong>
                     </p>
                     
                     <p>

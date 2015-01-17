@@ -52,7 +52,7 @@
 												</thead>
 												<tbody>
 													<!--UWAGA TO JEST...-->
-													<?php $i = 1; ?>
+													<?php $i = 1 + (Paginator::getCurrentPage()-1)*15; ?>
 													@foreach($users as $user)
 													
 													<tr>
@@ -80,36 +80,36 @@
 														@endif
 														</td>
 														<td>
-															<td> <a class="btn  btn-primary " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#more_{{$user->id}}">Szczegóły</a> </td>					
+															<td> <a class="btn  btn-primary btn-sm" data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#more_{{$user->id}}">Szczegóły</a> </td>					
 														</td>
 														<td>
-															<a class="btn  btn-info " data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> 
+															<a class="btn  btn-info  btn-sm" data-toggle="collapse" data-parent="#accordion_{{$user->id}}" href="#edit_{{$user->id}}">Edytuj</a> 
 														</td>
 														<td> 
 															@if($user->usr_is_blocked=="1")
-															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-danger disabled">
+															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-sm btn-danger disabled">
 															Zablokuj</a>
 															@endif
 															@if($user->usr_is_blocked=="0")
-															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn  btn-danger">
+															<a href="{{ URL::to('user/block/' . $user->id) }}" class="btn btn-sm btn-danger">
 															Zablokuj</a>
 															@endif
 														</td>
 														<td> 
 															@if($user->usr_active=="1")
-															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn  btn-success disabled">
+															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn btn-sm  btn-success disabled">
 															Aktywuj</a>
 															@endif
 															@if($user->usr_active=="0")
-															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn  btn-success">
+															<a href="{{ URL::to('user/activate/' . $user->id) }}" class="btn btn-sm btn-success">
 															Aktywuj</a>
 															@endif
 														</td>
 														<td>@if($user->usr_verified=="0")
-															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn  btn-success">Zweryfikuj</a>
+															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success">Zweryfikuj< /a>
 															@endif
 															@if($user->usr_verified=="1")
-															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn  btn-success disabled">Zweryfikuj</a>
+															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success disabled">Zweryfikuj</a>
 															@endif
 														</td>
 													</tr>

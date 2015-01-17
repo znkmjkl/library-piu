@@ -127,7 +127,7 @@ Route::get('/editbook/{id}','BookController@getEditBookView');
 Route::post('/editbook/{id}', 'BookController@editBook');
 
 /* Account */
-Route::get('/account', 'AccountController@getAccount')->before('auth');
+Route::get('/account/{pageContent}', 'AccountController@getAccount')->before('auth');
 
 Route::post('/changePass', 'AccountController@changePassword');
 
