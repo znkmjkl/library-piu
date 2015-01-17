@@ -21,7 +21,8 @@ class ReservationTableSeeder extends Seeder {
         		'rvn_bok_id' => $book_id,
         		'rvn_usr_id' => $user_id,
         		'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
         	));
 
         $book_id = DB::table('book')
@@ -39,7 +40,8 @@ class ReservationTableSeeder extends Seeder {
         		'rvn_bok_id' => $book_id,
         		'rvn_usr_id' => $user_id,
         		'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
         	));
 
         $book_id = DB::table('book')
@@ -57,7 +59,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => true
+                'rvn_is_ready' => true,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -75,7 +78,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -93,7 +97,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -111,7 +116,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -129,7 +135,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -147,7 +154,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
 
         $book_id = DB::table('book')
@@ -165,7 +173,8 @@ class ReservationTableSeeder extends Seeder {
                 'rvn_bok_id' => $book_id,
                 'rvn_usr_id' => $user_id,
                 'rvn_status' => true,
-                'rvn_is_ready' => false
+                'rvn_is_ready' => false,
+                'rvn_date' => new DateTime
             ));
     }
 
