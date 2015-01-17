@@ -25,6 +25,10 @@ Route::post('/admin/reservations', 'AdminController@getUserReservations')->befor
 
 Route::post('/admin/users', 'AdminController@getUser')->before('auth|admin');
 
+Route::post('/admin/authors', 'AdminController@getAuthors')->before('auth|admin');
+
+Route::post('/admin/books', 'AdminController@getBooks')->before('auth|admin');
+
 Route::post('/admin/search/renting', 'AdminController@getRentedBooks')->before('auth|admin');
 
 Route::get('/user/block/{id}','UserController@blockUser')->before('auth|admin');

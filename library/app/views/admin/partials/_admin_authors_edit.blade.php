@@ -17,7 +17,19 @@
 		</div>
 	</div>
 </div>
-	<br><br>										
+	<br><br>	
+{{ Form::open(array('url' => 'admin/authors', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+    <div class="input-group" style="width:20%">
+        
+            
+            {{ Form::text('searchInput', null, array('class' => 'form-control', 'style' => 'margin-bottom:0px; width:250px;', 'placeholder' => 'Podaj imię lub nazwisko autora', 'required' => true)) }}
+            <span class="input-group-btn">
+            {{ Form::submit('Szukaj', array('class' => 'btn btn-default')) }}
+            </span>	
+        
+    </div>
+{{ Form::close() }}
+
 <table class="table booklist-table">
 	<thead>
 		<tr>
@@ -65,4 +77,7 @@
 		@endforeach													
 	</tbody>
 </table>
-<?php echo $writers->links(); ?>
+<?php 
+	if(method_exists($writers, 'links'))
+	echo $writers->links(); 
+?>

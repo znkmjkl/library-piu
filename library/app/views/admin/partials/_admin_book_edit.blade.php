@@ -18,7 +18,17 @@
 </div>
 											
 <br><br>
-											
+			{{ Form::open(array('url' => 'admin/books', 'class' => 'navbar-form navbar-left', 'role' => 'search')) }}
+    <div class="input-group" style="width:20%">
+        
+            
+            {{ Form::text('searchInput', null, array('class' => 'form-control', 'style' => 'margin-bottom:0px; width:250px;', 'placeholder' => 'Podaj ISBN lub tytuł książki', 'required' => true)) }}
+            <span class="input-group-btn">
+            {{ Form::submit('Szukaj', array('class' => 'btn btn-default')) }}
+            </span>	
+        
+    </div>
+{{ Form::close() }}								
 <table class="table booklist-table">
 	<thead>
 		<tr>
@@ -129,5 +139,8 @@
 		</tbody>
 	@endforeach													
 </table>					
-<?php echo $books->links(); ?>
+<?php 
+	if(method_exists($books, 'links'))
+		echo $books->links(); 
+?>
 								
