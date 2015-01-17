@@ -66,7 +66,7 @@ class AdminController extends \BaseController {
 
           $autors = DB::table('author')->get();                             
  
-          $kinds = DB::table('kind')->lists('knd_name');
+          $kinds = DB::table('kind')->orderBy('knd_name', 'asc')->lists('knd_name');
 
           $languages = DB::table('language')->lists('lng_name');
 
@@ -92,6 +92,7 @@ class AdminController extends \BaseController {
             $users = DB::table('user')
                                 ->join('librarian', 'librarian.lbn_usr_id', '!=', 'user.id')
                                 ->join('address', 'address.adr_id', '=', 'user.usr_adr_id')
+                                ->orderBy('usr_surname', 'asc')
                                 ->paginate(10);
 
             return View::make('admin.admin', array('users' => $users,
@@ -101,6 +102,7 @@ class AdminController extends \BaseController {
                                 ->where('rvn_status', true)
                                 ->join('book', 'book.bok_id', '=', 'reservation.rvn_bok_id')
                                 ->join('user', 'user.id', '=', 'reservation.rvn_usr_id')
+                                ->orderBy('usr_surname', 'asc')
                                 ->paginate(10);
 
           return View::make('admin.admin', array('reservations' => $reservations,
