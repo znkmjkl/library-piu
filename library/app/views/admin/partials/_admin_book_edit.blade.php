@@ -47,7 +47,7 @@
 	<tbody>
 		<tr>
 			<td style="font-weight:bold;">{{$i++}}</td>
-			<td><a><abbr> {{substr($book->bok_title,0,20) }} @if(strlen($book->bok_title) > 20)...@endif </abbr> </a></td>
+			<td><a href="{{ URL::to('book/' . $book->bok_id ) }}"><abbr> {{substr($book->bok_title,0,20) }} @if(strlen($book->bok_title) > 20)...@endif </abbr> </a></td>
 			<td>
 				@foreach($autors as $autor)
 					@if( $autor->atr_bok_id == $book->bok_id)
