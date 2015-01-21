@@ -182,8 +182,8 @@ class BookController extends \BaseController {
             DB::table('book')->where('bok_id',$bok_id)->update(array('bok_isbn' => Input::get('bok_isbn'),
                                                                     'bok_title' => Input::get('bok_title'),
                                                                     'bok_image_link' => Input::get('image'),
-                                                                     'bok_lng_id' => Input::get('language'),
-                                                                     'bok_knd_id' => Input::get('kind'),
+                                                                     'bok_lng_id' => Input::get('language')+1,
+                                                                     'bok_knd_id' => Input::get('kind')+1,
                                                                      'bok_edition_date' =>Input::get('date').' 00:00:00',
                                                                      'bok_edition_number' => Input::get('edition') ));
             DB::table('author')->where('atr_bok_id',$bok_id)->delete();

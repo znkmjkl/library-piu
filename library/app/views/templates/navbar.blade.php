@@ -8,7 +8,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-book"> </span> Biblionetka</a>
+                {{ HTML::image('img/logo_small.png', 'biblionetka logo', array("style" => "height:20px")) }}
+                 Biblionetka
+                 </a>
             </div>
 
             @include('templates.partials._basic_search_form')

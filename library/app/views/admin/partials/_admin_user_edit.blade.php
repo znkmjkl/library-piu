@@ -105,11 +105,10 @@
 															Aktywuj</a>
 															@endif
 														</td>
-														<td>@if($user->usr_verified==true)
-															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success">Zweryfikuj</a>
-															@endif
-															@if($user->usr_verified==false)
+														<td>@if($user->usr_verified)
 															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success disabled">Zweryfikuj</a>
+															@else
+															<a href="{{ URL::to('user/verify/' . $user->id) }}" class="btn btn-sm btn-success">Zweryfikuj</a>
 															@endif
 														</td>
 													</tr>

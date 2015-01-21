@@ -5,7 +5,7 @@
         </span>
         <input class="form-control" style="margin-bottom:0px; width:250px;" placeholder="Tytuł książki" required="1" name="bok_title" type="text">
         <span class="input-group-btn">        
-            <button class="btn btn-default advancedSearch" type="button" style="padding-bottom:5px;"><span class="glyphicon glyphicon-cog"> </span></button>
+            <button class="btn btn-default advancedSearch" type="button"><span class="glyphicon glyphicon-cog"> </span></button>
         </span>
     </div>    
 {{ Form::close() }}
