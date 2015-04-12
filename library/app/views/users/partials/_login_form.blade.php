@@ -12,7 +12,7 @@
 <div class="row" >
 	<div class="col-md-10 col-sm-offset-1">
 		<div class="col-md-6 col-md-offset-3 form-group">
-			<form class="form-horizontal form-signin" action="users/login" method="POST">
+			<form class="form-horizontal form-signin" action="users/login" method="POST" style="margin-left:0px;">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label" style="font-size:20px;">Email</label>
 					<div class="col-sm-9">
@@ -26,17 +26,14 @@
 					</div>
 				</div>
 				<div class="form-group" style="margin:-15px;">
-					<div class="col-sm-offset-2 col-sm-10">
-						<div class="checkbox">
-							<label>
-							{{ Form::checkbox('remember-me', 'Remember me') }}
-							Zapamiętaj mnie &middot; {{ HTML::link("/resend_password", 'Zapomniałeś hasła?') }}
-							</label>
-						</div>
+					<div class="col-sm-offset-3 col-sm-10">
+						<label>
+							{{ HTML::link("/resend_password", 'Zapomniałeś hasła?') }}
+						</label>						
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
+					<div class="col-sm-offset-3 col-sm-10" style="padding-right:43px;">
 						<button type="submit" class="btn btn-lg btn-primary btn-block">Zaloguj</button>
 					</div>
 				</div>
