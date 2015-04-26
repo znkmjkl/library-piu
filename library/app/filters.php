@@ -22,7 +22,6 @@ if(!Session::has('language'))
 {
     Session::put('language', $lang);
 }
-// return $lang_uri;
 // Route language path if needed
 if($lang_uri !== 'en' && $lang_uri !== 'pl')
 {
@@ -33,6 +32,8 @@ elseif($lang_uri !== Session::get('language'))
 {
     Session::put('language', $lang_uri);
 }
+
+App::setLocale(Session::get('language'));
 
 // Store the language switch links to the session
 $pl2en = preg_replace('/pl/', 'en', Request::fullUrl(), 1);
