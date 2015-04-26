@@ -13,11 +13,6 @@
 
 App::before(function($request)
 {
-	// if(isset($_GET['loc']) && $_GET['loc'] != App::getLocale()){
-	// 	App::setLocale($_GET['loc']);
-	// }
-
- //    Redirect::to($request);
 
 $lang = 'pl';
 $lang_uri = Request::segment(1);
@@ -27,13 +22,11 @@ if(!Session::has('language'))
 {
     Session::put('language', $lang);
 }
-
+// return $lang_uri;
 // Route language path if needed
 if($lang_uri !== 'en' && $lang_uri !== 'pl')
 {
-
-	//return Redirect::to('google.com');
-    return Redirect::to($lang.'/'.($lang_uri ? Request::path() : ''));
+    return Redirect::to(Session::get('language').'/'.($lang_uri ? Request::path() : ''));
 }
 // Set session language to uri
 elseif($lang_uri !== Session::get('language'))
