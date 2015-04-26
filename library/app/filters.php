@@ -13,7 +13,11 @@
 
 App::before(function($request)
 {
-	//
+	if(isset($_GET['loc']) && $_GET['loc'] != App::getLocale()){
+		App::setLocale($_GET['loc']);
+	}
+
+    Redirect::to($request);
 });
 
 

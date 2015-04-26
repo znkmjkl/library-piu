@@ -13,21 +13,19 @@
                     <p>
                         <br>
                         <br>
-                        <strong style="font-size:1.4em">Witaj na stronie Biblionetki - Twojej biblioteki internetowej.</strong>
+                        <strong style="font-size:1.4em"><?php echo Lang::get('messages.bannerHeader'); ?></strong>
                     </p>
                     
                     <p>
-                        Jest to najwygodniejszy sposób wypożyczania książek. Załóż konto, wyszukaj pozycję w naszej bazie, a następnie odbierz ją
-                        w bibliotece. Masz pewność, że zastaniesz swoją książkę oraz dostęp do listy tych wypożyczonych. Wszystko w zasięgu
-                        ręki!
+                        <?php echo Lang::get('messages.bannerContent'); ?>
                         <br>
                         <br>
                     </p>
                     
                     <p style="float:right;">
                         @if (!Auth::check())
-                        <a class="btn btn-primary btn-lg" href="/login" role="button">Zaloguj się</a>
-                        <a class="btn btn-warning btn-lg" href="/register" role="button">Utwórz konto</a>
+                        <a class="btn btn-primary btn-lg" href="/login" role="button"><?php echo Lang::get('messages.logIn'); ?></a>
+                        <a class="btn btn-warning btn-lg" href="/register" role="button"><?php echo Lang::get('messages.createAccount'); ?></a>
                         @else
                             <a class="btn btn-primary btn-lg" href="/search/results" role="button">
                                 Katalog biblioteki  <span class="glyphicon glyphicon-folder-open"></span>  
@@ -57,8 +55,8 @@
                                 <img src="img/library.png" alt="Zdjecie biblioteki">
                                 
                                 <div class="carousel-caption">
-                                    <h3>Morze możliwości</h3>
-                                    <p>Już dziś wybierz coś dla siebie z ponad 2000 pozycji!</p>
+                                    <h3><?php echo Lang::get('messages.slide1header'); ?></h3>
+                                    <p><?php echo Lang::get('messages.slide1content'); ?></p>
                                 </div>
                             </div>
 
@@ -66,8 +64,8 @@
                                 <img src="img/servers.png" alt="Zdjecie serwerowni">
                                 
                                 <div class="carousel-caption">
-                                    <h3>Piorunująca prędkość</h3>
-                                    <p>Najnowsze technologie gwarantują szybkość działania serwisu - swoją ulubiona książkę znajdziesz w ułamek sekundy!</p>
+                                    <h3><?php echo Lang::get('messages.slide2header'); ?></h3>
+                                    <p><?php echo Lang::get('messages.slide2content'); ?></p>
                                 </div>
                             </div>
 
@@ -75,8 +73,8 @@
                                 <img src="img/home.png" alt="Zdjecie domu">
                                 
                                 <div class="carousel-caption">
-                                    <h3>Na wyciągnięcie ręki</h3>
-                                    <p>Wymarzoną pozycję znajdziesz i zarezerwujesz z dowolnego miejsca - nawet nie musisz wychodzić z domu.</p>
+                                    <h3><?php echo Lang::get('messages.slide3header'); ?></h3>
+                                    <p><?php echo Lang::get('messages.slide3content'); ?></p>
                                 </div>
                             </div>
 
