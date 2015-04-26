@@ -27,9 +27,35 @@
 
         <!-- Custom styles for this template -->
 
+        <style type="text/css">
+
+            .navbar-wrapper {
+                margin-top: 0px;
+            }
+
+
+        </style>
+
     </head>
 
     <body>
+
+        <script type="text/javascript">
+
+        function setLocale(loc) {
+
+            var url = window.location.href;
+
+            if(loc == 'pl') {
+                url = url.replace('/en', '/pl');
+            } else {
+                url = url.replace('/pl', '/en');
+            }
+
+            window.location.href = url;
+        }
+
+        </script>
 
         @yield('layout')
 

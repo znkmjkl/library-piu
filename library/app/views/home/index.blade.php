@@ -7,7 +7,7 @@
 @endif
     <div class="row" style="width:95%; margin: 0 auto;">
                     <div class="col-md-5" >
-                        <img src="img/logo_big.png" alt="Biblionetka logo" > 
+                        <img src="/img/logo_big.png" alt="Biblionetka logo" > 
                     </div>
                     <div class="col-md-7">
                     <p>
@@ -52,7 +52,7 @@
                         <div class="carousel-inner">
                         
                             <div class="item active">
-                                <img src="img/library.png" alt="Zdjecie biblioteki">
+                                <img src="/img/library.png" alt="Zdjecie biblioteki">
                                 
                                 <div class="carousel-caption">
                                     <h3><?php echo Lang::get('messages.slide1header'); ?></h3>
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="item">
-                                <img src="img/servers.png" alt="Zdjecie serwerowni">
+                                <img src="/img/servers.png" alt="Zdjecie serwerowni">
                                 
                                 <div class="carousel-caption">
                                     <h3><?php echo Lang::get('messages.slide2header'); ?></h3>
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="item">
-                                <img src="img/home.png" alt="Zdjecie domu">
+                                <img src="/img/home.png" alt="Zdjecie domu">
                                 
                                 <div class="carousel-caption">
                                     <h3><?php echo Lang::get('messages.slide3header'); ?></h3>

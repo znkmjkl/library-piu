@@ -13,11 +13,39 @@
 
 App::before(function($request)
 {
-	if(isset($_GET['loc']) && $_GET['loc'] != App::getLocale()){
-		App::setLocale($_GET['loc']);
-	}
+	// if(isset($_GET['loc']) && $_GET['loc'] != App::getLocale()){
+	// 	App::setLocale($_GET['loc']);
+	// }
 
-    Redirect::to($request);
+ //    Redirect::to($request);
+
+$lang = 'pl';
+$lang_uri = Request::segment(1);
+
+// Set default session language if none is set
+if(!Session::has('language'))
+{
+    Session::put('language', $lang);
+}
+
+// Route language path if needed
+if($lang_uri !== 'en' && $lang_uri !== 'pl')
+{
+
+	//return Redirect::to('google.com');
+    return Redirect::to($lang.'/'.($lang_uri ? Request::path() : ''));
+}
+// Set session language to uri
+elseif($lang_uri !== Session::get('language'))
+{
+    Session::put('language', $lang_uri);
+}
+
+// Store the language switch links to the session
+$pl2en = preg_replace('/pl/', 'en', Request::fullUrl(), 1);
+$en2pl = preg_replace('/en/', 'pl', Request::fullUrl(), 1);
+Session::put('pl2en', $pl2en);
+Session::put('en2pl', $en2pl);
 });
 
 

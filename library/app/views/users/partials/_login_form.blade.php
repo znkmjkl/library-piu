@@ -5,7 +5,7 @@
 </div>
 
 <div class="row" >					
-	<img class="hidden-sm hidden-xs" style="margin:0 auto;" src="img/account.png" alt="Zaloguj się">								
+	<img class="hidden-sm hidden-xs" style="margin:0 auto;" src="/img/account.png" alt="Zaloguj się">								
 </div>		
 			
 				

@@ -2,6 +2,8 @@
 
 @section('layout')
 
+    @include('templates.lang')
+
     @if (Auth::check())
 
         @if (Auth::user()->isAdmin()) 
