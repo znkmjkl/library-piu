@@ -11,7 +11,7 @@
 					<div class="panel panel-default" style="margin-left:2%; width:96%;">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-							<i style="" class="glyphicon glyphicon-inbox">&nbsp</i>Twoje wiadomości
+							<i style="" class="glyphicon glyphicon-inbox">&nbsp</i> <?php echo Lang::get('messages.yourMessages'); ?>
 							</h4>
 							</div>
 							<div class="panel-body">
@@ -57,7 +57,7 @@
 
 	</div>
 	@if($tmp == 0)
-		<p style="position:absolute; width:78%; text-align:center; top: 270px;font-size:20px"><strong>Nie masz żadnych wiadomości</strong></p>
+		<p style="position:absolute; width:78%; text-align:center; top: 270px;font-size:20px"><strong><?php echo Lang::get('messages.noMessages'); ?></strong></p>
 	@endif
 	</div>
 	</div>
@@ -70,7 +70,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 100%; display: block; text-decoration: none;">
-									<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> &nbsp {{ Auth::user()->usr_name }}  {{ Auth::user()->usr_surname }} - dane użytkownika
+									<span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span> &nbsp {{ Auth::user()->usr_name }}  {{ Auth::user()->usr_surname }} - <?php echo Lang::get('messages.userData'); ?>
 								</a>
 							</h4>
 						</div>
@@ -160,7 +160,7 @@
 								
 									<table  class="user-data-table">
 										<tr>
-											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany">Numer karty:</abbr> </p> </td>
+											<td> <p> <abbr title="Jest to Twój indywidualny numer karty bibliotecznej, nadany przez system i niemożliwy do zmiany"><?php echo Lang::get('messages.cardNr'); ?></abbr> </p> </td>
 											<td class="udt-val-td" style="display:block"> {{ Auth::user()->usr_number }} </td>
 										</tr>
 																				

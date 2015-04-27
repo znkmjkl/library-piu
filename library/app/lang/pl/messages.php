@@ -66,7 +66,12 @@ return [
     'reservation' => 'Rezerwacja',
 
     'yes' => 'TAK',
-    'no' => 'NIE'
+    'no' => 'NIE',
+    'cardNr' => 'Numer karty:',
+
+    'yourMessages' => 'Twoje wiadomości',
+    'userData' => 'dane użytkownika',
+    'noMessages' => 'Nie masz żadnych wiadomości'
 ];
 
 ?>

@@ -66,7 +66,12 @@ return [
     'reservation' => 'Reservation',
 
     'yes' => 'YES',
-    'no' => 'NO'
+    'no' => 'NO',
+    'cardNr' => 'Card nr:',
+
+    'yourMessages' => 'Your messages',
+    'userData' => 'user data',
+    'noMessages' => 'You have no messages'
 
 ];
 
