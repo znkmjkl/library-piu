@@ -12,6 +12,7 @@
         <!-- core CSS -->
 
         {{ HTML::style('css/bootstrap.css') }}
+        {{ HTML::style('css/flag-icon.min.css') }}
         {{ HTML::style('css/carousel.css') }}
         {{ HTML::style('css/signin.css') }}
         {{ HTML::style('css/conversations.css') }}

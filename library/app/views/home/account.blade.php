@@ -8,6 +8,9 @@
 }
 </style>	
 <div ng-controller="AccountController">
+
+	<div class='container' style='height: 80px; overflow: scroll; overflow-x: hidden;'>
+
 	@foreach($rtls as $rtl)
 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
@@ -42,6 +45,10 @@
 	</div>
 	@endif
 	@endforeach
+
+
+	</div>
+
 	@if($pageContent == 'main')
 	<div style="margin-bottom:20px; margin-left:2%; width:96%;">
 		

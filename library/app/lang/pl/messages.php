@@ -21,8 +21,20 @@ return [
     'contact' => 'Kontakt',
     'terms' => 'Regulamin',
 
-    'bookTitle' => 'Tytuł książki'
+    'bookTitle' => 'Tytuł książki',
 
+    'title' => 'Tytuł',
+    'authorsFirstname' => 'Imię autora',
+    'authorsLastname' => 'Nazwisko autora',
+    'isbn' => 'ISBN',
+    'releaseDate' => 'Data wydania',
+    'chooseGenre' => 'Wybierz gatunek',
+    'chooseLanguage' => 'Wybierz język',
+    'edition' => 'Numer wydania',
+    'bookAuthor' => 'Author',
+
+    'filter' => 'Filtr',
+    'clearFilter' => 'Wyczyść filtr'
 
 ];
 
