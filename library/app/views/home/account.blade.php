@@ -68,12 +68,12 @@
 									<table class="user-data-table">
 									
 										<tr>
-											<td> Adres email: </td>
+											<td> <?php echo Lang::get('messages.accEmail'); ?> </td>
 											<td class="udt-val-td">  {{ Auth::user()->email }} </td>
 										</tr>
 										
 										<tr>
-											<td> Numer telefonu: </td>
+											<td> <?php echo Lang::get('messages.phoneNumber'); ?> </td>
 											<td class="udt-val-td"> 
 											@if(!empty(Auth::user()->usr_phone))
 												{{ Auth::user()->usr_phone }}
@@ -84,7 +84,7 @@
 										</tr>
 										
 										<tr>
-											<td> PESEL: </td>
+											<td> <?php echo Lang::get('messages.pesel'); ?> </td>
 											<td class="udt-val-td">
 											@if(!empty(Auth::user()->usr_pesel))
 												{{ Auth::user()->usr_pesel }}
@@ -95,7 +95,7 @@
 										</tr>
 																	
 										<tr>
-											<td> Miasto zamieszkania: </td>
+											<td> <?php echo Lang::get('messages.city'); ?> </td>
 											<td class="udt-val-td"> 
 											@if(!empty($address[0]->adr_city))
 												{{$address[0]->adr_city}}
@@ -106,7 +106,7 @@
 										</tr>
 										
 										<tr>
-											<td> Ulica: </td>
+											<td> <?php echo Lang::get('messages.street'); ?> </td>
 											<td class="udt-val-td">
 											@if(!empty($address[0]->adr_street))
 												{{$address[0]->adr_street}} 
@@ -118,7 +118,7 @@
 										</tr>
 										
 										<tr>
-											<td> Numer domu: </td>
+											<td> <?php echo Lang::get('messages.houseNr'); ?> </td>
 											<td class="udt-val-td"> 
 											@if(!empty($address[0]->adr_house_number))
 												{{$address[0]->adr_house_number}}
@@ -129,7 +129,7 @@
 										</tr>
 										
 										<tr>
-											<td> Kod pocztowy: </td>
+											<td> <?php echo Lang::get('messages.postCode'); ?> </td>
 											<td class="udt-val-td">
 											@if(!empty($address[0]->adr_postal_code))
 												{{$address[0]->adr_postal_code}}
@@ -152,12 +152,12 @@
 										</tr>
 																				
 										<tr>
-											<td> <p> <abbr title="Weryfikacja konta odbywa się poprzez okazanie dokumentu tożsamości przy pierwszej wizycie w naszej bibliotece.">Konto zweryfikowane:</abbr> </p> </td>
+											<td> <p> <abbr title="Weryfikacja konta odbywa się poprzez okazanie dokumentu tożsamości przy pierwszej wizycie w naszej bibliotece."><?php echo Lang::get('messages.accVerified'); ?></abbr> </p> </td>
 											<td class="udt-val-td" style="display:block"> 
 												@if( Auth::user()->usr_verified )
-												<span class="label label-success">ZWERYFIKOWANE</span>
+												<span class="label label-success"><?php echo Lang::get('messages.verified'); ?></span>
  												@else			
- 												<span class="label label-danger">NIE ZWERYFIKOWANE</span>
+ 												<span class="label label-danger"><?php echo Lang::get('messages.notVerified'); ?></span>
  												@endif
  											</td>
 										</tr>
@@ -167,7 +167,7 @@
 								
 								<div class="col-md-3 col-md-offset-9" style="text-align:right;">
 									<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="line-height: 100%; display: block; text-decoration: none;">
-										<button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Zmień hasło</button>
+										<button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo Lang::get('messages.changePassword'); ?></button>
 									</a>
 								</div>
 							</div>

@@ -5,13 +5,13 @@
             <tr>
 
                 <th> </th>
-                <th>Tytuł</th>
-                <th>Autor</th>
-                <th>ISBN</th>
-                <th>Data i nr wydania</th>
-                <th>Gatunek</th>
-                <th>Język</th>
-                <th>Rezerwacja</th>
+                <th><?php echo Lang::get('messages.title'); ?></th>
+                <th><?php echo Lang::get('messages.bookAuthor'); ?></th>
+                <th><?php echo Lang::get('messages.isbn'); ?></th>
+                <th><?php echo Lang::get('messages.dateAndEdition'); ?></th>
+                <th><?php echo Lang::get('messages.genre'); ?></th>
+                <th><?php echo Lang::get('messages.language'); ?></th>
+                <th><?php echo Lang::get('messages.reservation'); ?></th>
 
             </tr>
         </thead>

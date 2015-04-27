@@ -11,13 +11,13 @@
             <tr>
 
                 <th> </th>
-                <th>Tytuł</th>
-                <th>Autor</th>
-                <th>ISBN</th>
-                <th>Data i nr wydania</th>
-                <th>Gatunek</th>
-                <th>Język</th>
-                <th>Rezerwacja</th>
+                <th><?php echo Lang::get('messages.title'); ?></th>
+                <th><?php echo Lang::get('messages.bookAuthor'); ?></th>
+                <th><?php echo Lang::get('messages.isbn'); ?></th>
+                <th><?php echo Lang::get('messages.dateAndEdition'); ?></th>
+                <th><?php echo Lang::get('messages.genre'); ?></th>
+                <th><?php echo Lang::get('messages.language'); ?></th>
+                <th><?php echo Lang::get('messages.reservation'); ?></th>
 
             </tr>
         </thead>
@@ -32,9 +32,9 @@
                 <td><a href="/kind/{{ $result->bok_knd_id }} "> {{ $result->knd_name }}</a></td>
                 <td><a href="/language/{{ $result->bok_lng_id }} "> {{ $result->lng_name }}</a></td>
                 @if (!$result->rvn_status)
-                <td> <span class="label label-success">TAK</span> </td>
+                <td> <span class="label label-success"><?php echo Lang::get('messages.yes'); ?></span> </td>
                 @else
-                <td> <span class="label label-danger">NIE</span> </td>
+                <td> <span class="label label-danger"><?php echo Lang::get('messages.no'); ?></span> </td>
                 @endif
             </tr>
             @endforeach

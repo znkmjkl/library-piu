@@ -34,6 +34,14 @@
                 margin-top: 0px;
             }
 
+            .alert.alert-warning,
+            .alert.alert-danger,
+            .alert.alert-error, 
+            .alert.alert-info,
+            .alert.alert-success {
+                margin: 16px 16px 0px 16px;
+            }
+
 
         </style>
 

@@ -28,7 +28,7 @@
                         <a class="btn btn-warning btn-lg" href="/register" role="button"><?php echo Lang::get('messages.createAccount'); ?></a>
                         @else
                             <a class="btn btn-primary btn-lg" href="/search/results" role="button">
-                                Katalog biblioteki  <span class="glyphicon glyphicon-folder-open"></span>  
+                                <?php echo Lang::get('messages.catalogue'); ?> &nbsp;<span class="glyphicon glyphicon-folder-open"></span>  
                             </a>
                         @endif
                         <br>

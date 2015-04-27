@@ -22,7 +22,7 @@
         <div class="container marketing about">
         @if (Auth::check())
             @if(!Auth::user()->usr_verified)
-                <div class="alert alert-warning" style='margin: 14px 16px 0px 16px;'>
+                <div class="alert alert-warning">
                     
                     Twoje dane nie zostały zweryfikowane! Przy 
                     pierwszym wypożyczeniu będzie wymagany dokument potwierdzający Twoje dane.

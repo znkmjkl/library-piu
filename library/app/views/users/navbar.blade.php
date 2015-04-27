@@ -20,12 +20,12 @@
                   <i class="glyphicon glyphicon-user"></i><span> {{ Auth::user()->usr_name }}</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/account/main"><span class="glyphicon glyphicon-home"> </span> Konto</a></li>
-                    <li><a href="/account/current_rentals"><span class="glyphicon glyphicon-book"> </span> Twoje książki</a></li>
-                    <li><a href="/help"><span class="glyphicon glyphicon-question-sign"> </span> Pomoc</a></li>
+                    <li><a href="/account/main"><span class="glyphicon glyphicon-home"> </span> <?php echo Lang::get('messages.account'); ?></a></li>
+                    <li><a href="/account/current_rentals"><span class="glyphicon glyphicon-book"> </span> <?php echo Lang::get('messages.yourBooks'); ?></a></li>
+                    <li><a href="/help"><span class="glyphicon glyphicon-question-sign"> </span> <?php echo Lang::get('messages.help'); ?></a></li>
                     <li><hr></li>
-                    <li><a href="/contact"><span class="glyphicon glyphicon-globe"> </span> Kontakt</a></li>
-                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> </span> Wyloguj</a></li>
+                    <li><a href="/contact"><span class="glyphicon glyphicon-globe"> </span> <?php echo Lang::get('messages.contact'); ?></a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-off"> </span> <?php echo Lang::get('messages.logout'); ?></a></li>
                   </ul>
                 </li>
               </ul>
