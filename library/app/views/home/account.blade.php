@@ -7,21 +7,29 @@
 	font-weight: bold;
 }
 </style>	
-<div ng-controller="AccountController">
-
-	<div class='container' style='height: 80px; overflow: scroll; overflow-x: hidden;'>
-
+	<div ng-controller="AccountController" >
+					<div class="panel panel-default" style="margin-left:2%; width:96%;">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<i style="" class="glyphicon glyphicon-inbox">&nbsp</i>Twoje wiadomości
+							</h4>
+							</div>
+							<div class="panel-body">
+	<div class='container' style='height: 130px; overflow-y: auto;'>
+	<?php $tmp = 0; ?>
 	@foreach($rtls as $rtl)
 	@if(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%R%a")<0)										
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> minął <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni ")}}</b></u>temu. Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
+		<?php $tmp++; ?>
 	@elseif(date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")>0 && date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a")<10)
 	<div class="alert alert-warning alert-dismissible" role="alert" style="margin-top:10px;">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		<p> <strong> UWAGA! </strong> Termin wypożyczenia książki <i>{{$rtl->bok_title}}</i> mija za <u><b>{{date_diff(date_create(),date_create($rtl->rtl_end_date))->format("%a dni")}}</b></u> . Przejdź do strony <a href="/account/current_rentals" >Wypożyczenia</a> aby zobaczyć szczegóły. </p>
 	</div>
+		<?php $tmp++; ?>
 	@endif
 	@endforeach
 	<!-- <hr style="border-top: 3px solid #eeeeee;"> -->
@@ -41,12 +49,17 @@
 			{{date_create()->format("Y-m-d")}}<br/>
 			{{date_add(date_create($rvn->rvn_date),date_interval_create_from_date_string("2 days"))->format("Y-m-d")}}
 		--}}
-
+		<?php $tmp++; ?>
 	</div>
 	@endif
 	@endforeach
 
 
+	</div>
+	@if($tmp == 0)
+		<p style="position:absolute; width:78%; text-align:center; top: 270px;font-size:20px"><strong>Nie masz żadnych wiadomości</strong></p>
+	@endif
+	</div>
 	</div>
 
 	@if($pageContent == 'main')

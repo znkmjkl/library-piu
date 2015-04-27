@@ -22,7 +22,7 @@
         <div class="container marketing about">
         @if (Auth::check())
             @if(!Auth::user()->usr_verified)
-                <div class="alert alert-warning">
+                <div class="alert alert-warning" style='margin: 14px 16px 10px 16px;'>
                     
                     Twoje dane nie zostały zweryfikowane! Przy 
                     pierwszym wypożyczeniu będzie wymagany dokument potwierdzający Twoje dane.
@@ -31,22 +31,22 @@
         @endif
             @if (Session::get('flash_message_success'))
 
-                <div class="alert alert-success">
+                <div class="alert alert-success" style='margin: 14px 16px 10px 16px;'>
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
                     {{ Session::get('flash_message_success') }}
                 </div>
             @elseif (Session::get('flash_message_danger'))
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" style='margin: 14px 16px 10px 16px;'>
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
                     {{ Session::get('flash_message_danger') }}
                 </div>
             @elseif (Session::get('flash_message_warning'))
-                <div class="alert alert-warning">
+                <div class="alert alert-warning" style='margin: 14px 16px 10px 16px;'>
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
                     {{ Session::get('flash_message_warning') }}
                 </div>
             @elseif (Session::get('flash_message_info'))
-                <div class="alert alert-info">
+                <div class="alert alert-info" style='margin: 14px 16px 10px 16px;'>
                     <a href="#" class="close" data-dismiss="alert"> &times; </a>
                     {{ Session::get('flash_message_info') }}
                 </div>
