@@ -11,35 +11,50 @@
 |
 */
 
+function unset_uri_var($variable, $uri) {   
+    $parseUri = parse_url($uri);
+    $arrayUri = array();
+
+	$newUri = $uri;
+
+    if(isset($parseUri['query'])) {
+	    parse_str($parseUri['query'], $arrayUri);
+	    unset($arrayUri[$variable]);
+	    $newUri = http_build_query($arrayUri);
+	    $newUri = $parseUri['path'].'?'.$newUri;
+	}
+    return $newUri;
+}
+
 App::before(function($request)
 {
 
-$lang = 'pl';
-$lang_uri = Request::segment(1);
+	$lang = 'pl';
+	$lang_uri = null;
 
-// Set default session language if none is set
-if(!Session::has('language'))
-{
-    Session::put('language', $lang);
-}
-// Route language path if needed
-if($lang_uri !== 'en' && $lang_uri !== 'pl')
-{
-    return Redirect::to(Session::get('language').'/'.($lang_uri ? Request::path() : ''));
-}
-// Set session language to uri
-elseif($lang_uri !== Session::get('language'))
-{
-    Session::put('language', $lang_uri);
-}
+	if (isset($_GET['loc'])) {
+		$lang_uri = $_GET['loc'];
+	}
 
-App::setLocale(Session::get('language'));
+	if(!Session::has('language'))
+	{
+	    Session::put('language', $lang);
+	}
 
-// Store the language switch links to the session
-$pl2en = preg_replace('/pl/', 'en', Request::fullUrl(), 1);
-$en2pl = preg_replace('/en/', 'pl', Request::fullUrl(), 1);
-Session::put('pl2en', $pl2en);
-Session::put('en2pl', $en2pl);
+	if($lang_uri != null && $lang_uri !== Session::get('language'))
+	{
+	    Session::put('language', $lang_uri);
+	}
+
+	App::setLocale(Session::get('language'));
+
+	if (isset($_GET['loc'])) {
+		$url = Request::path();
+		$url = unset_uri_var('loc', $url);
+
+		return Redirect::to($url);
+	}
+
 });
 
 

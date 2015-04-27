@@ -16,148 +16,148 @@
 // 	return View::make('hello');
 // });
 
-Route::get('/{loc}/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getIndex']);
 
 /* Admin */
-Route::get('/{loc}/admin/{pageContent}', 'AdminController@getAdmin')->before('auth|admin');
+Route::get('/admin/{pageContent}', 'AdminController@getAdmin')->before('auth|admin');
 
-Route::post('/{loc}/admin/reservations', 'AdminController@getUserReservations')->before('auth|admin');
+Route::post('/admin/reservations', 'AdminController@getUserReservations')->before('auth|admin');
 
-Route::post('/{loc}/admin/users', 'AdminController@getUser')->before('auth|admin');
+Route::post('/admin/users', 'AdminController@getUser')->before('auth|admin');
 
-Route::post('/{loc}/admin/authors', 'AdminController@getAuthors')->before('auth|admin');
+Route::post('/admin/authors', 'AdminController@getAuthors')->before('auth|admin');
 
-Route::post('/{loc}/admin/books', 'AdminController@getBooks')->before('auth|admin');
+Route::post('/admin/books', 'AdminController@getBooks')->before('auth|admin');
 
-Route::post('/{loc}/admin/search/renting', 'AdminController@getRentedBooks')->before('auth|admin');
+Route::post('/admin/search/renting', 'AdminController@getRentedBooks')->before('auth|admin');
 
-Route::get('/{loc}/user/block/{id}','UserController@blockUser')->before('auth|admin');
+Route::get('/user/block/{id}','UserController@blockUser')->before('auth|admin');
 
-Route::get('/{loc}/user/activate/{id}','UserController@activateUser')->before('auth|admin');
+Route::get('/user/activate/{id}','UserController@activateUser')->before('auth|admin');
 
 // Route::get('/adduser','UserController@getAddUser')->before('auth|admin');
 
-Route::post('/{loc}/adduser','UserController@postAddUser')->before('auth|admin');
+Route::post('/adduser','UserController@postAddUser')->before('auth|admin');
 
-Route::get('/{loc}/user/edit/{id}','UserController@getEditUser')->before('auth|admin');
+Route::get('/user/edit/{id}','UserController@getEditUser')->before('auth|admin');
 
-Route::post('/{loc}/user/edit/{id}','UserController@postEditUser')->before('auth|admin');
+Route::post('/user/edit/{id}','UserController@postEditUser')->before('auth|admin');
 
-Route::get('/{loc}/user/verify/{id}','UserController@verifyUser')->before('auth|admin');
+Route::get('/user/verify/{id}','UserController@verifyUser')->before('auth|admin');
 
 // Route::get('/user/{id}','UserController@getShowUser')->before('auth|admin');
 
 // Route::get('/reservations/','ReservationController@getIndex')->before('auth|admin');
 
-Route::get('/{loc}/reservation/cancel/{id}','ReservationController@cancelReservation')->before('auth|admin');
+Route::get('/reservation/cancel/{id}','ReservationController@cancelReservation')->before('auth|admin');
 
-Route::get('/{loc}/test','ReservationController@test');
+Route::get('/test','ReservationController@test');
 
-Route::get('/{loc}/reservation/makeready/{id}','ReservationController@makeReadyReservation')->before('auth|admin');
+Route::get('/reservation/makeready/{id}','ReservationController@makeReadyReservation')->before('auth|admin');
 
-Route::get('/{loc}/reservation/rentbook/{id}','ReservationController@rentBook')->before('auth|admin');
+Route::get('/reservation/rentbook/{id}','ReservationController@rentBook')->before('auth|admin');
 
 /* Basic pages */
-Route::get('/{loc}/about', 'HomeController@getAbout');
+Route::get('/about', 'HomeController@getAbout');
 
-Route::get('/{loc}/help', 'HomeController@getHelp');
+Route::get('/help', 'HomeController@getHelp');
 
-Route::get('/{loc}/contact', 'HomeController@getContact');
+Route::get('/contact', 'HomeController@getContact');
 
-Route::get('/{loc}/status', 'HomeController@getStatus');
+Route::get('/status', 'HomeController@getStatus');
 
-Route::get('/{loc}/terms', 'HomeController@getTerms');
+Route::get('/terms', 'HomeController@getTerms');
 
-Route::get('/{loc}/confirm/{usr_number}', 'UserController@confirmUser');
+Route::get('/confirm/{usr_number}', 'UserController@confirmUser');
 /* User basic operations */
-Route::get('/{loc}/register', 'UserController@getRegister');
+Route::get('/register', 'UserController@getRegister');
 
-Route::get('/{loc}/resend_password', 'UserController@getResetPassword')->before('guest');
+Route::get('/resend_password', 'UserController@getResetPassword')->before('guest');
 
-Route::post('/{loc}/resend_password', 'UserController@postResetPassword');
+Route::post('/resend_password', 'UserController@postResetPassword');
 
-Route::get('/{loc}/login', 'UserController@getLogin')->before('guest');
+Route::get('/login', 'UserController@getLogin')->before('guest');
 
-Route::get('/{loc}/logout', 'UserController@getLogout')->before('auth');
+Route::get('/logout', 'UserController@getLogout')->before('auth');
 
-Route::controller('/{loc}/users', 'UserController');
+Route::controller('/users', 'UserController');
 
 /* Book search */
-Route::get('/{loc}/search', 'SearchController@getSearch');
+Route::get('/search', 'SearchController@getSearch');
 
-Route::post('/{loc}/search', 'SearchController@postAdvancedSearch');
+Route::post('/search', 'SearchController@postAdvancedSearch');
 
-Route::post('/{loc}/search/basic', 'SearchController@postBasicSearch');
+Route::post('/search/basic', 'SearchController@postBasicSearch');
 
-Route::get('/{loc}/search/results', 'SearchController@getAdvancedSearch');
+Route::get('/search/results', 'SearchController@getAdvancedSearch');
 
-Route::get('/{loc}/search/basic/results', 'SearchController@getAdvancedSearch');
+Route::get('/search/basic/results', 'SearchController@getAdvancedSearch');
 
 /* Book */
-Route::get('/{loc}/book/{id}', 'BookController@getShowBookWithReservation')->before('guest');
+Route::get('/book/{id}', 'BookController@getShowBookWithReservation')->before('guest');
 
-Route::get('/{loc}/book/{id}', array('as'=>'book', 'uses'=> (Auth::check()) ? 'BookController@getShowBookWithReservation' : 'BookController@getShowBook'));
+Route::get('/book/{id}', array('as'=>'book', 'uses'=> (Auth::check()) ? 'BookController@getShowBookWithReservation' : 'BookController@getShowBook'));
 
-Route::post('/{loc}/book/{id}/reserve', array('as' => 'reserve',
+Route::post('/book/{id}/reserve', array('as' => 'reserve',
                                         'uses' => 'ReservationController@postReserveBook'))->before('auth');
 
-Route::post('/{loc}/book/{id}/resign', array('as' => 'resign',
+Route::post('/book/{id}/resign', array('as' => 'resign',
                                        'uses' => 'ReservationController@postCancelBookReservation'))->before('auth');
 
-Route::controller('/{loc}/book', 'BookController');
+Route::controller('/book', 'BookController');
 
-Route::get('/{loc}/author/{id}', 'WriterController@getShowWriter');
+Route::get('/author/{id}', 'WriterController@getShowWriter');
 
-Route::controller('/{loc}/author', 'WriterController');
+Route::controller('/author', 'WriterController');
 
-Route::get('/{loc}/language/{id}', 'LanguageController@getShowLanguage');
+Route::get('/language/{id}', 'LanguageController@getShowLanguage');
 
-Route::controller('/{loc}/language', 'LanguageController');
+Route::controller('/language', 'LanguageController');
 
-Route::get('/{loc}/kind/{id}', 'KindController@getShowKind');
+Route::get('/kind/{id}', 'KindController@getShowKind');
 
-Route::controller('/{loc}/kind', 'KindController');
+Route::controller('/kind', 'KindController');
 
-Route::get('/{loc}/rented/{id}/returnbook', 'RentalController@returnBook');
+Route::get('/rented/{id}/returnbook', 'RentalController@returnBook');
 
-Route::get('/{loc}/addbook','BookController@getAddBookView');
+Route::get('/addbook','BookController@getAddBookView');
 
-Route::post('/{loc}/addbook','BookController@postBook');
+Route::post('/addbook','BookController@postBook');
 
-Route::get('/{loc}/removebook/{id}','BookController@removeBook');
+Route::get('/removebook/{id}','BookController@removeBook');
 
-Route::get('/{loc}/editbook/{id}','BookController@getEditBookView');
+Route::get('/editbook/{id}','BookController@getEditBookView');
 
-Route::post('/{loc}/editbook/{id}', 'BookController@editBook');
+Route::post('/editbook/{id}', 'BookController@editBook');
 
 /* Account */
-Route::get('/{loc}/account/{pageContent}', 'AccountController@getAccount')->before('auth');
+Route::get('/account/{pageContent}', 'AccountController@getAccount')->before('auth');
 
-Route::post('/{loc}/changePass', 'AccountController@changePassword');
+Route::post('/changePass', 'AccountController@changePassword');
 
-Route::post('/{loc}/account/{id}/{book_name}/prolongate', array('as' => 'prolongate',
+Route::post('/account/{id}/{book_name}/prolongate', array('as' => 'prolongate',
 									 'uses' => 'AccountController@prolongate'))->before('auth');
 /* Fine */
-Route::get('/{loc}/rented/{id}/addfine','FineController@showFine');
+Route::get('/rented/{id}/addfine','FineController@showFine');
 
-Route::post('/{loc}/addfine/{id}','FineController@addFine');
+Route::post('/addfine/{id}','FineController@addFine');
 
-Route::get('/{loc}/removefine/{id}','FineController@deleteFine');
+Route::get('/removefine/{id}','FineController@deleteFine');
 
 /* Author */
-Route::get('/{loc}/addauthor','WriterController@getAddWriterView');
+Route::get('/addauthor','WriterController@getAddWriterView');
 
-Route::post('/{loc}/addauthor','WriterController@postWriter');
+Route::post('/addauthor','WriterController@postWriter');
 
-Route::get('/{loc}/editauthor/{id}','WriterController@getEditWriterView');
+Route::get('/editauthor/{id}','WriterController@getEditWriterView');
 
-Route::post('/{loc}/editauthor/{id}', 'WriterController@postEditWriter');
+Route::post('/editauthor/{id}', 'WriterController@postEditWriter');
 
-Route::get('/{loc}/removeauthor/{id}', 'WriterController@removeWritter');
+Route::get('/removeauthor/{id}', 'WriterController@removeWritter');
 
 /* Rented */
-Route::get('/{loc}/rentedList/{page}/{isbn}', 'RentalController@getRentedBooks');
+Route::get('/rentedList/{page}/{isbn}', 'RentalController@getRentedBooks');
 
-Route::post('/{loc}/searchRented', 'RentalController@getRestPage');
+Route::post('/searchRented', 'RentalController@getRestPage');
 
-Route::get('/{loc}/rented/{id}/addfine','FineController@showFine');
+Route::get('/rented/{id}/addfine','FineController@showFine');

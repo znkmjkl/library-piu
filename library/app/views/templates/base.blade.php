@@ -46,10 +46,13 @@
 
             var url = window.location.href;
 
-            if(loc == 'pl') {
-                url = url.replace('/en', '/pl');
+            var currLang = url.indexOf("loc=");
+
+            if (currLang != -1) {
+                url = url.substr(0, currLang-1) + url.substr(currLang + 6, url.length);
+                url += '?loc=' + loc;
             } else {
-                url = url.replace('/pl', '/en');
+                url += '?loc=' + loc;
             }
 
             window.location.href = url;
