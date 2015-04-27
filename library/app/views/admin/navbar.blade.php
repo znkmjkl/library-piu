@@ -18,7 +18,7 @@
                 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-user"> {{ Auth::user()->usr_name }}</span>
+                  <i class="glyphicon glyphicon-user"></i><span> {{ Auth::user()->usr_name }}</span>
                   <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="/account/main"><span class="glyphicon glyphicon-home"> </span> Konto</a></li>
