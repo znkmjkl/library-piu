@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => true,
         		'email' => 'admin@admin.com',
-        		'password' => Hash::make('admin12345'),
+        		'password' => Hash::make('test123'),
                 'usr_is_blocked' => false
         	));
 
@@ -48,7 +48,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'witek.j@op.pl',
-        		'password' => Hash::make('witoslaw123'),
+        		'password' => Hash::make('test123'),
                 'usr_is_blocked' => false
         	));
 
@@ -71,7 +71,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'justusvelKrawczyk@op.pl',
-        		'password' => Hash::make('123happy654'),
+        		'password' => Hash::make('test123'),
                 'usr_is_blocked' => false
         	));
 
@@ -94,7 +94,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'sterek.witek@gmail.com',
-        		'password' => Hash::make('sternaburte0987'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -117,7 +117,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'dratewka@gmail.com',
-        		'password' => Hash::make('nanabla123456'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -140,7 +140,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'sowa.klaudia@inteira.pl',
-        		'password' => Hash::make('takiehaslo98'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -163,7 +163,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'konieczna.weronika@gmail.com',
-        		'password' => Hash::make('endonareda05'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -186,7 +186,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'landaczenda58@op.pl',
-        		'password' => Hash::make('landaczek382'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -209,7 +209,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'lisicki1111@o2.pl',
-        		'password' => Hash::make('lisicki322@'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -232,7 +232,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'kowalek33@tlen.pl',
-        		'password' => Hash::make('kowal21kk'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
 
@@ -255,7 +255,7 @@ class UserTableSeeder extends Seeder {
         		'usr_active' => true,
         		'usr_verified' => false,
         		'email' => 'wojtak_edward@gmail.com',
-        		'password' => Hash::make('wojtak12323'),
+        		'password' => Hash::make('test123'),
         		'usr_is_blocked' => false
         	));
     }
