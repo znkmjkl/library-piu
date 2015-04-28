@@ -32,7 +32,7 @@ return [
     'chooseGenre' => 'Wybierz gatunek',
     'chooseLanguage' => 'Wybierz język',
     'edition' => 'Numer wydania',
-    'bookAuthor' => 'Author',
+    'bookAuthor' => 'Autor',
 
     'filter' => 'Filtr',
     'clearFilter' => 'Wyczyść filtr',
