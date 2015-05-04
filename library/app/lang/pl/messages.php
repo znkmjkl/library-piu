@@ -71,7 +71,16 @@ return [
 
     'yourMessages' => 'Twoje wiadomości',
     'userData' => 'dane użytkownika',
-    'noMessages' => 'Nie masz żadnych wiadomości'
+    'noMessages' => 'Nie masz żadnych wiadomości',
+
+    'logInForm' => 'Zaloguj się',
+    'password' => 'Hasło',
+    'emailForm' => 'E-mail',
+    'forgotPassword' => 'Zapomniałeś hasła?',
+
+    'enterEmail' => 'Podaj e-mail',
+    'enterPassword' => 'Podaj hasło'
+
 ];
 
 ?>

@@ -24,10 +24,10 @@
                     
                     <p style="float:right;">
                         @if (!Auth::check())
-                        <a class="btn btn-primary btn-lg" href="/login" role="button"><?php echo Lang::get('messages.logIn'); ?></a>
-                        <a class="btn btn-warning btn-lg" href="/register" role="button"><?php echo Lang::get('messages.createAccount'); ?></a>
+                        <a class="btn btn-primary btn-md" href="/login" role="button"><?php echo Lang::get('messages.logIn'); ?></a>
+                        <a class="btn btn-warning btn-md" href="/register" role="button"><?php echo Lang::get('messages.createAccount'); ?></a>
                         @else
-                            <a class="btn btn-primary btn-lg" href="/search/results" role="button">
+                            <a class="btn btn-primary btn-md" href="/search/results" role="button">
                                 <?php echo Lang::get('messages.catalogue'); ?> &nbsp;<span class="glyphicon glyphicon-folder-open"></span>  
                             </a>
                         @endif

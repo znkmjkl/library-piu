@@ -71,7 +71,15 @@ return [
 
     'yourMessages' => 'Your messages',
     'userData' => 'user data',
-    'noMessages' => 'You have no messages'
+    'noMessages' => 'You have no messages',
+
+    'logInForm' => 'Log in',
+    'password' => 'Password',
+    'emailForm' => 'E-mail',
+    'forgotPassword' => 'Forgot password?',
+
+    'enterEmail' => 'Enter e-mail',
+    'enterPassword' => 'Enter password'
 
 ];
 
